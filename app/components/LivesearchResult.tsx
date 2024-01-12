@@ -43,7 +43,7 @@ function LivesearchResult(props: Props) {
               : `/tv/${result.id}`
           }
         >
-          <div className="item" key={result.id}>
+          <div className="item huhu" key={result.id}>
             <img
               src={`https://www.themoviedb.org/t/p/w94_and_h141_bestv2${result.poster_path}`}
             />
