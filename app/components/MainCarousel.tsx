@@ -128,46 +128,24 @@ function MainCarousel() {
               </div>
               <div id={`carousel-mask-${result.id}`} className="mask"></div>
               <div className="filter"></div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
 
-        <div className="small-banner-slider">
-          <Swiper
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: false,
-            }}
-            slidesPerView={3}
-            spaceBetween={10}
-            modules={[Autoplay]}
-            className="carousel"
-          >
-            {movieData.map((result: MovieDataResult) => (
-              <SwiperSlide key={result.id} className="item cursor-pointer">
-                {({ isActive, isNext }) => (
-                  <Link
-                    href={
-                      result.media_type === "movie"
-                        ? `/movies/${result.id}`
-                        : `/tv/${result.id}`
-                    }
-                  >
+              <div className="small-banner-slider">
+                <div className="carousel">
+                  <div className="carousel-inner">
                     <img
-                      className={isActive ? "active" : "inactive"}
                       src={`https://www.themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`}
                     />
-                    <p className={isActive ? "active title" : "inactive title"}>
+                    <p className="activetitle">
                       {result.media_type === "movie"
                         ? getWordRange(result.title, 2)
                         : getWordRange(result.name, 2)}
                     </p>
-                  </Link>
-                )}
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </>
   );
