@@ -5,7 +5,7 @@ import MovieLogo from "./MovieLogo";
 import "@/app/dist/style/MainCarousel.css";
 //Swiper js...
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectFade, Autoplay, Controller } from "swiper/modules";
+import { EffectFade, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
 
@@ -30,7 +30,7 @@ function MainCarousel() {
     return result;
   };
 
-  const [controlledSwiper, setControlledSwiper] = useState<Swiper | null>(null);
+  const [controlledSwiper, setControlledSwiper] = useState(null);
   const [movieData, setMovieData] = useState([]);
   const [trendOrder, setTrendOrder] = useState("");
   setTrendOrder("day");
@@ -66,14 +66,7 @@ function MainCarousel() {
   return (
     <>
       <div className="carousel-cont">
-        <Swiper
-          effect="fade"
-          modules={[EffectFade, Controller]}
-          onSwiper={(controlledSwiper) => {
-            setControlledSwiper(controlledSwiper);
-          }}
-          className="carousel"
-        >
+        <Swiper effect="fade" modules={[EffectFade]} className="carousel">
           {movieData.map((result: MovieDataResult) => (
             <SwiperSlide key={result.id} className="carousel-item active">
               <img
@@ -137,8 +130,7 @@ function MainCarousel() {
             }}
             slidesPerView={3}
             spaceBetween={10}
-            modules={[Autoplay, Controller]}
-            controller={{ control: controlledSwiper }}
+            modules={[Autoplay]}
             className="carousel"
           >
             {movieData.map((result: MovieDataResult) => (
