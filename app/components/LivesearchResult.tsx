@@ -37,13 +37,14 @@ function LivesearchResult(props: Props) {
     <div className="SearchResult" id="searchresult">
       {searchResult.slice(0, 5).map((result: SearchResult) => (
         <Link
+          key={result.id}
           href={
             result.media_type === "movie"
               ? `/movies/${result.id}`
               : `/tv/${result.id}`
           }
         >
-          <div className="item huka" key={result.id}>
+          <div className="item huka">
             <img
               src={`https://www.themoviedb.org/t/p/w94_and_h141_bestv2${result.poster_path}`}
             />
