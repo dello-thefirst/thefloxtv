@@ -21,7 +21,12 @@ function LivesearchResult(props: Props) {
   const [searchResult, setSearchResult] = useState([]);
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/search/multi?api_key=c19b8e28dc3c9d900ceb4696bf2d247c&query=${props.query}&include_adult=true&language=en-US&page=1`
+      `https://api.themoviedb.org/3/search/multi?api_key=c19b8e28dc3c9d900ceb4696bf2d247c&query=${props.query}&include_adult=true&language=en-US&page=1`,
+      {
+        headers: {
+          "Cache-Control": "no-cache",
+        },
+      }
     )
       .then((response) => response.json())
       .then((json) => {
