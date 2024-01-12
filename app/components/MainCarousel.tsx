@@ -30,9 +30,11 @@ function MainCarousel() {
     const result = firstXLetters.join("");
     return result;
   };
+
   const [controlledSwiper, setControlledSwiper] = useState(null);
   const [movieData, setMovieData] = useState([]);
-  const [trendOrder, setTrendOrder] = useState("day");
+  const [trendOrder, setTrendOrder] = useState("");
+  setTrendOrder("day");
 
   interface MovieData {
     results: [];
