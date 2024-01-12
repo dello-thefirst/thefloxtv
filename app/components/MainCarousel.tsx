@@ -29,11 +29,8 @@ function MainCarousel() {
     const result = firstXLetters.join("");
     return result;
   };
-
-  const [controlledSwiper, setControlledSwiper] = useState(null);
   const [movieData, setMovieData] = useState([]);
-  const [trendOrder, setTrendOrder] = useState("");
-  setTrendOrder("day");
+  const [trendOrder, setTrendOrder] = useState("day");
 
   interface MovieData {
     results: [];
@@ -66,7 +63,15 @@ function MainCarousel() {
   return (
     <>
       <div className="carousel-cont">
-        <Swiper effect="fade" modules={[EffectFade]} className="carousel">
+        <Swiper
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          effect="fade"
+          modules={[EffectFade, Autoplay]}
+          className="carousel"
+        >
           {movieData.map((result: MovieDataResult) => (
             <SwiperSlide key={result.id} className="carousel-item active">
               <img
