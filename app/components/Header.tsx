@@ -1,0 +1,69 @@
+"use client";
+import React, { useState } from "react";
+import LivesearchResult from "./LivesearchResult";
+import Link from "next/link";
+import Image from "next/image";
+import Logo from "../logo.svg";
+import "@/app/dist/style/Header.css";
+
+interface HeaderProps {
+  page: string;
+}
+
+function Header(props: HeaderProps) {
+  //..
+  const [searchValue, setSearchValue] = useState<string>("");
+  const search = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = event.target.value;
+    console.log(searchValue);
+    setSearchValue(inputValue);
+  };
+  return (
+    <>
+      <header className={props.page === "home" ? "home-page-header" : ""}>
+        <div className="logo-cont center-div">
+          <Link href="/">
+            <Image className="logo" src={Logo} alt="Logo" />
+          </Link>
+        </div>
+        <div className="search-bar center-div" id="search-bar">
+          <form action="/search" method="GET" className="all-centered">
+            <div className="search-rep-ico center-div">
+              <i className="fa-regular fa-magnifying-glass"></i>
+            </div>
+            <input
+              id="searchInput"
+              type="text"
+              name="q"
+              placeholder="Search Movies and Tv Shows"
+              onChange={search}
+            />
+            <div className="search-rep-ico all-centered">
+              <i className="bi bi-funnel"></i>
+            </div>
+          </form>
+
+          <LivesearchResult query={searchValue} />
+        </div>
+
+        <div className="right-section center-div">
+          <nav>
+            <ul>
+              <li>
+                <Link href="/">Home</Link>
+              </li>
+              <li>
+                <Link href="/tvshows">TV Shows</Link>
+              </li>
+              <li>
+                <Link href="/movies">Movies</Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+    </>
+  );
+}
+
+export default Header;
