@@ -118,7 +118,7 @@ function MainCarousel() {
                     }
                   >
                     <button className="btn btn-outline btn-primary all-centered">
-                      <i className="fa-solid fa-circle-play"></i> Watch Now
+                      <i className="fa-solid fa-circle-play"></i> Watch Nos
                     </button>
                   </Link>
                   <button className="view-btn all-centered">
