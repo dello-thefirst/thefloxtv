@@ -130,17 +130,15 @@ function MainCarousel() {
               <div className="filter"></div>
 
               <div className="small-banner-slider">
-                <div className="carousel">
-                  <div className="carousel-inner">
-                    <img
-                      src={`https://www.themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`}
-                    />
-                    <p className="activetitle">
-                      {result.media_type === "movie"
-                        ? getWordRange(result.title, 2)
-                        : getWordRange(result.name, 2)}
-                    </p>
-                  </div>
+                <div className="item">
+                  <img
+                    src={`https://www.themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`}
+                  />
+                  <p className="active title">
+                    {result.media_type === "movie"
+                      ? getWordRange(result.title, 2)
+                      : getWordRange(result.name, 2)}
+                  </p>
                 </div>
               </div>
             </SwiperSlide>

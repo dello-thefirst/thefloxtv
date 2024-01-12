@@ -139,30 +139,23 @@
 }
 
 .carousel-cont .small-banner-slider {
-  width: 30%;
+  width: 25%;
   position: absolute;
   margin: 50px 3%;
   right: 0;
   bottom: 0;
   z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .carousel-cont .small-banner-slider .item img {
-  opacity: 0.2;
+  width: 120px;
   border-radius: 5px;
-}
-
-.carousel-cont .small-banner-slider .item img.active {
-  opacity: 1;
-  width: 250px;
-}
-
-.carousel-cont .small-banner-slider .item p.title {
-  opacity: 0.2;
-  font-size: 13px;
-  padding: 5px 0;
 }
 
 .carousel-cont .small-banner-slider .item p.title.active {
   opacity: 1;
+  text-align: center;
 }
