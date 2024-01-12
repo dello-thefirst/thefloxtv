@@ -36,23 +36,24 @@ function LivesearchResult(props: Props) {
   return (
     <div className="SearchResult" id="searchresult">
       {searchResult.map((result: SearchResult) => (
-        <Link
-          key={result.id}
-          href={
-            result.media_type === "movie"
-              ? `/movies/${result.id}`
-              : `/tv/${result.id}`
-          }
-        >
-          <div className="item">
-            <img
-              src={`https://www.themoviedb.org/t/p/w94_and_h141_bestv2${result.poster_path}`}
-            />
-            <div className="info">
-              {result.media_type === "movie" ? result.title : result.name}
+        <div className="wrapper" key={result.id}>
+          <Link
+            href={
+              result.media_type === "movie"
+                ? `/movies/${result.id}`
+                : `/tv/${result.id}`
+            }
+          >
+            <div className="item">
+              <img
+                src={`https://www.themoviedb.org/t/p/w94_and_h141_bestv2${result.poster_path}`}
+              />
+              <div className="info">
+                {result.media_type === "movie" ? result.title : result.name}
+              </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
       ))}
     </div>
   );
