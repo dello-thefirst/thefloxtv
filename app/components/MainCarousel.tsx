@@ -8,7 +8,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay, Controller } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
-import { error } from "console";
 
 function MainCarousel() {
   //...
@@ -31,7 +30,7 @@ function MainCarousel() {
     return result;
   };
 
-  const [controlledSwiper, setControlledSwiper] = useState(null);
+  const [controlledSwiper, setControlledSwiper] = useState<Swiper | null>(null);
   const [movieData, setMovieData] = useState([]);
   const [trendOrder, setTrendOrder] = useState("");
   setTrendOrder("day");
@@ -53,6 +52,7 @@ function MainCarousel() {
     duration: number;
     vote_average: number;
   }
+
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/trending/all/${trendOrder}?language=en-US&api_key=c19b8e28dc3c9d900ceb4696bf2d247c`
@@ -63,17 +63,15 @@ function MainCarousel() {
         setMovieData(json.results);
       });
   }, []);
-
-  const handleControlledSwiper = (controlledSwiper: Swiper) => {
-    setControlledSwiper(controlledSwiper);
-  };
   return (
     <>
       <div className="carousel-cont">
         <Swiper
           effect="fade"
           modules={[EffectFade, Controller]}
-          onSwiper={handleControlledSwiper}
+          onSwiper={(controlledSwiper) => {
+            setControlledSwiper(controlledSwiper);
+          }}
           className="carousel"
         >
           {movieData.map((result: MovieDataResult) => (
