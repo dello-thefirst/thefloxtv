@@ -169,9 +169,20 @@
   .carousel-item .text {
     width: 100%;
     padding: 0 0 50px 3%;
+    text-align: center;
+  }
+
+  .movie-logo {
+    width: 180px;
+    margin: 0 auto;
+    margin-bottom: 30px;
   }
 
   .carousel-item .text .desc {
+    display: none;
+  }
+
+  .carousel-cont .small-banner-slider {
     display: none;
   }
 }
