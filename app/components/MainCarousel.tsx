@@ -5,9 +5,8 @@ import MovieLogo from "./MovieLogo";
 import "@/app/dist/style/MainCarousel.css";
 //Swiper js...
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectFade, Autoplay } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/effect-fade";
 
 function MainCarousel() {
   //...
