@@ -20,26 +20,21 @@ function LivesearchResult(props: Props) {
   //...
   const [searchResult, setSearchResult] = useState([]);
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/search/multi?api_key=c19b8e28dc3c9d900ceb4696bf2d247c&query=${props.query}&include_adult=true&language=en-US&page=1`,
-      {
-        headers: {
-          "Cache-Control": "no-cache",
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((json) => {
-        console.log(json);
-        setSearchResult(json.results);
-      })
-      .catch((error) => {
-        console.log("error");
-      });
+    async function fetchSearchResults() {
+      const res = await fetch(
+        `https://api.themoviedb.org/3/search/multi?api_key=c19b8e28dc3c9d900ceb4696bf2d247c&query=${props.query}&include_adult=true&language=en-US&page=1`,
+        {
+          cache: "no-cache",
+        }
+      );
+      const data = await res.json();
+      setSearchResult(data.results);
+    }
+    fetchSearchResults();
   }, [props.query]);
 
   return (
-    <div className="SearchResult" id="searchresult">
+    <div className="SearchResult">
       {searchResult.map((result: SearchResult) => (
         <div className="wrapper" key={result.id}>
           <Link

@@ -51,20 +51,17 @@ function MainCarousel() {
   }
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/trending/all/${trendOrder}?language=en-US&api_key=c19b8e28dc3c9d900ceb4696bf2d247c`,
-      {
-        headers: {
-          "Cache-Control": "no-cache",
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((json: MovieData) => {
-        console.log(json);
-        setMovieData(json.results);
-      });
+    async function fetchData() {
+      const res = await fetch(
+        `https://api.themoviedb.org/3/trending/all/${trendOrder}?language=en-US&api_key=c19b8e28dc3c9d900ceb4696bf2d247c`,
+        { cache: "no-store" }
+      );
+      const data = await res.json();
+      setMovieData(data.results);
+    }
+    fetchData();
   }, []);
+
   return (
     <>
       <div className="carousel-cont">
