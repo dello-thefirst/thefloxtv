@@ -58,7 +58,7 @@
 
 .carousel-item .text .info span {
   font-weight: 400;
-  margin: 0 4px;
+  margin: 0 6px;
 }
 
 .carousel-item .text .info .certification {
@@ -94,11 +94,11 @@
 
 .carousel-item .text .view-btn {
   width: 150px;
-  height: 40px;
+  height: 38px;
   background: var(--color-2);
   outline: none;
   border: none;
-  border-radius: 5px;
+  border-radius: 1rem;
   color: #3b3939;
   font-weight: 500;
   cursor: pointer;
@@ -171,18 +171,23 @@
     padding: 0 0 50px 3%;
     text-align: center;
   }
-
+  .carousel-item .text p {
+    font-weight: 400;
+    margin-bottom: 9px;
+  }
   .movie-logo {
     width: 180px;
     margin: 0 auto;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   .carousel-item .text .info {
     display: block;
+    font-size: 14px;
   }
   .carousel-item .text .genre {
     display: block;
+    font-size: 14px;
   }
   .carousel-item .text .desc {
     display: none;

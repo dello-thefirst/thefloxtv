@@ -90,7 +90,7 @@ function MainCarousel() {
                 <p className="info">
                   <span className="certification">?</span>
                   <span>
-                    <i className="bi bi-star-fill"></i> {result.vote_average}
+                    <i className="fa-solid fa-star"></i> {result.vote_average}
                   </span>
                   <span>
                     {result.media_type === "movie"
