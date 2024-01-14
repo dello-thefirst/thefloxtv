@@ -14,7 +14,7 @@ function MainCarousel() {
     const words = text.split(/\s+/);
     if (words.length > range) {
       const firstXWords = words.slice(0, range);
-      const result = firstXWords.join(" ") + "...";
+      const result = firstXWords.join(" ") + "... ";
       return result;
     } else {
       const result = text;
