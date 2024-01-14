@@ -178,6 +178,12 @@
     margin-bottom: 30px;
   }
 
+  .carousel-item .text .info {
+    display: block;
+  }
+  .carousel-item .text .genre {
+    display: block;
+  }
   .carousel-item .text .desc {
     display: none;
   }
