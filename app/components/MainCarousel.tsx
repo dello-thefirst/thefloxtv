@@ -70,8 +70,7 @@ function MainCarousel() {
             delay: 5000,
             disableOnInteraction: false,
           }}
-          effect="fade"
-          modules={[EffectFade, Autoplay]}
+          modules={[Autoplay]}
           className="carousel"
         >
           {movieData.map((result: MovieDataResult) => (
