@@ -6,15 +6,14 @@ interface Props {
 }
 
 interface SearchResult {
-  id: number;
-  title: string;
-  name: string;
+  tmdbMovie: number;
+  tmdbSeries: number;
+  titleMovie: string;
+  nameSeries: string;
   media_type: string;
-  backdrop_path: string;
-  poster_path: string;
-  overview: string;
-  release_date: string;
-  first_air_date: string;
+  bannerMovie: string;
+  bannerSeries: string;
+  yearMovie: string;
 }
 function LivesearchResult(props: Props) {
   //...
