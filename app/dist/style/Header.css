@@ -139,4 +139,9 @@ header .right-section {
   header .right-section nav {
     display: none;
   }
+
+  header .right-section .icons svg {
+    width: 30px;
+    height: 30px;
+  }
 }
