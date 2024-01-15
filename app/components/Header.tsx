@@ -28,7 +28,8 @@ function Header(props: HeaderProps) {
           </Link>
         </div>
         <div
-          onMouseLeave={() => {
+          tabIndex={0}
+          onBlur={() => {
             setSearchFocus(0);
           }}
           onMouseOver={() => {

@@ -36,9 +36,9 @@ function LivesearchResult(props: Props) {
   if (props.query !== "" && searchResult) {
     return (
       <div className="SearchResult">
-        {searchResult.map((result: SearchResult) => (
-          <div className="wrapper">
-            {result.media_type === "movie" ? (
+        <div className="wrapper">
+          {searchResult.map((result: SearchResult) =>
+            result.media_type == "movie" ? (
               <Link href={`/movies/${result.tmdbMovie}`}>
                 <div className="item">
                   <img
@@ -62,9 +62,9 @@ function LivesearchResult(props: Props) {
                   </div>
                 </div>
               </Link>
-            )}
-          </div>
-        ))}
+            )
+          )}
+        </div>
       </div>
     );
   }
