@@ -114,11 +114,11 @@ function MainCarousel() {
                         : `/tv/${result.id}`
                     }
                   >
-                    <button className="btn btn-outline btn-primary all-centered">
+                    <button className="btn btn-outline btn-primary">
                       <i className="fa-solid fa-circle-play"></i> Watch Now
                     </button>
                   </Link>
-                  <button className="view-btn all-centered">
+                  <button className="view-btn" style={{ background: "none" }}>
                     <i className="fa-light fa-bookmark"></i>&nbsp;Bookmark
                   </button>
                 </div>

@@ -33,7 +33,7 @@
 
 .movie-logo {
   width: 200px;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
 }
 
 .carousel-item .text p {
@@ -93,15 +93,9 @@
 .carousel-item .text .view-btn {
   width: 150px;
   height: 38px;
-  background: var(--color-2);
-  outline: none;
-  border: none;
   border-radius: 1rem;
-  color: #3b3939;
-  font-weight: 500;
-  cursor: pointer;
-  word-spacing: 3px;
-  font-size: 14px;
+  font-weight: 400;
+  font-size: 13px;
 }
 
 .carousel-cont .mask {
