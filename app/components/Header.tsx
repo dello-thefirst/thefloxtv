@@ -79,6 +79,16 @@ function Header(props: HeaderProps) {
               </li>
             </ul>
           </nav>
+
+          <div className="icons">
+            <div className="toggle-navl">
+              <label className="swap swap-rotate">
+                <input type="checkbox" />
+                <i className="swap-off fill-current fa-light fa-xmark-large"></i>
+                <i className="swap-on fill-current fa-light fa-bars"></i>
+              </label>
+            </div>
+          </div>
         </div>
       </header>
     </>
