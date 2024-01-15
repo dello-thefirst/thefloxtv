@@ -38,7 +38,7 @@ function LivesearchResult(props: Props) {
         <div className="wrapper">
           {searchResult.map((result: SearchResult) =>
             result.media_type == "movie" ? (
-              <Link href={`/movies/${result.tmdbMovie}`}>
+              <Link key={result.tmdbMovie} href={`/movies/${result.tmdbMovie}`}>
                 <div className="item">
                   <img
                     src={`https://www.themoviedb.org/t/p/w94_and_h141_bestv2${result.bannerMovie}`}
@@ -50,7 +50,7 @@ function LivesearchResult(props: Props) {
                 </div>
               </Link>
             ) : (
-              <Link href={`/tv/${result.tmdbSeries}`}>
+              <Link key={result.tmdbSeries} href={`/tv/${result.tmdbSeries}`}>
                 <div className="item">
                   <img
                     src={`https://www.themoviedb.org/t/p/w94_and_h141_bestv2${result.bannerSeries}`}
