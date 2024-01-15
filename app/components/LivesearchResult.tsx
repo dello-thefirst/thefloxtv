@@ -20,9 +20,9 @@ function LivesearchResult(props: Props) {
   //...
   const [searchResult, setSearchResult] = useState([]);
   useEffect(() => {
-    async function fetchSearchResults() {
+    async function getSearchResult() {
       const res = await fetch(
-        `https://api.themoviedb.org/3/search/multi?api_key=c19b8e28dc3c9d900ceb4696bf2d247c&query=${props.query}&include_adult=true&language=en-US&page=1`,
+        `https://api.thefloxtv.com/search/?q=${props.query}`,
         {
           cache: "no-cache",
         }
@@ -30,33 +30,44 @@ function LivesearchResult(props: Props) {
       const data = await res.json();
       setSearchResult(data.results);
     }
-    fetchSearchResults();
+    getSearchResult();
   }, [props.query]);
 
-  return (
-    <div className="SearchResult">
-      {searchResult.map((result: SearchResult) => (
-        <div className="wrapper" key={result.id}>
-          <Link
-            href={
-              result.media_type === "movie"
-                ? `/movies/${result.id}`
-                : `/tv/${result.id}`
-            }
-          >
-            <div className="item">
-              <img
-                src={`https://www.themoviedb.org/t/p/w94_and_h141_bestv2${result.poster_path}`}
-              />
-              <div className="info">
-                {result.media_type === "movie" ? result.title : result.name}
-              </div>
-            </div>
-          </Link>
-        </div>
-      ))}
-    </div>
-  );
+  if (props.query !== "" && searchResult) {
+    return (
+      <div className="SearchResult">
+        {searchResult.map((result: SearchResult) => (
+          <div className="wrapper">
+            {result.media_type === "movie" ? (
+              <Link href={`/movies/${result.tmdbMovie}`}>
+                <div className="item">
+                  <img
+                    src={`https://www.themoviedb.org/t/p/w94_and_h141_bestv2${result.bannerMovie}`}
+                  />
+                  <div className="info">
+                    <p className="title">{result.titleMovie}</p>
+                    <p className="sub">Movie &middot; {result.yearMovie}</p>
+                  </div>
+                </div>
+              </Link>
+            ) : (
+              <Link href={`/tv/${result.tmdbSeries}`}>
+                <div className="item">
+                  <img
+                    src={`https://www.themoviedb.org/t/p/w94_and_h141_bestv2${result.bannerSeries}`}
+                  />
+                  <div className="info">
+                    <p className="title">{result.nameSeries}</p>
+                    <p className="sub">Tv Show</p>
+                  </div>
+                </div>
+              </Link>
+            )}
+          </div>
+        ))}
+      </div>
+    );
+  }
 }
 
 export default LivesearchResult;

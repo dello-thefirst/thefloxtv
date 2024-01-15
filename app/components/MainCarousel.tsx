@@ -74,6 +74,8 @@ function MainCarousel() {
         >
           {movieData.map((result: MovieDataResult) => (
             <SwiperSlide key={result.id} className="carousel-item active">
+              <div className="mask"></div>
+              <div className="filter"></div>
               <img
                 src={`https://www.themoviedb.org/t/p/original/${result.backdrop_path}`}
                 alt="Slide"
@@ -121,8 +123,6 @@ function MainCarousel() {
                   </button>
                 </div>
               </div>
-              <div id={`carousel-mask-${result.id}`} className="mask"></div>
-              <div className="filter"></div>
 
               <div className="small-banner-slider">
                 <div className="item">

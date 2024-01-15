@@ -16,7 +16,6 @@ function Header(props: HeaderProps) {
   const [searchFocus, setSearchFocus] = useState(0);
   const search = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
-    console.log(searchValue);
     setSearchValue(inputValue);
   };
 
@@ -29,11 +28,10 @@ function Header(props: HeaderProps) {
           </Link>
         </div>
         <div
-          tabIndex={0}
-          onBlur={() => {
+          onMouseLeave={() => {
             setSearchFocus(0);
           }}
-          onFocus={() => {
+          onMouseOver={() => {
             setSearchFocus(1);
           }}
           className={
