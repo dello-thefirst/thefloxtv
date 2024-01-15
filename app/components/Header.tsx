@@ -28,21 +28,22 @@ function Header(props: HeaderProps) {
           </Link>
         </div>
         <div
-          tabIndex={0}
           onBlur={() => {
             setSearchFocus(0);
           }}
-          onMouseOver={() => {
+          onFocus={() => {
             setSearchFocus(1);
           }}
-          className={
-            searchFocus == 1
-              ? "focused search-bar center-div"
-              : "search-bar center-div"
-          }
+          className={"focused search-bar center-div dropdown"}
           id="searchBar"
         >
-          <form action="/search" method="GET" className="all-centered">
+          <form
+            tabIndex={0}
+            role="button"
+            action="/search"
+            method="GET"
+            className="all-centered"
+          >
             <div className="search-rep-ico center-div">
               <i className="fa-regular fa-magnifying-glass"></i>
             </div>
@@ -59,7 +60,7 @@ function Header(props: HeaderProps) {
               <i className="bi bi-funnel"></i>
             </div>
           </form>
-          <div id="searchresult">
+          <div id="searchresult" tabIndex={0} className="dropdown-content">
             <LivesearchResult query={searchValue} />
           </div>
         </div>
