@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import LivesearchResult from "./LivesearchResult";
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "../logo-2.svg";
+import Logo from "../logo.svg";
 import "@/app/dist/style/Header.css";
 
 interface HeaderProps {
@@ -61,6 +61,7 @@ function Header(props: HeaderProps) {
         </div>
 
         <div className="right-section center-div">
+          <i className="fa-light fa-magnifying-glass"></i>
           <nav>
             <ul>
               <li>
