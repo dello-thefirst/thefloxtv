@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import LivesearchResult from "./LivesearchResult";
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "../logo.svg";
+import Logo from "../logo-2.svg";
 import "@/app/dist/style/Header.css";
 
 interface HeaderProps {
@@ -37,17 +37,12 @@ function Header(props: HeaderProps) {
           className={"focused search-bar center-div dropdown"}
           id="searchBar"
         >
-          <form
-            tabIndex={0}
-            role="button"
-            action="/search"
-            method="GET"
-            className="all-centered"
-          >
+          <form action="/search" method="GET" className="all-centered">
             <div className="search-rep-ico center-div">
               <i className="fa-regular fa-magnifying-glass"></i>
             </div>
             <input
+              tabIndex={0}
               autoComplete="off"
               id="searchInput"
               type="text"
@@ -56,8 +51,8 @@ function Header(props: HeaderProps) {
               onChange={search}
             />
 
-            <div className="search-rep-ico all-centered">
-              <i className="bi bi-funnel"></i>
+            <div className="search-rep-ico center-div">
+              <i className="fa-light fa-filter"></i>
             </div>
           </form>
           <div id="searchresult" tabIndex={0} className="dropdown-content">

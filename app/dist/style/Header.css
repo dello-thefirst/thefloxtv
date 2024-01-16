@@ -6,6 +6,7 @@ header {
     to bottom,
     rgba(var(--background-color-1), 1),
     rgba(var(--background-color-1), 0.7),
+    rgba(var(--background-color-1), 0.3),
     rgba(0, 0, 0, 0)
   ) !important;
 }
@@ -35,10 +36,10 @@ header .search-bar {
 
 header .search-bar form {
   width: 100%;
-  height: 35px;
-  border-radius: 0.5rem;
-  background: rgb(var(--background-color-2), 0.7);
-  overflow: hidden;
+  height: 36px;
+  border-radius: 1rem;
+  background: rgba(250, 250, 250, 0.1);
+  backdrop-filter: blur(30px);
   display: flex;
 }
 
@@ -57,6 +58,7 @@ header .search-bar input {
   outline: none;
   color: #fff;
   font-size: 12px;
+  text-align: center;
   font-weight: 400;
 }
 
@@ -68,7 +70,8 @@ header .search-bar input {
   left: 0;
   overflow-y: scroll;
   overflow-x: hidden;
-  background: rgb(var(--background-color-2), 0.7);
+  background: rgb(var(--background-color-2), 0.2);
+  backdrop-filter: blur(60px);
   border-radius: 0.5rem;
   padding: 0 5%;
   z-index: 10;
@@ -102,8 +105,9 @@ header .search-bar input {
 }
 
 #searchresult .item .info .sub {
-  color: goldenrod;
+  color: lightgreen;
   font-size: 11px;
+  font-weight: 600;
   word-spacing: 3px;
 }
 

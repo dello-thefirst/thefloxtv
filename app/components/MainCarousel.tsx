@@ -90,7 +90,7 @@ function MainCarousel() {
                   {result.name ? result.name : result.title}
           </p>*/}
                 <p className="info">
-                  <span className="certification">?</span>
+                  <span className="certification">HD</span>
                   <span>
                     <i className="fa-solid fa-star"></i> {result.vote_average}
                   </span>
@@ -114,7 +114,7 @@ function MainCarousel() {
                         : `/tv/${result.id}`
                     }
                   >
-                    <button className="btn btn-outline btn-primary">
+                    <button className="btn border-green-500 text-green-500 bg-transparent">
                       <i className="fa-solid fa-circle-play"></i> Watch Now
                     </button>
                   </Link>
