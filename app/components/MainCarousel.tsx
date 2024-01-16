@@ -64,7 +64,6 @@ function MainCarousel() {
   return (
     <>
       <div className="carousel-cont">
-        <div className="massk"></div>
         <Swiper
           autoplay={{
             delay: 5000,
@@ -75,6 +74,7 @@ function MainCarousel() {
         >
           {movieData.map((result: MovieDataResult) => (
             <SwiperSlide key={result.id} className="carousel-item active">
+              <div className="mask"></div>
               <div className="filter"></div>
               <img
                 src={`https://www.themoviedb.org/t/p/original/${result.backdrop_path}`}
