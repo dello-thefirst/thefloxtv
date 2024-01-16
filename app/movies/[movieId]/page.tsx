@@ -12,7 +12,14 @@ function page({ params }: PageParams) {
   return (
     <>
       <Header page={`watch-${params.movieId}`} />
-      <iframe src={`https://vidsrc.to/embed/movie/${params.movieId}`}></iframe>
+      <div style={{ width: "600px", height: "350px" }}>
+        <iframe
+          style={{ width: "100%", height: "100%" }}
+          id="playit"
+          src={`https://vidsrc.to/embed/movie/${params.movieId}`}
+          allowFullScreen
+        ></iframe>
+      </div>
     </>
   );
 }

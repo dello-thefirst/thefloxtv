@@ -39,7 +39,7 @@ function Header(props: HeaderProps) {
         >
           <form action="/search" method="GET" className="all-centered">
             <div className="search-rep-ico center-div">
-              <i style={{ color: "#000" }} className="fa-solid fa-filter"></i>
+              <i className="fa-solid fa-magnifying-glass"></i>
             </div>
             <input
               tabIndex={0}
@@ -50,10 +50,7 @@ function Header(props: HeaderProps) {
               placeholder="Search Movies and Tv Shows"
               onChange={search}
             />
-
-            <div className="search-rep-ico center-div">
-              <i className="fa-solid fa-magnifying-glass"></i>
-            </div>
+            <div className="search-rep-ico center-div"></div>
           </form>
           <div id="searchresult" tabIndex={0} className="dropdown-content">
             <LivesearchResult query={searchValue} />
