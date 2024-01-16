@@ -39,7 +39,7 @@ function Header(props: HeaderProps) {
         >
           <form action="/search" method="GET" className="all-centered">
             <div className="search-rep-ico center-div">
-              <i className="fa-regular fa-magnifying-glass"></i>
+              <i style={{ color: "#000" }} className="fa-solid fa-filter"></i>
             </div>
             <input
               tabIndex={0}
@@ -52,7 +52,7 @@ function Header(props: HeaderProps) {
             />
 
             <div className="search-rep-ico center-div">
-              <i className="fa-light fa-filter"></i>
+              <i className="fa-solid fa-magnifying-glass"></i>
             </div>
           </form>
           <div id="searchresult" tabIndex={0} className="dropdown-content">
@@ -61,7 +61,12 @@ function Header(props: HeaderProps) {
         </div>
 
         <div className="right-section center-div">
-          <i className="fa-light fa-magnifying-glass"></i>
+          <Link href={"/search"}>
+            <i className="fa-light fa-magnifying-glass mx-[15px] nav-icon"></i>
+          </Link>
+          <Link href={"/account"}>
+            <i className="fa-light fa-user-circle mx-[15px] nav-icon"></i>
+          </Link>
           <nav>
             <ul>
               <li>
@@ -76,7 +81,7 @@ function Header(props: HeaderProps) {
             </ul>
           </nav>
 
-          <div className="icons">
+          <div className="mobile-icons">
             <div className="toggle-nav">
               <label className="swap swap-rotate">
                 <input type="checkbox" />

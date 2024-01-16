@@ -36,9 +36,10 @@ header .search-bar {
 
 header .search-bar form {
   width: 100%;
-  height: 36px;
+  height: 34px;
   border-radius: 1rem;
-  background: rgba(250, 250, 250, 0.1);
+  background: rgba(124, 124, 124, 0.171);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(30px);
   display: flex;
 }
@@ -47,7 +48,7 @@ header .search-bar .search-rep-ico {
   width: 8%;
   height: 100%;
   font-size: 13px;
-  color: var(--color-3);
+  color: rgb(var(--color-3));
 }
 
 header .search-bar input {
@@ -58,8 +59,9 @@ header .search-bar input {
   outline: none;
   color: #fff;
   font-size: 12px;
-  text-align: center;
   font-weight: 400;
+  padding-left: 10px;
+  text-align: center;
 }
 
 #searchresult {
@@ -111,22 +113,30 @@ header .search-bar input {
   word-spacing: 3px;
 }
 
-header .right-section nav ul {
-  display: flex;
-  gap: 30px;
-}
-
-header .right-section nav ul li {
-  font-size: 12px;
-  font-weight: 400;
-  font-family: "Lato", sans-serif;
-  color: #d8d8d8;
-}
-
 header .right-section {
   width: auto;
   float: right;
   height: 100%;
+}
+header .right-section .nav-icon {
+  color: #acabab;
+  font-size: 13px;
+}
+
+header .right-section nav ul {
+  display: flex;
+}
+
+header .right-section nav ul li {
+  font-size: 13px;
+  font-weight: 400;
+  font-family: "Lato", sans-serif;
+  color: #acabab;
+  margin: 0 15px;
+}
+
+header .right-section .mobile-icons {
+  display: none;
 }
 
 @media screen and (max-width: 900px) {
@@ -144,7 +154,7 @@ header .right-section {
     display: none;
   }
 
-  header .right-section .icons svg {
+  header .right-section .mobile-icons svg {
     width: 30px;
     height: 30px;
   }
