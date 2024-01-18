@@ -39,7 +39,7 @@ function Header(props: HeaderProps) {
         >
           <form action="/search" method="GET" className="all-centered">
             <div className="search-rep-ico center-div">
-              <i className="fa-solid fa-magnifying-glass"></i>
+              <i className="fa-light fa-magnifying-glass"></i>
             </div>
             <input
               tabIndex={0}

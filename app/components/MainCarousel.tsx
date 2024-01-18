@@ -92,7 +92,8 @@ function MainCarousel() {
                 <p className="info">
                   <span className="certification">HD</span>
                   <span>
-                    <i className="fa-solid fa-star"></i> {result.vote_average}
+                    <i className="fa-solid fa-sharp fa-star"></i>{" "}
+                    {result.vote_average}
                   </span>
                   <span>
                     {result.media_type === "movie"
