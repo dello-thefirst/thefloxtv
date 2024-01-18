@@ -62,7 +62,7 @@
 .carousel-item .text .info .certification {
   padding: 1px 4px;
   font-size: 9px;
-  border: 1.7px solid rgb(var(--color-3));
+  border: 1px solid rgb(var(--color-3));
   color: rgb(var(--color-3));
   border-radius: 1rem;
   font-weight: 700;
@@ -100,7 +100,7 @@
 }
 
 .carousel-item .text .view-btn.watch-now {
-  outline: 1.8px solid rgb(var(--color-3));
+  outline: 1px solid rgb(var(--color-3));
   color: rgb(var(--color-3));
   background-color: transparent;
   font-weight: 800;
