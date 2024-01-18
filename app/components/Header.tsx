@@ -77,59 +77,6 @@ function Header(props: HeaderProps) {
               </li>
             </ul>
           </nav>
-
-          <div className="mobile-icons">
-            <div className="toggle-nav">
-              <label className="swap swap-rotate">
-                <input type="checkbox" />
-                <svg
-                  className="swap-off fill-current"
-                  fill="#ffffff"
-                  viewBox="0 0 64 64"
-                  data-name="Layer 1"
-                  id="Layer_1"
-                  xmlns="http://www.w3.org/2000/svg"
-                  stroke="#ffffff"
-                >
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                  <g
-                    id="SVGRepo_tracerCarrier"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></g>
-                  <g id="SVGRepo_iconCarrier">
-                    <title></title>
-                    <path d="M53,24.34H11.05a2,2,0,0,1,0-4H53a2,2,0,0,1,0,4Z"></path>
-                    <path d="M53,43.66H41.5a2,2,0,0,1,0-4H53a2,2,0,0,1,0,4Z"></path>
-                    <path d="M32.82,43.66H11.05a2,2,0,1,1,0-4H32.82a2,2,0,0,1,0,4Z"></path>
-                  </g>
-                </svg>
-                <svg
-                  className="swap-on fill-current"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                  <g
-                    id="SVGRepo_tracerCarrier"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></g>
-                  <g id="SVGRepo_iconCarrier">
-                    {" "}
-                    <path
-                      d="M6.75827 17.2426L12.0009 12M17.2435 6.75736L12.0009 12M12.0009 12L6.75827 6.75736M12.0009 12L17.2435 17.2426"
-                      stroke="#ffffff"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    ></path>{" "}
-                  </g>
-                </svg>
-              </label>
-            </div>
-          </div>
         </div>
       </header>
     </>

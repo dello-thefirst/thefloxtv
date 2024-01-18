@@ -115,7 +115,7 @@ function MainCarousel() {
                         : `/tv/${result.id}`
                     }
                   >
-                    <button className="btn border-green-500 text-green-500 bg-transparent">
+                    <button className="view-btn watch-now">
                       <i className="fa-solid fa-circle-play"></i> Watch Now
                     </button>
                   </Link>
