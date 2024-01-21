@@ -20,7 +20,7 @@
 }
 
 .carousel-item .text {
-  width: 60%;
+  width: 40%;
   height: auto;
   overflow: hidden;
   position: absolute;
@@ -37,7 +37,7 @@
 }
 
 .carousel-item .text p {
-  font-weight: 400;
+  font-weight: 300;
   margin-bottom: 15px;
 }
 
@@ -50,20 +50,19 @@
 
 .carousel-item .text .info {
   font-size: 16px;
-  font-weight: 500;
-  display: inline-block;
+  display: block;
 }
 
 .carousel-item .text .info span {
-  font-weight: 400;
-  margin: 0 6px;
+  font-weight: 300;
+  margin-right: 15px;
+  font-size: 15px;
 }
 
 .carousel-item .text .info .certification {
-  padding: 1.3px 4px;
-  font-size: 9px;
-  border: 1px solid rgb(var(--color-3));
-  color: rgb(var(--color-3));
+  padding: 1.3px 5px;
+  font-size: 8px;
+  border: 1px solid rgb(231, 231, 231);
   border-radius: 1rem;
   font-weight: 700;
 }
@@ -71,6 +70,7 @@
 .carousel-item .text .genre {
   font-size: 14px;
   display: inline-block;
+  display: none;
   word-spacing: 5px;
   font-weight: 400;
 }
@@ -79,6 +79,7 @@
   font-size: 16px;
   line-height: 25px;
   color: rgb(170, 170, 170);
+  margin-bottom: 40px;
 }
 
 .carousel-item .text .buttons {
@@ -95,21 +96,22 @@
   width: 120px;
   height: 43px;
   border-radius: 1.5rem;
-  font-weight: 500;
   font-size: 13px;
+  word-spacing: 3px;
 }
 
 .carousel-item .text .view-btn.watch-now {
-  outline: 1.3px solid rgb(var(--color-3));
-  color: rgb(var(--color-3));
+  outline: 1px solid rgb(var(--color-2));
+  color: rgb(var(--color-2));
   background-color: transparent;
-  font-weight: 800;
+  font-weight: 500;
   transition: 0.3s;
 }
 
 .carousel-item .text .view-btn.watch-now:hover {
-  color: #000;
+  color: darkgrey;
   background-color: rgb(var(--color-3), 0.4);
+  outline: none;
 }
 
 .carousel-cont .mask {

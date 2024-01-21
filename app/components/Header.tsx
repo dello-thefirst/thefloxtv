@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import LivesearchResult from "./LivesearchResult";
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "../logo.svg";
+import Logo from "@/app/logo.svg";
 import "@/app/dist/style/Header.css";
 
 interface HeaderProps {
@@ -13,7 +13,6 @@ interface HeaderProps {
 function Header(props: HeaderProps) {
   //..
   const [searchValue, setSearchValue] = useState<string>("");
-  const [searchFocus, setSearchFocus] = useState(0);
   const search = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
     setSearchValue(inputValue);
@@ -28,12 +27,6 @@ function Header(props: HeaderProps) {
           </Link>
         </div>
         <div
-          onBlur={() => {
-            setSearchFocus(0);
-          }}
-          onFocus={() => {
-            setSearchFocus(1);
-          }}
           className={"focused search-bar center-div dropdown"}
           id="searchBar"
         >

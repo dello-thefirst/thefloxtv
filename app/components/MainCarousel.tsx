@@ -90,21 +90,21 @@ function MainCarousel() {
                   {result.name ? result.name : result.title}
           </p>*/}
                 <p className="info">
-                  <span className="certification">HD</span>
-                  <span>
-                    <i className="fa-solid fa-sharp fa-star"></i>{" "}
-                    {result.vote_average.toFixed(1)}
-                  </span>
                   <span>
                     {result.media_type === "movie"
                       ? getLetterRange(result.release_date, 4)
                       : getLetterRange(result.first_air_date, 4)}
                   </span>
+                  <span className="certification">HD</span>
+                  <span>
+                    <i className="fa-solid fa-sharp fa-star"></i>{" "}
+                    {result.vote_average.toFixed(1)}
+                  </span>
                 </p>
                 <p className="genre">History Drama </p>
                 <p className="desc">
-                  {result.overview.split(/\s+/).length > 50
-                    ? getWordRange(result.overview, 50)
+                  {result.overview.split(/\s+/).length > 25
+                    ? getWordRange(result.overview, 25)
                     : result.overview}
                 </p>
                 <div className="buttons">
@@ -116,7 +116,7 @@ function MainCarousel() {
                     }
                   >
                     <button className="view-btn watch-now">
-                      <i className="fa-solid fa-circle-play"></i> Watch Now
+                      <i className="fa-solid fa-circle-play"></i> Play
                     </button>
                   </Link>
                   <button className="view-btn" style={{ background: "none" }}>
