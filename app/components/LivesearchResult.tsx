@@ -15,6 +15,7 @@ interface SearchResult {
   bannerSeries: string;
   yearMovie: string;
 }
+
 function LivesearchResult(props: Props) {
   //...
   const [searchResult, setSearchResult] = useState([]);

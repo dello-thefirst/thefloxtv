@@ -1,12 +1,7 @@
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
 import Header from "./components/Header";
 import MainCarousel from "./components/MainCarousel";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Pagination } from "swiper/modules";
-import "@/app/dist/style/App.css";
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/pagination";
+import TrendingToday from "./components/TrendingToday";
 
 function Home() {
   return (
@@ -14,7 +9,9 @@ function Home() {
       <Header page="home" />
       <main>
         <MainCarousel />
-        <div></div>
+        <div>
+          <TrendingToday />
+        </div>
       </main>
     </>
   );

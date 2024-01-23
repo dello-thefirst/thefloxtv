@@ -7,7 +7,7 @@ interface Props {
 }
 
 function MovieLogo(props: Props) {
-  //..
+  //...
   const [movieLogoData, setMovieLogoData] = useState(null);
   useEffect(() => {
     async function getMovieLogo() {
