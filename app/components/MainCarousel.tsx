@@ -116,7 +116,7 @@ function MainCarousel() {
                     }
                   >
                     <button className="view-btn watch-now">
-                      <i className="fa-solid fa-circle-play"></i> Play
+                      <i className="fa-solid fa-circle-play"></i> Watch
                     </button>
                   </Link>
                   <button className="view-btn" style={{ background: "none" }}>

@@ -51,12 +51,6 @@ function Header(props: HeaderProps) {
         </div>
 
         <div className="right-section center-div">
-          <Link href={"/search"}>
-            <i className="fa-light fa-magnifying-glass mx-[15px] nav-icon"></i>
-          </Link>
-          <Link href={"/account"}>
-            <i className="fa-light fa-user-circle mx-[15px] nav-icon"></i>
-          </Link>
           <nav>
             <ul>
               <li>
@@ -68,6 +62,21 @@ function Header(props: HeaderProps) {
               <li>
                 <Link href="/movies">Movies</Link>
               </li>
+              <li>
+                <Link href="/movies">Trending</Link>
+              </li>
+              <Link href={"/search"}>
+                <i className="fa-light fa-magnifying-glass nav-icon"></i>
+              </Link>
+              <Link href={"/account"}>
+                <i className="fa-light fa-user-circle nav-icon"></i>
+              </Link>
+              <Link href={"/account"}>
+                <i className="fa-light fa-bell nav-icon"></i>
+              </Link>
+              <Link href={"/account"}>
+                <i className="fa-light fa-bars nav-icon"></i>
+              </Link>
             </ul>
           </nav>
         </div>

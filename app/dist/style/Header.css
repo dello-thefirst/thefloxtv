@@ -116,27 +116,32 @@ header .search-bar input {
 header .right-section {
   width: auto;
   float: right;
+  width: 35%;
   height: 100%;
-}
-header .right-section .nav-icon {
-  color: #b8b8b8;
-  font-size: 13px;
-}
-
-header .right-section nav ul {
   display: flex;
 }
 
-header .right-section nav ul li {
-  font-size: 13px;
-  font-weight: 400;
-  font-family: "Lato", sans-serif;
-  color: #b8b8b8;
-  margin: 0 15px;
+header .right-section nav {
+  width: 100%;
 }
 
-header .right-section .mobile-icons {
-  display: none;
+header .right-section nav ul {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+header .right-section nav ul li {
+  font-size: 12px;
+  font-weight: 300;
+  font-family: "Lato", sans-serif;
+  color: #b8b8b8;
+  letter-spacing: 0.5px;
+}
+
+header .right-section nav ul .nav-icon {
+  color: #b8b8b8;
+  font-size: 13px;
 }
 
 @media screen and (max-width: 900px) {

@@ -109,8 +109,8 @@
 }
 
 .carousel-item .text .view-btn.watch-now:hover {
-  color: darkgrey;
-  background-color: rgb(var(--color-3), 0.4);
+  color: rgb(var(--background-color-1));
+  background-color: rgb(var(--color-2));
   outline: none;
 }
 
