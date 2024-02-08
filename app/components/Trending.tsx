@@ -40,7 +40,7 @@ export default function Trending(props: TrendingProp) {
       setTrendingData(res.results);
     }
     fetchData();
-  }, [props.period]);
+  }, [trendingPeriod]);
   //...
   return (
     <>
@@ -60,7 +60,7 @@ export default function Trending(props: TrendingProp) {
           className="mySwiper"
         >
           {trendingData.map((result: MovieDataResult) => (
-            <SwiperSlide className="item w-[200px]">
+            <SwiperSlide key={result.id} className="item w-[200px]">
               <img
                 style={{ objectFit: "cover" }}
                 src={

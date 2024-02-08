@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 interface Props {
   mediaType: string;
   movieId: number;
-  movieTitle: string;
+  movieTitle?: string;
 }
 
 function MovieLogo(props: Props) {
