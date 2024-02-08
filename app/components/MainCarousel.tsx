@@ -80,8 +80,8 @@ function MainCarousel() {
               <Image
                 src={`https://themoviedb.org/t/p/original/${result.backdrop_path}`}
                 alt="Slide"
-                width={window.innerWidth > 700 ? 1000 : 500}
-                height={window.innerWidth > 700 ? 500 : 250}
+                width={1000}
+                height={500}
                 loading="lazy"
               />
               <div className="text">
