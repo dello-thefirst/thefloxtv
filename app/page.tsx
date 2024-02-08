@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./components/Header";
 import MainCarousel from "./components/MainCarousel";
-import TrendingToday from "./components/TrendingToday";
+import Trending from "./components/Trending";
 
 function Home() {
   return (
@@ -10,7 +10,7 @@ function Home() {
       <main>
         <MainCarousel />
         <div>
-          <TrendingToday />
+          <Trending imageOrientation="landscape" period="week" />
         </div>
       </main>
     </>

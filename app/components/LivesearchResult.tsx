@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 interface Props {
-  query: string;
+  query?: string;
 }
 
 interface SearchResult {
@@ -45,7 +45,7 @@ function LivesearchResult(props: Props) {
                     src={`https://www.themoviedb.org/t/p/w94_and_h141_bestv2${result.bannerMovie}`}
                   />
                   <div className="info">
-                    <p className="title">{result.titleMovie}</p>
+                    <p className="title">{result.titleMovie}</p>nj 
                     <p className="sub">Movie &middot; {result.yearMovie}</p>
                   </div>
                 </div>

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import MovieLogo from "./MovieLogo";
 import "@/app/dist/style/MainCarousel.css";
+import Image from "next/image";
 //Swiper js...
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
@@ -51,12 +52,12 @@ function MainCarousel() {
 
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch(
+      const req = await fetch(
         `https://api.themoviedb.org/3/trending/all/${trendOrder}?language=en-US&api_key=c19b8e28dc3c9d900ceb4696bf2d247c`,
         { cache: "no-store" }
       );
-      const data = await res.json();
-      setMovieData(data.results);
+      const res = await req.json();
+      setMovieData(res.results);
     }
     fetchData();
   }, []);
@@ -76,9 +77,12 @@ function MainCarousel() {
             <SwiperSlide key={result.id} className="carousel-item active">
               <div className="mask"></div>
               <div className="filter"></div>
-              <img
-                src={`https://www.themoviedb.org/t/p/original/${result.backdrop_path}`}
+              <Image
+                src={`https://themoviedb.org/t/p/original/${result.backdrop_path}`}
                 alt="Slide"
+                width={window.innerWidth > 700 ? 1000 : 500}
+                height={window.innerWidth > 700 ? 500 : 250}
+                loading="lazy"
               />
               <div className="text">
                 <MovieLogo
@@ -127,8 +131,11 @@ function MainCarousel() {
 
               <div className="small-banner-slider">
                 <div className="item">
-                  <img
-                    src={`https://www.themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`}
+                  <Image
+                    src={`https://themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`}
+                    width={150}
+                    alt={""}
+                    height={200}
                   />
                   <p className="active title">
                     {result.media_type === "movie"

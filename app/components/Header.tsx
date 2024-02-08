@@ -10,6 +10,7 @@ interface HeaderProps {
   page: string;
 }
 
+
 function Header(props: HeaderProps) {
   //..
   const [searchValue, setSearchValue] = useState<string>("");
