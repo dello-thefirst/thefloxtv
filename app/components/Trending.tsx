@@ -50,7 +50,7 @@ export default function Trending(props: TrendingProp) {
         </p>
         <br />
         <Swiper
-          slidesPerView={window.innerWidth > 700 ? 5 : 3}
+          slidesPerView={5}
           spaceBetween={10}
           freeMode={true}
           pagination={{
