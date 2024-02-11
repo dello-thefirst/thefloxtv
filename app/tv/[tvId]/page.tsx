@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "@/app/components/Header";
 import "@/app/dist/style/Header.css";
+import "@/app/dist/style/Stream.css";
 
 interface PageParams {
   params: {
@@ -12,10 +13,15 @@ function page({ params }: PageParams) {
   return (
     <>
       <Header page={`watch-${params.tvId}`} />
-      <iframe
-        className="w-[600px]"
-        src={`https://vidsrc.to/embed/tv/${params.tvId}/1`}
-      ></iframe>
+      <main>
+        <div className="movie-container">
+          <iframe
+            className=""
+            allowFullScreen
+            src={`https://vidsrc.to/embed/tv/${params.tvId}`}
+          ></iframe>
+        </div>
+      </main>
     </>
   );
 }

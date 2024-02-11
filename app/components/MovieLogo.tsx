@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 
 interface Props {
   mediaType: string;
@@ -23,9 +24,12 @@ function MovieLogo(props: Props) {
 
   if (movieLogoData && movieLogoData !== "")
     return (
-      <img
+      <Image
         className="movie-logo"
-        src={`https://www.themoviedb.org/t/p/w500/${movieLogoData}`}
+        src={`https://themoviedb.org/t/p/w500/${movieLogoData}`}
+        alt={""}
+        width={100}
+        height={50}
       />
     );
   return <p className="title">{props.movieTitle}</p>;
