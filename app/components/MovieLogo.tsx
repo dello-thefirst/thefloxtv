@@ -22,14 +22,14 @@ function MovieLogo(props: Props) {
     getMovieLogo();
   }, []);
 
-  if (movieLogoData && movieLogoData !== "")
+  if (movieLogoData && movieLogoData)
     return (
       <Image
         className="movie-logo"
         src={`https://themoviedb.org/t/p/w500/${movieLogoData}`}
         alt={""}
-        width={100}
-        height={50}
+        width={200}
+        height={100}
       />
     );
   return <p className="title">{props.movieTitle}</p>;
