@@ -44,34 +44,45 @@ export default function Trending(props: TrendingProp) {
   //...
   return (
     <>
-      <div className="trending-cont pl-[3%] mb-[200px]">
+      <div className="trending-cont px-[3%] mb-[200px] ">
         <p className="sec-label">
           Trending {props.period == "day" ? "Today" : "This Week"}
         </p>
         <br />
-        <Swiper
-          slidesPerView={5}
-          spaceBetween={10}
-          freeMode={true}
-          pagination={{
-            clickable: true,
+        <div
+          className="scroll-container"
+          style={{
+            display: "flex",
+            flexWrap: "nowrap",
+            width: "100%",
+            height: "auto",
+            overflowX: "scroll",
+            padding: "10px"
           }}
-          modules={[FreeMode, Pagination]}
-          className="mySwiper"
         >
           {trendingData.map((result: MovieDataResult) => (
-            <SwiperSlide key={result.id} className="item w-[200px]">
-              <img
-                style={{ objectFit: "cover" }}
+            <div
+              key={result.id}
+              className="item w-[200px] mr-4 overflow-hidden"
+              style={{ flex: "0 0 auto" }}
+            >
+              <Image
+                className="object-cover"
                 src={
                   props.imageOrientation == "landscape"
-                    ? `https://media.themoviedb.org/t/p/w500_and_h282_face${result.backdrop_path}`
-                    : `https://media.themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`
+                    ? `https://themoviedb.org/t/p/w500_and_h282_face${result.backdrop_path}`
+                    : `https://themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`
                 }
+                width={200}
+                height={120}
+                alt=""
               />
-            </SwiperSlide>
+              <p className="text-[20px] font-light sm:text-[13px]">
+                {result.media_type == "movie" ? result.title : result.name}
+              </p>
+            </div>
           ))}
-        </Swiper>
+        </div>
       </div>
     </>
   );
