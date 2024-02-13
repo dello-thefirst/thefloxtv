@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -57,30 +58,32 @@ export default function Trending(props: TrendingProp) {
             width: "100%",
             height: "auto",
             overflowX: "scroll",
-            padding: "10px"
+            padding: "10px",
           }}
         >
           {trendingData.map((result: MovieDataResult) => (
-            <div
-              key={result.id}
-              className="item w-[200px] mr-4 overflow-hidden"
-              style={{ flex: "0 0 auto" }}
-            >
-              <Image
-                className="object-cover"
-                src={
-                  props.imageOrientation == "landscape"
-                    ? `https://themoviedb.org/t/p/w500_and_h282_face${result.backdrop_path}`
-                    : `https://themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`
-                }
-                width={200}
-                height={120}
-                alt=""
-              />
-              <p className="text-[20px] font-light sm:text-[13px]">
-                {result.media_type == "movie" ? result.title : result.name}
-              </p>
-            </div>
+            <Link href={result.media_type == 'movie' ? `/movie/${result.id}` : `/tv/${result.id}`}>
+              <div
+                key={result.id}
+                className="item w-[200px] mr-4 overflow-hidden"
+                style={{ flex: "0 0 auto" }}
+              >
+                <Image
+                  className="object-cover"
+                  src={
+                    props.imageOrientation == "landscape"
+                      ? `https://themoviedb.org/t/p/w500_and_h282_face${result.backdrop_path}`
+                      : `https://themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`
+                  }
+                  width={200}
+                  height={120}
+                  alt=""
+                />
+                <p className="text-[20px] font-light sm:text-[13px]">
+                  {result.media_type == "movie" ? result.title : result.name}
+                </p>
+              </div>
+            </Link>
           ))}
         </div>
       </div>
