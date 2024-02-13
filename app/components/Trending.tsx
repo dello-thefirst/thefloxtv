@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
+import { empty } from "@prisma/client/runtime/library";
 
 type TrendingProp = {
   period: string;
@@ -43,57 +44,57 @@ export default function Trending(props: TrendingProp) {
     fetchData();
   }, [trendingPeriod]);
   //...
-  return (
-    <>
-      <div className="trending-cont px-[3%] mb-[20px] ">
-        <p className="sec-label text-[20px] mb-[10px] ">
-          Trending {props.period == "day" ? "Today" : "This Week"}
-        </p>
-        <div
-          className="scroll-container no-scrollbar"
-          style={{
-            display: "flex",
-            flexWrap: "nowrap",
-            width: "100%",
-            height: "auto",
-            overflowX: "scroll",
-          }}
-        >
-          {trendingData.map((result: MovieDataResult) => (
-            <Link
-              key={result.id}
-              href={
-                result.media_type == "movie"
-                  ? `/movies/${result.id}`
-                  : `/tv/${result.id}`
-              }
-            >
-              <div
-                className="item w-[150px] h-[240px] mr-[10px] overflow-hidden relative"
-                style={{ flex: "0 0 auto" }}
+
+  if (trendingData !== null && trendingData.length !== 0) {
+    return (
+      <>
+        <div className="trending-cont px-[3%] mb-[20px] ">
+          <p className="sec-label text-[15px] mb-[10px] ">
+            Trending {props.period == "day" ? "Today" : "This Week"}
+          </p>
+          <div
+            className="scroll-container no-scrollbar"
+            style={{
+              display: "flex",
+              flexWrap: "nowrap",
+              width: "100%",
+              height: "auto",
+              overflowX: "scroll",
+            }}
+          >
+            {trendingData.map((result: MovieDataResult) => (
+              <Link
+                key={result.id}
+                href={
+                  result.media_type == "movie"
+                    ? `/movies/${result.id}`
+                    : `/tv/${result.id}`
+                }
               >
-                <div className="mask w-full h-full bg-opacity-20 bg-black absolute"></div>
-                <div className="w-[18px] h-[18px] bg-[lightgreen] shadow-lg absolute top-0 right-1 center-div text-[10px] text-black font-semibold">HD</div>
-                <Image
-                  className="object-cover w-full h-full"
-                  src={
-                    props.imageOrientation == "landscape"
-                      ? `https://themoviedb.org/t/p/original${result.poster_path}`
-                      : `https://themoviedb.org/t/p/original${result.poster_path}`
-                  }
-                  width={130}
-                  height={210}
-                  quality={100}
-                  alt=""
-                />
-                <p className="lg:text-[20px] font-light sm:text-[13px]">
-                  {result.media_type == "movie" ? result.title : result.name}
-                </p>
-              </div>
-            </Link>
-          ))}
+                <div
+                  className="item w-[150px] h-[220px] mr-[10px] overflow-hidden relative"
+                  style={{ flex: "0 0 auto" }}
+                >
+                  <div className="mask w-full h-full bg-opacity-20 bg-black absolute"></div>
+
+                  <Image
+                    className="object-cover w-full h-full"
+                    src={
+                      props.imageOrientation == "landscape"
+                        ? `https://themoviedb.org/t/p/original${result.poster_path}`
+                        : `https://themoviedb.org/t/p/original${result.poster_path}`
+                    }
+                    width={130}
+                    height={210}
+                    quality={100}
+                    alt=""
+                  />
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  }
 }
