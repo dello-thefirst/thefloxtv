@@ -62,9 +62,15 @@ export default function Trending(props: TrendingProp) {
           }}
         >
           {trendingData.map((result: MovieDataResult) => (
-            <Link href={result.media_type == 'movie' ? `/movie/${result.id}` : `/tv/${result.id}`}>
+            <Link
+              key={result.id}
+              href={
+                result.media_type == "movie"
+                  ? `/movie/${result.id}`
+                  : `/tv/${result.id}`
+              }
+            >
               <div
-                key={result.id}
                 className="item w-[200px] mr-4 overflow-hidden"
                 style={{ flex: "0 0 auto" }}
               >
