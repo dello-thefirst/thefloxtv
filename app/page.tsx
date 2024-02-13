@@ -10,7 +10,8 @@ function Home() {
       <main>
         <MainCarousel />
         <div>
-          <Trending imageOrientation="landscape" period="week" />
+          <Trending period="week" />
+          <Trending period="day" />
         </div>
       </main>
     </>

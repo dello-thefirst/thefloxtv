@@ -9,7 +9,7 @@ import "swiper/css/free-mode";
 
 type TrendingProp = {
   period: string;
-  imageOrientation: string;
+  imageOrientation?: string;
 };
 
 export default function Trending(props: TrendingProp) {
@@ -45,13 +45,12 @@ export default function Trending(props: TrendingProp) {
   //...
   return (
     <>
-      <div className="trending-cont px-[3%] mb-[200px] ">
-        <p className="sec-label">
+      <div className="trending-cont px-[3%] mb-[20px] ">
+        <p className="sec-label text-[20px] mb-[10px] ">
           Trending {props.period == "day" ? "Today" : "This Week"}
         </p>
-        <br />
         <div
-          className="scroll-container"
+          className="scroll-container no-scrollbar"
           style={{
             display: "flex",
             flexWrap: "nowrap",
@@ -65,14 +64,16 @@ export default function Trending(props: TrendingProp) {
               key={result.id}
               href={
                 result.media_type == "movie"
-                  ? `/movie/${result.id}`
+                  ? `/movies/${result.id}`
                   : `/tv/${result.id}`
               }
             >
               <div
-                className="item w-[130px] h-[190px] mr-[10px] overflow-hidden"
+                className="item w-[150px] h-[240px] mr-[10px] overflow-hidden relative"
                 style={{ flex: "0 0 auto" }}
               >
+                <div className="mask w-full h-full bg-opacity-20 bg-black absolute"></div>
+                <div className="w-[18px] h-[18px] bg-[lightgreen] shadow-lg absolute top-0 right-1 center-div text-[10px] text-black font-semibold">HD</div>
                 <Image
                   className="object-cover w-full h-full"
                   src={
@@ -80,8 +81,9 @@ export default function Trending(props: TrendingProp) {
                       ? `https://themoviedb.org/t/p/original${result.poster_path}`
                       : `https://themoviedb.org/t/p/original${result.poster_path}`
                   }
-                  width={120}
-                  height={200}
+                  width={130}
+                  height={210}
+                  quality={100}
                   alt=""
                 />
                 <p className="lg:text-[20px] font-light sm:text-[13px]">
