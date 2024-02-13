@@ -79,7 +79,7 @@ export default function Trending(props: TrendingProp) {
                   height={120}
                   alt=""
                 />
-                <p className="text-[20px] font-light sm:text-[13px]">
+                <p className="lg:text-[20px] font-light sm:text-[13px]">
                   {result.media_type == "movie" ? result.title : result.name}
                 </p>
               </div>
