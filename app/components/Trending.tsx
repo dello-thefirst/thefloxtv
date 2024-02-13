@@ -58,7 +58,6 @@ export default function Trending(props: TrendingProp) {
             width: "100%",
             height: "auto",
             overflowX: "scroll",
-            padding: "10px",
           }}
         >
           {trendingData.map((result: MovieDataResult) => (
@@ -71,18 +70,18 @@ export default function Trending(props: TrendingProp) {
               }
             >
               <div
-                className="item w-[200px] mr-4 overflow-hidden"
+                className="item w-[130px] h-[190px] mr-[10px] overflow-hidden"
                 style={{ flex: "0 0 auto" }}
               >
                 <Image
-                  className="object-cover"
+                  className="object-cover w-full h-full"
                   src={
                     props.imageOrientation == "landscape"
-                      ? `https://themoviedb.org/t/p/w500_and_h282_face${result.backdrop_path}`
-                      : `https://themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`
+                      ? `https://themoviedb.org/t/p/original${result.poster_path}`
+                      : `https://themoviedb.org/t/p/original${result.poster_path}`
                   }
-                  width={200}
-                  height={120}
+                  width={120}
+                  height={200}
                   alt=""
                 />
                 <p className="lg:text-[20px] font-light sm:text-[13px]">
