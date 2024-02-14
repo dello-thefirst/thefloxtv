@@ -48,7 +48,7 @@ export default function Trending(props: TrendingProp) {
   if (trendingData !== null && trendingData.length !== 0) {
     return (
       <>
-        <div className="trending-cont px-[3%] mb-[20px] ">
+        <div className="trending-cont px-[4%] mb-[20px] ">
           <p className="sec-label text-[15px] mb-[10px] ">
             Trending {props.period == "day" ? "Today" : "This Week"}
           </p>
@@ -72,7 +72,7 @@ export default function Trending(props: TrendingProp) {
                 }
               >
                 <div
-                  className="item w-[150px] h-[220px] mr-[10px] overflow-hidden relative"
+                  className="item w-[150px] h-[220px] mr-[10px] overflow-hidden relative sm:w-[120px] sm:h-[190px]"
                   style={{ flex: "0 0 auto" }}
                 >
                   <div className="mask w-full h-full bg-opacity-20 bg-black absolute"></div>
