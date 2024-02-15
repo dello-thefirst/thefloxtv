@@ -48,7 +48,7 @@ export default function Trending(props: TrendingProp) {
   if (trendingData !== null && trendingData.length !== 0) {
     return (
       <>
-        <div className="trending-cont px-[4%] mb-[20px] sm:pl-[5%] ">
+        <div className="trending-cont pl-[4%] mb-[20px] sm:pl-[5%] ">
           <p className="sec-label text-[15px] mb-[10px] ">
             Trending {props.period == "day" ? "Today" : "This Week"}
           </p>
