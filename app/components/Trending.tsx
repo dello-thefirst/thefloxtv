@@ -72,12 +72,12 @@ export default function Trending(props: TrendingProp) {
                 }
               >
                 <div
-                  className="item w-[150px] h-[220px] mr-[10px] overflow-hidden relative sm:w-[120px] sm:h-[190px] sm:mr-[8px]"
+                  className="item w-[150px] h-[220px] mr-[10px] overflow-hidden relative sm:w-[110px] sm:h-[170px] sm:mr-[8px]"
                   style={{ flex: "0 0 auto" }}
                 >
-                  <div className="mask w-full h-full bg-opacity-60 bg-black absolute opacity-0 hover:opacity-100 transition-[0.3s] center-div">
-                    <div className="play w-[20px] h-[20px] rounded-full bg-[#ff2d7e] text-black center-div">
-                      <i className="fa-solid fa-play text-[10px]"></i>
+                  <div className="mask w-full h-full bg-opacity-60 bg from-[#ff2d7e] to-[#0000007c] delay-75 bg-gradient-to-t absolute opacity-0 hover:opacity-100 transition-[0.3s] center-div">
+                    <div className="play w-[20px] h-[20px] rounded-full bg-[#000] center-div">
+                      <i className="fa-solid fa-play text-[10px] text-[#ff2d7e]"></i>
                     </div>
                   </div>
 
