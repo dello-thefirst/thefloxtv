@@ -75,9 +75,9 @@ export default function Trending(props: TrendingProp) {
                   className="item w-[150px] h-[220px] mr-[10px] overflow-hidden relative sm:w-[110px] sm:h-[170px] sm:mr-[8px] rounded-md"
                   style={{ flex: "0 0 auto" }}
                 >
-                  <div className="mask w-full h-full bg-opacity-60 bg from-[rgba(var(--background-color-1))] to-[#00000005] bg-gradient-to-t absolute duration-[0.3s] transition-opacity center-div">
-                    <div className="play w-[20px] h-[20px] rounded-full bg-[#000] center-div">
-                      <i className="fa-solid fa-play text-[8px] text-[#ff2d7e]"></i>
+                  <div className="mask group w-full h-full bg-opacity-60 from-[rgba(var(--background-color-1))] to-[#00000005] hover:from-[#ff2d7e] bg-gradient-to-t absolute duration-[0.3s] transition-opacity center-div">
+                    <div className="play w-[20px] h-[20px] rounded-full  text-[#000] bg-[#ff2d7e] center-div group-hover:bg-[#000] duration-[0.3s]  group-hover:text-[#ff2d7e]">
+                      <i className="fa-solid fa-play text-[8px]"></i>
                     </div>
                   </div>
 
