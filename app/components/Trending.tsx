@@ -76,7 +76,7 @@ export default function Trending(props: TrendingProp) {
                   style={{ flex: "0 0 auto" }}
                 >
                   <div className="mask group w-full h-full bg-opacity-60 from-[rgba(var(--background-color-1))] to-[#00000005] hover:from-[#ff2d7e] bg-gradient-to-t absolute duration-[0.3s] transition-opacity center-div">
-                    <div className="play w-[20px] h-[20px] rounded-full  text-[#000] bg-[#ff2d7e] center-div group-hover:bg-[#000] duration-[0.3s]  group-hover:text-[#ff2d7e]">
+                    <div className="play w-[20px] h-[20px] rounded-full opacity-0 center-div bg-[#000] text-[#ff2d7e] group-hover:opacity-100">
                       <i className="fa-solid fa-play text-[8px]"></i>
                     </div>
                   </div>
