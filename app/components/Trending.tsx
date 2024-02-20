@@ -2,11 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/free-mode";
-import { empty } from "@prisma/client/runtime/library";
+import Calendar from "./Calendar"
 
 type TrendingProp = {
   period: string;
@@ -55,7 +51,7 @@ export default function Trending(props: TrendingProp) {
             style={{ textShadow: "0px 3px 3px rgb(0, 0, 30, 0.8)" }}
           >
             Trending Worldwide {props.period == "day" ? "Today" : "This Week"}{" "}
-            &#128197;
+            <Calendar />
           </p>
           <div
             className="scroll-container no-scrollbar"
