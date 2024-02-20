@@ -10,7 +10,6 @@ function Home() {
       <main>
         <MainCarousel />
         <div>
-          <Trending period="week" />
           <Trending period="day" />
         </div>
       </main>
