@@ -79,16 +79,15 @@ export default function Trending(props: TrendingProp) {
                   className="item w-auto h-[280px] mr-[10px] flex relative sm:h-[170px] sm:mr-[8px]"
                   style={{ flex: "0 0 auto" }}
                 >
-                  <div className="mask group w-full h-full bg-opacity-60 from-[rgba(var(--background-color-1))] to-[#00000005] bg-gradient-to-t absolute center-div"></div>
+                  <div className="mask group w-full h-full left-0 bottom-0 z-[2] from-[rgba(var(--background-color-1))] to-[#00000005] bg-gradient-to-t absolute center-div"></div>
                   <p className="list-number w-auto h-full center-div font-semibold text-[100px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff36]">
                     {listIterator++}
                   </p>
                   <div
                     className="
-                  w-[200px] h-full rounded-md overflow-hidden sm:w-[120px] relative"
+                  w-[200px] h-full rounded-md overflow-hidden sm:w-[120px]"
                   >
-                    <div className="mask group w-full h-full bg-opacity-60 from-[rgba(var(--background-color-1))] to-[#00000005] bg-gradient-to-t absolute center-div"></div>
-                    <Image
+                  <Image
                       className="object-cover w-full h-full"
                       src={
                         props.imageOrientation == "landscape"
