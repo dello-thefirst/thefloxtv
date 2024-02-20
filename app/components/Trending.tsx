@@ -76,7 +76,7 @@ export default function Trending(props: TrendingProp) {
                 }
               >
                 <div
-                  className="item w-auto h-[280px] mr-[10px] flex relative sm:h-[180px] sm:mr-[8px]"
+                  className="item w-auto h-[280px] mr-[10px] flex relative sm:h-[110px] sm:mr-[8px]"
                   style={{ flex: "0 0 auto" }}
                 >
                   <div className="mask group w-full h-full bg-opacity-60 from-[rgba(var(--background-color-1))] to-[#00000005] bg-gradient-to-t absolute center-div"></div>
@@ -85,8 +85,9 @@ export default function Trending(props: TrendingProp) {
                   </p>
                   <div
                     className="
-                  w-[200px] h-full rounded-md overflow-hidden sm:w-[120px]"
+                  w-[200px] h-full rounded-md overflow-hidden sm:w-[120px] relative"
                   >
+                    <div className="mask group w-full h-full bg-opacity-60 from-[rgba(var(--background-color-1))] to-[#00000005] bg-gradient-to-t absolute center-div"></div>
                     <Image
                       className="object-cover w-full h-full"
                       src={
