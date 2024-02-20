@@ -51,7 +51,7 @@ export default function Trending(props: TrendingProp) {
       <>
         <div className="trending-cont pl-[4%] mb-[20px] sm:pl-[5%] ">
           <p
-            className="sec-label text-[25px] mb-[10px] font-sans font-semibold text-[white]"
+            className="sec-label text-[25px] mb-[10px] font-sans font-semibold text-[white] md:text-[18px]"
             style={{ textShadow: "0px 3px 3px rgb(0, 0, 30, 0.8)" }}
           >
             Trending Worldwide {props.period == "day" ? "Today" : "This Week"}
@@ -76,7 +76,7 @@ export default function Trending(props: TrendingProp) {
                 }
               >
                 <div
-                  className="item w-auto h-[280px] mr-[10px] flex relative sm:w-[110px] sm:h-[170px] sm:mr-[8px]"
+                  className="item w-auto h-[280px] mr-[10px] flex relative sm:h-[170px] sm:mr-[8px]"
                   style={{ flex: "0 0 auto" }}
                 >
                   <div className="mask group w-full h-full bg-opacity-60 from-[rgba(var(--background-color-1))] to-[#00000005] bg-gradient-to-t absolute center-div"></div>
@@ -85,7 +85,7 @@ export default function Trending(props: TrendingProp) {
                   </p>
                   <div
                     className="
-                  w-[200px]  h-full rounded-md overflow-hidden"
+                  w-[200px] h-full rounded-md overflow-hidden sm:w-[120px]"
                   >
                     <Image
                       className="object-cover w-full h-full"
