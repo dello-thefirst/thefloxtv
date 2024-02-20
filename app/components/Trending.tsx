@@ -76,7 +76,7 @@ export default function Trending(props: TrendingProp) {
                 }
               >
                 <div
-                  className="item w-auto h-[280px] mr-[10px] flex relative sm:h-[110px] sm:mr-[8px]"
+                  className="item w-auto h-[280px] mr-[10px] flex relative sm:h-[170px] sm:mr-[8px]"
                   style={{ flex: "0 0 auto" }}
                 >
                   <div className="mask group w-full h-full bg-opacity-60 from-[rgba(var(--background-color-1))] to-[#00000005] bg-gradient-to-t absolute center-div"></div>
