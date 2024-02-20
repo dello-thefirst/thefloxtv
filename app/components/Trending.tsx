@@ -98,7 +98,7 @@ export default function Trending(props: TrendingProp) {
                       }
                       width={130}
                       height={210}
-                      quality={100}
+                      quality={70}
                       alt=""
                     />
                   </div>
