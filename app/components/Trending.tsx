@@ -80,7 +80,7 @@ export default function Trending(props: TrendingProp) {
                   style={{ flex: "0 0 auto" }}
                 >
                   <div className="mask group w-full h-full left-0 bottom-0 z-[2] from-[rgba(var(--background-color-1))] to-[#00000005] bg-gradient-to-t absolute center-div"></div>
-                  <p className="list-number w-auto h-full center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff36] sm:text-[90px]">
+                  <p className="list-number w-auto h-full center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff36] sm:text-[100px]">
                     {
                     listIterator++
                     }
