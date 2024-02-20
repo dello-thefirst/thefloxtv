@@ -51,10 +51,11 @@ export default function Trending(props: TrendingProp) {
       <>
         <div className="trending-cont pl-[4%] mb-[20px] sm:pl-[5%] ">
           <p
-            className="sec-label text-[25px] mb-[10px] font-sans font-semibold text-[white] md:text-[20px]"
+            className="sec-label text-[25px] mb-[10px] font-sans font-medium text-[white] md:text-[20px]"
             style={{ textShadow: "0px 3px 3px rgb(0, 0, 30, 0.8)" }}
           >
-            Trending Worldwide {props.period == "day" ? "Today" : "This Week"}
+            Trending Worldwide {props.period == "day" ? "Today" : "This Week"}{" "}
+            &#128197;
           </p>
           <div
             className="scroll-container no-scrollbar"
@@ -79,11 +80,9 @@ export default function Trending(props: TrendingProp) {
                   className="item w-auto h-[280px] mr-[10px] flex relative sm:h-[170px] sm:mr-[8px]"
                   style={{ flex: "0 0 auto" }}
                 >
-                  <div className="mask group w-full h-full left-0 bottom-0 z-[2] from-[rgba(var(--background-color-1))] to-[#00000005] bg-gradient-to-t absolute center-div"></div>
+                  <div className="mask group w-full h-full left-0 bottom-0 z-[2] from-[rgba(var(--background-color-1))] to-[#00000018] bg-gradient-to-t absolute center-div"></div>
                   <p className="list-number w-auto h-full center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff36] sm:text-[100px]">
-                    {
-                    listIterator++
-                    }
+                    {listIterator++}
                   </p>
                   <div
                     className="
