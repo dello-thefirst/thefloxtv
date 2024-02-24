@@ -41,16 +41,17 @@ function Popular(props: PopularProps) {
 
   return (
     <>
-
-      <p className="title text-center text-[35px] text-white font-sans font-bold">
-        {props.type =="movies" ?  "Movies Recommended For You" : "Popular TV Shows"}
+      <p className="title text-center text-[35px] text-white font-sans font-bold md:text-[25px] px-3">
+        {props.type == "movies"
+          ? "Movies Recommended For You"
+          : "Popular TV Shows"}
       </p>
-      <p className="sub text-white text-center font-sans mb-[20px]">
+      <p className="sub text-white text-center font-sans mb-[20px] md:text-[16px]">
         Watch full seasons of exclusive streaming series, current-season
         episodes, hit movies, Hulu Originals, kids shows, and more.
       </p>
-      <div className="container h-auto px-[5%] grid grid-cols-10 gap-2 lg:grid-cols-6 md:grid-cols-5 sm:gnrid-cols-3">
-        {popularData.map((result: popularResult) => (
+      <div className="container h-auto px-[5%] mb-[30px] grid grid-cols-6 gap-2 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
+        {popularData.slice(0, 12).map((result: popularResult) => (
           <Link
             key={result.id}
             href={
@@ -59,7 +60,7 @@ function Popular(props: PopularProps) {
                 : `/movies/${result.id}`
             }
           >
-            <div className="w-full mb-5 overflow-hidden relative">
+            <div className="w-full mb-5 overflow-hidden relative hover:outline outline-2 -outline-offset-1 rounded-md">
               <div className="mask group w-full h-full left-0 bottom-0 z-[2] from-[rgba(var(--background-color-1))] to-[#00000018] bg-gradient-to-t absolute center-div"></div>
               <Image
                 className="w-full h-full object-cover rounded-md"
