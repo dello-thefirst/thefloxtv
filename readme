@@ -1,0 +1,29 @@
+<div className="wrapper">
+          {searchResult.map((result: SearchResult) =>
+            result.media_type == "movie" ? (
+              <Link key={result.tmdbMovie} href={`/movies/${result.tmdbMovie}`}>
+                <div className="item">
+                  <img
+                    src={`https://www.themoviedb.org/t/p/w94_and_h141_bestv2${result.bannerMovie}`}
+                  />
+                  <div className="info">
+                    <p className="title">{result.titleMovie}</p>nj 
+                    <p className="sub">Movie &middot; {result.yearMovie}</p>
+                  </div>
+                </div>
+              </Link>
+            ) : (
+              <Link key={result.tmdbSeries} href={`/tv/${result.tmdbSeries}`}>
+                <div className="item">
+                  <img
+                    src={`https://www.themoviedb.org/t/p/w94_and_h141_bestv2${result.bannerSeries}`}
+                  />
+                  <div className="info">
+                    <p className="title">{result.nameSeries}</p>
+                    <p className="sub">Tv Show</p>
+                  </div>
+                </div>
+              </Link>
+            )
+          )}
+        </div>
