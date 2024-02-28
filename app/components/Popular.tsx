@@ -60,15 +60,20 @@ function Popular(props: PopularProps) {
                 : `/movies/${result.id}`
             }
           >
-            <div className="w-full mb-5 overflow-hidden relative hover:outline outline-2 -outline-offset-1 rounded-md">
-              <div className="mask group w-full h-full left-0 bottom-0 z-[2] from-[rgba(var(--background-color-1))] to-[#00000018] bg-gradient-to-t absolute center-div"></div>
-              <Image
-                className="w-full h-full object-cover rounded-md"
-                src={`https://themoviedb.org/t/p/original${result.poster_path}`}
-                width={150}
-                height={280}
-                alt=""
-              ></Image>
+            <div>
+              <div className="w-full group mb-5 overflow-hidden relative hover:outline outline-2 -outline-offset-1 rounded-md">
+                <div className="mask w-full h-full left-0 bottom-0 z-[2] from-[rgba(var(--background-color-1))] to-[#00000018] bg-gradient-to-t absolute center-div group-hover:opacity-0 transition duration-[0.5s]"></div>
+                <Image
+                  className="w-full h-full object-cover rounded-md"
+                  src={`https://themoviedb.org/t/p/original${result.poster_path}`}
+                  width={150}
+                  height={280}
+                  alt=""
+                ></Image>
+              </div>
+              <p className="title mb-[10px] text-[14px] sm:text-[12px]">
+                {props.type == "movies" ? result.title : result.name}
+              </p>
             </div>
           </Link>
         ))}
