@@ -13,7 +13,7 @@ function Home() {
         <div>
           <Trending period="day" />
         </div>
-        <p className="text-center font-sans text-green-400 font-normal text-[20px]">
+        <p className="text-center font-sans text-green-400 font-normal text-[20px] sm:text-[12px]">
           Want more?
         </p>
         <div className="popular-movies">

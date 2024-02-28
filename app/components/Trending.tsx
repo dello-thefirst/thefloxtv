@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Calendar from "./Calendar"
+import Calendar from "./Calendar";
 
 type TrendingProp = {
   period: string;
@@ -76,16 +76,17 @@ export default function Trending(props: TrendingProp) {
                   className="item w-auto h-[280px] mr-[10px] flex relative sm:h-[170px] sm:mr-[8px]"
                   style={{ flex: "0 0 auto" }}
                 >
-                  <div className="mask group w-full h-full left-0 bottom-0 z-[2] from-[rgba(var(--background-color-1))] to-[#00000018] bg-gradient-to-t absolute center-div"></div>
-                  <p className="list-number w-auto h-full center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff36] sm:text-[100px]">
+                  <p className="list-number w-auto h-full center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff1e] sm:text-[100px]">
                     {listIterator++}
                   </p>
                   <div
                     className="
-                  w-[200px] h-full rounded-md overflow-hidden sm:w-[120px]"
+                  w-[200px] h-full overflow-hidden sm:w-[150px] relative"
                   >
+                    <div className="mask group w-full h-full left-0 bottom-0 z-[2] from-[rgba(var(--background-color-1))] to-[#00000018] bg-gradient-to-t absolute center-div"></div>
+
                     <Image
-                      className="object-cover w-full h-full"
+                      className="object-cover rounded-md w-full h-full"
                       src={
                         props.imageOrientation == "landscape"
                           ? `https://themoviedb.org/t/p/original${result.poster_path}`

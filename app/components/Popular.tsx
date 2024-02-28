@@ -41,12 +41,12 @@ function Popular(props: PopularProps) {
 
   return (
     <>
-      <p className="title text-center text-[35px] text-white font-sans font-bold md:text-[25px] px-3">
+      <p className="title text-center text-[35px] text-white font-sans font-bold md:text-[25px] px-3 sm:text-[18px]">
         {props.type == "movies"
           ? "Movies Recommended For You"
           : "Popular TV Shows"}
       </p>
-      <p className="sub text-white text-center font-sans mb-[20px] md:text-[16px]">
+      <p className="sub text-white text-center font-sans mb-[20px] md:text-[16px] sm:text-[12px]">
         Watch full seasons of exclusive streaming series, current-season
         episodes, hit movies, Hulu Originals, kids shows, and more.
       </p>
