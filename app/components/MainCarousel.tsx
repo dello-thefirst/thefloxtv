@@ -6,8 +6,9 @@ import "@/app/dist/style/MainCarousel.css";
 import Image from "next/image";
 //Swiper js...
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css";
+import "swiper/css/effect-fade";
 
 function MainCarousel() {
   //...
@@ -70,10 +71,11 @@ function MainCarousel() {
             delay: 5000,
             disableOnInteraction: false,
           }}
-          modules={[Autoplay]}
+          effect="fade"
+          modules={[EffectFade, Autoplay]}
           className="carousel"
         >
-          {movieData.map((result: MovieDataResult) => (
+          {movieData.slice(0, 5).map((result: MovieDataResult) => (
             <SwiperSlide key={result.id} className="carousel-item active">
               <div className="mask"></div>
               <div className="filter"></div>
