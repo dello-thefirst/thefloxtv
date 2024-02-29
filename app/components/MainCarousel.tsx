@@ -71,6 +71,7 @@ function MainCarousel() {
             delay: 5000,
             disableOnInteraction: false,
           }}
+          loop={true}
           effect="fade"
           modules={[EffectFade, Autoplay]}
           className="carousel"

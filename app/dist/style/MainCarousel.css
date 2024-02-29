@@ -131,6 +131,7 @@
   background: linear-gradient(
     to top,
     rgb(var(--background-color-1)),
+    rgba(var(--background-color-1), 0.3),
     rgba(0, 0, 0, 0)
   );
   background-size: 100%;
