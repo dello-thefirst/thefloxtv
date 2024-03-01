@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import axios from "axios";
 type Props = {
   type: string;
@@ -16,8 +17,8 @@ function Recent(props: Props) {
     poster_path: string;
     year: string;
     //...
-    idMovie: string;
-    idSeries: string;
+    idMovie: number;
+    idSeries: number;
     tmdbMovie: number;
     tmdbSeries: number;
     titleMovie: string;
@@ -58,16 +59,25 @@ function Recent(props: Props) {
           overflowX: "scroll",
         }}
       >
-        {recentData.map((result: RecentData) =>
-          result.media_type == "movie" ? (
+        {recentData.map((result: RecentData) => (
+          <Link
+            href={
+              result.media_type == "movie"
+                ? `/movies/${result.tmdbMovie}`
+                : `/tv/${result.tmdbSeries}`
+            }
+            key={
+              result.media_type == "movie" ? result.idMovie : result.idSeries
+            }
+          >
             <div
-              className="overflow-hidden rounded-sm mr-[1%]"
+              className="overflow-hidden  mr-[1%]"
               style={{ flex: "0 0 auto" }}
             >
               <div className="w-[270px] h-[160px] sm:w-[170px] sm:h-[90px]">
                 <Image
                   className="object-cover w-full h-full"
-                  src={`https://themoviedb.org/t/p/original${result.bannerMovieL}`}
+                  src={`https://themoviedb.org/t/p/original${result.media_type == "movie" ? result.bannerMovieL : result.bannerSeriesL}`}
                   width={270}
                   height={160}
                   quality={70}
@@ -75,24 +85,8 @@ function Recent(props: Props) {
                 />
               </div>
             </div>
-          ) : (
-            <div
-              className="overflow-hidden rounded-sm str mr-[1%]"
-              style={{ flex: "0 0 auto" }}
-            >
-              <div className="w-[270px] h-[160px] sm:w-[170px] sm:h-[90px]">
-                <Image
-                  className="object-cover w-full h-full"
-                  src={`https://themoviedb.org/t/p/original${result.bannerSeriesL}`}
-                  width={230}
-                  height={160}
-                  quality={70}
-                  alt=""
-                />
-              </div>
-            </div>
-          )
-        )}
+          </Link>
+        ))}
       </div>
     </div>
   );

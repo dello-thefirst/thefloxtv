@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import axios from "axios";
 
 interface Props {
@@ -15,6 +16,8 @@ type SearchResult = {
   poster_path: string;
   year: string;
   //...
+  idMovie: number;
+  idSeries: number;
   tmdbMovie: number;
   tmdbSeries: number;
   titleMovie: string;
@@ -48,10 +51,13 @@ const LivesearchResult = (props: Props) => {
         <div className="wrapper">
           {searchResult.map((result: SearchResult) =>
             result.media_type == "movie" ? (
-              <Link key={result.id} href={`/movies/${result.id}`}>
+              <Link key={result.idMovie} href={`/movies/${result.id}`}>
                 <div className="item">
-                  <img
+                  <Image
                     src={`https://www.themoviedb.org/t/p/w94_and_h141_bestv2${result.bannerMovie}`}
+                    alt=""
+                    width={40}
+                    height={70}
                   />
                   <div className="info">
                     <p className="title">{result.titleMovie}</p>
@@ -60,10 +66,13 @@ const LivesearchResult = (props: Props) => {
                 </div>
               </Link>
             ) : (
-              <Link key={result.id} href={`/tv/${result.id}`}>
+              <Link key={result.idSeries} href={`/tv/${result.id}`}>
                 <div className="item">
-                  <img
+                  <Image
                     src={`https://www.themoviedb.org/t/p/w94_and_h141_bestv2${result.bannerSeries}`}
+                    alt=""
+                    width={40}
+                    height={70}
                   />
                   <div className="info">
                     <p className="title">{result.name}</p>
