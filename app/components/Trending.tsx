@@ -73,7 +73,7 @@ export default function Trending(props: TrendingProp) {
                 }
               >
                 <div
-                  className="item w-auto h-[280px] mr-[10px] flex relative sm:h-[190px] sm:mr-[8px]"
+                  className="item w-auto h-[280px] mr-[10px] flex relative sm:h-[210px] sm:mr-[8px]"
                   style={{ flex: "0 0 auto" }}
                 >
                   <p className="list-number w-auto h-full center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff1e] sm:text-[100px]">
