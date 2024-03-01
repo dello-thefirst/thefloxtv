@@ -77,7 +77,7 @@ function Recent(props: Props) {
             </div>
           ) : (
             <div
-              className="overflow-hidden rounded-sm mr-[1%]"
+              className="overflow-hidden rounded-sm str mr-[1%]"
               style={{ flex: "0 0 auto" }}
             >
               <div className="w-[270px] h-[160px] sm:w-[170px] sm:h-[90px]">
