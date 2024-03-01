@@ -71,19 +71,29 @@ function Recent(props: Props) {
             }
           >
             <div
-              className="overflow-hidden mr-[1%]"
+              className="overflow-hidden mr-2"
               style={{ flex: "0 0 auto" }}
             >
-              <div className="w-[270px] h-[160px] sm:w-[160px] sm:h-[90px]">
+              <div className="w-[270px] h-[160px] sm:w-[160px] sm:h-[90px] relative">
+                <div className="mask group w-full h-full left-0 bottom-0 z-[2] from-[rgba(var(--background-color-1))] to-[#00000018] bg-gradient-to-t absolute center-div"></div>
                 <Image
-                  className="object-cover w-full h-full"
-                  src={`https://themoviedb.org/t/p/original${result.media_type == "movie" ? result.bannerMovieL : result.bannerSeriesL}`}
+                  className="object-cover w-full rounded-lg h-full"
+                  src={`https://themoviedb.org/t/p/original${
+                    result.media_type == "movie"
+                      ? result.bannerMovieL
+                      : result.bannerSeriesL
+                  }`}
                   width={270}
                   height={160}
                   quality={70}
                   alt=""
                 />
               </div>
+              <p className="text-[18px] text-gray-400 font-sans font-normal my-2 pr-2">
+                {result.media_type == "movie"
+                  ? result.titleMovie
+                  : result.nameSeries}
+              </p>
             </div>
           </Link>
         ))}

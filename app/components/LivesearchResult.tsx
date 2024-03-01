@@ -25,6 +25,7 @@ type SearchResult = {
   bannerMovie: string;
   bannerSeries: string;
   yearMovie: string;
+  yearSeries: string;
 };
 
 const LivesearchResult = (props: Props) => {
@@ -49,39 +50,47 @@ const LivesearchResult = (props: Props) => {
     return (
       <div className="SearchResult">
         <div className="wrapper">
-          {searchResult.map((result: SearchResult) =>
-            result.media_type == "movie" ? (
-              <Link key={result.idMovie} href={`/movies/${result.id}`}>
-                <div className="item">
-                  <Image
-                    src={`https://www.themoviedb.org/t/p/w94_and_h141_bestv2${result.bannerMovie}`}
-                    alt=""
-                    width={40}
-                    height={70}
-                  />
-                  <div className="info">
-                    <p className="title">{result.titleMovie}</p>
-                    <p className="sub">Movie &middot; {result.yearMovie}</p>
-                  </div>
+          {searchResult.map((result: SearchResult) => (
+            <Link
+              key={
+                result.media_type == "movie" ? result.idMovie : result.idSeries
+              }
+              href={
+                result.media_type == "movie"
+                  ? `/movies/${result.tmdbMovie}`
+                  : `/tv/${result.tmdbSeries}`
+              }
+            >
+              <div className="item">
+                <Image
+                  src={`https://themoviedb.org/t/p/w94_and_h141_bestv2${
+                    result.media_type == "movie"
+                      ? result.bannerMovie
+                      : result.bannerSeries
+                  }`}
+                  alt=""
+                  width={40}
+                  height={70}
+                />
+                <div className="info">
+                  <p className="title">
+                    {result.media_type == "movie"
+                      ? result.titleMovie
+                      : result.nameSeries}
+                  </p>
+                  <p className="sub">
+                    {result.media_type == "movie"
+                      ? `Movie `
+                      : `TV `}
+                      &middot; &nbsp;
+                      {result.media_type == "movie"
+                      ? result.yearMovie
+                      : result.yearSeries}
+                  </p>
                 </div>
-              </Link>
-            ) : (
-              <Link key={result.idSeries} href={`/tv/${result.id}`}>
-                <div className="item">
-                  <Image
-                    src={`https://www.themoviedb.org/t/p/w94_and_h141_bestv2${result.bannerSeries}`}
-                    alt=""
-                    width={40}
-                    height={70}
-                  />
-                  <div className="info">
-                    <p className="title">{result.name}</p>
-                    <p className="sub">Tv Show</p>
-                  </div>
-                </div>
-              </Link>
-            )
-          )}
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     );
