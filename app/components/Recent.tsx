@@ -44,7 +44,7 @@ function Recent(props: Props) {
     fetchRecent();
   }, [props.type]);
   return (
-    <div className="pl-[4%] mb-[40px] sm:pl-[5%]">
+    <div className="pl-[4%] mb-[40px] sm:pl-[3%]">
       <p className="title sec-label text-[25px] mb-[10px] font-sans font-medium text-[white] md:text-[20px]">
         Recently Added {props.type == "movies" ? "Movies" : "Tv Shows"}
       </p>
@@ -74,7 +74,7 @@ function Recent(props: Props) {
               className="overflow-hidden mr-[1%]"
               style={{ flex: "0 0 auto" }}
             >
-              <div className="w-[270px] h-[160px] sm:w-[170px] sm:h-[90px]">
+              <div className="w-[270px] h-[160px] sm:w-[160px] sm:h-[90px]">
                 <Image
                   className="object-cover w-full h-full"
                   src={`https://themoviedb.org/t/p/original${result.media_type == "movie" ? result.bannerMovieL : result.bannerSeriesL}`}

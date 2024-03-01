@@ -45,7 +45,7 @@ export default function Trending(props: TrendingProp) {
   if (trendingData !== null && trendingData.length !== 0) {
     return (
       <>
-        <div className="trending-cont pl-[4%] mb-[20px] sm:pl-[5%] ">
+        <div className="trending-cont pl-[4%] mb-[40px] sm:pl-[3%] ">
           <p
             className="sec-label text-[25px] mb-[10px] font-sans font-medium text-[white] md:text-[20px]"
             style={{ textShadow: "0px 3px 3px rgb(0, 0, 30, 0.8)" }}
