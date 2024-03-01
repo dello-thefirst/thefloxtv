@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@prisma/client": "^5.10.2",
+    "axios": "^1.6.7",
     "clsx": "^2.1.0",
     "git": "^0.1.5",
     "mongodb": "^6.3.0",

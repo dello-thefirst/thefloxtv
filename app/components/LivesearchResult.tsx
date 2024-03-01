@@ -1,49 +1,48 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import axios from "axios";
 
 interface Props {
-  query?: string;
+  query: string;
 }
 
-interface SearchResult {
-  tmdbMovie: number;
-  tmdbSeries: number;
-  titleMovie: string;
-  nameSeries: string;
-  media_type: string;
-  bannerMovie: string;
-  bannerSeries: string;
-  yearMovie: string;
-}
-
-interface SearchResult {
+type SearchResult = {
+  status: string;
   id: number;
   title: string;
   name: string;
   media_type: string;
   poster_path: string;
   year: string;
-}
+  //...
+  tmdbMovie: number;
+  tmdbSeries: number;
+  titleMovie: string;
+  nameSeries: string;
+  bannerMovie: string;
+  bannerSeries: string;
+  yearMovie: string;
+};
 
-function LivesearchResult(props: Props) {
+const LivesearchResult = (props: Props) => {
   //...
   const [searchResult, setSearchResult] = useState([]);
   useEffect(() => {
     async function getSearchResult() {
-      const res = await fetch(
-        //`https://api.thefloxtv.com/search/?q=${props.query}`,
-        `https://api.themoviedb.org/3/search/multi?query=${props.query}&include_adult=false&language=en-US&page=1&api_key=c19b8e28dc3c9d900ceb4696bf2d247c`,
-        {
-          cache: "no-cache",
-        }
-      );
-      const data = await res.json();
-      setSearchResult(data.results);
+      try {
+        const res = await axios.get(
+          `https://floxapi.000webhostapp.com/search/?q=${props.query}`
+        );
+
+        setSearchResult(res.data);
+      } catch (error) {
+        console.log(error);
+      }
     }
     getSearchResult();
   }, [props.query]);
 
-  if (props.query !== "" && searchResult) {
+  if (props.query !== "" && searchResult && props.query !== " ") {
     return (
       <div className="SearchResult">
         <div className="wrapper">
@@ -52,11 +51,11 @@ function LivesearchResult(props: Props) {
               <Link key={result.id} href={`/movies/${result.id}`}>
                 <div className="item">
                   <img
-                    src={`https://www.themoviedb.org/t/p/w94_and_h141_bestv2${result.poster_path}`}
+                    src={`https://www.themoviedb.org/t/p/w94_and_h141_bestv2${result.bannerMovie}`}
                   />
                   <div className="info">
-                    <p className="title">{result.title}</p>
-                    <p className="sub">Movie &middot; 2020</p>
+                    <p className="title">{result.titleMovie}</p>
+                    <p className="sub">Movie &middot; {result.yearMovie}</p>
                   </div>
                 </div>
               </Link>
@@ -64,7 +63,7 @@ function LivesearchResult(props: Props) {
               <Link key={result.id} href={`/tv/${result.id}`}>
                 <div className="item">
                   <img
-                    src={`https://www.themoviedb.org/t/p/w94_and_h141_bestv2${result.poster_path}`}
+                    src={`https://www.themoviedb.org/t/p/w94_and_h141_bestv2${result.bannerSeries}`}
                   />
                   <div className="info">
                     <p className="title">{result.name}</p>
@@ -78,6 +77,6 @@ function LivesearchResult(props: Props) {
       </div>
     );
   }
-}
+};
 
 export default LivesearchResult;

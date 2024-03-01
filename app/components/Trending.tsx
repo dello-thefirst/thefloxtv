@@ -63,7 +63,7 @@ export default function Trending(props: TrendingProp) {
               overflowX: "scroll",
             }}
           >
-            {trendingData.map((result: MovieDataResult) => (
+            {trendingData.slice(0, 10).map((result: MovieDataResult) => (
               <Link
                 key={result.id}
                 href={

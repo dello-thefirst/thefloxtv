@@ -71,7 +71,7 @@ function Popular(props: PopularProps) {
                   alt=""
                 ></Image>
               </div>
-              <p className="title mb-[10px] text-[14px] sm:text-[12px]">
+              <p className="title mb-[10px] text-[14px] sm:text-[12px] text-white font-sans">
                 {props.type == "movies" ? result.title : result.name}
               </p>
             </div>
