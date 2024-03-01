@@ -89,7 +89,7 @@ function Recent(props: Props) {
                   alt=""
                 />
               </div>
-              <p className="text-[18px] text-gray-400 font-sans font-normal my-2 pr-2">
+              <p className="text-[18px] text-gray-400 font-sans font-normal my-2 pr-2 sm:text-[13px]">
                 {result.media_type == "movie"
                   ? result.titleMovie
                   : result.nameSeries}
