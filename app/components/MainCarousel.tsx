@@ -80,7 +80,7 @@ function MainCarousel() {
       <div className="carousel-cont">
         <Swiper
           autoplay={{
-            delay: 7000,
+            delay: 6000,
             disableOnInteraction: false,
           }}
           loop={true}
@@ -96,6 +96,7 @@ function MainCarousel() {
                 alt="Slide"
                 width={deviceWidth}
                 height={deviceHeight}
+                quality={100}
               />
               <div className="text">
                 <MovieLogo
