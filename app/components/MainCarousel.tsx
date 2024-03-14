@@ -80,9 +80,10 @@ function MainCarousel() {
       <div className="carousel-cont">
         <Swiper
           autoplay={{
-            delay: 6000,
+            delay: 5000,
             disableOnInteraction: false,
           }}
+          effect="autoplay"
           loop={true}
           modules={[Autoplay]}
           className="carousel"
@@ -94,9 +95,8 @@ function MainCarousel() {
               <Image
                 src={`https://themoviedb.org/t/p/original/${result.backdrop_path}`}
                 alt="Slide"
-                width={deviceWidth}
-                height={deviceHeight}
-                quality={100}
+                width={deviceWidth < 800 ? 700 : deviceWidth}
+                height={deviceWidth < 800 ? 400 : deviceHeight}
               />
               <div className="text">
                 <MovieLogo
