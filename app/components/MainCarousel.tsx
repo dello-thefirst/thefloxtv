@@ -12,6 +12,18 @@ import "swiper/css/effect-fade";
 
 function MainCarousel() {
   //...
+  const [deviceWidth, setDeviceWidth] = useState(800);
+  const [deviceHeight, setDeviceHeight] = useState(1200);
+
+  useEffect(() => {
+    const screenWidth: number = window.innerWidth;
+    const screenHeight: number = window.innerHeight;
+    setDeviceWidth(screenWidth);
+     setDeviceHeight(screenHeight);
+  }, []);
+
+
+  //...
   const getWordRange = (text: string, range: number) => {
     const words = text.split(/\s+/);
     if (words.length > range) {
@@ -68,12 +80,11 @@ function MainCarousel() {
       <div className="carousel-cont">
         <Swiper
           autoplay={{
-            delay: 5000,
+            delay: 7000,
             disableOnInteraction: false,
           }}
           loop={true}
-          effect="fade"
-          modules={[EffectFade, Autoplay]}
+          modules={[Autoplay]}
           className="carousel"
         >
           {movieData.slice(0, 5).map((result: MovieDataResult) => (
@@ -83,8 +94,8 @@ function MainCarousel() {
               <Image
                 src={`https://themoviedb.org/t/p/original/${result.backdrop_path}`}
                 alt="Slide"
-                width={2000}
-                height={1200}
+                width={deviceWidth}
+                height={deviceHeight}
               />
               <div className="text">
                 <MovieLogo
