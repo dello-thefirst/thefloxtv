@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background-color-1: 8, 8, 13;
+  --background-color-1: 15, 15, 20;
   --background-color-2: 30, 23, 42;
   --color-2: 209, 209, 209;
   --color-3: 147, 76, 180;
@@ -44,5 +44,5 @@ body::-webkit-scrollbar-thumb {
 }
 
 .no-scrollbar::-webkit-scrollbar {
- width: 0;
+  width: 0;
 }

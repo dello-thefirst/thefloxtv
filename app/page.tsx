@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Header from "./components/Header";
 import MainCarousel from "./components/MainCarousel";
 import Trending from "./components/Trending";
@@ -25,11 +25,15 @@ function Home() {
           Want more?
         </p>
         <div className="popular-movies">
+          <Suspense fallback={<p>Loading feed...</p>}>
           <Popular type="movies" />
+          </Suspense>
         </div>
 
         <div className="popular-series">
-          <Popular type="tv" />
+          <Suspense fallback={<p>Loading feed...</p>}>
+            <Popular type="tv" />
+          </Suspense>
         </div>
       </main>
     </>
