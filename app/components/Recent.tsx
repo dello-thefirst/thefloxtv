@@ -30,7 +30,7 @@ function Recent(props: Props) {
     yearMovie: string;
   };
   const [recentData, setRecentData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     async function fetchRecent() {
       try {
@@ -43,12 +43,12 @@ function Recent(props: Props) {
         console.log(error);
         setIsLoading(true);
       } finally {
-        setIsLoading(true);
+        setIsLoading(false);
       }
     }
     fetchRecent();
   }, [props.type]);
-  if (isLoading === true) {
+  if (isLoading === false) {
     return (
       <div className="pl-[4%] mb-[20px] sm:pl-[5%]">
         <p className="title sec-label text-[20px] mb-[10px] font-sans font-normal text-[white] md:text-[17px]">
