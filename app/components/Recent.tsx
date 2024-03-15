@@ -88,7 +88,7 @@ function Recent(props: Props) {
                   <Image
                     className="object-cover w-full h-full"
                     src={`https://themoviedb.org/t/p/original${
-                      result.media_type == "movie"
+                      result.media_type == "movie" 
                         ? result.bannerMovie
                         : result.bannerSeries
                     }`}
