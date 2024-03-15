@@ -65,7 +65,7 @@ export default function Trending(props: TrendingProp) {
         }
       } catch (error) {
         console.log(error);
-        setIsLoading(true)
+        setIsLoading(false)
       }
     }
     fetchData();

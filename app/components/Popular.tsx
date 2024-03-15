@@ -44,6 +44,7 @@ function Popular(props: PopularProps) {
         }
       } catch (error) {
         console.log(error);
+        setIsLoading(false)
       }
     }
     getPopular();

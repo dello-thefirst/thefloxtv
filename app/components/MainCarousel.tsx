@@ -31,10 +31,10 @@ function LoadingUiStyle() {
             <div className="filter"></div>
             <div className="text">
               <p className="logo skeleton w-[300px] h-[50px] my-5 rounded-none md:mx-auto"></p>
-              <div className="flex gap-5 my-5 justify-center">
-                <p className="skeleton w-[100px] h-3 rounded-none"></p>
-                <p className="skeleton w-[100px] h-3 rounded-none"></p>
-                <p className="skeleton w-[100px] h-3 rounded-none"></p>
+              <div className="flex gap-5 my-5 md:justify-center">
+                <p className="skeleton w-[90px] h-3 rounded-none"></p>
+                <p className="skeleton w-[90px] h-3 rounded-none"></p>
+                <p className="skeleton w-[90px] h-3 rounded-none"></p>
               </div>
               <div className="md:hidden">
                 <p className=" skeleton w-full h-3 rounded-none"></p>
@@ -115,7 +115,7 @@ function MainCarousel() {
         setMovieData(res.data.results);
       } catch (error) {
         console.log(error);
-        setIsLoading(true);
+        setIsLoading(false);
       }
     }
     fetchData();
