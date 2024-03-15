@@ -60,12 +60,13 @@ export default function Trending(props: TrendingProp) {
           `https://api.themoviedb.org/3/trending/all/${trendingPeriod}?language=en-US&api_key=c19b8e28dc3c9d900ceb4696bf2d247c`
         );
         if (res.status === 200) {
-        setTrendingData(res.data.results);
+          setTrendingData(res.data.results);
           setIsLoading(false);
         }
       } catch (error) {
         console.log(error);
-        setIsLoading(false)
+        setIsLoading(false);
+        fetchData();
       }
     }
     fetchData();

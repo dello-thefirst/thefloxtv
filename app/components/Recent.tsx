@@ -33,7 +33,7 @@ function Recent(props: Props) {
   const [isLoading, setIsLoading] = useState(true);
 
   const loadingSkeletonClass =
-    "bg-[rgb(var(--background-color-2))] overflow-hidden rounded-md skeleton-static mr-2  w-[160px] h-[240px] sm:w-[130px] sm:h-[90px] sm:mr-1";
+    "bg-[rgb(var(--background-color-2))] overflow-hidden rounded-md skeleton-static mr-2  w-[160px] h-[240px] sm:w-[130px] sm:h-[190px] sm:mr-1";
   useEffect(() => {
     async function fetchRecent() {
       try {
