@@ -31,6 +31,9 @@ function Recent(props: Props) {
   };
   const [recentData, setRecentData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const loadingSkeletonClass =
+    "bg-[rgb(var(--background-color-2))] overflow-hidden animate-pulse mr-2 sm:mr-1 w-[270px] h-[150px] rounded-md sm:w-[150px] sm:h-[80px]";
   useEffect(() => {
     async function fetchRecent() {
       try {
@@ -39,33 +42,34 @@ function Recent(props: Props) {
           `https://floxapi.000webhostapp.com/recent/?type=${props.type}`
         );
         setRecentData(res.data);
+        if (res.status === 200) {
+          setIsLoading(false);
+        }
       } catch (error) {
         console.log(error);
         setIsLoading(true);
-      } finally {
-        setIsLoading(false);
       }
     }
     fetchRecent();
   }, [props.type]);
-  if (isLoading === false) {
-    return (
-      <div className="pl-[4%] mb-[20px] sm:pl-[5%]">
-        <p className="title sec-label text-[20px] mb-[10px] font-sans font-normal text-[white] md:text-[17px]">
-          Recently Added {props.type == "movies" ? "Movies" : "Tv Shows"}
-        </p>
+  return (
+    <div className="pl-[4%] mb-[20px] sm:pl-[5%]">
+      <p className="title sec-label text-[20px] mb-[10px] font-sans font-normal text-[white] md:text-[17px]">
+        Recently Added {props.type == "movies" ? "Movies" : "Tv Shows"}
+      </p>
 
-        <div
-          className="scroll-container no-scrollbar"
-          style={{
-            display: "flex",
-            flexWrap: "nowrap",
-            width: "100%",
-            height: "auto",
-            overflowX: "scroll",
-          }}
-        >
-          {recentData.map((result: RecentData) => (
+      <div
+        className="scroll-container no-scrollbar"
+        style={{
+          display: "flex",
+          flexWrap: "nowrap",
+          width: "100%",
+          height: "auto",
+          overflowX: "scroll",
+        }}
+      >
+        {!isLoading ? (
+          recentData.map((result: RecentData) => (
             <Link
               href={
                 result.media_type == "movie"
@@ -101,67 +105,39 @@ function Recent(props: Props) {
                 </p>
               </div>
             </Link>
-          ))}
-        </div>
+          ))
+        ) : (
+          //Loading skeleton...
+          <>
+            <div
+              className={loadingSkeletonClass}
+              style={{ flex: "0 0 auto" }}
+            ></div>
+            <div
+              className={loadingSkeletonClass}
+              style={{ flex: "0 0 auto" }}
+            ></div>
+            <div
+              className={loadingSkeletonClass}
+              style={{ flex: "0 0 auto" }}
+            ></div>
+            <div
+              className={loadingSkeletonClass}
+              style={{ flex: "0 0 auto" }}
+            ></div>
+            <div
+              className={loadingSkeletonClass}
+              style={{ flex: "0 0 auto" }}
+            ></div>
+            <div
+              className={loadingSkeletonClass}
+              style={{ flex: "0 0 auto" }}
+            ></div>
+          </>
+        )}
       </div>
-    );
-  } else {
-    return (
-      <div className="pl-[4%] mb-[20px] sm:pl-[5%]">
-        <p className="title sec-label text-[20px] mb-[10px] font-sans font-normal text-[white] md:text-[17px]">
-          Recently Added {props.type == "movies" ? "Movies" : "Tv Shows"}
-        </p>
-
-        <div
-          className="scroll-container no-scrollbar"
-          style={{
-            display: "flex",
-            flexWrap: "nowrap",
-            width: "100%",
-            height: "auto",
-            overflowX: "scroll",
-          }}
-        >
-          <div
-            className="overflow-hidden mr-2 sm:mr-1"
-            style={{ flex: "0 0 auto" }}
-          >
-            <div className="w-[270px] h-[150px] rounded-md overflow-hidden sm:w-[150px] sm:h-[80px] relative bg-gray-600 opacity-[10%]"></div>
-          </div>
-          <div
-            className="overflow-hidden mr-2 sm:mr-1"
-            style={{ flex: "0 0 auto" }}
-          >
-            <div className="w-[270px] h-[150px] rounded-md overflow-hidden sm:w-[150px] sm:h-[80px] relative bg-gray-600 opacity-[10%]"></div>
-          </div>
-          <div
-            className="overflow-hidden mr-2 sm:mr-1"
-            style={{ flex: "0 0 auto" }}
-          >
-            <div className="w-[270px] h-[150px] rounded-md overflow-hidden sm:w-[150px] sm:h-[80px] relative bg-gray-600 opacity-[10%]"></div>
-          </div>
-          <div
-            className="overflow-hidden mr-2 sm:mr-1"
-            style={{ flex: "0 0 auto" }}
-          >
-            <div className="w-[270px] h-[150px] rounded-md overflow-hidden sm:w-[150px] sm:h-[80px] relative bg-gray-600 opacity-[10%]"></div>
-          </div>
-          <div
-            className="overflow-hidden mr-2 sm:mr-1"
-            style={{ flex: "0 0 auto" }}
-          >
-            <div className="w-[270px] h-[150px] rounded-md overflow-hidden sm:w-[150px] sm:h-[80px] relative bg-gray-600 opacity-[10%]"></div>
-          </div>
-          <div
-            className="overflow-hidden mr-2 sm:mr-1"
-            style={{ flex: "0 0 auto" }}
-          >
-            <div className="w-[270px] h-[150px] rounded-md overflow-hidden sm:w-[150px] sm:h-[80px] relative bg-gray-600 opacity-[10%]"></div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Recent;
