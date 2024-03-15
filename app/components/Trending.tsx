@@ -75,13 +75,13 @@ export default function Trending(props: TrendingProp) {
   return (
     <>
       <div className="trending-cont pl-[4%] mb-[40px] sm:pl-[3%] ">
-        <p
+        <div
           className="sec-label text-[25px] mb-[10px] font-sans font-medium text-[white] md:text-[17px]"
           style={{ textShadow: "0px 3px 3px rgb(0, 0, 30, 0.8)" }}
         >
           Trending Worldwide {props.period == "day" ? "Today" : "This Week"}{" "}
           <Calendar />
-        </p>
+        </div>
         <div
           className="scroll-container no-scrollbar"
           style={{
