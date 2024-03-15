@@ -25,15 +25,11 @@ function Home() {
           Want more?
         </p>
         <div className="popular-movies">
-          <Suspense fallback={<p>Loading feed...</p>}>
           <Popular type="movies" />
-          </Suspense>
         </div>
 
         <div className="popular-series">
-          <Suspense fallback={<p>Loading feed...</p>}>
             <Popular type="tv" />
-          </Suspense>
         </div>
       </main>
     </>

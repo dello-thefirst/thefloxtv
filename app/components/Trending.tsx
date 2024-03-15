@@ -3,11 +3,33 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Calendar from "./Calendar";
+import axios from "axios";
 
 type TrendingProp = {
   period: string;
   imageOrientation?: string;
 };
+
+type LoadingUIProps = {
+  iterator: number;
+};
+
+function LoadingUI(props: LoadingUIProps) {
+  return (
+    <div
+      className="item w-auto h-[280px] mr-[10px] flex relative sm:h-[210px] sm:mr-[8px]"
+      style={{ flex: "0 0 auto" }}
+    >
+      <p className="list-number w-auto h-full center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff1e] sm:text-[100px]">
+        {props.iterator}
+      </p>
+      <div
+        className="
+                  w-[200px] h-[270px] skeleton overflow-hidden sm:w-[150px] relative translate-x-[-10px] sm:h-[200px]"
+      ></div>
+    </div>
+  );
+}
 
 export default function Trending(props: TrendingProp) {
   //...
@@ -27,43 +49,51 @@ export default function Trending(props: TrendingProp) {
   //...
   const [trendingPeriod, setTrendingPeriod] = useState(props.period);
   const [trendingData, setTrendingData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   let listIterator = 1;
 
   useEffect(() => {
     async function fetchData() {
-      const req = await fetch(
-        `https://api.themoviedb.org/3/trending/all/${trendingPeriod}?language=en-US&api_key=c19b8e28dc3c9d900ceb4696bf2d247c`,
-        { cache: "no-store" }
-      );
-      const res = await req.json();
-      setTrendingData(res.results);
+      try {
+        setIsLoading(true);
+        const res = await axios.get(
+          `https://api.themoviedb.org/3/trending/all/${trendingPeriod}?language=en-US&api_key=c19b8e28dc3c9d900ceb4696bf2d247c`
+        );
+        if (res.status === 200) {
+        setTrendingData(res.data.results);
+          setIsLoading(false);
+        }
+      } catch (error) {
+        console.log(error);
+        setIsLoading(true)
+      }
     }
     fetchData();
   }, [trendingPeriod]);
   //...
 
-  if (trendingData !== null && trendingData.length !== 0) {
-    return (
-      <>
-        <div className="trending-cont pl-[4%] mb-[40px] sm:pl-[3%] ">
-          <p
-            className="sec-label text-[25px] mb-[10px] font-sans font-medium text-[white] md:text-[17px]"
-            style={{ textShadow: "0px 3px 3px rgb(0, 0, 30, 0.8)" }}
-          >
-            Trending Worldwide {props.period == "day" ? "Today" : "This Week"}{" "}
-            <Calendar />
-          </p>
-          <div
-            className="scroll-container no-scrollbar"
-            style={{
-              display: "flex",
-              flexWrap: "nowrap",
-              width: "100%",
-              height: "auto",
-              overflowX: "scroll",
-            }}
-          >
-            {trendingData.slice(0, 10).map((result: MovieDataResult) => (
+  return (
+    <>
+      <div className="trending-cont pl-[4%] mb-[40px] sm:pl-[3%] ">
+        <p
+          className="sec-label text-[25px] mb-[10px] font-sans font-medium text-[white] md:text-[17px]"
+          style={{ textShadow: "0px 3px 3px rgb(0, 0, 30, 0.8)" }}
+        >
+          Trending Worldwide {props.period == "day" ? "Today" : "This Week"}{" "}
+          <Calendar />
+        </p>
+        <div
+          className="scroll-container no-scrollbar"
+          style={{
+            display: "flex",
+            flexWrap: "nowrap",
+            width: "100%",
+            height: "auto",
+            overflowX: "scroll",
+          }}
+        >
+          {!isLoading ? (
+            trendingData.slice(0, 10).map((result: MovieDataResult) => (
               <Link
                 key={result.id}
                 href={
@@ -100,10 +130,23 @@ export default function Trending(props: TrendingProp) {
                   </div>
                 </div>
               </Link>
-            ))}
-          </div>
+            ))
+          ) : (
+            <>
+              <LoadingUI iterator={1} />
+              <LoadingUI iterator={2} />
+              <LoadingUI iterator={3} />
+              <LoadingUI iterator={4} />
+              <LoadingUI iterator={5} />
+              <LoadingUI iterator={6} />
+              <LoadingUI iterator={7} />
+              <LoadingUI iterator={8} />
+              <LoadingUI iterator={9} />
+              <LoadingUI iterator={10} />
+            </>
+          )}
         </div>
-      </>
-    );
-  }
+      </div>
+    </>
+  );
 }

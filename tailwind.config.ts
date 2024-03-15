@@ -23,7 +23,8 @@ module.exports = {
       // => @media (max-width: 639px) { ... }
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"), require("rippleui")],
+  
   daisyui: {
     themes: false,
   },
