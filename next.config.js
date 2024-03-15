@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["themoviedb.org"],
+    domains: ["themoviedb.org", "floxapi.000webhostapp.com"],
   },
 };
 

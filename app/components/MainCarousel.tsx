@@ -115,7 +115,8 @@ function MainCarousel() {
         setMovieData(res.data.results);
       } catch (error) {
         console.log(error);
-        setIsLoading(false);
+        fetchData();
+        console.log("trying againg...")
       }
     }
     fetchData();
