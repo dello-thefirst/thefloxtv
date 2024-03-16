@@ -103,7 +103,7 @@ function MainCarousel() {
   }
 
   useEffect(() => {
-    async function fetchData() {
+  const fetchData = async () => {
       try {
         setIsLoading(true);
         const req = await axios.get(
