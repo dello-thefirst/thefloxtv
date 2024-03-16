@@ -80,7 +80,7 @@ export default function Trending(props: TrendingProp) {
           className="sec-label w-[250px] mb-[20px] "
           style={{ textShadow: "0px 3px 3px rgb(0, 0, 30, 0.8)" }}
         >
-          <p className="font text-[25px] mb-3 font-bold text-gray-200 md:text-[17px]">
+          <p className="font text-[25px] mb-3 font-semibold text-gray-200 md:text-[17px] leading-[30px]">
             Top 10 {props.type == "movie" ? "Movies" : "TV Shows"}{" "}
             {props.period == "day" ? "Today" : "This Week"}{" "}
           </p>
