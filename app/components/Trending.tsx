@@ -100,7 +100,7 @@ export default function Trending(props: TrendingProp) {
           }}
         >
           {!isLoading ? (
-            trendingData.slice(0, 10).map((result: MovieDataResult) => (
+            trendingData.map((result: MovieDataResult) => (
               <Link
                 key={result.id}
                 href={
@@ -122,11 +122,10 @@ export default function Trending(props: TrendingProp) {
                   >
                     <div className="mask group w-full h-full left-0 bottom-0 z-[2] from-[rgba(var(--background-color-1))] to-[#00000018] bg-gradient-to-t absolute center-div"></div>
 
-                    <Image
+                    <img
                       className="object-cover rounded-md w-full h-full"
                       src={`https://floxapi.000webhostapp.com/images/?url=${result.poster_path}
                       }&width=200`}
-                      fill
                       alt=""
                     />
                   </div>
