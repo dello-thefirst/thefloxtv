@@ -12,7 +12,7 @@ function Home() {
       <main>
         <MainCarousel />
         <section className="px-[5%]">
-          <p className="w-[50%] text-[40px] font-bold text-gray-200 my-[50px] line leading-[40px] sm:w-[90%] sm:text-[25px] sm:leading-[20px] sm:my-[30px]">
+          <p className="w-[50%] text-[40px] font-bold text-gray-200 my-[50px] line leading-[40px] sm:w-[90%] sm:text-[25px] sm:leading-[30px] sm:my-[40px]">
             Browse new, popular and upcoming movies & TV shows
           </p>
           <Trending period="day" type="movie" />
