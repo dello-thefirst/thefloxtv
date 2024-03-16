@@ -67,7 +67,7 @@ function Header({ page }: { page?: string }) {
 
         <div className="right-section center-div float-right h-full flex">
           <nav className="w-ful sm:hidden">
-            <ul className="w-full flex justify-between gap-[15px]">
+            <ul className="w-full flex justify-between gap-[25px] tracking-wider">
               <li className="text-[12px] font-light text-[b8b8b8]">
                 <Link href="/">Home</Link>
               </li>
