@@ -64,13 +64,13 @@ export default function MainCarouse() {
         const req = await axios.get(
           `https://api.themoviedb.org/3/trending/all/${trendOrder}?language=en-US`
         );
-        const res = req.data;
-        setMovieData(res.results);
+        setMovieData(req.data.results);
+        if (req.status < 300) {
+          setIsLoading(false);
+        }
       } catch (error) {
         console.log(error);
         fetchData();
-      } finally {
-        setIsLoading(false);
       }
     };
     fetchData();

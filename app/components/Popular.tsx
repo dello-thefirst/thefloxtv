@@ -29,13 +29,16 @@ function Popular(props: PopularProps) {
     "w-ful bg-[rgb(var(--background-color-2))] skeleton h-[250px] group mb-5 overflow-hidden rounded-md sm:h-[200px]";
 
   useEffect(() => {
+    axios.defaults.headers.common["Authorization"] =
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTliOGUyOGRjM2M5ZDkwMGNlYjQ2OTZiZjJkMjQ3YyIsInN1YiI6IjY1MDA0ZDIwNmEyMjI3MDBjM2I2MDM3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DNP1HXf6xyRe_8C7rR7fljfalpmJZgcry6JN8xLwk8E";
+
     async function getPopular() {
       try {
         setIsLoading(true);
         const req = await axios.get(
           props.type == "movies"
-            ? `https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=c19b8e28dc3c9d900ceb4696bf2d247c`
-            : `https://api.themoviedb.org/3/tv/popular?language=en-US&page=1&api_key=c19b8e28dc3c9d900ceb4696bf2d247c`
+            ? `https://api.themoviedb.org/3/movie/popular?language=en-US&page=1`
+            : `https://api.themoviedb.org/3/tv/popular?language=en-US&page=1`
         );
         const res = await req.data;
         setPopularData(res.results);

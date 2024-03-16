@@ -33,7 +33,7 @@ function Recent(props: Props) {
   const [isLoading, setIsLoading] = useState(true);
 
   const loadingSkeletonClass =
-    "bg-[rgb(var(--background-color-2))] overflow-hidden rounded-md skeleton-static mr-2  w-[160px] h-[240px] sm:w-[130px] sm:h-[190px] sm:mr-1";
+    "bg-[rgb(var(--background-color-2))] overflow-hidden rounded-md mr-2  w-[160px] h-[240px] sm:w-[130px] sm:h-[190px] sm:mr-1";
   useEffect(() => {
     async function fetchRecent() {
       try {
@@ -41,13 +41,13 @@ function Recent(props: Props) {
         const req = await axios.get(
           `https://floxapi.000webhostapp.com/recent/?type=${props.type}`
         );
-        const res = await req.data;
-        setRecentData(res);
+        setRecentData(req.data);
+        if(req.status < 300) {
+          setIsLoading(false)
+        }
       } catch (error) {
         console.log(error);
-        fetchRecent(); //retry on error...
-      }finally {
-        setIsLoading(false)
+        fetchRecent();
       }
     }
     fetchRecent();
