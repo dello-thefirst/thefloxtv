@@ -56,15 +56,16 @@ export default function Trending(props: TrendingProp) {
     async function fetchData() {
       try {
         setIsLoading(true);
-        const res = await axios.get(
+        const req = await axios.get(
           `https://api.themoviedb.org/3/trending/all/${trendingPeriod}?language=en-US&api_key=c19b8e28dc3c9d900ceb4696bf2d247c`
         );
-          setTrendingData(res.data.results);
+        const res = await req.data;
+        setTrendingData(res.results);
       } catch (error) {
         console.log(error);
         fetchData(); //retry on error...
-      }finally {
-        setIsLoading(false)
+      } finally {
+        setIsLoading(false);
       }
     }
     fetchData();

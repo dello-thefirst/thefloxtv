@@ -38,10 +38,11 @@ function Recent(props: Props) {
     async function fetchRecent() {
       try {
         setIsLoading(true);
-        const res = await axios.get(
+        const req = await axios.get(
           `https://floxapi.000webhostapp.com/recent/?type=${props.type}`
         );
-        setRecentData(res.data);
+        const res = await req.data;
+        setRecentData(res);
       } catch (error) {
         console.log(error);
         fetchRecent(); //retry on error...

@@ -106,10 +106,11 @@ function MainCarousel() {
     async function fetchData() {
       try {
         setIsLoading(true);
-        const res = await axios.get(
+        const req = await axios.get(
           `https://api.themoviedb.org/3/trending/all/${trendOrder}?language=en-US&api_key=c19b8e28dc3c9d900ceb4696bf2d247c`
         );
-        setMovieData(res.data.results);
+        const res = await req.data;
+        setMovieData(res.results);
       } catch (error) {
         console.log(error);
         fetchData(); //retry on error...

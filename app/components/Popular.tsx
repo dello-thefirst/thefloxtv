@@ -32,12 +32,13 @@ function Popular(props: PopularProps) {
     async function getPopular() {
       try {
         setIsLoading(true);
-        const res = await axios.get(
+        const req = await axios.get(
           props.type == "movies"
             ? `https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=c19b8e28dc3c9d900ceb4696bf2d247c`
             : `https://api.themoviedb.org/3/tv/popular?language=en-US&page=1&api_key=c19b8e28dc3c9d900ceb4696bf2d247c`
         );
-        setPopularData(res.data.results);
+        const res = await req.data
+        setPopularData(res.results);
       } catch (error) {
         console.log(error);
         getPopular(); //retry on error...
