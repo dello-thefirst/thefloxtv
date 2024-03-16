@@ -5,14 +5,13 @@ import MovieLogo from "./MovieLogo";
 import "@/app/dist/style/MainCarousel.css";
 import Image from "next/image";
 import axios from "axios";
-//Swiper js...
+import { MovieDataProps, getWordRange, getLetterRange } from "./Functions";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectFade } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/effect-fade";
-import { truncate } from "fs";
 
-function LoadingUiStyle() {
+//loading ui component.
+export function LoadingUiStyle() {
   return (
     <>
       <div className="carousel-cont">
@@ -48,79 +47,38 @@ function LoadingUiStyle() {
     </>
   );
 }
-
-function MainCarousel() {
-  //...
+export default function MainCarouse() {
+  //setting states...
   const [deviceWidth, setDeviceWidth] = useState(800);
   const [deviceHeight, setDeviceHeight] = useState(1200);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [movieData, setMovieData] = useState<MovieDataProps[]>([]);
+  const [trendOrder, setTrendOrder] = useState("week");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+        const req = await axios.get(
+          `https://api.themoviedb.org/3/trending/all/${trendOrder}?language=en-US&api_key=c19b8e28dc3c9d900ceb4696bf2d247c`
+        );
+        const res = req.data;
+        setMovieData(res.results);
+      } catch (error) {
+        console.log(error);
+        fetchData();
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
 
   useEffect(() => {
     const screenWidth: number = window.innerWidth;
     const screenHeight: number = window.innerHeight;
     setDeviceWidth(screenWidth);
     setDeviceHeight(screenHeight);
-  }, []);
-
-  //...
-  const getWordRange = (text: string, range: number) => {
-    const words = text.split(/\s+/);
-    if (words.length > range) {
-      const firstXWords = words.slice(0, range);
-      const result = firstXWords.join(" ") + "... ";
-      return result;
-    } else {
-      const result = text;
-      return result;
-    }
-  };
-
-  const getLetterRange = (text: string, range: number) => {
-    const letters = text.split("");
-    const firstXLetters = letters.slice(0, range);
-    const result = firstXLetters.join("");
-    return result;
-  };
-  const [movieData, setMovieData] = useState([]);
-  const [trendOrder, setTrendOrder] = useState("day");
-
-  interface MovieDataResult {
-    id: number;
-    title: string;
-    name: string;
-    media_type: string;
-    backdrop_path: string;
-    poster_path: string;
-    overview: string;
-    release_date: string;
-    first_air_date: string;
-    duration: number;
-    vote_average: number;
-  }
-
-  const options = {
-    method: "GET",
-    url: `https://api.themoviedb.org/3/trending/all/${trendOrder}`,
-    params: { language: "en-US" },
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTliOGUyOGRjM2M5ZDkwMGNlYjQ2OTZiZjJkMjQ3YyIsInN1YiI6IjY1MDA0ZDIwNmEyMjI3MDBjM2I2MDM3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DNP1HXf6xyRe_8C7rR7fljfalpmJZgcry6JN8xLwk8E",
-    },
-  };
-
-
-  useEffect(() => {
-      axios
-        .request(options)
-        .then(function (response) {
-          console.log(response.data);
-          setMovieData(response.data.results);
-          setIsLoading(false);
-        })
-        .catch(function (error) {
-          console.error(error);
-        });
   }, []);
 
   return (
@@ -136,7 +94,7 @@ function MainCarousel() {
           modules={[Autoplay]}
           className="carousel"
         >
-          {movieData.slice(0, 5).map((result: MovieDataResult) => (
+          {movieData.slice(0, 5).map((result) => (
             <SwiperSlide key={result.id} className="carousel-item active">
               <div className="mask"></div>
               <div className="filter"></div>
@@ -213,4 +171,3 @@ function MainCarousel() {
     </>
   );
 }
-export default MainCarousel;

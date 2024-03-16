@@ -24,7 +24,7 @@ interface popularResult {
 
 function Popular(props: PopularProps) {
   const [popularData, setPopularData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const loadingSkeletonClass =
     "w-ful bg-[rgb(var(--background-color-2))] skeleton h-[250px] group mb-5 overflow-hidden rounded-md sm:h-[200px]";
 
@@ -37,7 +37,7 @@ function Popular(props: PopularProps) {
             ? `https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=c19b8e28dc3c9d900ceb4696bf2d247c`
             : `https://api.themoviedb.org/3/tv/popular?language=en-US&page=1&api_key=c19b8e28dc3c9d900ceb4696bf2d247c`
         );
-        const res = await req.data
+        const res = await req.data;
         setPopularData(res.results);
       } catch (error) {
         console.log(error);
