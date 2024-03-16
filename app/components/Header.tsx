@@ -65,9 +65,9 @@ function Header({ page }: { page?: string }) {
           </div>
         </div>
 
-        <div className="right-section center-div w-[20%] float-right h-full flex">
+        <div className="right-section center-div float-right h-full flex">
           <nav className="w-ful sm:hidden">
-            <ul className="w-full flex justify-between">
+            <ul className="w-full flex justify-between gap-[15px]">
               <li className="text-[12px] font-light text-[b8b8b8]">
                 <Link href="/">Home</Link>
               </li>
@@ -82,20 +82,10 @@ function Header({ page }: { page?: string }) {
               </li>
             </ul>
           </nav>
-          <nav className="sm-nav hidden sm:block">
-            <ul className="w-full flex justify-between gap-[20px]">
-              <Link href={"/search"}>
-                <i className="fa-light fa-magnifying-glass nav-icon text-[b8b8b8] text-[13px]"></i>
-              </Link>
-              <Link href={"/account"}>
-                <i className="fa-light fa-user-circle nav-icon text-[b8b8b8] text-[13px]"></i>
-              </Link>
-              <Link href={"/account"}>
-                <i className="fa-light fa-bell nav-icon text-[b8b8b8] text-[13px]"></i>
-              </Link>
-              <Link href={"/account"}>
-                <i className="fa-light fa-bars nav-icon text-[b8b8b8] text-[13px]"></i>
-              </Link>
+          <nav className="sm-nav hidden pr-[5%] sm:block">
+            <ul className="w-full flex justify-between gap-[25px]">
+              <i className="fa-light fa-magnifying-glass nav-icon text-[b8b8b8] text-[15px]"></i>
+              <i className="fa-light fa-bars nav-icon text-[b8b8b8] text-[15px]"></i>
             </ul>
           </nav>
         </div>
