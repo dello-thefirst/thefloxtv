@@ -121,7 +121,7 @@
   background: linear-gradient(
     to right,
     rgb(var(--background-color-1)),
-    rgba(var(--background-color-1), 0.7),
+    rgba(var(--background-color-1), 0.4),
     rgba(0, 0, 0, 0)
   );
   padding: 4% 7%;
