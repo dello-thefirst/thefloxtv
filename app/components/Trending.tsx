@@ -124,14 +124,10 @@ export default function Trending(props: TrendingProp) {
 
                     <Image
                       className="object-cover rounded-md w-full h-full"
-                      src={
-                        props.imageOrientation == "landscape"
-                          ? `https://themoviedb.org/t/p/original${result.poster_path}`
-                          : `https://themoviedb.org/t/p/original${result.poster_path}`
-                      }
-                      width={130}
-                      height={210}
-                      quality={70}
+                      src={`https://floxapi.000webhostapp.com/images/?url=${result.poster_path}
+                      }&width=200`}
+                      width={200}
+                      height={300}
                       alt=""
                     />
                   </div>
