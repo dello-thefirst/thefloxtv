@@ -3,61 +3,45 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import axios from "axios";
+import { MovieDataProps } from "./Functions";
 
-interface PopularProps {
-  type?: string;
-}
-
-interface popularResult {
-  id: number;
-  title: string;
-  name: string;
-  media_type: string;
-  backdrop_path: string;
-  poster_path: string;
-  overview: string;
-  release_date: string;
-  first_air_date: string;
-  duration: number;
-  vote_average: number;
-}
-
-function Popular(props: PopularProps) {
-  const [popularData, setPopularData] = useState([]);
+function Popular({ type }: { type: string }) {
+  const [popularData, setPopularData] = useState<MovieDataProps[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const loadingSkeletonClass =
     "w-ful bg-[rgb(var(--background-color-2))] skeleton h-[250px] group mb-5 overflow-hidden rounded-md sm:h-[200px]";
 
   useEffect(() => {
-    axios.defaults.headers.common["Authorization"] =
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTliOGUyOGRjM2M5ZDkwMGNlYjQ2OTZiZjJkMjQ3YyIsInN1YiI6IjY1MDA0ZDIwNmEyMjI3MDBjM2I2MDM3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DNP1HXf6xyRe_8C7rR7fljfalpmJZgcry6JN8xLwk8E";
-
     async function getPopular() {
       try {
         setIsLoading(true);
         const req = await axios.get(
-          props.type == "movies"
+          type == "movies"
             ? `https://api.themoviedb.org/3/movie/popular?language=en-US&page=1`
-            : `https://api.themoviedb.org/3/tv/popular?language=en-US&page=1`
+            : `https://api.themoviedb.org/3/tv/popular?language=en-US&page=1`,
+          {
+            headers: {
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTliOGUyOGRjM2M5ZDkwMGNlYjQ2OTZiZjJkMjQ3YyIsInN1YiI6IjY1MDA0ZDIwNmEyMjI3MDBjM2I2MDM3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DNP1HXf6xyRe_8C7rR7fljfalpmJZgcry6JN8xLwk8E",
+            },
+          }
         );
-        const res = await req.data;
-        setPopularData(res.results);
+        setPopularData(req.data.results);
+        if (req.status < 300) {
+          setIsLoading(false);
+        }
       } catch (error) {
         console.log(error);
         getPopular(); //retry on error...
-      } finally {
-        setIsLoading(false);
       }
     }
     getPopular();
-  }, [props.type]);
+  }, [type]);
 
   return (
     <>
       <p className="title text-center text-[35px]  text-white font-sans font-bold md:text-[25px] px-3 sm:text-[18px]">
-        {props.type == "movies"
-          ? "Movies Recommended For You"
-          : "Popular TV Shows"}
+        {type == "movies" ? "Movies Recommended For You" : "Popular TV Shows"}
       </p>
       <p className="sub text-white text-center font-sans mb-[20px] md:text-[16px] sm:text-[12px]">
         Watch full seasons of exclusive streaming series, current-season
@@ -65,11 +49,11 @@ function Popular(props: PopularProps) {
       </p>
       <div className="container h-auto px-[5%] mb-[30px] grid grid-cols-6 gap-2 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 sm:px-[10%]">
         {!isLoading &&
-          popularData.slice(0, 12).map((result: popularResult) => (
+          popularData.slice(0, 12).map((result) => (
             <Link
               key={result.id}
               href={
-                props.type == "movies"
+                type == "movies"
                   ? `/movies/${result.id}`
                   : `/movies/${result.id}`
               }
@@ -86,7 +70,7 @@ function Popular(props: PopularProps) {
                   ></Image>
                 </div>
                 <p className="title mb-[10px] text-[14px] sm:text-[12px] text-white font-sans">
-                  {props.type == "movies" ? result.title : result.name}
+                  {type == "movies" ? result.title : result.name}
                 </p>
               </div>
             </Link>

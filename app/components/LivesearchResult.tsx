@@ -61,8 +61,9 @@ const LivesearchResult = (props: Props) => {
                   : `/tv/${result.tmdbSeries}`
               }
             >
-              <div className="item">
+              <div className="item flex gap-[10px] my-[10px]">
                 <Image
+                  className="w-[40px]  h-[50px] rounded-sm object-cover"
                   src={`https://themoviedb.org/t/p/w94_and_h141_bestv2${
                     result.media_type == "movie"
                       ? result.bannerMovie
@@ -72,18 +73,19 @@ const LivesearchResult = (props: Props) => {
                   width={40}
                   height={70}
                 />
-                <div className="info">
+                <div className="info text-[13px]">
                   <p className="title">
                     {result.media_type == "movie"
                       ? result.titleMovie
                       : result.nameSeries}
                   </p>
-                  <p className="sub">
+                  <p
+                    className="sub text-green-300 text-[11px] font-light"
+                    style={{ wordSpacing: "3px" }}
+                  >
+                    {result.media_type == "movie" ? `Movie ` : `TV `}
+                    &middot; &nbsp;
                     {result.media_type == "movie"
-                      ? `Movie `
-                      : `TV `}
-                      &middot; &nbsp;
-                      {result.media_type == "movie"
                       ? result.yearMovie
                       : result.yearSeries}
                   </p>

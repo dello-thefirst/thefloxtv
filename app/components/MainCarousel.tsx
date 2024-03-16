@@ -56,13 +56,17 @@ export default function MainCarouse() {
   const [trendOrder, setTrendOrder] = useState("week");
 
   useEffect(() => {
-    axios.defaults.headers.common["Authorization"] =
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTliOGUyOGRjM2M5ZDkwMGNlYjQ2OTZiZjJkMjQ3YyIsInN1YiI6IjY1MDA0ZDIwNmEyMjI3MDBjM2I2MDM3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DNP1HXf6xyRe_8C7rR7fljfalpmJZgcry6JN8xLwk8E";
     const fetchData = async () => {
       try {
         setIsLoading(true);
         const req = await axios.get(
-          `https://api.themoviedb.org/3/trending/all/${trendOrder}?language=en-US`
+          `https://api.themoviedb.org/3/trending/all/${trendOrder}?language=en-US`,
+          {
+            headers: {
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTliOGUyOGRjM2M5ZDkwMGNlYjQ2OTZiZjJkMjQ3YyIsInN1YiI6IjY1MDA0ZDIwNmEyMjI3MDBjM2I2MDM3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DNP1HXf6xyRe_8C7rR7fljfalpmJZgcry6JN8xLwk8E",
+            },
+          }
         );
         setMovieData(req.data.results);
         if (req.status < 300) {

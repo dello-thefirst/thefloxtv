@@ -36,7 +36,7 @@ function Recent({ type }: { type: string }) {
       try {
         setIsLoading(true);
         const req = await axios.get(
-          `https://floxapi.000webhostapp.com/recent/?type=${type}`
+          `https://floxapi.000webhostapp.com/recent/?type=${type}`,
         );
         setRecentData(req.data);
         if (req.status < 300) {
@@ -44,7 +44,7 @@ function Recent({ type }: { type: string }) {
         }
       } catch (error) {
         console.log(error);
-        fetchRecent();
+        fetchRecent() //retry on error...
       }
     }
     fetchRecent();
