@@ -122,10 +122,10 @@ export default function Trending(props: TrendingProp) {
                   >
                     <div className="mask group w-full h-full left-0 bottom-0 z-[2] from-[rgba(var(--background-color-1))] to-[#00000018] bg-gradient-to-t absolute center-div"></div>
 
-                    <img
+                    <Image
                       className="object-cover rounded-md w-full h-full"
-                      src={`https://floxapi.000webhostapp.com/images/?url=${result.poster_path}
-                      }&width=200`}
+                      src={`https://themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`}
+                      fill
                       alt=""
                     />
                   </div>
