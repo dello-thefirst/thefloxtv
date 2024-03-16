@@ -123,8 +123,6 @@ function MainCarousel() {
 
   return (
     <>
-      {isLoading && <LoadingUiStyle />}
-      {!isLoading && (
         <div className="carousel-cont">
           <Swiper
             autoplay={{
@@ -210,7 +208,7 @@ function MainCarousel() {
             ))}
           </Swiper>
         </div>
-      )}
+      
     </>
   );
 }
