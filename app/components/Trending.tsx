@@ -2,27 +2,17 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Calendar from "./Calendar";
 import axios from "axios";
+import { MovieDataProps } from "./Functions";
 
-type TrendingProp = {
-  period: string;
-  imageOrientation?: string;
-  type?: string;
-};
-
-type LoadingUIProps = {
-  iterator: number;
-};
-
-function LoadingUI(props: LoadingUIProps) {
+export function LoadingUI({ iterator }: { iterator: number }) {
   return (
     <div
       className="item w-auto h-[280px] mr-[10px] flex relative sm:h-[210px] sm:mr-[8px]"
       style={{ flex: "0 0 auto" }}
     >
       <p className="list-number w-auto h-full center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff1e] sm:text-[100px]">
-        {props.iterator}
+        {iterator}
       </p>
       <div
         className="
@@ -32,24 +22,16 @@ function LoadingUI(props: LoadingUIProps) {
   );
 }
 
-export default function Trending(props: TrendingProp) {
+export default function Trending({
+  period,
+  type,
+}: {
+  period: string;
+  type: string;
+}) {
   //...
-  interface MovieDataResult {
-    id: number;
-    title: string;
-    name: string;
-    media_type: string;
-    backdrop_path: string;
-    poster_path: string;
-    overview: string;
-    release_date: string;
-    first_air_date: string;
-    duration: number;
-    vote_average: number;
-  }
-  //...
-  const [trendingPeriod, setTrendingPeriod] = useState(props.period);
-  const [trendingData, setTrendingData] = useState([]);
+  const [trendingPeriod, setTrendingPeriod] = useState(period);
+  const [trendingData, setTrendingData] = useState<MovieDataProps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   let listIterator = 1;
 
@@ -58,7 +40,7 @@ export default function Trending(props: TrendingProp) {
       try {
         setIsLoading(true);
         const req = await axios.get(
-          `https://api.themoviedb.org/3/trending/${props.type}/${trendingPeriod}?language=en-US&api_key=c19b8e28dc3c9d900ceb4696bf2d247c`
+          `https://api.themoviedb.org/3/trending/${type}/${trendingPeriod}?language=en-US&api_key=c19b8e28dc3c9d900ceb4696bf2d247c`
         );
         const res = await req.data;
         setTrendingData(res.results);
@@ -81,8 +63,8 @@ export default function Trending(props: TrendingProp) {
           style={{ textShadow: "0px 3px 3px rgb(0, 0, 30, 0.8)" }}
         >
           <p className="font text-[25px] mb-3 font-semibold text-gray-200 md:text-[17px] leading-[30px]">
-            Top 10 {props.type == "movie" ? "Movies" : "TV Shows"}{" "}
-            {props.period == "day" ? "Today" : "This Week"}{" "}
+            Top 10 {type == "movie" ? "Movies" : "TV Shows"}{" "}
+            {period == "day" ? "Today" : "This Week"}{" "}
           </p>
           <p className="text-[14px] font-light text-gray-300">
             Check out this week’s most popular movies and find choose what to
@@ -100,7 +82,7 @@ export default function Trending(props: TrendingProp) {
           }}
         >
           {!isLoading ? (
-            trendingData.map((result: MovieDataResult) => (
+            trendingData.map((result) => (
               <Link
                 key={result.id}
                 href={
