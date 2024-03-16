@@ -41,7 +41,7 @@ function Popular(props: PopularProps) {
       } catch (error) {
         console.log(error);
         getPopular(); //retry on error...
-      }finally {
+      } finally {
         setIsLoading(false);
       }
     }
@@ -60,7 +60,7 @@ function Popular(props: PopularProps) {
         episodes, hit movies, Hulu Originals, kids shows, and more.
       </p>
       <div className="container h-auto px-[5%] mb-[30px] grid grid-cols-6 gap-2 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 sm:px-[10%]">
-        {!isLoading ? (
+        {!isLoading &&
           popularData.slice(0, 12).map((result: popularResult) => (
             <Link
               key={result.id}
@@ -86,8 +86,8 @@ function Popular(props: PopularProps) {
                 </p>
               </div>
             </Link>
-          ))
-        ) : (
+          ))}
+        {isLoading && (
           <>
             <div>
               <div className={loadingSkeletonClass}></div>
