@@ -11,26 +11,20 @@ function Home() {
       <Header page="home" />
       <main>
         <MainCarousel />
-        <div>
-          <Trending period="day" />
-        </div>
-        <div>
+        <section className="px-[5%]">
+          <p className="w-[50%] text-[40px] font-bold text-gray-200 my-[50px] line leading-[40px] sm:w-[70%] sm:text-[20px] sm:leading-[20px] sm:my-[30px]">
+            Browse new, popular and upcoming movies & TV shows
+          </p>
+          <Trending period="day" type="movie" />
+          <Trending period="day" type="tv" />
           <Recent type="series" />
-        </div>
-        <div>
           <Recent type="movies" />
-        </div>
-
-        <p className="text-center font-sans text-green-400 font-normal text-[20px] sm:text-[12px]">
-          Want more?
-        </p>
-        <div className="popular-movies">
+          <p className="text-center font-sans text-green-400 font-normal text-[20px] sm:text-[12px]">
+            Want more?
+          </p>
           <Popular type="movies" />
-        </div>
-
-        <div className="popular-series">
-            <Popular type="tv" />
-        </div>
+          <Popular type="tv" />
+        </section>
       </main>
     </>
   );

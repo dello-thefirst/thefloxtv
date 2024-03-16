@@ -53,7 +53,7 @@ function Recent(props: Props) {
     fetchRecent();
   }, [props.type]);
   return (
-    <div className="pl-[4%] mb-[20px] sm:pl-[5%]">
+    <div className="mb-[20px]">
       <p className="title sec-label text-[20px] mb-[20px] font-normal text-[white] md:text-[17px]">
         Recently Added {props.type == "movies" ? "Movies" : "Tv Shows"}
       </p>

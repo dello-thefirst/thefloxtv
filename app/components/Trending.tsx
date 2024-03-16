@@ -8,6 +8,7 @@ import axios from "axios";
 type TrendingProp = {
   period: string;
   imageOrientation?: string;
+  type?: string;
 };
 
 type LoadingUIProps = {
@@ -57,7 +58,7 @@ export default function Trending(props: TrendingProp) {
       try {
         setIsLoading(true);
         const req = await axios.get(
-          `https://api.themoviedb.org/3/trending/all/${trendingPeriod}?language=en-US&api_key=c19b8e28dc3c9d900ceb4696bf2d247c`
+          `https://api.themoviedb.org/3/trending/${props.type}/${trendingPeriod}?language=en-US&api_key=c19b8e28dc3c9d900ceb4696bf2d247c`
         );
         const res = await req.data;
         setTrendingData(res.results);
@@ -74,13 +75,19 @@ export default function Trending(props: TrendingProp) {
 
   return (
     <>
-      <div className="trending-cont pl-[4%] mb-[40px] sm:pl-[3%] ">
+      <div className="trending-cont mb-[50px] flex sm:flex-col">
         <div
-          className="sec-label text-[25px] mb-[10px] font-sans font-medium text-[white] md:text-[17px]"
+          className="sec-label w-[250px] mb-[20px] "
           style={{ textShadow: "0px 3px 3px rgb(0, 0, 30, 0.8)" }}
         >
-          Trending Worldwide {props.period == "day" ? "Today" : "This Week"}{" "}
-          <Calendar />
+          <p className="font text-[25px] mb-3 font-bold text-gray-200 md:text-[17px]">
+            Top 10 {props.type == "movie" ? "Movies" : "TV Shows"}{" "}
+            {props.period == "day" ? "Today" : "This Week"}{" "}
+          </p>
+          <p className="text-[14px] font-light text-gray-300">
+            Check out this week’s most popular movies and find choose what to
+            watch.
+          </p>
         </div>
         <div
           className="scroll-container no-scrollbar"
