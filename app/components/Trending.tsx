@@ -126,8 +126,7 @@ export default function Trending(props: TrendingProp) {
                       className="object-cover rounded-md w-full h-full"
                       src={`https://floxapi.000webhostapp.com/images/?url=${result.poster_path}
                       }&width=200`}
-                      width={200}
-                      height={300}
+                      fill
                       alt=""
                     />
                   </div>
