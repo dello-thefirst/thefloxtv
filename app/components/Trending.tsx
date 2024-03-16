@@ -44,13 +44,13 @@ export default function Trending({
         const req = await axios.get(
           `https://api.themoviedb.org/3/trending/${type}/${trendingPeriod}?language=en-US`
         );
-        const res = await req.data;
-        setTrendingData(res.results);
+        setTrendingData(req.data.results);
+        if (req.status < 300) {
+          setIsLoading(false);
+        }
       } catch (error) {
         console.log(error);
         fetchData(); //retry on error...
-      } finally {
-        setIsLoading(false);
       }
     }
     fetchData();

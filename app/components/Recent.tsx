@@ -3,11 +3,8 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
-type Props = {
-  type: string;
-};
 
-function Recent(props: Props) {
+function Recent({ type }: { type: string }) {
   type RecentData = {
     status: string;
     id: number;
@@ -39,11 +36,11 @@ function Recent(props: Props) {
       try {
         setIsLoading(true);
         const req = await axios.get(
-          `https://floxapi.000webhostapp.com/recent/?type=${props.type}`
+          `https://floxapi.000webhostapp.com/recent/?type=${type}`
         );
         setRecentData(req.data);
-        if(req.status < 300) {
-          setIsLoading(false)
+        if (req.status < 300) {
+          setIsLoading(false);
         }
       } catch (error) {
         console.log(error);
@@ -51,11 +48,11 @@ function Recent(props: Props) {
       }
     }
     fetchRecent();
-  }, [props.type]);
+  }, []);
   return (
     <div className="mb-[20px]">
       <p className="title sec-label text-[20px] mb-[20px] font-normal text-[white] md:text-[17px]">
-        Recently Added {props.type == "movies" ? "Movies" : "Tv Shows"}
+        Recently Added {type == "movies" ? "Movies" : "Tv Shows"}
       </p>
 
       <div
