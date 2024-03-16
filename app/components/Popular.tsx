@@ -39,12 +39,11 @@ function Popular(props: PopularProps) {
         );
 
         setPopularData(res.data.results);
-        if (res.status === 200) {
-          setIsLoading(false);
-        }
+        setIsLoading(false)
       } catch (error) {
         console.log(error);
         setIsLoading(false)
+        getPopular();
       }
     }
     getPopular();

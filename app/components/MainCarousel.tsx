@@ -109,14 +109,12 @@ function MainCarousel() {
         const res = await axios.get(
           `https://api.themoviedb.org/3/trending/all/${trendOrder}?language=en-US&api_key=c19b8e28dc3c9d900ceb4696bf2d247c`
         );
-        if (res.status === 200) {
-          setIsLoading(false);
-        }
         setMovieData(res.data.results);
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
         fetchData();
-        console.log("trying againg...")
+        console.log("trying againg...");
       }
     }
     fetchData();
