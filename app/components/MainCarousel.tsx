@@ -110,19 +110,20 @@ function MainCarousel() {
           `https://api.themoviedb.org/3/trending/all/${trendOrder}?language=en-US&api_key=c19b8e28dc3c9d900ceb4696bf2d247c`
         );
         setMovieData(res.data.results);
-        setIsLoading(false);
       } catch (error) {
         console.log(error);
-        fetchData();
-        console.log("trying againg...");
+        fetchData(); //retry on error...
+      }finally {
+        setIsLoading(false);
       }
     }
     fetchData();
   }, []);
 
-  if (isLoading === false) {
-    return (
-      <>
+  return (
+    <>
+      {isLoading && <LoadingUiStyle />}
+      {!isLoading && (
         <div className="carousel-cont">
           <Swiper
             autoplay={{
@@ -208,10 +209,8 @@ function MainCarousel() {
             ))}
           </Swiper>
         </div>
-      </>
-    );
-  } else {
-    return <LoadingUiStyle />;
-  }
+      )}
+    </>
+  );
 }
 export default MainCarousel;

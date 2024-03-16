@@ -37,13 +37,12 @@ function Popular(props: PopularProps) {
             ? `https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=c19b8e28dc3c9d900ceb4696bf2d247c`
             : `https://api.themoviedb.org/3/tv/popular?language=en-US&page=1&api_key=c19b8e28dc3c9d900ceb4696bf2d247c`
         );
-
         setPopularData(res.data.results);
-        setIsLoading(false)
       } catch (error) {
         console.log(error);
-        setIsLoading(false)
-        getPopular();
+        getPopular(); //retry on error...
+      }finally {
+        setIsLoading(false);
       }
     }
     getPopular();

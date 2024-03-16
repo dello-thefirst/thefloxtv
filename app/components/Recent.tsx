@@ -42,10 +42,11 @@ function Recent(props: Props) {
           `https://floxapi.000webhostapp.com/recent/?type=${props.type}`
         );
         setRecentData(res.data);
-          setIsLoading(false);
       } catch (error) {
         console.log(error);
-        setIsLoading(true);
+        fetchRecent(); //retry on error...
+      }finally {
+        setIsLoading(false)
       }
     }
     fetchRecent();
