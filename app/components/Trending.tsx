@@ -118,7 +118,7 @@ export default function Trending(props: TrendingProp) {
                   </p>
                   <div
                     className="
-                  w-[200px] h-full overflow-hidden sm:w-[150px] relative translate-x-[-10px]"
+                  w-[200px] h-full overflow-hidden sm:w-[150px] relative translate-x-[-10px] cars"
                   >
                     <div className="mask group w-full h-full left-0 bottom-0 z-[2] from-[rgba(var(--background-color-1))] to-[#00000018] bg-gradient-to-t absolute center-div"></div>
 
