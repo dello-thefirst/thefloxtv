@@ -50,7 +50,7 @@ function Header({ page }: { page?: string }) {
       <header
         className={`w-full h-[60px] px-[3%] ${
           page == "home" && "absolute z-10"
-        } px-[5%] bg-gradient-to-b from-[rgba(var(--background-color-1))] via-[rgba(var(--background-color-1),0.5)] to-transparent`}
+        } px-[5%] bg-gradient-to-b from-[rgba(var(--background-color-1))] via-[rgba(var(--background-color-1),0.2)] to-transparent`}
       >
         <div className="logo-cont w-auto h-full float-left center-div">
           <Link href="/">
@@ -113,9 +113,9 @@ function Header({ page }: { page?: string }) {
 
           <nav className="md-nav hidden pr-[5%] md:block">
             <ul className="w-full flex justify-between gap-[25px]">
-              <i className="fa-light fa-magnifying-glass nav-icon text-[b8b8b8] text-[18px]"></i>
+              <i className="fa-light fa-magnifying-glass nav-icon text-white text-[18px]"></i>
               <i
-                className="fa-light fa-bars nav-icon text-[b8b8b8] text-[18px]"
+                className="fa-light fa-bars nav-icon text-wite text-[18px]"
                 onClick={toggleSideNav}
               ></i>
             </ul>
