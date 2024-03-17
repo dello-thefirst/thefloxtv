@@ -8,6 +8,12 @@ import Logo from "@/app/logo.svg";
 function Header({ page }: { page?: string }) {
   //..
   const [searchValue, setSearchValue] = useState<string>("");
+  const [isToggledNav, setIsToggledNav] = useState(false);
+
+  function toggleSideNav() {
+    if (isToggledNav) setIsToggledNav(false);
+    else setIsToggledNav(true);
+  }
   const search = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
     setSearchValue(inputValue);
@@ -15,9 +21,35 @@ function Header({ page }: { page?: string }) {
 
   return (
     <>
+      <div
+        className={`w-full h-screen bg-black bg-opacity-75 fixed top-0 left-0 z-30 p-[10%] ${
+          isToggledNav ? "translate-x-0" : "translate-x-[-100%]"
+        } transition-all duration-300`}
+      >
+        <i
+          onClick={toggleSideNav}
+          className="fa-solid fa-xmark-large absolute right-[10%]"
+        ></i>
+        <nav className="w-full h-full center-div">
+          <ul className="text-[18px] font-light text-[b8b8b8] flex flex-col gap-[30px] text-center">
+            <li className="">
+              <Link href="/">Home</Link>
+            </li>
+            <li className="">
+              <Link href="/tvshows">TV Shows</Link>
+            </li>
+            <li className="">
+              <Link href="/movies">Movies</Link>
+            </li>
+            <li className="">
+              <Link href="/movies">Trending</Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
       <header
         className={`w-full h-[60px] px-[3%] ${
-          page == "home" && "absolute z-[20]"
+          page == "home" && "absolute z-10"
         } px-[5%]`}
         style={{
           backgroundImage:
@@ -59,15 +91,15 @@ function Header({ page }: { page?: string }) {
           <div
             id="searchresult"
             tabIndex={0}
-            className="dropdown-content w-full max-h-[50vh] absolute top-[50px] left-0 overflow-y-scroll overflow-x-hidden bg-[rgb(var(--background-color-2), 0.2)] backdrop-blur-[60px] rounded-md px-[5%] z-[10]"
+            className="dropdown-content w-full max-h-[50vh] absolute top-[50px] left-0 overflow-y-scroll shadow-2xl overflow-x-hidden bg-[rgb(var(--background-color-2), 0.2)] backdrop-blur-[60px] rounded-md px-[5%] z-[10]"
           >
             <LivesearchResult query={searchValue} />
           </div>
         </div>
 
         <div className="right-section center-div float-right h-full flex">
-          <nav className="w-ful sm:hidden">
-            <ul className="w-full flex justify-between gap-[25px] tracking-wider">
+          <nav className="nav w-full">
+            <ul className="w-full flex justify-between gap-[25px] tracking-wider md:hidden">
               <li className="text-[12px] font-light text-[b8b8b8]">
                 <Link href="/">Home</Link>
               </li>
@@ -82,10 +114,14 @@ function Header({ page }: { page?: string }) {
               </li>
             </ul>
           </nav>
-          <nav className="sm-nav hidden pr-[5%] sm:block">
+
+          <nav className="md-nav hidden pr-[5%] md:block">
             <ul className="w-full flex justify-between gap-[25px]">
-              <i className="fa-light fa-magnifying-glass nav-icon text-[b8b8b8] text-[15px]"></i>
-              <i className="fa-light fa-bars nav-icon text-[b8b8b8] text-[15px]"></i>
+              <i className="fa-light fa-magnifying-glass nav-icon text-[b8b8b8] text-[18px]"></i>
+              <i
+                className="fa-light fa-bars nav-icon text-[b8b8b8] text-[18px]"
+                onClick={toggleSideNav}
+              ></i>
             </ul>
           </nav>
         </div>

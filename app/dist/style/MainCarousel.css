@@ -120,7 +120,7 @@
   position: absolute;
   background: linear-gradient(
     to right,
-    rgb(var(--background-color-1), 0.7),
+    rgb(var(--background-color-1), 0.8),
     rgba(var(--background-color-1), 0.03),
     rgba(0, 0, 0, 0)
   );

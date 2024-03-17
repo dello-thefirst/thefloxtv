@@ -73,7 +73,7 @@ export default function Trending({
             {period == "day" ? "Today" : "This Week"}{" "}
           </p>
           <p className="text-[14px] font-light text-gray-300">
-            Check out this week’s most popular movies and find choose what to
+            Check out this week’s most popular {type == "movie" ? "Movies" : "TV Shows"} and find choose what to
             watch.
           </p>
         </div>
