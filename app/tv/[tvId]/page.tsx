@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "@/app/components/Header";
-import "@/app/dist/style/Header.css";
 import "@/app/dist/style/Stream.css";
 
 interface PageParams {
