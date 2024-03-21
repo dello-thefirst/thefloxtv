@@ -1,22 +1,21 @@
 "use client";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { MovieDataProps } from "./Functions";
 import { getTrendingList } from "../functions/tmdb";
-import axios from "axios";
 
 export function LoadingUI() {
-  let listIterator = 1;
+  let uiIterator = 1;
   const uiArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   return uiArray.map((ui) => (
     <div
       className="item w-auto h-[280px] mr-[10px] flex relative sm:h-[210px] sm:mr-[8px]"
       style={{ flex: "0 0 auto" }}
-      key={listIterator}
+      key={uiIterator}
     >
       <p className="list-number w-auto h-full center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff1e] sm:text-[100px]">
-        {listIterator++}
+        {uiIterator++}
       </p>
       <div
         className="
@@ -34,26 +33,22 @@ export default function Trending({
   type: string;
 }) {
   let listIterator = 1;
-  let shouldLog = useRef(true);
   const [trendingData, setTrendingData] = useState<MovieDataProps[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (shouldLog.current) {
-      shouldLog.current = false;
-      const request = async () => {
-        try {
-          setIsLoading(true);
-          const res = await getTrendingList(period, type);
-          setTrendingData(res);
-          setIsLoading(false);
-          console.log("hey");
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      request();
-    }
+    const request = async () => {
+      try {
+        setIsLoading(true);
+        const res = await getTrendingList(period, type);
+        setTrendingData(res);
+        setIsLoading(false);
+        console.log("hey");
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    request();
   }, []);
 
   return (
