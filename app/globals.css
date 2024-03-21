@@ -27,12 +27,12 @@ body {
 }
 
 body::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
   background-color: rgb(var(--background-color-1)) !important;
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: rgb(255, 3, 62) !important;
+  background-color: rgb(87, 86, 86) !important;
   border-radius: 10px;
 }
 

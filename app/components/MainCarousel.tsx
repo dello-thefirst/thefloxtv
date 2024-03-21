@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import MovieLogo from "./MovieLogo";
-import "@/app/dist/style/MainCarousel.css";
+import "@/app/MainCarousel.css";
 import Image from "next/image";
 import axios from "axios";
 import { MovieDataProps, getWordRange, getLetterRange } from "./Functions";
@@ -53,7 +53,7 @@ export default function MainCarouse() {
   const [deviceHeight, setDeviceHeight] = useState(1200);
   const [isLoading, setIsLoading] = useState(false);
   const [movieData, setMovieData] = useState<MovieDataProps[]>([]);
-  const [trendOrder, setTrendOrder] = useState("week");
+  const [trendOrder, setTrendOrder] = useState("day");
 
   useEffect(() => {
     const fetchData = async () => {

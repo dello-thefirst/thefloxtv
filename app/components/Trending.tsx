@@ -1,25 +1,29 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import axios from "axios";
 import { MovieDataProps } from "./Functions";
+import { getTrendingList } from "../functions/tmdb";
+import axios from "axios";
 
-export function LoadingUI({ iterator }: { iterator: number }) {
-  return (
+export function LoadingUI() {
+  let listIterator = 1;
+  const uiArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  return uiArray.map((ui) => (
     <div
       className="item w-auto h-[280px] mr-[10px] flex relative sm:h-[210px] sm:mr-[8px]"
       style={{ flex: "0 0 auto" }}
+      key={listIterator}
     >
       <p className="list-number w-auto h-full center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff1e] sm:text-[100px]">
-        {iterator}
+        {listIterator++}
       </p>
       <div
         className="
                   w-[200px] h-[270px] bg-[rgb(var(--background-color-2))] overflow-hidden sm:w-[150px] relative translate-x-[-10px] sm:h-[200px]"
       ></div>
     </div>
-  );
+  ));
 }
 
 export default function Trending({
@@ -29,37 +33,28 @@ export default function Trending({
   period: string;
   type: string;
 }) {
-  //...
-  const [trendingPeriod, setTrendingPeriod] = useState(period);
-  const [trendingData, setTrendingData] = useState<MovieDataProps[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
   let listIterator = 1;
+  let shouldLog = useRef(true);
+  const [trendingData, setTrendingData] = useState<MovieDataProps[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        setIsLoading(true);
-        const req = await axios.get(
-          `https://api.themoviedb.org/3/trending/${type}/${trendingPeriod}?language=en-US`,
-          {
-            headers: {
-              Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTliOGUyOGRjM2M5ZDkwMGNlYjQ2OTZiZjJkMjQ3YyIsInN1YiI6IjY1MDA0ZDIwNmEyMjI3MDBjM2I2MDM3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DNP1HXf6xyRe_8C7rR7fljfalpmJZgcry6JN8xLwk8E",
-            },
-          }
-        );
-        setTrendingData(req.data.results);
-        if (req.status < 300) {
+    if (shouldLog.current) {
+      shouldLog.current = false;
+      const request = async () => {
+        try {
+          setIsLoading(true);
+          const res = await getTrendingList(period, type);
+          setTrendingData(res);
           setIsLoading(false);
+          console.log("hey");
+        } catch (error) {
+          console.log(error);
         }
-      } catch (error) {
-        console.log(error);
-        fetchData(); //retry on error...
-      }
+      };
+      request();
     }
-    fetchData();
-  }, [trendingPeriod]);
-  //...
+  }, []);
 
   return (
     <>
@@ -73,7 +68,8 @@ export default function Trending({
             {period == "day" ? "Today" : "This Week"}{" "}
           </p>
           <p className="text-[14px] font-light text-gray-300">
-            Check out this week’s most popular {type == "movie" ? "Movies" : "TV Shows"} and find choose what to
+            Check out this week’s most popular{" "}
+            {type == "movie" ? "Movies" : "TV Shows"} and find choose what to
             watch.
           </p>
         </div>
@@ -87,7 +83,8 @@ export default function Trending({
             overflowX: "scroll",
           }}
         >
-          {!isLoading ? (
+          {isLoading && <LoadingUI />}
+          {!isLoading &&
             trendingData.map((result) => (
               <Link
                 key={result.id}
@@ -119,21 +116,7 @@ export default function Trending({
                   </div>
                 </div>
               </Link>
-            ))
-          ) : (
-            <>
-              <LoadingUI iterator={1} />
-              <LoadingUI iterator={2} />
-              <LoadingUI iterator={3} />
-              <LoadingUI iterator={4} />
-              <LoadingUI iterator={5} />
-              <LoadingUI iterator={6} />
-              <LoadingUI iterator={7} />
-              <LoadingUI iterator={8} />
-              <LoadingUI iterator={9} />
-              <LoadingUI iterator={10} />
-            </>
-          )}
+            ))}
         </div>
       </div>
     </>

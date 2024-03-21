@@ -1,7 +1,15 @@
-import React from "react";
+"use client";
+import React, { useEffect, useRef } from "react";
 
-function page() {
-  return <div>page</div>;
-}
+const page = () => {
+  let shouldLog = useRef(true);
+  useEffect(() => {
+    if (shouldLog.current) {
+      shouldLog.current = false;
+      console.log("hello world");
+    }
+  });
+  return <div>Hey</div>;
+};
 
 export default page;
