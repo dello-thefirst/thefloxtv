@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 
-const page = () => {
+const Page = () => {
   let shouldLog = useRef(true);
   useEffect(() => {
     if (shouldLog.current) {
@@ -12,4 +12,4 @@ const page = () => {
   return <div>Hey</div>;
 };
 
-export default page;
+export default Page;
