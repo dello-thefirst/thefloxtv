@@ -3,7 +3,7 @@ import Header from "@/app/components/Header";
 import { uploadMovie } from "@/app/functions/admin";
 import { useState } from "react";
 
-const page = () => {
+const Page = () => {
   const [isLoading, setIsLoading] = useState(false);
   const handleAdd = async (formData: FormData) => {
     const tmdb_id = await formData.get("id");
@@ -47,4 +47,4 @@ const page = () => {
     </>
   );
 };
-export default page;
+export default Page;
