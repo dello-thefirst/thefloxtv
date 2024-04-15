@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import axios from "axios";
 
-function page() {
+function Admin() {
   //...
   const [movieIdList, setMovieIdList] = useState([]);
   const [iterator, setIterator] = useState(0);
@@ -46,4 +46,4 @@ function page() {
   );
 }
 
-export default page;
+export default Admin;
