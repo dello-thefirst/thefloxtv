@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { MovieDataType } from "../types/movie";
 import Image from "next/image";
 import Link from "next/link";
-import { MovieDataProps } from "./Functions";
-import { getTrendingList } from "../functions/tmdb";
+import axios from "axios";
 
 export function LoadingUI() {
   let uiIterator = 1;
@@ -33,19 +33,28 @@ export default function Trending({
   type: string;
 }) {
   let listIterator = 1;
-  const [trendingData, setTrendingData] = useState<MovieDataProps[]>([]);
+  const [trendingData, setTrendingData] = useState<MovieDataType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const request = async () => {
       try {
         setIsLoading(true);
-        const res = await getTrendingList(period, type);
-        setTrendingData(res);
+        const res = await axios.get(
+          `https://api.themoviedb.org/3/trending/${type}/${period}?language=en-US`,
+          {
+            headers: {
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTliOGUyOGRjM2M5ZDkwMGNlYjQ2OTZiZjJkMjQ3YyIsInN1YiI6IjY1MDA0ZDIwNmEyMjI3MDBjM2I2MDM3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DNP1HXf6xyRe_8C7rR7fljfalpmJZgcry6JN8xLwk8E",
+            },
+          }
+        );
+        setTrendingData(res.data.results);
         setIsLoading(false);
         console.log("hey");
       } catch (error) {
         console.log(error);
+        request();
       }
     };
     request();
@@ -105,7 +114,8 @@ export default function Trending({
                     <Image
                       className="object-cover rounded-md w-full h-full"
                       src={`https://themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`}
-                      fill
+                      width={220}
+                      height={330}
                       alt=""
                     />
                   </div>

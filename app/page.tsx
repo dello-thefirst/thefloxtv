@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import Header from "./components/Header";
 import MainCarousel from "./components/MainCarousel";
 import Trending from "./components/Trending";

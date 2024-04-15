@@ -9,10 +9,16 @@ function Header({ page }: { page?: string }) {
   //..
   const [searchValue, setSearchValue] = useState<string>("");
   const [isToggledNav, setIsToggledNav] = useState(false);
+  const [isSearchToggled, setIsSearchToggled] = useState(false);
 
   function toggleSideNav() {
     if (isToggledNav) setIsToggledNav(false);
     else setIsToggledNav(true);
+  }
+
+  function toggleSearchBar() {
+    if (isSearchToggled) setIsSearchToggled(false);
+    else setIsSearchToggled(true);
   }
   const search = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
@@ -59,15 +65,15 @@ function Header({ page }: { page?: string }) {
         </div>
 
         <div
-          className={
-            "focused search-bar center-div dropdown w-[40%] h-full float-left mx-[20px] relative sm:hidden"
-          }
+          className={`focused search-bar center-div dropdown w-[40%] h-full float-left mx-[20px] relative sm:fixed sm:w-full sm:top-0 sm:right-0 sm:mx-0 sm:items-start sm:py-[90px] sm:px-10 sm:bg-black/70 backdrop-blur-md ${
+            !isSearchToggled ? "sm:hidden" : ""
+          }`}
           id="searchBar"
         >
           <form
             action="/search"
             method="GET"
-            className="center-div w-full h-[34px] flex rounded-md bg-[#7c7c7c2c] drop-shadow-xl backdrop-blur-[30px]"
+            className="center-div w-full h-[34px] flex rounded-md bg-[#7c7c7c2c] shadow-2xl backdrop-blur-[30px]"
           >
             <div className="search-rep-ico center-div w-[8%] h-full text-[13px] text-gray-400">
               <i className="fa-light fa-magnifying-glass"></i>
@@ -87,7 +93,7 @@ function Header({ page }: { page?: string }) {
           <div
             id="searchresult"
             tabIndex={0}
-            className="dropdown-content w-full max-h-[50vh] absolute top-[50px] left-0 overflow-y-scroll shadow-2xl overflow-x-hidden bg-[rgb(var(--background-color-2), 0.2)] backdrop-blur-[60px] rounded-md px-[5%] z-[10]"
+            className="dropdown-content w-full max-h-[50vh] absolute top-[50px] left-0 overflow-y-scroll shadow-2xl overflow-x-hidden bg-[rgb(var(--background-color-2), 0.2)] backdrop-blur-[60px] rounded-md px-[5%] z-[10] sm:static sm:top-[150px] sm:z-0 sm:w-[90%] sm:left-[5%] sm:rounded-lg sm:max-h-[70vh] sm:py-2"
           >
             <LivesearchResult query={searchValue} />
           </div>
@@ -113,7 +119,10 @@ function Header({ page }: { page?: string }) {
 
           <nav className="md-nav hidden pr-[5%] md:block">
             <ul className="w-full flex justify-between gap-[25px]">
-              <i className="fa-light fa-magnifying-glass nav-icon text-white text-[18px]"></i>
+              <i
+                className="fa-light fa-magnifying-glass nav-icon text-white text-[18px]"
+                onClick={toggleSearchBar}
+              ></i>
               <i
                 className="fa-light fa-bars nav-icon text-wite text-[18px]"
                 onClick={toggleSideNav}

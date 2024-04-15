@@ -17,15 +17,23 @@ export async function POST(req: Request) {
         title: movieData.title,
         imdb_id: movieData.imdb_id,
         tmdb_id: tmdb_id,
-        year: parseInt(movieData.release_date.slice(0, 4)) ?? 2022,
+        year: movieData.release_date
+          ? parseInt(movieData.release_date.slice(0, 4))
+          : null,
         duration: movieData.runtime,
         rating: movieData.vote_average,
         poster_path: movieData.poster_path,
         backdrop_path: movieData.backdrop_path,
-        backdrop_path_2: movieData.images.backdrops[0].file_path,
+        backdrop_path_2: movieData.images?.backdrops[0]?.file_path
+          ? movieData.images.backdrops[0].file_path
+          : movieData.backdrop_path,
         overview: movieData.overview,
-        genres: movieData.genres.map((genre: { name: string[] }) => genre.name),
-        trailer_path: movieData.trailers.youtube[0].source,
+        genres: movieData.genres
+          ? movieData.genres.map((genre: { name: string[] }) => genre.name)
+          : [],
+        trailer_path: movieData.trailers?.youtube[0]?.source
+          ? movieData.trailers.youtube[0].sourcecfc 
+          : null,
         certification: "?",
         media_type: "movie",
       },
@@ -37,9 +45,9 @@ export async function POST(req: Request) {
     });
   } catch (error) {
     console.error(error);
-    return new Response(JSON.stringify({ message: "An error occured" }), {
+    return new Response(JSON.stringify({ error: error }), {
       status: 400,
-      statusText: "An Error Occured",
+      statusText: "Api Error",
       headers: { "Content-Type": "application/json" },
     });
   } finally {

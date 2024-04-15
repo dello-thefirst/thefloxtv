@@ -36,7 +36,7 @@ export function LoadingUiStyle() {
                 <p className="skeleton w-[90px] h-3 rounded-none"></p>
               </div>
               <div className="md:hidden">
-                <p className=" skeleton w-full h-3 rounded-none"></p>
+                <p className="skeleton w-full h-3 rounded-none"></p>
                 <p className=" skeleton w-full h-3 rounded-none "></p>
                 <p className=" skeleton w-full h-3 rounded-none "></p>
               </div>
@@ -53,14 +53,13 @@ export default function MainCarouse() {
   const [deviceHeight, setDeviceHeight] = useState(1200);
   const [isLoading, setIsLoading] = useState(false);
   const [movieData, setMovieData] = useState<MovieDataProps[]>([]);
-  const [trendOrder, setTrendOrder] = useState("day");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
         const req = await axios.get(
-          `https://api.themoviedb.org/3/trending/all/${trendOrder}?language=en-US`,
+          `https://api.themoviedb.org/3/trending/all/day?language=en-US`,
           {
             headers: {
               Authorization:
@@ -69,12 +68,10 @@ export default function MainCarouse() {
           }
         );
         setMovieData(req.data.results);
-        if (req.status < 300) {
-          setIsLoading(false);
-        }
       } catch (error) {
         console.log(error);
-        fetchData();
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchData();
