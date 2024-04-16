@@ -46,7 +46,7 @@ export default function RootLayout({
       <body data-theme="">
         <Providers>
           <NextTopLoader
-            color="rebeccapurple"
+            color="red"
             initialPosition={0.08}
             crawlSpeed={200}
             height={2}
