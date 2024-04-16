@@ -65,7 +65,7 @@ function Header({ page }: { page?: string }) {
         </div>
 
         <div
-          className={`focused search-bar center-div dropdown w-[40%] h-full float-left mx-[20px] relative sm:fixed sm:w-full sm:top-0 sm:right-0 sm:mx-0 sm:items-start sm:py-[90px] sm:px-10 sm:bg-black/70 backdrop-blur-md ${
+          className={`focused search-bar center-div dropdown w-[40%] h-full float-left mx-[20px] relative sm:fixed sm:w-full sm:top-0 sm:right-0 sm:mx-0 sm:items-start sm:py-[90px] sm:px-5 sm:bg-black/70 backdrop-blur-md ${
             !isSearchToggled ? "sm:hidden" : ""
           }`}
           id="searchBar"
@@ -73,9 +73,9 @@ function Header({ page }: { page?: string }) {
           <form
             action="/search"
             method="GET"
-            className="center-div w-full h-[34px] flex rounded-md bg-[#7c7c7c2c] shadow-2xl backdrop-blur-[30px]"
+            className="center-div w-full h-[34px] sm:h-[40px] sm:rounded-lg flex rounded-md bg-[#7c7c7c2c] sm:bg-black shadow-2xl backdrop-blur-[30px]"
           >
-            <div className="search-rep-ico center-div w-[8%] h-full text-[13px] text-gray-400">
+            <div className="search-rep-ico center-div w-[8%] sm:w-[12%] h-full text-[13px] text-gray-400">
               <i className="fa-light fa-magnifying-glass"></i>
             </div>
             <input
@@ -93,7 +93,7 @@ function Header({ page }: { page?: string }) {
           <div
             id="searchresult"
             tabIndex={0}
-            className="dropdown-content w-full max-h-[50vh] absolute top-[50px] left-0 overflow-y-scroll shadow-2xl overflow-x-hidden bg-[rgb(var(--background-color-2), 0.2)] backdrop-blur-[60px] rounded-md px-[5%] z-[10] sm:static sm:top-[150px] sm:z-0 sm:w-[90%] sm:left-[5%] sm:rounded-lg sm:max-h-[70vh] sm:py-2"
+            className="dropdown-content w-full max-h-[50vh] absolute top-[50px] left-0 overflow-y-scroll shadow-2xl overflow-x-hidden bg-[rgb(var(--background-color-2), 0.2)] backdrop-blur-[60px] rounded-md px-[5%] sm:bg-black z-[10] sm:static sm:top-[150px] sm:z-0 sm:w-[90%] sm:left-[5%] sm:rounded-2xl sm:max-h-[70vh] sm:py-2"
           >
             <LivesearchResult query={searchValue} />
           </div>
@@ -124,7 +124,7 @@ function Header({ page }: { page?: string }) {
                 onClick={toggleSearchBar}
               ></i>
               <i
-                className="fa-light fa-bars nav-icon text-wite text-[18px]"
+                className="fa-light fa-bars nav-icon text-white text-[18px]"
                 onClick={toggleSideNav}
               ></i>
             </ul>
