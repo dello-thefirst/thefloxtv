@@ -7,7 +7,7 @@ export async function GET(req: Request) {
     return new Response(JSON.stringify(user), {
       status: 200,
       statusText: "OK",
-      headers: {
+      headers: { 
         "Content-Type": "application/json",
       },
     });
