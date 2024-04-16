@@ -51,10 +51,8 @@ export default function Trending({
         );
         setTrendingData(res.data.results);
         setIsLoading(false);
-        console.log("hey");
       } catch (error) {
         console.log(error);
-        request();
       }
     };
     request();
