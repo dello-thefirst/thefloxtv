@@ -70,10 +70,11 @@ function Header({ page }: { page?: string }) {
           }`}
           id="searchBar"
         >
+          <i className="fa-regular fa-xmark-large text-white absolute top-5 right-5 text-[15px]" onClick={toggleSearchBar}></i>
           <form
             action="/search"
             method="GET"
-            className="center-div w-full h-[34px] sm:h-[40px] sm:rounded-lg flex rounded-md bg-[#7c7c7c2c] sm:bg-black shadow-2xl backdrop-blur-[30px]"
+            className="center-div w-full h-[34px] sm:h-[40px] sm:rounded-lg flex rounded-md sm:rounded-2xl bg-[#7c7c7c2c] sm:bg-black shadow-2xl backdrop-blur-[30px]"
           >
             <div className="search-rep-ico center-div w-[8%] sm:w-[12%] h-full text-[13px] text-gray-400">
               <i className="fa-light fa-magnifying-glass"></i>
