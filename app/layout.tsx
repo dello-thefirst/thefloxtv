@@ -49,7 +49,7 @@ export default function RootLayout({
             color="red"
             initialPosition={0.08}
             crawlSpeed={200}
-            height={3}
+            height={2.1}
             crawl={true}
             showSpinner={false}
             easing="ease"

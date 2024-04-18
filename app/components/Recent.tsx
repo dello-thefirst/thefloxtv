@@ -32,18 +32,6 @@ function Recent({ type }: { type: string }) {
     poster_path: string;
     backdrop_path: string;
     year: string;
-    //...
-    idMovie: number;
-    idSeries: number;
-    tmdbMovie: number;
-    tmdbSeries: number;
-    titleMovie: string;
-    nameSeries: string;
-    bannerMovie: string;
-    bannerSeries: string;
-    bannerMovieL: string;
-    bannerSeriesL: string;
-    yearMovie: string;
   };
   const [recentData, setRecentData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -54,9 +42,10 @@ function Recent({ type }: { type: string }) {
         setIsLoading(true);
         const req = await axios.get(`/api/movies/recent`);
         setRecentData(req.data);
-        setIsLoading(false);
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     }
     fetchRecent();
@@ -94,7 +83,7 @@ function Recent({ type }: { type: string }) {
                 <div className="w-[160px] h-[240px] overflow-hidden sm:w-[130px] sm:h-[190px] relative">
                   <Image
                     className="object-cover w-full h-full rounded-md"
-                    src={`https://floxapi.000webhostapp.com/images/?url=${result.poster_path}&width=200`}
+                    src={`https://themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`}
                     width={200}
                     height={300}
                     alt=""
