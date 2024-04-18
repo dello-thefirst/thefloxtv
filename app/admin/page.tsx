@@ -19,10 +19,13 @@ function Admin() {
       try {
         const res = await axios.post(`/api/movies?id=${id}`);
         console.log(res.data);
+        if (res.status < 300) {
+          completedTransfers.push(id);
+          postData(movieIdList[completedTransfers.length]);
+        }
+      } catch (error) {
         completedTransfers.push(id);
         postData(movieIdList[completedTransfers.length]);
-      } catch (error) {
-        alert(error);
       }
     }
 

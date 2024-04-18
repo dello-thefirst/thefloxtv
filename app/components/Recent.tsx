@@ -4,14 +4,33 @@ import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
 
+const loadingSkeletonClass =
+  "overflow-hidden rounded-md mr-2  w-[160px] h-[240px] sm:w-[130px] sm:h-[190px] sm:mr-1";
+
+export function LoadingSkeleton() {
+  let uiKey = 1;
+  return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((ui) => (
+    <>
+      <div
+        className={`skeleton ${loadingSkeletonClass}`}
+        key={uiKey++}
+        style={{ flex: "0 0 auto" }}
+      ></div>
+    </>
+  ));
+}
+
 function Recent({ type }: { type: string }) {
   type RecentData = {
     status: string;
     id: number;
     title: string;
     name: string;
+    tmdb_id: string;
+    imdb_id: string;
     media_type: string;
     poster_path: string;
+    backdrop_path: string;
     year: string;
     //...
     idMovie: number;
@@ -29,15 +48,11 @@ function Recent({ type }: { type: string }) {
   const [recentData, setRecentData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const loadingSkeletonClass =
-    "bg-[rgb(var(--background-color-2))] overflow-hidden rounded-md mr-2  w-[160px] h-[240px] sm:w-[130px] sm:h-[190px] sm:mr-1";
   useEffect(() => {
     async function fetchRecent() {
       try {
         setIsLoading(true);
-        const req = await axios.get(
-          `https://floxapi.000webhostapp.com/recent/?type=${type}`
-        );
+        const req = await axios.get(`/api/movies/recent`);
         setRecentData(req.data);
         setIsLoading(false);
       } catch (error) {
@@ -67,12 +82,10 @@ function Recent({ type }: { type: string }) {
             <Link
               href={
                 result.media_type == "movie"
-                  ? `/movies/${result.tmdbMovie}`
-                  : `/tv/${result.tmdbSeries}`
+                  ? `/movies/${result.tmdb_id}`
+                  : `/tv/${result.tmdb_id}`
               }
-              key={
-                result.media_type == "movie" ? result.idMovie : result.idSeries
-              }
+              key={result.id}
             >
               <div
                 className="overflow-hidden mr-2 sm:mr-1"
@@ -81,64 +94,21 @@ function Recent({ type }: { type: string }) {
                 <div className="w-[160px] h-[240px] overflow-hidden sm:w-[130px] sm:h-[190px] relative">
                   <Image
                     className="object-cover w-full h-full rounded-md"
-                    src={`https://floxapi.000webhostapp.com/images/?url=${
-                      result.media_type == "movie"
-                        ? result.bannerMovie
-                        : result.bannerSeries
-                    }&width=200`}
+                    src={`https://floxapi.000webhostapp.com/images/?url=${result.poster_path}&width=200`}
                     width={200}
                     height={300}
                     alt=""
                   />
                 </div>
                 <p className="text-[16px] text-gray-400 font-sans font-normal my-2 pr-2 sm:text-[13px]">
-                  {result.media_type == "movie"
-                    ? result.titleMovie
-                    : result.nameSeries}
+                  {result.media_type == "movie" ? result.title : result.name}
                 </p>
               </div>
             </Link>
           ))
         ) : (
           //Loading skeleton...
-          <>
-            <div
-              className={loadingSkeletonClass}
-              style={{ flex: "0 0 auto" }}
-            ></div>
-            <div
-              className={loadingSkeletonClass}
-              style={{ flex: "0 0 auto" }}
-            ></div>
-            <div
-              className={loadingSkeletonClass}
-              style={{ flex: "0 0 auto" }}
-            ></div>
-            <div
-              className={loadingSkeletonClass}
-              style={{ flex: "0 0 auto" }}
-            ></div>
-            <div
-              className={loadingSkeletonClass}
-              style={{ flex: "0 0 auto" }}
-            ></div>
-            <div
-              className={loadingSkeletonClass}
-              style={{ flex: "0 0 auto" }}
-            ></div>
-            <div
-              className={loadingSkeletonClass}
-              style={{ flex: "0 0 auto" }}
-            ></div>
-            <div
-              className={loadingSkeletonClass}
-              style={{ flex: "0 0 auto" }}
-            ></div>
-            <div
-              className={loadingSkeletonClass}
-              style={{ flex: "0 0 auto" }}
-            ></div>
-          </>
+          <LoadingSkeleton />
         )}
       </div>
     </div>
