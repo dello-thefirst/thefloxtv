@@ -65,7 +65,7 @@ function Header({ page }: { page?: string }) {
         </div>
 
         <div
-          className={`focused search-bar center-div dropdown w-[40%] h-full float-left mx-[20px] relative sm:fixed sm:w-full sm:top-0 sm:right-0 sm:mx-0 sm:items-start sm:py-[90px] sm:px-5 sm:bg-black/20 backdrop-blur-md ${
+          className={`focused search-bar center-div dropdown w-[40%] h-full float-left mx-[20px] relative sm:fixed sm:w-full sm:top-0 sm:right-0 sm:mx-0 sm:items-start sm:py-[90px] sm:px-5 sm:bg-black/20 sm:backdrop-blur-md ${
             !isSearchToggled ? "sm:hidden" : ""
           }`}
           id="searchBar"
@@ -74,7 +74,7 @@ function Header({ page }: { page?: string }) {
           <form
             action="/search"
             method="GET"
-            className="center-div w-full h-[34px] sm:h-[40px] flex rounded-md sm:rounded-2xl bg-[#7c7c7c2c] sm:border sm:bg-black shadow-2xl backdrop-blur-[30px]"
+            className="center-div w-full h-[34px] sm:h-[40px] flex rounded-md sm:rounded-2xl bg-[#7c7c7c2c] sm:border sm:bg-black shadow-2xl sm:backdrop-blur-[30px]"
           >
             <div className="search-rep-ico center-div w-[8%] sm:w-[12%] h-full text-[13px] text-gray-400">
               <i className="fa-light fa-magnifying-glass"></i>
