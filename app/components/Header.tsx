@@ -65,12 +65,17 @@ function Header({ page }: { page?: string }) {
         </div>
 
         <div
-          className={`focused search-bar center-div dropdown w-[40%] h-full float-left mx-[20px] relative sm:fixed sm:w-full sm:top-0 sm:right-0 sm:mx-0 sm:items-start sm:py-[90px] sm:px-5 sm:bg-black/20 sm:backdrop-blur-md ${
+          className={`focused search-bar center-div dropdown w-[40%] h-full float-left mx-[20px] relative sm:fixed sm:w-full sm:top-0 sm:right-0 sm:mx-0 sm:items-start sm:py-[90px] sm:px-5 sm:bg-gray-700/20 sm:backdrop-blur-md ${
             !isSearchToggled ? "sm:hidden" : ""
           }`}
           id="searchBar"
         >
-          <i className="fa-regular fa-xmark-large text-white absolute top-5 right-5 text-[15px]" onClick={toggleSearchBar}></i>
+          <div className="hidden sm:block  text-white absolute top-5 right-5 text-[15px]">
+            <i
+              className="fa-regular fa-xmark-large"
+              onClick={toggleSearchBar}
+            ></i>
+          </div>
           <form
             action="/search"
             method="GET"
