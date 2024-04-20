@@ -49,9 +49,9 @@ function Movie({ params }: PageParams) {
   return (
     <>
       <Header page={`watch-${params.movieId}`} />
-      <main className="main-container w-full flex px-[3%] py-3">
-        <div className="movie-container-left w-[70%]">
-          <div className="screen w-full h-[500px] rounded-2xl overflow-hidden mb-3 relative">
+      <main className="main-container w-full flex sm:flex-col px-[3%] py-3">
+        <div className="movie-container-left w-[70%] sm:w-full">
+          <div className="screen w-full h-[500px] sm:h-[200px] rounded-2xl overflow-hidden mb-3 relative">
             {hasStartedPlaying ? (
               <iframe
                 className="w-full h-full"

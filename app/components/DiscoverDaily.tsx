@@ -6,6 +6,7 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import axios from "axios";
 import Image from "next/image";
+import { MovieDataProps, getWordRange, getLetterRange } from "./Functions";
 
 export function LoadingUiStyle() {
   return (
@@ -15,18 +16,10 @@ export function LoadingUiStyle() {
   );
 }
 
-interface MovieDataProps {
-  id: number;
-  title: string;
-  backdrop_path: string;
-}
-
 function DiscoverDaily() {
   const [isLoading, setIsLoading] = useState(false);
   const [movieData, setMovieData] = useState<MovieDataProps[]>([]);
-  if (typeof window !== "undefined") {
-    const deviceWidth = window.innerWidth;
-  }
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -80,7 +73,24 @@ function DiscoverDaily() {
                 Trending Today
               </div>
               <div className="inner w-full h-full  relative">
-                <div className="rounded-2xl absolute z-2 top-0 mask w-full h-full bg-gradient-to-r from-slate-950/70 to-[#b4b4b412]"></div>
+                <div className="rounded-2xl absolute z-2 top-0 mask w-full h-full bg-gradient-to-r from-slate-950/70 to-[#b4b4b412] p-3">
+                  <div>
+                    <p className="text-[22px] font-thin word sm:text-[18px]">
+                      {result.media_type == "movie"
+                        ? getLetterRange(result.release_date, 4)
+                        : getLetterRange(result.first_air_date, 4)}
+                        &nbsp;
+                        &middot;
+                        &nbsp;
+                        {result.media_type == "movie" ? `Movie` : "TV"}
+                    </p>
+                    <p className="text-[20px] font-semibold text-gray-300">
+                      {result.media_type == "movie"
+                        ? getWordRange(result.title, 3)
+                        : getWordRange(result.name, 3)}
+                    </p>
+                  </div>
+                </div>
                 <Image
                   className="w-full h-full object-cover rounded-2xl"
                   src={`https://themoviedb.org/t/p/w500_and_h282_face${result.backdrop_path}`}
