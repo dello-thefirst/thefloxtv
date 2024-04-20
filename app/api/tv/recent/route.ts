@@ -4,7 +4,7 @@ export async function GET() {
   try {
     const getRecentMovies = await prisma.series.findMany({
       skip: 0,
-      take: 10,
+      take: 11,
       orderBy: {
         id: "desc",
       },
