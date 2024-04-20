@@ -40,7 +40,7 @@ function Recent({ type }: { type: string }) {
     async function fetchRecent() {
       try {
         setIsLoading(true);
-        const req = await axios.get(`/api/movies/recent`);
+        const req = await axios.get(`/api/${type}/recent`);
         setRecentData(req.data);
       } catch (error) {
         console.log(error);

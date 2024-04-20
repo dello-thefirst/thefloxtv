@@ -33,10 +33,10 @@ export const getSeriesData = async (tmdb_id: string | null) => {
   }
 };
 
-export const getImdbId = async (tmdb_id: string | null) => {
+export const getExternalIds = async (tmdb_id: string | null) => {
   try {
     const res = await axios.get(
-      `https://api.themoviedb.org/3/movie/${tmdb_id}/external_ids/?language=en-US`,
+      `https://api.themoviedb.org/3/tv/${tmdb_id}/external_ids`,
       {
         headers: {
           Authorization:

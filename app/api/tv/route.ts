@@ -1,16 +1,18 @@
-import { getMovieData, getSeriesData } from "@/app/functions/tmdb";
-import { Movie, PrismaClient } from "@prisma/client";
+import { getExternalIds, getSeriesData } from "@/app/functions/tmdb";
+import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export async function POST(req: Request) {
-  const tmdb_id = await req.json();
+  const body = await req.json();
+  const tmdb_id = body.id;
+  const external_ids = await getExternalIds(tmdb_id);
   const movieData = await getSeriesData(tmdb_id);
   try {
     const movie = await prisma.series.create({
       data: {
-        name: movieData.title,
-        imdb_id: movieData.imdb_id,
-        tmdb_id: tmdb_id,
+        name: movieData.name,
+        imdb_id: external_ids.imdb_id,
+        tmdb_id: parseInt(tmdb_id) || null,
         year: movieData.first_air_date
           ? parseInt(movieData.first_air_date.slice(0, 4))
           : null,
@@ -28,7 +30,7 @@ export async function POST(req: Request) {
           ? movieData.trailers.youtube[0].sourcecfc
           : null,
         certification: "?",
-        media_type: "movie",
+        media_type: "tv",
       },
     });
     return new Response(JSON.stringify(movie), {

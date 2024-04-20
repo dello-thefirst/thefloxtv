@@ -17,7 +17,7 @@ function Admin() {
   const migrate = async () => {
     async function postData(id: string) {
       try {
-        const res = await axios.post(`/api/series`, { id: id });
+        const res = await axios.post(`/api/tv?id=${id}`, { id: id });
         console.log(res.data);
         if (res.status < 300) {
           completedTransfers.push(id);
