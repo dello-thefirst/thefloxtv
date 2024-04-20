@@ -76,7 +76,7 @@ function DiscoverDaily() {
               className="w-full h-full rounded-2xl p-2 relative overflow-hidden"
               key={result.id}
             >
-              <div className="a z-10 w-[150px] sm:w-[130px] h-[45px] sm:h-[40px] bg-gray-100 absolute top-0 right-0 rounded-bl-2xl text-[18px] sm:text-[15px] font-normal text-slate-700 flex items-center justify-center">
+              <div className="a z-10 w-[150px] sm:w-[130px] h-[45px] sm:h-[40px] shadow-md bg-gray-100 absolute top-0 right-0 rounded-bl-2xl text-[18px] sm:text-[15px] font-normal text-slate-700 flex items-center justify-center">
                 Trending Today
               </div>
               <div className="inner w-full h-full  relative">

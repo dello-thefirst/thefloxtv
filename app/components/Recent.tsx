@@ -42,10 +42,10 @@ function Recent({ type }: { type: string }) {
         setIsLoading(true);
         const req = await axios.get(`/api/${type}/recent`);
         setRecentData(req.data);
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
-      } finally {
-        setIsLoading(false);
+        fetchRecent();
       }
     }
     fetchRecent();
