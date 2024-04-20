@@ -9,11 +9,13 @@ import Image from "next/image";
 import { MovieDataProps, getWordRange, getLetterRange } from "./Functions";
 
 export function LoadingUiStyle() {
-  return (
-    <div>
-      <div></div>
-    </div>
-  );
+  let iteratorKey = 1;
+  return [1, 2, 3].map(() => (
+    <SwiperSlide
+      className="w-full h-full rounded-2xl skeleton p-2 relative overflow-hidden"
+      key={iteratorKey++}
+    ></SwiperSlide>
+  ));
 }
 
 function DiscoverDaily() {
@@ -44,27 +46,27 @@ function DiscoverDaily() {
   }, []);
   return (
     <>
-      {isLoading ? (
-        <LoadingUiStyle />
-      ) : (
-        <Swiper
-          className="w-full h-[200px] sm:h-[175px] flex justify-between"
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
-          slidesPerView={
-            typeof window !== "undefined"
-              ? window.innerWidth < 800
-                ? 1
-                : 3
-              : 0
-          }
-          effect="autoplay"
-          loop={true}
-          modules={[Autoplay]}
-        >
-          {movieData.slice(0, 5).map((result) => (
+      <p className="text-center mb-3">
+        <i className="fa-regular fa-fire text-[12px]"></i> Trending Now{" "}
+        <i className="fa-regular fa-fire text-[12px]"></i>
+      </p>
+      <Swiper
+        className="w-full h-[200px] sm:h-[175px] flex justify-between"
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
+        slidesPerView={
+          typeof window !== "undefined" ? (window.innerWidth < 800 ? 1 : 3) : 0
+        }
+        effect="autoplay"
+        loop={true}
+        modules={[Autoplay]}
+      >
+        {isLoading ? (
+          <LoadingUiStyle />
+        ) : (
+          movieData.slice(0, 5).map((result) => (
             <SwiperSlide
               className="w-full h-full rounded-2xl p-2 relative overflow-hidden"
               key={result.id}
@@ -73,16 +75,14 @@ function DiscoverDaily() {
                 Trending Today
               </div>
               <div className="inner w-full h-full  relative">
-                <div className="rounded-2xl absolute z-2 top-0 mask w-full h-full bg-gradient-to-r from-slate-950/70 to-[#b4b4b412] p-3">
+                <div className="rounded-2xl absolute z-2 top-0 mask w-full h-full bg-gradient-to-r from-slate-950/90 to-[#b4b4b412] p-3">
                   <div>
-                    <p className="text-[22px] font-thin word sm:text-[18px]">
+                    <p className="text-[22px] font-light word sm:text-[18px]">
                       {result.media_type == "movie"
                         ? getLetterRange(result.release_date, 4)
                         : getLetterRange(result.first_air_date, 4)}
-                        &nbsp;
-                        &middot;
-                        &nbsp;
-                        {result.media_type == "movie" ? `Movie` : "TV"}
+                      &nbsp; &middot; &nbsp;
+                      {result.media_type == "movie" ? `Movie` : "TV"}
                     </p>
                     <p className="text-[20px] font-semibold text-gray-300">
                       {result.media_type == "movie"
@@ -100,9 +100,9 @@ function DiscoverDaily() {
                 ></Image>
               </div>
             </SwiperSlide>
-          ))}
-        </Swiper>
-      )}
+          ))
+        )}
+      </Swiper>
     </>
   );
 }
