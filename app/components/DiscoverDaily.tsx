@@ -24,6 +24,7 @@ interface MovieDataProps {
 function DiscoverDaily() {
   const [isLoading, setIsLoading] = useState(false);
   const [movieData, setMovieData] = useState<MovieDataProps[]>([]);
+  const deviceWidth = window.innerWidth;
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -57,7 +58,7 @@ function DiscoverDaily() {
             delay: 3000,
             disableOnInteraction: false,
           }}
-          slidesPerView={window.innerWidth < 800 ? 1 : 3}
+          slidesPerView={deviceWidth < 800 ? 1 : 3}
           effect="autoplay"
           loop={true}
           modules={[Autoplay]}
