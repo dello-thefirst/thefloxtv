@@ -80,7 +80,7 @@ function DiscoverDaily() {
                 Trending Today
               </div>
               <div className="inner w-full h-full  relative">
-                <div className="rounded-2xl absolute z-2 top-0 mask w-full h-full bg-gradient-to-r from-slate-950/90 to-[#b4b4b423]"></div>
+                <div className="rounded-2xl absolute z-2 top-0 mask w-full h-full bg-gradient-to-r from-slate-950/70 to-[#b4b4b412]"></div>
                 <Image
                   className="w-full h-full object-cover rounded-2xl"
                   src={`https://themoviedb.org/t/p/w500_and_h282_face${result.backdrop_path}`}
