@@ -4,11 +4,11 @@ export async function GET() {
   try {
     const getRecentMovies = await prisma.series.findMany({
       skip: 0,
-      take: 11,
+      take: 10,
       orderBy: {
         id: "desc",
       },
-    });
+    })
 
     return new Response(JSON.stringify(getRecentMovies), {
       status: 200,

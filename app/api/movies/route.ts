@@ -8,8 +8,8 @@ interface dataFormat {
 }
 
 export async function POST(req: Request) {
-  const { searchParams } = new URL(req.url);
-  const tmdb_id = searchParams?.get("id");
+  const body = await req.json();
+  const tmdb_id = body.id;
   const movieData = await getMovieData(tmdb_id);
   try {
     const movie = await prisma.movie.create({
@@ -32,7 +32,7 @@ export async function POST(req: Request) {
           ? movieData.genres.map((genre: { name: string[] }) => genre.name)
           : [],
         trailer_path: movieData.trailers?.youtube[0]?.source
-          ? movieData.trailers.youtube[0].sourcecfc 
+          ? movieData.trailers.youtube[0].sourcecfc
           : null,
         certification: "?",
         media_type: "movie",
