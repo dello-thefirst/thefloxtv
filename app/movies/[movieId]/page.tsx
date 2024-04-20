@@ -18,7 +18,7 @@ interface MovieData {
 }
 
 
-function page({ params }: PageParams) {
+function Movie({ params }: PageParams) {
   const [movieData, setMovieData] = useState<MovieData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasStartedPlaying, setHasStartedPlaying] = useState(false);
@@ -95,4 +95,4 @@ function page({ params }: PageParams) {
   );
 }
 
-export default page;
+export default Movie;
