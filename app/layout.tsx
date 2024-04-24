@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Providers from "./Providers";
 import NextTopLoader from "nextjs-toploader";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Thefloxtv",
@@ -42,6 +43,19 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600;700;800&display=swap"
           rel="stylesheet"
         ></link>
+
+        <Script
+          strategy="afterInteractive"
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-MGNE4PFYE5"
+        ></Script>
+        <Script id="google-analytics">
+          {` window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-MGNE4PFYE5');`}
+        </Script>
       </head>
       <body data-theme="">
         <Providers>
