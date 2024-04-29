@@ -75,9 +75,9 @@ function DiscoverDaily() {
                 Trending Today
               </div>
               <div className="inner w-full h-full  relative">
-                <div className="rounded-2xl absolute z-2 top-0 mask w-full h-full bg-gradient-to-r from-slate-950/90 to-[#b4b4b412] p-3">
-                  <div>
-                    <p className="text-[17px] font-light word sm:text-[13px]">
+                <div className="rounded-2xl absolute z-2 top-0 mask w-full h-full bg-gradient-to-tr from-[rgb(var(--background-color-1))] to-[#8c8b8b12] p-3">
+                  <div className="absolute bottom-[20px]">
+                    <p className="text-[14px] font-semibold word sm:text-[12px] text-purple-400">
                       {result.media_type == "movie"
                         ? getLetterRange(result.release_date, 4)
                         : getLetterRange(result.first_air_date, 4)}
