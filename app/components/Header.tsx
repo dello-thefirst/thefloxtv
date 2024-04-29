@@ -56,7 +56,7 @@ function Header({ page }: { page?: string }) {
       <header
         className={`w-full h-[60px] px-[3%] ${
           page == "home" && "absolute z-10"
-        } bg-gradient-to-b from-[rgba(var(--background-color-1))] via-[rgba(var(--background-color-1),0.2)] to-transparent`}
+        } bg-gradient-to-b from-[rgba(var(--background-color-1))] via-[rgba(var(--background-color-1),0.5)] to-transparent`}
       >
         <div className="logo-cont w-auto h-full float-left center-div">
           <Link href="/">
@@ -108,16 +108,16 @@ function Header({ page }: { page?: string }) {
         <div className="right-section center-div float-right h-full flex">
           <nav className="nav w-full">
             <ul className="w-full flex justify-between gap-[25px] tracking-wider md:hidden">
-              <li className="text-[12px] font-light text-[#e8e8e8]">
+              <li className="text-[12px] font-light text-[#d0cece]">
                 <Link href="/">Home</Link>
               </li>
-              <li className="text-[12px] font-light text-[#e8e8e8]">
+              <li className="text-[12px] font-light text-[#d0cece]">
                 <Link href="/tvshows">TV Shows</Link>
               </li>
-              <li className="text-[12px] font-light text-[#e8e8e8]">
+              <li className="text-[12px] font-light text-[#d0cece]">
                 <Link href="/movies">Movies</Link>
               </li>
-              <li className="text-[12px] font-light text-[#e8e8e8]">
+              <li className="text-[12px] font-light text-[#d0cece]">
                 <Link href="/movies">Trending</Link>
               </li>
             </ul>

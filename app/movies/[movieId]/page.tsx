@@ -15,8 +15,8 @@ interface MovieData {
   title: string;
   poster_path: string;
   backdrop_path: string;
+  backdrop_path_2: string;
 }
-
 
 function Movie({ params }: PageParams) {
   const [movieData, setMovieData] = useState<MovieData[]>([]);
@@ -45,7 +45,7 @@ function Movie({ params }: PageParams) {
       }
     };
     getMovieDetails();
-  }, []);
+  }, [params.movieId]);
   return (
     <>
       <Header page={`watch-${params.movieId}`} />
@@ -65,7 +65,7 @@ function Movie({ params }: PageParams) {
               <div className="thumbnail w-full h-full relative">
                 <Image
                   className="w-full h-full cover"
-                  src={`https://themoviedb.org/t/p/w500_and_h282_face${movieData[0].backdrop_path}`}
+                  src={`https://themoviedb.org/t/p/w500_and_h282_face${movieData[0].poster_path}`}
                   width={400}
                   height={250}
                   alt=""

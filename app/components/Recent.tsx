@@ -40,7 +40,7 @@ function Recent({ type }: { type: string }) {
     async function fetchRecent() {
       try {
         setIsLoading(true);
-        const req = await axios.get(`https://thefloxtv.com/api/${type}/recent`);
+        const req = await axios.get(`/api/${type}/recent`);
         setRecentData(req.data);
         setIsLoading(false);
       } catch (error) {
@@ -49,7 +49,7 @@ function Recent({ type }: { type: string }) {
       }
     }
     fetchRecent();
-  }, []);
+  }, [type]);
   return (
     <div className="mb-[20px]">
       <p className="title sec-label text-[20px] mb-[20px] font-normal text-[white] md:text-[17px]">
