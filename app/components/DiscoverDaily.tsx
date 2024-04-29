@@ -77,7 +77,7 @@ function DiscoverDaily() {
               <div className="inner w-full h-full  relative">
                 <div className="rounded-2xl absolute z-2 top-0 mask w-full h-full bg-gradient-to-r from-slate-950/90 to-[#b4b4b412] p-3">
                   <div>
-                    <p className="text-[22px] font-light word sm:text-[18px]">
+                    <p className="text-[17px] font-light word sm:text-[13px]">
                       {result.media_type == "movie"
                         ? getLetterRange(result.release_date, 4)
                         : getLetterRange(result.first_air_date, 4)}

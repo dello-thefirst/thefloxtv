@@ -79,7 +79,7 @@ function Header({ page }: { page?: string }) {
           <form
             action="/search"
             method="GET"
-            className="center-div w-full h-[34px] sm:h-[40px] flex rounded-md sm:rounded-2xl bg-[#7c7c7c2c] sm:bg-black shadow-2xl sm:backdrop-blur-[30px]"
+            className="center-div w-full h-[34px] sm:h-[40px] flex rounded-md sm:rounded-2xl bg-[#c8c8c821] sm:bg-black shadow-2xl shadow-gray-950 backdrop-blur-[70px]"
           >
             <div className="search-rep-ico center-div w-[8%] sm:w-[12%] h-full text-[13px] text-gray-400">
               <i className="fa-light fa-magnifying-glass"></i>
@@ -108,16 +108,16 @@ function Header({ page }: { page?: string }) {
         <div className="right-section center-div float-right h-full flex">
           <nav className="nav w-full">
             <ul className="w-full flex justify-between gap-[25px] tracking-wider md:hidden">
-              <li className="text-[12px] font-light text-[b8b8b8]">
+              <li className="text-[12px] font-light text-[#e8e8e8]">
                 <Link href="/">Home</Link>
               </li>
-              <li className="text-[12px] font-light text-[b8b8b8]">
+              <li className="text-[12px] font-light text-[#e8e8e8]">
                 <Link href="/tvshows">TV Shows</Link>
               </li>
-              <li className="text-[12px] font-light text-[b8b8b8]">
+              <li className="text-[12px] font-light text-[#e8e8e8]">
                 <Link href="/movies">Movies</Link>
               </li>
-              <li className="text-[12px] font-light text-[b8b8b8]">
+              <li className="text-[12px] font-light text-[#e8e8e8]">
                 <Link href="/movies">Trending</Link>
               </li>
             </ul>
