@@ -37,7 +37,7 @@ function Recent({ type }: { type: string }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchRecent() {
+    const fetchRecent = async () => {
       try {
         setIsLoading(true);
         const req = await axios.get(`/api/${type}/recent`);
@@ -47,7 +47,7 @@ function Recent({ type }: { type: string }) {
         console.log(error);
         fetchRecent();
       }
-    }
+    };
     fetchRecent();
   }, [type]);
   return (

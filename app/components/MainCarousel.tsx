@@ -102,13 +102,12 @@ export default function MainCarouse() {
           >
             {movieData.slice(0, 5).map((result) => (
               <SwiperSlide key={result.id} className="carousel-item active">
-                <div className="mask"></div>
-                <div className="filter"></div>
+                <div className="maskk w-full h-full absolute bg-gradient-to-t from-[rgb(var(--background-color-1))] to-black/30 left-0 bottom-0 z-[3]"></div>
+                <div className="filterr w-full h-full absolute bg-gradient-to-tr from-[rgb(var(--background-color-1))] via-[rgba(15, 15, 20, 0.9)] to-black/0 left-0 bottom-0 z-[3]"></div>
                 <Image
                   src={`https://themoviedb.org/t/p/original/${result.backdrop_path}`}
                   alt="Slide"
-                  width={deviceWidth < 800 ? 700 : deviceWidth}
-                  height={deviceWidth < 800 ? 400 : deviceHeight}
+                  fill={true}
                 />
                 <div className="text">
                   <MovieLogo

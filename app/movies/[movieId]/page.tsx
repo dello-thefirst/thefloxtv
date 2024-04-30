@@ -49,9 +49,9 @@ function Movie({ params }: PageParams) {
   return (
     <>
       <Header page={`watch-${params.movieId}`} />
-      <main className="main-container w-full flex sm:flex-col px-[3%] py-3">
-        <div className="movie-container-left w-[70%] sm:w-full">
-          <div className="screen w-full h-[500px] sm:h-[200px] rounded-2xl overflow-hidden mb-3 relative">
+      <main className="main-container w-full">
+        <div className="movie-container-screen w-full">
+          <div className="screen w-full h-[80vh] sm:h-[200px] overflow-hidden mb-3 relative">
             {hasStartedPlaying ? (
               <iframe
                 className="w-full h-full"
@@ -62,26 +62,27 @@ function Movie({ params }: PageParams) {
             ) : isLoading ? (
               <div className="thumbnail w-full h-full skeleton"></div>
             ) : (
-              <div className="thumbnail w-full h-full relative">
+              <div className="thumbnail w-full h-full relative over-hidden">
                 <Image
-                  className="w-full h-full cover"
-                  src={`https://themoviedb.org/t/p/w500_and_h282_face${movieData[0].poster_path}`}
-                  width={400}
-                  height={250}
+                  className="w-full h-full object-cover"
+                  src={`https://themoviedb.org/t/p/original${movieData[0].backdrop_path}`}
+                  fill
                   alt=""
                 ></Image>
-                <div className="mask absolute top-0 left-0 w-full h-full bg-black/80 flex items-center justify-center">
+                <div className="mask absolute top-0 left-0 w-full h-[100%] bg-gradient-to-t from-[rgb(var(--background-color-1))] to-black/50 flex items-center justify-center">
                   <div
-                    className="w-[80px] h-[80px] border-[2px] rounded-full border-red-700 flex items-center justify-center cursor-pointer"
+                    className="w-[80px] h-[80px] rounded-full flex items-center justify-center cursor-pointer"
                     onClick={() => setHasStartedPlaying(true)}
                   >
-                    <i className="fa-solid fa-play fa-sharp text-red-600 text-[40px]"></i>
+                    <i className="fa-solid fa-circle-play text-red-400 text-[60px]"></i>
                   </div>
                 </div>
               </div>
             )}
           </div>
-          <div className="title text-[25px] text-semibold text-red-600">
+        </div>
+        <div className="movie-details w-full h-full p-3">
+          <div className="title text-[25px] text-semibold text-slate-200">
             {isLoading ? (
               <p className="skeleton w-40 h-3 rounded-lg text-[25px]"></p>
             ) : (
@@ -89,7 +90,6 @@ function Movie({ params }: PageParams) {
             )}
           </div>
         </div>
-        <div className="movie-container-right w-[30%]"></div>
       </main>
     </>
   );
