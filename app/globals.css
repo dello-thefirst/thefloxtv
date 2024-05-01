@@ -6,7 +6,7 @@
   --background-color-1: #181818;
   --background-color-2: 18, 18, 23;
   --color-2: 209, 209, 209;
-  --color-3: 147, 76, 180;
+  --color-3: rgb(147, 76, 180);
   --font-family-1: "Kanit", sans-serif;
   background-color: var(--background-color-1) !important;
 }

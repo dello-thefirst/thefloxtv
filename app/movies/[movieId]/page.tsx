@@ -69,12 +69,12 @@ function Movie({ params }: PageParams) {
                   fill
                   alt=""
                 ></Image>
-                <div className="mask absolute top-0 left-0 w-full h-[100%] bg-gradient-to-t from-[rgb(var(--background-color-1))] to-black/50 flex items-center justify-center">
+                <div className="mask absolute top-0 left-0 w-full h-[100%] bg-gradient-to-t from-[var(--background-color-1)] to-black/60 flex items-center justify-center">
                   <div
                     className="w-[80px] h-[80px] rounded-full flex items-center justify-center cursor-pointer"
                     onClick={() => setHasStartedPlaying(true)}
                   >
-                    <i className="fa-solid fa-circle-play text-[rgb(var(--color-3))] text-[60px]"></i>
+                    <i className="fa-solid fa-circle-play text-[var(--color-3)] text-[60px]"></i>
                   </div>
                 </div>
               </div>
@@ -84,7 +84,7 @@ function Movie({ params }: PageParams) {
         <div className="movie-details w-full h-full p-3">
           <div className="title text-[25px] text-semibold text-slate-200">
             {isLoading ? (
-              <p className="skeleton w-40 h-3 rounded-lg text-[25px]"></p>
+              <p className="skeleton w-40 h-3 text-[25px]"></p>
             ) : (
               movieData[0].title
             )}
