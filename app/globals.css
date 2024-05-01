@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --background-color-1: 15, 15, 20;
+  --background-color-1: #181818;
   --background-color-2: 18, 18, 23;
   --color-2: 209, 209, 209;
   --color-3: 147, 76, 180;
   --font-family-1: "Kanit", sans-serif;
-  background-color: rgb(var(--background-color-1)) !important;
+  background-color: var(--background-color-1) !important;
 }
 
 * {

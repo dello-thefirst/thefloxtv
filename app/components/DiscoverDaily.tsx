@@ -57,7 +57,13 @@ function DiscoverDaily() {
           disableOnInteraction: false,
         }}
         slidesPerView={
-          typeof window !== "undefined" ? (window.innerWidth < 800 ? 1 : 3) : 0
+          typeof window !== "undefined"
+            ? window.innerWidth < 800
+              ? 1
+              : window.innerWidth < 1200
+              ? 2
+              : 3
+            : 0
         }
         effect="autoplay"
         loop={true}
@@ -75,7 +81,7 @@ function DiscoverDaily() {
                 Trending Today
               </div>
               <div className="inner w-full h-full relative overflow-hidden">
-                <div className="mask rounded-xl w-full h-full absolute top-0 left-0 z-20 bg-gradient-to-tr from-[rgb(var(--background-color-1))] to-[#8c8b8b12]"></div>
+                <div className="mask rounded-xl w-full h-full absolute top-0 left-0 z-20 bg-gradient-to-tr from-[var(--background-color-1)] to-[#8c8b8b12]"></div>
                 <Image
                   className="w-full h-full object-cover rounded-2xl"
                   src={`https://themoviedb.org/t/p/w500_and_h282_face${result.backdrop_path}`}

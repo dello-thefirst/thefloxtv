@@ -56,7 +56,7 @@ function Header({ page }: { page?: string }) {
       <header
         className={`w-full h-[80px] sm:h-[60px] px-[3%] ${
           page == "home" && "absolute z-10"
-        } bg-gradient-to-b from-[rgba(var(--background-color-1))]/90 to-transparent`}
+        } bg-gradient-to-b from-[var(--background-color-1)] to-transparent`}
       >
         <div className="logo-cont w-auto h-full float-left center-div">
           <Link href="/">
@@ -79,7 +79,7 @@ function Header({ page }: { page?: string }) {
           <form
             action="/search"
             method="GET"
-            className="center-div w-full h-[34px] sm:h-[40px] flex rounded-md sm:rounded-2xl bg-[#c8c8c821] sm:bg-black shadow-2xl shadow-gray-950 backdrop-blur-[70px]"
+            className="center-div w-full h-[34px] sm:h-[40px] flex rounded-md sm:rounded-2xl bg-[#c8c8c83f] sm:bg-black shadow-2xl shadow-gray-950 backdrop-blur-[70px]"
           >
             <div className="search-rep-ico center-div w-[8%] sm:w-[12%] h-full text-[13px] text-gray-400">
               <i className="fa-light fa-magnifying-glass"></i>
