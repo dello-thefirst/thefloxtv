@@ -19,8 +19,8 @@ function Home() {
           </p>
           <Trending period="week" type="movie" />
           <Trending period="week" type="tv" />
-          <Recent type="tv" />
-          <Recent type="movies" />
+          {/* <Recent type="tv" />
+          <Recent type="movies" /> */}
           <p className="text-center font-sans text-green-400 font-normal text-[20px] sm:text-[12px]">
             Want more?
           </p>
