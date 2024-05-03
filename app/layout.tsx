@@ -8,6 +8,7 @@ import { Kanit } from "next/font/google";
 
 const kanit = Kanit({
   weight: ["100", "200", "300", "400", "500", "600"],
+  subsets: ["latin"],
   display: "swap",
 });
 

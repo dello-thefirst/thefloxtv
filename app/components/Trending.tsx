@@ -56,7 +56,7 @@ export default function Trending({
       }
     };
     request();
-  }, []);
+  }, [type, period]);
 
   return (
     <>
