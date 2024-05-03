@@ -3,10 +3,25 @@ import "./globals.css";
 import Providers from "./Providers";
 import NextTopLoader from "nextjs-toploader";
 import Script from "next/script";
+import Head from "next/head";
+import { Kanit } from "next/font/google";
+
+const kanit = Kanit({
+  weight: ["100", "200", "300", "400", "500", "600"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Thefloxtv",
-  description: "Watch Movies and Tv Shows for free.",
+  description:
+    "Watch free blockbuster movies and binge-worthy series for free! Dive into a wide range of content, from timeless classics to the latest releases. Enjoy easy, hassle-free streaming anytime, anywhere. Start your cinematic adventure now, all for free!",
+  keywords: ["Movies", "Series", "Tv Shows", "Watch Free Movies and Tv shows"],
+  openGraph: {
+    type: "website",
+    url: "https://thefloxtv.com",
+    title: "Thefloxtv",
+    siteName: "Thefloxtv",
+  },
 };
 
 export default function RootLayout({
@@ -15,52 +30,41 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <head>
+    <html lang="en" className={kanit.className}>
+      <Head>
         <link
           rel="stylesheet"
           href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css"
-        ></link>
+        />
         <link
           rel="stylesheet"
           href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-solid.css"
-        ></link>
+        />
         <link
           rel="stylesheet"
           href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-regular.css"
-        ></link>
+        />
         <link
           rel="stylesheet"
           href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-light.css"
-        ></link>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
-        ></link>
-        <link rel="preconnect" href="https://fonts.googleapis.com"></link>
-        <link rel="preconnect" href="https://fonts.gstatic.com"></link>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        ></link>
-
-        <Script
-          strategy="afterInteractive"
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-MGNE4PFYE5"
-        ></Script>
-        <Script id="google-analytics">
-          {` window.dataLayer = window.dataLayer || [];
+        />
+      </Head>
+      <Script
+        strategy="afterInteractive"
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-MGNE4PFYE5"
+      ></Script>
+      <Script id="google-analytics">
+        {` window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
             gtag('config', 'G-MGNE4PFYE5');`}
-        </Script>
-      </head>
+      </Script>
       <body data-theme="">
         <Providers>
           <NextTopLoader
-            color="red"
+            color="var(--color-3)"
             initialPosition={0.08}
             crawlSpeed={200}
             height={2.1}

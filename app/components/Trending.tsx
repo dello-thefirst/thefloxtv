@@ -107,7 +107,7 @@ export default function Trending({
                     className="
                   w-[200px] h-full overflow-hidden sm:w-[150px] relative translate-x-[-10px] cars"
                   >
-                    <div className="mask group w-full h-full left-0 bottom-0 z-[2] from-[var(--background-color-1)] to-[#ffffff06] bg-gradient-to-t absolute center-div"></div>
+                    <div className="mask group w-full h-full left-0 bottom-0 z-[2] from-[var(--background-color-1)] to-transparent bg-gradient-to-t absolute center-div"></div>
 
                     <Image
                       className="object-cover rounded-md w-full h-full"
