@@ -90,7 +90,7 @@ function DiscoverDaily() {
                   height={180}
                 ></Image>
                 <div className="absolute bottom-4 left-4 z-30">
-                  <p className="text-[14px] font-[500] word sm:text-[12px] text-[#af74eb]">
+                  <p className="text-[14px] font-[500] word sm:text-[12px] text-[var(--color-3)]">
                     {result.media_type == "movie"
                       ? getLetterRange(result.release_date, 4)
                       : getLetterRange(result.first_air_date, 4)}

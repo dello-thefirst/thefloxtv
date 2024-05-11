@@ -32,7 +32,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={kanit.className}>
-      <Head>
+      <head>
         <link
           rel="stylesheet"
           href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css"
@@ -49,7 +49,7 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-light.css"
         />
-      </Head>
+      </head>
       <Script
         strategy="afterInteractive"
         async
