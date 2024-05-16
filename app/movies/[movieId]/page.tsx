@@ -20,11 +20,7 @@ interface MovieData {
 }
 
 function LoadingSkin() {
-  return (
-    <div>
-      <div>Loading..</div>
-    </div>
-  );
+  return <p>Loading..</p>;
 }
 
 function Movie({ params }: PageParams) {
