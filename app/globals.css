@@ -7,7 +7,7 @@
   --background-color-2: 18, 18, 23;
   --color-2: 209, 209, 209;
   --color-3: lightgreen;
-  --font-family-1: "Kanit", sans-serif;
+  --font-family-1: var(--font-workSans);
   background-color: var(--background-color-1) !important;
 }
 
@@ -15,7 +15,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
   font-family: var(--font-family-1);
   font-weight: 300;
   word-spacing: 1px;

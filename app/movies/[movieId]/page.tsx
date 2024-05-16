@@ -18,6 +18,14 @@ interface MovieData {
   backdrop_path_2: string;
 }
 
+export function LoadingSkin() {
+  return (
+    <div>
+      <div></div>
+    </div>
+  );
+}
+
 function Movie({ params }: PageParams) {
   const [movieData, setMovieData] = useState<MovieData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -68,7 +76,7 @@ function Movie({ params }: PageParams) {
                   src={`https://themoviedb.org/t/p/original${movieData[0].backdrop_path}`}
                   fill
                   alt=""
-                ></Image>
+                />
                 <div className="mask absolute top-0 left-0 w-full h-[100%] bg-gradient-to-t from-[var(--background-color-1)] to-black/60 flex items-center justify-center">
                   <div
                     className="w-[80px] h-[80px] rounded-full flex items-center justify-center cursor-pointer"
@@ -81,15 +89,29 @@ function Movie({ params }: PageParams) {
             )}
           </div>
         </div>
-        <div className="movie-details w-full h-full p-3">
-          <div className="title text-[25px] text-semibold text-slate-200">
-            {isLoading ? (
-              <p className="skeleton w-40 h-3 text-[25px]"></p>
-            ) : (
-              movieData[0].title
-            )}
+        {isLoading ? (
+          <LoadingSkin />
+        ) : (
+          <div className="movie-details w-full h-auto flex p-5 gap-3 mt-5">
+            <div className="small-image-container w-[200px] h-[270px] rounded-md overflow-hidden">
+              <Image
+                className="w-full h-full object-cover"
+                src={`https://themoviedb.org/t/p/w220_and_h330_face${movieData[0].poster_path}`}
+                width={220}
+                height={330}
+                alt=""
+              />
+            </div>
+            <div className="title-card text-semibold text-slate-200">
+              <p className="text-[30px] font-bold">{movieData[0].title}</p>
+              <div>
+                <span className="w-auto h-auto px-2 py-1 text-[13px] font-bold text-black bg-[var(--color-3)] rounded-2xl">
+                  HD
+                </span>
+              </div>
+            </div>
           </div>
-        </div>
+        )}
       </main>
     </>
   );

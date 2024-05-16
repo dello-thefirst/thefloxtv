@@ -65,7 +65,7 @@ function Header({ page }: { page?: string }) {
         </div>
 
         <div
-          className={`focused search-bar center-div dropdown w-[40%] h-full float-left mx-[20px] relative sm:fixed sm:w-full sm:top-0 sm:right-0 sm:mx-0 sm:items-start sm:py-[90px] sm:px-5 sm:bg-gray-700/20 sm:backdrop-blur-md ${
+          className={`focused search-bar center-div dropdown w-[40%] h-full z-[100] float-left mx-[20px] relative sm:fixed sm:w-full sm:top-0 sm:right-0 sm:mx-0 sm:items-start sm:py-[90px] sm:px-5 sm:bg-gray-700/20 sm:backdrop-blur-md ${
             !isSearchToggled ? "sm:hidden" : ""
           }`}
           id="searchBar"
@@ -99,7 +99,7 @@ function Header({ page }: { page?: string }) {
           <div
             id="searchresult"
             tabIndex={0}
-            className="dropdown-content w-full max-h-[50vh] absolute top-[50px] left-0 overflow-y-scroll shadow-2xl overflow-x-hidden bg-[rgb(var(--background-color-2), 0.2)] backdrop-blur-[60px] rounded-md px-[5%] sm:bg-black z-[10] sm:static sm:top-[150px] sm:z-0 sm:w-[90%] sm:left-[5%] sm:rounded-2xl sm:max-h-[70vh] sm:py-2"
+            className="dropdown-content w-full max-h-[50vh] absolute top-[50px] left-0 overflow-y-scroll shadow-2xl overflow-x-hidden bg-[rgb(var(--background-color-2), 0.2)] backdrop-blur-[60px] rounded-md px-[5%] sm:bg-black z-[10] sm:static sm:top-[150px]  sm:w-[90%] sm:left-[5%] sm:rounded-2xl sm:max-h-[70vh] sm:py-2"
           >
             <LivesearchResult query={searchValue} />
           </div>

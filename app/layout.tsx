@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Providers from "./Providers";
 import NextTopLoader from "nextjs-toploader";
 import Script from "next/script";
 import Head from "next/head";
-import { Kanit } from "next/font/google";
+import { Kanit, Work_Sans } from "next/font/google";
 
 const kanit = Kanit({
+  weight: ["100", "200", "300", "400", "500", "600"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const workSans = Work_Sans({
   weight: ["100", "200", "300", "400", "500", "600"],
   subsets: ["latin"],
   display: "swap",
@@ -31,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={kanit.className}>
+    <html lang="en" className={workSans.className}>
       <head>
         <link
           rel="stylesheet"
@@ -62,21 +67,19 @@ export default function RootLayout({
 
             gtag('config', 'G-MGNE4PFYE5');`}
       </Script>
-      <body data-theme="">
-        <Providers>
-          <NextTopLoader
-            color="var(--color-3)"
-            initialPosition={0.08}
-            crawlSpeed={200}
-            height={2.1}
-            crawl={true}
-            showSpinner={false}
-            easing="ease"
-            speed={200}
-            shadow=""
-          />
-          {children}
-        </Providers>
+      <body data-theme="dark">
+        <NextTopLoader
+          color="var(--color-3)"
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={2.1}
+          crawl={true}
+          showSpinner={false}
+          easing="ease"
+          speed={200}
+          shadow=""
+        />
+        {children}
       </body>
     </html>
   );
