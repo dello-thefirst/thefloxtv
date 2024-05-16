@@ -19,10 +19,10 @@ interface MovieData {
   overview: string;
 }
 
-export function LoadingSkin() {
+function LoadingSkin() {
   return (
     <div>
-      <div></div>
+      <div>Loading..</div>
     </div>
   );
 }
