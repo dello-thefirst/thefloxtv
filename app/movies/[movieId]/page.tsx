@@ -19,7 +19,7 @@ interface MovieData {
   overview: string;
 }
 
-function LoadingSkin() {
+export function LoadingUISkeleton() {
   return <p>Loading..</p>;
 }
 
@@ -56,7 +56,7 @@ function Movie({ params }: PageParams) {
       <Header page={`watch-${params.movieId}`} />
 
       {isLoading ? (
-        <LoadingSkin />
+        <LoadingUISkeleton />
       ) : (
         <main className="main-container w-full">
           <div className="movie-container-screen w-full">
