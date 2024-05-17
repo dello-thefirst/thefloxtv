@@ -18,9 +18,13 @@ interface MovieData {
   backdrop_path_2: string;
   overview: string;
 }
-
-export function LoadingUISkeleton() {
-  return <p>Loading..</p>;
+function LoadingUISkeleton() {
+  return (
+    <>
+      <div className="w-full h-[80vh] skeleton"></div>;
+      <p className="skeleton w-[200px] h-3"></p>
+    </>
+  );
 }
 
 function Movie({ params }: PageParams) {
@@ -51,10 +55,10 @@ function Movie({ params }: PageParams) {
     };
     getMovieDetails();
   }, [params.movieId]);
+
   return (
     <>
       <Header page={`watch-${params.movieId}`} />
-
       {isLoading ? (
         <LoadingUISkeleton />
       ) : (
