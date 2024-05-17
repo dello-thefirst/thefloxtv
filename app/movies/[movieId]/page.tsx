@@ -98,8 +98,8 @@ function Movie({ params }: PageParams) {
               )}
             </div>
           </div>
-          <div className="movie-details w-full h-auto flex p-5 gap-3 mt-5">
-            <div className="small-image-container w-[250px] h-[270px] rounded-lg overflow-hidden">
+          <div className="movie-details w-full h-auto flex p-5 gap-3 mt-5 sm:p-3">
+            <div className="small-image-container w-[250px] h-[270px] rounded-lg overflow-hidden sm:hidden">
               <Image
                 className="w-full h-full object-cover"
                 src={`https://themoviedb.org/t/p/w220_and_h330_face${movieData[0].poster_path}`}
@@ -108,7 +108,7 @@ function Movie({ params }: PageParams) {
                 alt=""
               />
             </div>
-            <div className="title-card text-semibold text-slate-200 w-full px-3 pr-[300px] flex flex-col gap-3">
+            <div className="title-card text-semibold text-slate-200 w-full px-3 pr-[300px] sm:pr-5 flex flex-col gap-3">
               <p className="text-[30px] font-bold">{movieData[0].title}</p>
               <div>
                 <span className="w-auto h-auto px-2 py-1 text-[13px] font-[800] text-black bg-[var(--color-3)] rounded-2xl">
