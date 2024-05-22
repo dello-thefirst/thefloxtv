@@ -109,6 +109,7 @@ function Movie({ params }: PageParams) {
             <div className="movie-details w-full h-auto flex gap-3">
               <div className="small-image-container w-[250px] h-[270px] rounded-lg overflow-hidden sm:hidden">
                 <Image
+                  unoptimized
                   className="w-full h-full object-cover"
                   src={`https://themoviedb.org/t/p/w220_and_h330_face${movieData[0].poster_path}`}
                   width={220}
