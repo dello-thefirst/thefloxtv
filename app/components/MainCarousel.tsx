@@ -105,15 +105,12 @@ export default function MainCarouse() {
                 <div className="maskk w-full h-[50%] absolute bg-gradient-to-t from-[var(--background-color-1)] to-black/0 left-0 bottom-0 z-[3]"></div>
                 <div className="filterr w-full h-full absolute bg-gradient-to-tr from-[var(--background-color-1)]  to-black/0 left-0 bottom-0 z-[3]"></div>
                 <Image
+                  unoptimized
                   src={`https://themoviedb.org/t/p/original/${result.backdrop_path}`}
                   alt="Slide"
                   className="w-full h-full"
-                  width={
-                    typeof window !== "undefined" ? window.innerWidth : 1200
-                  }
-                  height={
-                    typeof window !== "undefined" ? window.innerHeight : 600
-                  }
+                  width={1200}
+                  height={700}
                 />
                 <div className="text">
                   <MovieLogo

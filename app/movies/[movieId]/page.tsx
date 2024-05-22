@@ -116,12 +116,12 @@ function Movie({ params }: PageParams) {
                   alt=""
                 />
               </div>
-              <div className="title-card text-semibold text-slate-200 w-full px-3 pr-[300px] sm:pr-5 flex flex-col gap-3">
+              <div className="title-card text-semibold text-slate-200 w-full pr-[300px] sm:pr-5 flex flex-col gap-3">
                 <p className="text-[30px] font-bold sm:text-[20px]">
                   {movieData[0].title}
                 </p>
                 <div className="quick-info flex gap-3 items-center text-gray-500 ">
-                  <span className="w-auto px-2 py-1 text-[13px] sm:text-[10px] font-[800] text-black bg-[var(--color-3)] rounded-2xl">
+                  <span className="w-auto px-[4px] py-[0.5px] text-[13px] sm:text-[10px] font-[800] text-black bg-[var(--color-3)] rounded-2xl">
                     HD
                   </span>
                   {movieData[0].genres.map((genre: any) => (
