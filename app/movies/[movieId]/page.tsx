@@ -98,7 +98,7 @@ function Movie({ params }: PageParams) {
                       className="w-[80px] h-[80px] rounded-full flex items-center justify-center cursor-pointer"
                       onClick={() => setHasStartedPlaying(true)}
                     >
-                      <i className="fa-solid fa-circle-play text-[var(--color-3)] text-[60px]"></i>
+                      <i className="fa-solid fa-circle-play text-[var(--color-3)] text-[60px] sm:text-[40px]"></i>
                     </div>
                   </div>
                 </div>

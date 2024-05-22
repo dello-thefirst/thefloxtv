@@ -54,7 +54,7 @@ function Header({ page }: { page?: string }) {
         </nav>
       </div>
       <header
-        className={`w-full h-[80px] sm:h-[60px] px-[3%] ${
+        className={`w-full h-[80px] sm:h-[50px] px-[3%] ${
           page == "home" && "absolute z-10"
         } bg-gradient-to-b from-[var(--background-color-1)] to-transparent`}
       >
