@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Header from "@/app/components/Header";
 import axios from "axios";
 import Image from "next/image";
+import { getWordRange, getLetterRange } from "@/app/components/Functions";
 
 interface PageParams {
   params: {
@@ -17,6 +18,8 @@ interface MovieData {
   backdrop_path: string;
   backdrop_path_2: string;
   overview: string;
+  genres: string[];
+  release_date: string;
 }
 function LoadingUISkeleton() {
   return (
@@ -77,7 +80,7 @@ function Movie({ params }: PageParams) {
                   <Image
                     unoptimized
                     className="w-full h-full object-cover"
-                    src={`https://themoviedb.org/t/p/original${movieData[0].backdrop_path}`}
+                    src={`https://media.themoviedb.org/t/p/w1000_and_h450_multi_faces${movieData[0].backdrop_path}`}
                     width={
                       typeof window.innerWidth !== undefined
                         ? window.innerWidth
@@ -102,26 +105,36 @@ function Movie({ params }: PageParams) {
               )}
             </div>
           </div>
-          <div className="movie-details w-full h-auto flex p-5 gap-3 mt-5 sm:p-3">
-            <div className="small-image-container w-[250px] h-[270px] rounded-lg overflow-hidden sm:hidden">
-              <Image
-                className="w-full h-full object-cover"
-                src={`https://themoviedb.org/t/p/w220_and_h330_face${movieData[0].poster_path}`}
-                width={220}
-                height={330}
-                alt=""
-              />
-            </div>
-            <div className="title-card text-semibold text-slate-200 w-full px-3 pr-[300px] sm:pr-5 flex flex-col gap-3">
-              <p className="text-[30px] font-bold">{movieData[0].title}</p>
-              <div>
-                <span className="w-auto h-auto px-2 py-1 text-[13px] font-[800] text-black bg-[var(--color-3)] rounded-2xl">
-                  HD
-                </span>
+          <section className="w-full h-auto p-5 mt-5 sm:p-3">
+            <div className="movie-details w-full h-auto flex gap-3">
+              <div className="small-image-container w-[250px] h-[270px] rounded-lg overflow-hidden sm:hidden">
+                <Image
+                  className="w-full h-full object-cover"
+                  src={`https://themoviedb.org/t/p/w220_and_h330_face${movieData[0].poster_path}`}
+                  width={220}
+                  height={330}
+                  alt=""
+                />
               </div>
-              <p className="description">{movieData[0].overview}</p>
+              <div className="title-card text-semibold text-slate-200 w-full px-3 pr-[300px] sm:pr-5 flex flex-col gap-3">
+                <p className="text-[30px] font-bold">{movieData[0].title}</p>
+                <div className="quick-info flex gap-3 text-gray-500">
+                  <span className="w-auto h-auto px-2 py-1 text-[13px] font-[800] text-black bg-[var(--color-3)] rounded-2xl">
+                    HD
+                  </span>
+                  {movieData[0].genres.map((genre: any) => (
+                    <span key={genre.id}>{genre.name} &middot;</span>
+                  ))}
+                  <span>{getLetterRange(movieData[0].release_date, 4)}</span>
+                </div>
+                <p className="description">{movieData[0].overview}</p>
+              </div>
             </div>
-          </div>
+            {""}
+            <div className="cast-container w-full h-auto mt-5">
+              <p className="text-[40px] text-white">Cast</p>
+            </div>
+          </section>
         </main>
       )}
     </>

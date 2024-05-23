@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["themoviedb.org", "floxapi.000webhostapp.com"],
+    domains: ["themoviedb.org", "floxapi.000webhostapp.com", "media.themoviedb.org"],
   },
   async headers() {
         return [
