@@ -117,17 +117,25 @@ function Movie({ params }: PageParams) {
                 />
               </div>
               <div className="title-card text-semibold text-slate-200 w-full px-3 pr-[300px] sm:pr-5 flex flex-col gap-3">
-                <p className="text-[30px] font-bold">{movieData[0].title}</p>
-                <div className="quick-info flex gap-3 text-gray-500">
-                  <span className="w-auto h-auto px-2 py-1 text-[13px] font-[800] text-black bg-[var(--color-3)] rounded-2xl">
+                <p className="text-[30px] font-bold sm:text-[20px]">
+                  {movieData[0].title}
+                </p>
+                <div className="quick-info flex gap-3 text-gray-500 ">
+                  <span className="w-auto px-2 py-1 text-[13px] font-[800] text-black bg-[var(--color-3)] rounded-2xl">
                     HD
                   </span>
                   {movieData[0].genres.map((genre: any) => (
-                    <span key={genre.id}>{genre.name} &middot;</span>
+                    <span className="text-[13px] sm:text-[10px]" key={genre.id}>
+                      {genre.name} &middot;
+                    </span>
                   ))}
-                  <span>{getLetterRange(movieData[0].release_date, 4)}</span>
+                  <span className="text-[13px] sm:text-[10px]">
+                    {getLetterRange(movieData[0].release_date, 4)}
+                  </span>
                 </div>
-                <p className="description">{movieData[0].overview}</p>
+                <p className="description text-[17px] sm:text-[12px]">
+                  {movieData[0].overview}
+                </p>
               </div>
             </div>
             {""}
