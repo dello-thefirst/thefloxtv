@@ -67,7 +67,7 @@ function Movie({ params }: PageParams) {
       ) : (
         <main className="main-container w-full">
           <div className="movie-container-screen w-full">
-            <div className="screen w-full h-[80vh] sm:h-[200px] overflow-hidden mb-3 relative">
+            <div className="screen w-full h-[80vh] sm:h-[180px] overflow-hidden mb-3 relative">
               {hasStartedPlaying ? (
                 <iframe
                   className="w-full h-full"
@@ -105,7 +105,7 @@ function Movie({ params }: PageParams) {
               )}
             </div>
           </div>
-          <section className="w-full h-auto p-5 mt-5 sm:p-3">
+          <section className="w-full h-auto p-5 mt-5 sm:p-2">
             <div className="movie-details w-full h-auto flex gap-3">
               <div className="small-image-container w-[250px] h-[270px] rounded-lg overflow-hidden sm:hidden">
                 <Image
@@ -120,8 +120,8 @@ function Movie({ params }: PageParams) {
                 <p className="text-[30px] font-bold sm:text-[20px]">
                   {movieData[0].title}
                 </p>
-                <div className="quick-info flex gap-3 text-gray-500 ">
-                  <span className="w-auto px-2 py-1 text-[13px] font-[800] text-black bg-[var(--color-3)] rounded-2xl">
+                <div className="quick-info flex gap-3 items-center text-gray-500 ">
+                  <span className="w-auto px-2 py-1 text-[13px] sm:text-[10px] font-[800] text-black bg-[var(--color-3)] rounded-2xl">
                     HD
                   </span>
                   {movieData[0].genres.map((genre: any) => (
@@ -140,7 +140,9 @@ function Movie({ params }: PageParams) {
             </div>
             {""}
             <div className="cast-container w-full h-auto mt-5">
-              <p className="text-[40px] text-white">Cast</p>
+              <p className="text-[30px] font-bold sm:text-[20px] text-white">
+                Cast
+              </p>
             </div>
           </section>
         </main>
