@@ -4,6 +4,7 @@ import Header from "@/app/components/Header";
 import axios from "axios";
 import Image from "next/image";
 import { getWordRange, getLetterRange } from "@/app/components/Functions";
+import Cast from "@/app/components/Cast";
 
 interface PageParams {
   params: {
@@ -20,11 +21,12 @@ interface MovieData {
   overview: string;
   genres: string[];
   release_date: string;
+  credits: any;
 }
 function LoadingUISkeleton() {
   return (
     <>
-      <div className="w-full h-[80vh] skeleton"></div>;
+      <div className="w-full h-[80vh] skeleton rounded-none"></div>;
       <p className="skeleton w-[200px] h-3"></p>
     </>
   );
@@ -39,7 +41,7 @@ function Movie({ params }: PageParams) {
       try {
         setIsLoading(true);
         const res = await axios.get(
-          `https://api.themoviedb.org/3/movie/${params.movieId}?language=en-US`,
+          `https://api.themoviedb.org/3/movie/${params.movieId}?language=en-US&append_to_response=credits`,
           {
             headers: {
               Authorization:
@@ -49,11 +51,11 @@ function Movie({ params }: PageParams) {
         );
         const response = [];
         response.push(res.data);
+        setIsLoading(false);
         setMovieData(response);
       } catch (err) {
         console.log(err);
-      } finally {
-        setIsLoading(false);
+        getMovieDetails;
       }
     };
     getMovieDetails();
@@ -140,10 +142,40 @@ function Movie({ params }: PageParams) {
               </div>
             </div>
             {""}
-            <div className="cast-container w-full h-auto mt-5">
-              <p className="text-[30px] font-bold sm:text-[20px] text-white">
+            <div className="cast-container w-full h-auto mt-6">
+              <p className="text-[30px] font-bold sm:text-[20px] text-white mb-4">
                 Cast
-              </p>
+              </p>{" "}
+              <div
+                className="scroll-container no-scrollbar"
+                style={{
+                  display: "flex",
+                  flexWrap: "nowrap",
+                  width: "100%",
+                  height: "auto",
+                  overflowX: "scroll",
+                }}
+              >
+                {movieData[0].credits.cast.map((cast: any) => (
+                  <div
+                    key={cast.id}
+                    className="item w-auto h-[280px] mr-[10px] flex flex-col items-center relative gap-3 sm:h-[210px] sm:mr-[8px]"
+                    style={{ flex: "0 0 auto" }}
+                  >
+                    <Image
+                      unoptimized
+                      className="w-[130px] h-[130px] rounded-full object-cover"
+                      src={`https://media.themoviedb.org/t/p/w138_and_h175_face/${cast.profile_path}`}
+                      width={130}
+                      height={170}
+                      alt="cast"
+                    />
+                    <p className="text-gray-300 text-[14px] sm:text-[12px]">
+                      {cast.name}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
         </main>
