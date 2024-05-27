@@ -170,7 +170,7 @@
 @media screen and (max-width: 900px) {
   .carousel-cont {
     width: 100%;
-    height: 70vh;
+    height: 55vh;
   }
 
   .carousel-item .text {
