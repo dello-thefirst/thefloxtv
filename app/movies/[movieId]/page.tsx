@@ -69,7 +69,7 @@ export default async function Movie({
               />
             </div>
             <div className="title-card text-semibold text-slate-200 w-full pr-[300px] sm:pr-5 flex flex-col gap-3">
-              <p className="text-[30px] font-bold sm:text-[20px]">
+              <p className="text-[30px] font-bold sm:text-[25px]">
                 {movieData.title}
               </p>
               <div className="quick-info flex gap-3 items-center text-gray-500 ">
@@ -85,8 +85,8 @@ export default async function Movie({
                   {getLetterRange(movieData.release_date, 4)}
                 </span>
               </div>
-              <p className="description text-[17px] sm:text-[13px]">
-                {getWordRange(movieData.overview, 25)}
+              <p className="description text-[13px] sm:text-[11px]">
+                {getWordRange(movieData.overview, 35)}
               </p>
             </div>
           </div>
@@ -108,7 +108,7 @@ export default async function Movie({
               {movieData.credits.cast.slice(0, 10).map((cast: any) => (
                 <div
                   key={cast.id}
-                  className="item w-auto h-auto mr-[10px] flex flex-col items-center justify-center relative gap-3 sm:mr-[8px]"
+                  className="item w-auto h-auto mr-[10px] flex flex-col items-center relative gap-3 sm:mr-[8px]"
                   style={{ flex: "0 0 auto" }}
                 >
                   <Image
@@ -124,7 +124,7 @@ export default async function Movie({
                     alt="cast"
                   />
                   <p className="text-gray-300 text-[14px] sm:text-[12px]">
-                    {cast.name}
+                    {getWordRange(cast.name, 2)}
                   </p>
                 </div>
               ))}
