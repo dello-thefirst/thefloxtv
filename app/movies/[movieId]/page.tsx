@@ -81,11 +81,11 @@ export default async function Movie({
                     {genre.name} &middot;
                   </span>
                 ))}
-                <span className="text-[13px] sm:text-[11px]">
+                <span className="text-[17px] sm:text-[11px] text-[var(--color-3)]">
                   {getLetterRange(movieData.release_date, 4)}
                 </span>
               </div>
-              <p className="description text-[13px] sm:text-[11px]">
+              <p className="description text-[17px] sm:text-[11px]">
                 {getWordRange(movieData.overview, 35)}
               </p>
             </div>
@@ -105,7 +105,7 @@ export default async function Movie({
                 overflowX: "scroll",
               }}
             >
-              {movieData.credits.cast.slice(0, 10).map((cast: any) => (
+              {movieData.credits.cast.slice(0, 7).map((cast: any) => (
                 <div
                   key={cast.id}
                   className="item w-auto h-auto mr-[10px] flex flex-col items-center relative gap-3 sm:mr-[8px]"
