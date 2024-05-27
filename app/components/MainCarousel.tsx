@@ -14,7 +14,7 @@ import "swiper/css";
 export function LoadingUiStyle() {
   return (
     <>
-      <div className="carousel-cont">
+      <div className="carousel-cont w-full h-screen relative">
         <Swiper
           autoplay={{
             delay: 5000,
@@ -23,9 +23,9 @@ export function LoadingUiStyle() {
           effect="autoplay"
           loop={true}
           modules={[Autoplay]}
-          className="carousel"
+          className="carousel w-full h-full"
         >
-          <SwiperSlide className="carousel-item active">
+          <SwiperSlide className="carousel-item active relative">
             <div className="mask"></div>
             <div className="filter"></div>
             <div className="text">
@@ -89,7 +89,7 @@ export default function MainCarouse() {
       {isLoading ? (
         <LoadingUiStyle />
       ) : (
-        <div className="carousel-cont">
+        <div className="carousel-cont w-full h-screen relative sm:h-[57vh]">
           <Swiper
             autoplay={{
               delay: 5000,
@@ -98,21 +98,21 @@ export default function MainCarouse() {
             effect="autoplay"
             loop={true}
             modules={[Autoplay]}
-            className="carousel"
+            className="carousel w-full h-full"
           >
             {movieData.slice(0, 5).map((result) => (
-              <SwiperSlide key={result.id} className="carousel-item active">
-                <div className="maskk w-full h-[50%] absolute bg-gradient-to-t from-[var(--background-color-1)] to-black/0 left-0 bottom-0 z-[3]"></div>
-                <div className="filterr w-full h-full absolute bg-gradient-to-tr from-[var(--background-color-1)]  to-black/0 left-0 bottom-0 z-[3]"></div>
+              <SwiperSlide key={result.id} className="carousel-item relative">
+                <div className="mask w-full h-[50%] absolute bg-gradient-to-t from-[var(--background-color-1)] to-black/0 left-0 bottom-0 z-[3]"></div>
+                <div className="filter w-full h-full absolute bg-gradient-to-r from-[var(--background-color-1)]  to-black/0 left-0 bottom-0 z-[3]"></div>
                 <Image
                   unoptimized
                   src={`https://themoviedb.org/t/p/original/${result.backdrop_path}`}
                   alt="Slide"
-                  className="w-full h-full"
-                  width={1200}
-                  height={700}
+                  className="w-full h-full my-0 mx-auto object-cover"
+                  width={900}
+                  height={480}
                 />
-                <div className="text">
+                <div className="text w-[40%] h-auto overflow-hidden absolute pb-[70px] pl-[3%] left-0 bottom-0 z-[5] sm:w-full sm:pb-[50px] sm:text-center">
                   <MovieLogo
                     movieId={result.id}
                     mediaType={result.media_type}
@@ -157,15 +157,16 @@ export default function MainCarouse() {
                   </div>
                 </div>
 
-                <div className="small-banner-slider">
+                <div className="small-banner-slider w-[25%] absolute my-[50px] mx-[3%] right-0 bottom-0 z-[5] flex items-center justify-center sm:hidden">
                   <div className="item">
                     <Image
+                      className="w-[170px] rounded-lg"
                       src={`https://themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`}
                       width={150}
                       alt={""}
                       height={200}
                     />
-                    <p className="active title">
+                    <p className="active title text-center">
                       {result.media_type === "movie"
                         ? getWordRange(result.title, 2)
                         : getWordRange(result.name, 2)}
