@@ -137,7 +137,7 @@ export default async function Movie({ params }: PageParams) {
               {movieData.credits.cast.slice(0, 10).map((cast: any) => (
                 <div
                   key={cast.id}
-                  className="item w-auto h-auto mr-[10px] flex flex-col items-center justify-center relative gap-3 sm:h-[210px] sm:mr-[8px]"
+                  className="item w-auto h-auto mr-[10px] flex flex-col items-center justify-center relative gap-3 sm:mr-[8px]"
                   style={{ flex: "0 0 auto" }}
                 >
                   <Image
