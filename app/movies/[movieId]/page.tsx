@@ -3,6 +3,7 @@ import Header from "@/app/components/Header";
 import Image from "next/image";
 import { getWordRange, getLetterRange } from "@/app/components/Functions";
 import nullAvatar from "@/app/images/null-avatar.png";
+import MovieScreen from "@/app/components/MovieScreen";
 
 const getMovieDetails = async (movieId: any) => {
   const request = await fetch(
@@ -19,15 +20,12 @@ const getMovieDetails = async (movieId: any) => {
   return request.json();
 };
 
-interface PageParams {
-  params: {
-    movieId: number;
-  };
-}
-
-export default async function Movie({ params }: PageParams) {
+export default async function Movie({
+  params,
+}: {
+  params: { movieId: string };
+}) {
   const movieData = await getMovieDetails(params.movieId);
-  let hasStartedPlaying = false;
   // useEffect(() => {
   //   const getMovieDetails = async () => {
   //     try {
@@ -57,34 +55,7 @@ export default async function Movie({ params }: PageParams) {
     <>
       <Header page={`watch-${params.movieId}`} />
       <main className="main-container w-full">
-        <div className="movie-container-screen w-full">
-          <div className="screen w-full h-[80vh] sm:h-[180px] overflow-hidden mb-3 relative">
-            {hasStartedPlaying ? (
-              <iframe
-                className="w-full h-full"
-                id="playit"
-                src={`https://vidsrc.to/embed/movie/${params.movieId}`}
-                allowFullScreen
-              ></iframe>
-            ) : (
-              <div className="thumbnail w-full h-full relative over-hidden">
-                <Image
-                  unoptimized
-                  className="w-full h-full object-cover"
-                  src={`https://media.themoviedb.org/t/p/w1000_and_h450_multi_faces${movieData.backdrop_path}`}
-                  width={1200}
-                  height={600}
-                  alt=""
-                />
-                <div className="mask absolute top-0 left-0 w-full h-[100%] bg-gradient-to-t from-[var(--background-color-1)] to-black/60 flex items-center justify-center">
-                  <div className="w-[80px] h-[80px] rounded-full flex items-center justify-center cursor-pointer">
-                    <i className="fa-solid fa-circle-play text-[var(--color-3)] text-[60px] sm:text-[40px]"></i>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
+        <MovieScreen movieData={movieData} movieId={params.movieId} />
         <section className="w-full h-auto p-7 mt-5 sm:p-3">
           <div className="movie-details w-full h-auto flex gap-3">
             <div className="small-image-container w-[250px] h-[270px] rounded-lg overflow-hidden sm:hidden">
@@ -102,19 +73,19 @@ export default async function Movie({ params }: PageParams) {
                 {movieData.title}
               </p>
               <div className="quick-info flex gap-3 items-center text-gray-500 ">
-                <span className="w-auto px-[4px] py-[0.5px] text-[13px] sm:text-[10px] font-[800] text-black bg-[var(--color-3)] rounded-2xl">
+                <span className="w-auto px-[4px] py-[0.5px] text-[13px] sm:text-[11px] font-[800] text-black bg-[var(--color-3)] rounded-2xl">
                   HD
                 </span>
                 {movieData.genres.slice(0, 3).map((genre: any) => (
-                  <span className="text-[13px] sm:text-[10px]" key={genre.id}>
+                  <span className="text-[13px] sm:text-[11px]" key={genre.id}>
                     {genre.name} &middot;
                   </span>
                 ))}
-                <span className="text-[13px] sm:text-[10px]">
+                <span className="text-[13px] sm:text-[11px]">
                   {getLetterRange(movieData.release_date, 4)}
                 </span>
               </div>
-              <p className="description text-[17px] sm:text-[12px]">
+              <p className="description text-[17px] sm:text-[13px]">
                 {getWordRange(movieData.overview, 25)}
               </p>
             </div>
@@ -157,7 +128,7 @@ export default async function Movie({ params }: PageParams) {
                   </p>
                 </div>
               ))}
-              <div className="w-[200px] h-[130px] flex gap-2 items-center justify-center text-[var(--color-3)] text-[12px]">
+              <div className="w-[200px] h-[130px] sm:h-[100px] flex gap-2 items-center justify-center text-[var(--color-3)] text-[12px]">
                 <p>View&nbsp;All</p>
                 <i className="fa-regular fa-arrow-right"></i>
               </div>

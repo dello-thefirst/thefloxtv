@@ -1,0 +1,45 @@
+"use client";
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+export default function MovieScreen({
+  movieId,
+  movieData,
+}: {
+  movieId: any;
+  movieData: any;
+}) {
+  const [hasStartedPlaying, setHasStartedPlaying] = useState(false);
+  return (
+    <div className="movie-container-screen w-full">
+      <div className="screen w-full h-[80vh] sm:h-[180px] overflow-hidden mb-3 relative">
+        {hasStartedPlaying ? (
+          <iframe
+            className="w-full h-full"
+            id="playit"
+            src={`https://vidsrc.to/embed/movie/${movieId}`}
+            allowFullScreen
+          ></iframe>
+        ) : (
+          <div className="thumbnail w-full h-full relative over-hidden">
+            <Image
+              unoptimized
+              className="w-full h-full object-cover"
+              src={`https://media.themoviedb.org/t/p/w1000_and_h450_multi_faces${movieData.backdrop_path}`}
+              width={1200}
+              height={600}
+              alt=""
+            />
+            <div className="mask absolute top-0 left-0 w-full h-[100%] bg-gradient-to-t from-[var(--background-color-1)] to-black/60 flex items-center justify-center">
+              <div
+                className="w-[80px] h-[80px] rounded-full flex items-center justify-center cursor-pointer"
+                onClick={() => setHasStartedPlaying(true)}
+              >
+                <i className="fa-solid fa-circle-play text-[var(--color-3)] text-[60px] sm:text-[45px]"></i>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
