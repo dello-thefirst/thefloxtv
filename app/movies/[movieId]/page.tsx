@@ -56,7 +56,7 @@ export default async function Movie({
       <Header page={`watch-${params.movieId}`} />
       <main className="main-container w-full">
         <MovieScreen movieData={movieData} movieId={params.movieId} />
-        <section className="w-full h-auto p-7 mt-5 sm:p-3">
+        <section className="w-full h-auto p-7 mt-8 sm:p-3">
           <div className="movie-details w-full h-auto flex gap-3">
             <div className="small-image-container w-[250px] h-[270px] rounded-lg overflow-hidden sm:hidden">
               <Image
