@@ -28,9 +28,8 @@ function MovieLogo(props: Props) {
         className="movie-logo"
         src={`https://themoviedb.org/t/p/w500/${movieLogoData}`}
         alt={""}
-        width={200}
-        height={100}
-        quality={75}
+        width={160}
+        height={80}
       />
     );
   return <p className="title">{props.movieTitle}</p>;
