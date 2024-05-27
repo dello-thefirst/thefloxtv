@@ -17,7 +17,7 @@ export function LoadingUiStyle() {
       <div className="carousel-cont w-full h-screen relative sm:h-[57vh]">
         <Swiper
           autoplay={{
-            delay: 5000,
+            delay: 8000,
             disableOnInteraction: false,
           }}
           effect="autoplay"
