@@ -10,7 +10,7 @@ const getMovieDetails = async (movieId: any) => {
     `https://api.themoviedb.org/3/movie/${movieId}?language=en-US&append_to_response=credits`,
     {
       method: "GET",
-      cache: "no-store",
+      cache: "force-cache",
       headers: {
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTliOGUyOGRjM2M5ZDkwMGNlYjQ2OTZiZjJkMjQ3YyIsInN1YiI6IjY1MDA0ZDIwNmEyMjI3MDBjM2I2MDM3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DNP1HXf6xyRe_8C7rR7fljfalpmJZgcry6JN8xLwk8E",
