@@ -4,7 +4,6 @@ import Image from "next/image";
 import { getWordRange, getLetterRange } from "@/app/components/Functions";
 import nullAvatar from "@/app/images/null-avatar.png";
 import MovieScreen from "@/app/components/MovieScreen";
-
 const getMovieDetails = async (movieId: any) => {
   const request = await fetch(
     `https://api.themoviedb.org/3/movie/${movieId}?language=en-US&append_to_response=credits`,
