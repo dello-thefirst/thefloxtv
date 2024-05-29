@@ -4,7 +4,9 @@ import Image from "next/image";
 import { getWordRange, getLetterRange } from "@/app/components/Functions";
 import nullAvatar from "@/app/images/null-avatar.png";
 import MovieScreen from "@/app/components/MovieScreen";
+import type { Metadata, ResolvingMetadata } from "next";
 //...
+
 const getMovieDetails = async (movieId: any) => {
   const request = await fetch(
     `https://api.themoviedb.org/3/movie/${movieId}?language=en-US&append_to_response=credits`,
@@ -19,6 +21,25 @@ const getMovieDetails = async (movieId: any) => {
   );
   return request.json();
 };
+export async function generateMetadata({ params }: any): Promise<Metadata> {
+  const id = params.movieId;
+  const movieData = await getMovieDetails(id);
+  return {
+    title: movieData.title,
+    description: movieData.overview,
+    openGraph: {
+      type: "website",
+      url: `https://thefloxtv.com/movies/${id}`,
+      title: movieData.title,
+      description: movieData.overview,
+      images: [
+        {
+          url: `https://image.tmdb.org/t/p/w220_and_h330_face${movieData.poster_path}`,
+        },
+      ],
+    },
+  };
+}
 
 export default async function Movie({
   params,
@@ -26,6 +47,7 @@ export default async function Movie({
   params: { movieId: string };
 }) {
   const movieData = await getMovieDetails(params.movieId);
+
   return (
     <>
       <Header page={`watch-${params.movieId}`} />
