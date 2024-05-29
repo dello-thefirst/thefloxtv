@@ -56,26 +56,21 @@
 }
 
 .carousel-item .text .view-btn {
-  width: 120px;
-  height: 43px;
+  width: 150px;
+  height: 45px;
   border-radius: 1.5rem;
   font-size: 13px;
+  font-weight: 500;
   word-spacing: 3px;
 }
 
 .carousel-item .text .view-btn.watch-now {
-  outline: 1px solid rgb(var(--color-2));
-  color: rgb(var(--color-2));
-  background-color: transparent;
+  color: rgb(34, 33, 33);
+  background-color: var(--color-3);
   font-weight: 500;
   transition: 0.3s;
 }
 
-.carousel-item .text .view-btn.watch-now:hover {
-  color: rgb(var(--background-color-1));
-  background-color: rgb(var(--color-2));
-  outline: none;
-}
 
 @media screen and (max-width: 900px) {
 

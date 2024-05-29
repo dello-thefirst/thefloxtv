@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { url } from "inspector";
 export default function MovieScreen({
   movieId,
   movieData,
@@ -20,16 +21,14 @@ export default function MovieScreen({
             allowFullScreen
           ></iframe>
         ) : (
-          <div className="thumbnail w-full h-full relative over-hidden">
-            <Image
-              unoptimized
-              className="w-full h-full object-cover"
-              src={`https://media.themoviedb.org/t/p/w1000_and_h450_multi_faces${movieData.backdrop_path}`}
-              width={1200}
-              height={600}
-              alt=""
-            />
-            <div className="mask absolute top-0 left-0 w-full h-[100%] bg-gradient-to-t from-[var(--background-color-1)] to-black/60 flex items-center justify-center">
+          <div
+            className="thumbnail w-full h-full relative overflow-hidden bg-cover"
+            style={{
+              backgroundImage: `url(https://image.tmdb.org/t/p/original/${movieData.backdrop_path})`,
+              backgroundSize: "cover",
+            }}
+          >
+            <div className="mask absolute top-0 left-0 w-full h-[100%] bg-gradient-to-t from-[var(--background-color-1)] to-[#26262637] flex items-center justify-center">
               <div
                 className="w-[80px] h-[80px] rounded-full flex items-center justify-center cursor-pointer"
                 onClick={() => setHasStartedPlaying(true)}

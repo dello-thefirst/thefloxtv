@@ -4,6 +4,7 @@ import Image from "next/image";
 import { getWordRange, getLetterRange } from "@/app/components/Functions";
 import nullAvatar from "@/app/images/null-avatar.png";
 import MovieScreen from "@/app/components/MovieScreen";
+//...
 const getMovieDetails = async (movieId: any) => {
   const request = await fetch(
     `https://api.themoviedb.org/3/movie/${movieId}?language=en-US&append_to_response=credits`,
@@ -25,31 +26,6 @@ export default async function Movie({
   params: { movieId: string };
 }) {
   const movieData = await getMovieDetails(params.movieId);
-  // useEffect(() => {
-  //   const getMovieDetails = async () => {
-  //     try {
-  //       setIsLoading(true);
-  //       const res = await axios.get(
-  //         `https://api.themoviedb.org/3/movie/${params.movieId}?language=en-US&append_to_response=credits`,
-  //         {
-  //           headers: {
-  //             Authorization:
-  //               "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTliOGUyOGRjM2M5ZDkwMGNlYjQ2OTZiZjJkMjQ3YyIsInN1YiI6IjY1MDA0ZDIwNmEyMjI3MDBjM2I2MDM3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DNP1HXf6xyRe_8C7rR7fljfalpmJZgcry6JN8xLwk8E",
-  //           },
-  //         }
-  //       );
-  //       const response = [];
-  //       response.push(res.data);
-  //       setIsLoading(false);
-  //       setMovieData(response);
-  //     } catch (err) {
-  //       console.log(err);
-  //       getMovieDetails;
-  //     }
-  //   };
-  //   getMovieDetails();
-  // }, [params.movieId]);
-
   return (
     <>
       <Header page={`watch-${params.movieId}`} />
@@ -61,10 +37,10 @@ export default async function Movie({
               <Image
                 unoptimized
                 className="w-full h-full object-cover"
-                src={`https://themoviedb.org/t/p/w220_and_h330_face${movieData.poster_path}`}
+                src={`https://image.tmdb.org/t/p/w220_and_h330_face${movieData.poster_path}`}
                 width={220}
                 height={330}
-                alt=""
+                alt="Movie"
               />
             </div>
             <div className="title-card text-semibold text-slate-200 w-full pr-[300px] sm:pr-5 flex flex-col gap-3">
@@ -116,10 +92,11 @@ export default async function Movie({
                     src={
                       cast.profile_path == null
                         ? nullAvatar
-                        : `https://media.themoviedb.org/t/p/w240_and_h266_face/${cast.profile_path}`
+                        : `https://media.themoviedb.org/t/p/w240_and_h266_face${cast.profile_path}`
                     }
                     width={130}
                     height={170}
+                    loading="lazy"
                     alt="cast"
                   />
                   <p className="text-gray-300 text-[14px] sm:text-[12px]">

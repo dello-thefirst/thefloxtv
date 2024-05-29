@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 import Script from "next/script";
-import Head from "next/head";
 import { Kanit, Work_Sans } from "next/font/google";
 
 const kanit = Kanit({
@@ -36,23 +35,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={workSans.className}>
+    <html lang="en">
       <head>
         <link
           rel="stylesheet"
           href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css"
-        />
-        <link
-          rel="stylesheet"
-          href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-solid.css"
-        />
-        <link
-          rel="stylesheet"
-          href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-regular.css"
-        />
-        <link
-          rel="stylesheet"
-          href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-light.css"
         />
       </head>
       <Script
@@ -67,8 +54,8 @@ export default function RootLayout({
 
             gtag('config', 'G-MGNE4PFYE5');`}
       </Script>
-      <body data-theme="dark">
-        <NextTopLoader
+      <body data-theme="dark" className={workSans.className}>
+        {/* <NextTopLoader
           color="var(--color-3)"
           initialPosition={0.08}
           crawlSpeed={200}
@@ -78,7 +65,7 @@ export default function RootLayout({
           easing="ease"
           speed={200}
           shadow=""
-        />
+        /> */}
         {children}
       </body>
     </html>
