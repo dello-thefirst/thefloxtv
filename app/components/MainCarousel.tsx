@@ -106,7 +106,7 @@ export default function MainCarouse() {
                 <div className="filter w-full h-full absolute bg-gradient-to-r from-[var(--background-color-1)]  to-black/0 left-0 bottom-0 z-[3]"></div>
                 <Image
                   unoptimized
-                  src={`https://image.tmdb.org/t/p/original/${result.backdrop_path}`}
+                  src={`https://image.tmdb.org/t/p/w1000_and_h450_multi_faces${result.backdrop_path}`}
                   alt="Slide"
                   className="w-full h-full my-0 mx-auto object-cover"
                   width={900}
