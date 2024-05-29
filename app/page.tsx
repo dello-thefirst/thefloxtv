@@ -3,7 +3,6 @@ import Header from "./components/Header";
 import MainCarousel from "./components/MainCarousel";
 import Trending from "./components/Trending";
 import Popular from "./components/Popular";
-import Recent from "./components/Recent";
 import DiscoverDaily from "./components/DiscoverDaily";
 
 function Home() {

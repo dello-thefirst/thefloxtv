@@ -24,7 +24,7 @@ export default function MovieScreen({
           <div
             className="thumbnail w-full h-full relative overflow-hidden bg-cover"
             style={{
-              backgroundImage: `url(https://image.tmdb.org/t/p/w1000_and_h450_multi_faces${movieData.backdrop_path})`,
+              backgroundImage: `url(https://image.tmdb.org/t/p/original${movieData.backdrop_path})`,
               backgroundSize: "cover",
             }}
           >
