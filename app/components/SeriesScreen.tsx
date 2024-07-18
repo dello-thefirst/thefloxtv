@@ -15,7 +15,7 @@ export default function SeriesScreen({
           <iframe
             className="w-full h-full"
             id="playit"
-            src={`https://vidsrc.to/embed/series/${tvId}`}
+            src={`https://vidsrc.to/embed/tv/${tvId}`}
             allowFullScreen
           ></iframe>
         ) : (

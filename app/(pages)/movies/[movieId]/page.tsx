@@ -60,7 +60,7 @@ export default async function Movie({
                 {movieData.title}
               </p>
               <div className="quick-info flex gap-3 items-center text-gray-500 ">
-                <span className="w-auto px-[4px] py-[0.5px] text-[13px] sm:text-[11px] font-[800] text-black bg-[var(--color-3)] rounded-2xl">
+                <span className="w-auto px-[8px] py-[0.5px] text-[13px] sm:text-[11px] font-[600] text-gray-500 outline outline-1 outline-[var(--color-3)] rounded-sm">
                   HD
                 </span>
                 {movieData.genres.slice(0, 3).map((genre: any) => (
