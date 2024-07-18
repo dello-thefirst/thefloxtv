@@ -2,40 +2,22 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import axios from "axios";
+import { getLetterRange } from "./Functions";
 
-interface Props {
-  query: string;
-}
-
-type SearchResult = {
-  status: string;
-  id: number;
-  title: string;
-  name: string;
-  media_type: string;
-  poster_path: string;
-  year: string;
+const LivesearchResult = (props: { query: string }) => {
   //...
-  idMovie: number;
-  idSeries: number;
-  tmdbMovie: number;
-  tmdbSeries: number;
-  titleMovie: string;
-  nameSeries: string;
-  bannerMovie: string;
-  bannerSeries: string;
-  yearMovie: string;
-  yearSeries: string;
-};
-
-const LivesearchResult = (props: Props) => {
-  //...
-  const [searchResult, setSearchResult] = useState([]);
+  const [searchResult, setSearchResult] = useState<any>([]);
   useEffect(() => {
     async function getSearchResult() {
       try {
         const res = await axios.get(
-          `https://floxapi.000webhostapp.com/search/?q=${props.query}`
+          `https://api.themoviedb.org/3/search/multi?query=${props.query}&include_adult=false&language=en-US&page=1`,
+          {
+            headers: {
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTliOGUyOGRjM2M5ZDkwMGNlYjQ2OTZiZjJkMjQ3YyIsInN1YiI6IjY1MDA0ZDIwNmEyMjI3MDBjM2I2MDM3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DNP1HXf6xyRe_8C7rR7fljfalpmJZgcry6JN8xLwk8E",
+            },
+          }
         );
 
         setSearchResult(res.data);
@@ -50,49 +32,54 @@ const LivesearchResult = (props: Props) => {
     return (
       <div className="SearchResult">
         <div className="wrapper">
-          {searchResult.map((result: SearchResult) => (
-            <Link
-              key={
-                result.media_type == "movie" ? result.idMovie : result.idSeries
-              }
-              href={
-                result.media_type == "movie"
-                  ? `/movies/${result.tmdbMovie}`
-                  : `/tv/${result.tmdbSeries}`
-              }
-            >
-              <div className="item flex gap-[10px] my-[10px]">
-                <Image
-                  className="w-[40px]  h-[50px] rounded-sm object-cover"
-                  src={`https://themoviedb.org/t/p/w94_and_h141_bestv2${
-                    result.media_type == "movie"
-                      ? result.bannerMovie
-                      : result.bannerSeries
-                  }`}
-                  alt=""
-                  width={40}
-                  height={70}
-                />
-                <div className="info text-[13px]">
-                  <p className="title">
-                    {result.media_type == "movie"
-                      ? result.titleMovie
-                      : result.nameSeries}
-                  </p>
-                  <p
-                    className="sub text-green-300 text-[11px] font-light"
-                    style={{ wordSpacing: "3px" }}
-                  >
-                    {result.media_type == "movie" ? `Movie ` : `TV `}
-                    &middot; &nbsp;
-                    {result.media_type == "movie"
-                      ? result.yearMovie
-                      : result.yearSeries}
-                  </p>
+          {searchResult.results
+            .filter(
+              (movie: any) =>
+                movie.popularity > 10 && // Adjust threshold as needed
+                movie.vote_average > 7 && // Minimum rating
+                movie.vote_count > 100 // Minimum number of votes
+            )
+            .map((result: any) => (
+              <Link
+                key={result.id}
+                href={
+                  result.media_type == "movie"
+                    ? `/movies/${result.id}`
+                    : `/tv/${result.id}`
+                }
+              >
+                <div className="item flex gap-[10px] my-[10px]">
+                  <Image
+                    className="w-[40px]  h-[50px] rounded-sm object-cover"
+                    src={`https://themoviedb.org/t/p/w94_and_h141_bestv2${
+                      result.media_type == "movie"
+                        ? result.backdrop_path
+                        : result.backdrop_path
+                    }`}
+                    alt=""
+                    width={40}
+                    height={70}
+                  />
+                  <div className="info text-[13px]">
+                    <p className="title">
+                      {result.media_type == "movie"
+                        ? result.title
+                        : result.name}
+                    </p>
+                    <p
+                      className="sub text-green-300 text-[11px] font-light"
+                      style={{ wordSpacing: "3px" }}
+                    >
+                      {result.media_type == "movie" ? `Movie ` : `TV `}
+                      &middot; &nbsp;
+                      {result.media_type == "movie"
+                        ? getLetterRange(result.release_date, 4)
+                        : getLetterRange(result.first_air_date, 4)}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            ))}
         </div>
       </div>
     );
