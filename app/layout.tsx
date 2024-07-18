@@ -3,6 +3,8 @@ import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 import Script from "next/script";
 import { Kanit, Work_Sans } from "next/font/google";
+import ReactQuery from "./providers/ReactQuery";
+import ReactQueryProvider from "./providers/ReactQuery";
 
 const kanit = Kanit({
   weight: ["100", "200", "300", "400", "500", "600"],
@@ -66,7 +68,7 @@ export default function RootLayout({
           speed={200}
           shadow=""
         /> */}
-        {children}
+        <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
     </html>
   );

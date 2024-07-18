@@ -1,11 +1,11 @@
 "use client";
 import React, { useState } from "react";
-export default function MovieScreen({
-  movieId,
-  movieData,
+export default function SeriesScreen({
+  tvId,
+  seriesData,
 }: {
-  movieId: any;
-  movieData: any;
+  tvId: any;
+  seriesData: any;
 }) {
   const [hasStartedPlaying, setHasStartedPlaying] = useState(false);
   return (
@@ -15,14 +15,14 @@ export default function MovieScreen({
           <iframe
             className="w-full h-full"
             id="playit"
-            src={`https://vidsrc.to/embed/movie/${movieId}`}
+            src={`https://vidsrc.to/embed/series/${tvId}`}
             allowFullScreen
           ></iframe>
         ) : (
           <div
             className="thumbnail w-full h-full relative overflow-hidden bg-cover"
             style={{
-              backgroundImage: `url(https://image.tmdb.org/t/p/original${movieData.backdrop_path})`,
+              backgroundImage: `url(https://image.tmdb.org/t/p/original${seriesData.backdrop_path})`,
               backgroundSize: "cover",
             }}
           >

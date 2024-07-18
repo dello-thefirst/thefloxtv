@@ -4,24 +4,14 @@ import Image from "next/image";
 import { getWordRange, getLetterRange } from "@/app/components/Functions";
 import nullAvatar from "@/app/images/null-avatar.png";
 import MovieScreen from "@/app/components/MovieScreen";
-import type { Metadata, ResolvingMetadata } from "next";
-//...
+import type { Metadata } from "next";
+import { getMovieDetails } from "@/app/functions/fetch";
 
-const getMovieDetails = async (movieId: any) => {
-  const request = await fetch(
-    `https://api.themoviedb.org/3/movie/${movieId}?language=en-US&append_to_response=credits`,
-    {
-      method: "GET",
-      cache: "force-cache",
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTliOGUyOGRjM2M5ZDkwMGNlYjQ2OTZiZjJkMjQ3YyIsInN1YiI6IjY1MDA0ZDIwNmEyMjI3MDBjM2I2MDM3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DNP1HXf6xyRe_8C7rR7fljfalpmJZgcry6JN8xLwk8E",
-      },
-    }
-  );
-  return request.json();
-};
-export async function generateMetadata({ params }: any): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: any;
+}): Promise<Metadata> {
   const id = params.movieId;
   const movieData = await getMovieDetails(id);
   return {

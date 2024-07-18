@@ -6,44 +6,17 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import axios from "axios";
 import Image from "next/image";
-import { MovieDataProps, getWordRange, getLetterRange } from "./Functions";
-
-export function LoadingUiStyle() {
-  let iteratorKey = 1;
-  return [1, 2, 3].map(() => (
-    <SwiperSlide
-      className="w-full h-full rounded-2xl skeleton p-2 relative overflow-hidden"
-      key={iteratorKey++}
-    ></SwiperSlide>
-  ));
-}
+import { getWordRange, getLetterRange } from "./Functions";
+import { DDLoadingUI } from "./LoadingUI/DDLoadingUI";
+import { useQuery } from "react-query";
+import { fetchTrending } from "../functions/fetch";
 
 function DiscoverDaily() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [movieData, setMovieData] = useState<MovieDataProps[]>([]);
+  const { data: movieData, isLoading } = useQuery({
+    queryFn: async () => await fetchTrending("day"),
+    queryKey: ["discoverdaily"],
+  });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setIsLoading(true);
-        const req = await axios.get(
-          `https://api.themoviedb.org/3/trending/all/day?language=en-US`,
-          {
-            headers: {
-              Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTliOGUyOGRjM2M5ZDkwMGNlYjQ2OTZiZjJkMjQ3YyIsInN1YiI6IjY1MDA0ZDIwNmEyMjI3MDBjM2I2MDM3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DNP1HXf6xyRe_8C7rR7fljfalpmJZgcry6JN8xLwk8E",
-            },
-          }
-        );
-        setMovieData(req.data.results);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
   return (
     <>
       <p className="text-center mb-3">
@@ -70,9 +43,9 @@ function DiscoverDaily() {
         modules={[Autoplay]}
       >
         {isLoading ? (
-          <LoadingUiStyle />
+          <DDLoadingUI />
         ) : (
-          movieData.slice(0, 5).map((result) => (
+          movieData.slice(0, 5).map((result: any) => (
             <SwiperSlide
               className="w-full h-full p-3 relative overflow-hidden"
               key={result.id}
