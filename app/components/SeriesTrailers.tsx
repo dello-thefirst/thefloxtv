@@ -34,7 +34,7 @@ export default function SeriesTrailers({
           overflowX: "scroll",
         }}
       >
-        {data.results.map((trailer: any) => (
+        {data.results.slice(0, 5).map((trailer: any) => (
           <>
             <div>
               <iframe
