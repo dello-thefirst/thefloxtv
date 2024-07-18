@@ -39,7 +39,7 @@ export default function MovieTrailers({
           <>
             <div>
               <iframe
-                className="w-[400px] sm:w-[80vw] h-[240px] sm:h-[140px] rounded-xl sm:rounded-lg"
+                className="w-[400px] sm:w-[80vw] h-[240px] sm:h-[170px] rounded-xl sm:rounded-lg"
                 width="100%"
                 height="100%"
                 src={`https://www.youtube.com/embed/${trailer.key}?autoplay=0&mute=1`}
@@ -53,7 +53,7 @@ export default function MovieTrailers({
             movieTitle + " Trailer"
           }`}
         >
-          <div className="w-[400px] sm:w-[90vw] h-[240px] sm:h-[140px] rounded-xl sm:rounded-lg bg-gray-900 flex justify-center items-center cursor-pointer">
+          <div className="w-[400px] sm:w-[90vw] h-[240px] sm:h-[170px] rounded-xl sm:rounded-lg bg-gray-900 flex justify-center items-center cursor-pointer">
             <p className="text-[13px] text-[lightgreen] cursor-pointer">
               Other Trailers on Youtube{" "}
               <i className="fa-light fa-arrow-up-right-from-square"></i>
