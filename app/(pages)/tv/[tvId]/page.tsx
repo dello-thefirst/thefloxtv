@@ -6,6 +6,7 @@ import nullAvatar from "@/app/images/null-avatar.png";
 import type { Metadata } from "next";
 import { getSeriesDetails } from "@/app/functions/fetch";
 import SeriesScreen from "@/app/components/SeriesScreen";
+import SeriesTrailers from "@/app/components/SeriesTrailers";
 
 export async function generateMetadata({
   params,
@@ -117,6 +118,8 @@ export default async function Series({ params }: { params: { tvId: string } }) {
               </div>
             </div>
           </div>
+
+          <SeriesTrailers seriesId={params.tvId} seriesName={seriesData.name} />
         </section>
       </main>
     </>

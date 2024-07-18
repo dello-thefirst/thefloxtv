@@ -1,18 +1,18 @@
 "use client";
 import { useQuery } from "react-query";
-import { fetchMovieTrailers } from "../functions/fetch";
+import { fetchSeriesTrailers } from "../functions/fetch";
 import Link from "next/link";
 
-export default function MovieTrailers({
-  movieId,
-  movieTitle,
+export default function SeriesTrailers({
+  seriesId,
+  seriesName,
 }: {
-  movieId: string;
-  movieTitle: string;
+  seriesId: string;
+  seriesName: string;
 }) {
   const { data, isLoading } = useQuery({
-    queryFn: async () => await fetchMovieTrailers(movieId),
-    queryKey: ["movietrailersf", movieId],
+    queryFn: async () => await fetchSeriesTrailers(seriesId),
+    queryKey: ["seriestrailers", seriesId],
     refetchOnMount: true,
   });
 
@@ -46,11 +46,11 @@ export default function MovieTrailers({
               ></iframe>
             </div>
           </>
-        ))}{" "}
+        ))}
         <Link
           target="_blank"
           href={`https://www.youtube.com/results?search_query=${
-            movieTitle + " Trailer"
+            seriesName + " Trailer"
           }`}
         >
           <div className="w-[400px] sm:w-[90vw] h-[240px] sm:h-[140px] rounded-xl sm:rounded-lg bg-gray-900 flex justify-center items-center cursor-pointer">
