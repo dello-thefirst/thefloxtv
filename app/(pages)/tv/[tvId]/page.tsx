@@ -14,7 +14,7 @@ export async function generateMetadata({
 }: {
   params: any;
 }): Promise<Metadata> {
-  const id = params.movieId;
+  const id = params.tvId;
   const seriesData = await getSeriesDetails(id);
   return {
     title: seriesData.name,
