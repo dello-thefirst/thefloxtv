@@ -13,7 +13,6 @@ export default function SeriesTrailers({
   const { data, isLoading } = useQuery({
     queryFn: async () => await fetchSeriesTrailers(seriesId),
     queryKey: ["seriestrailers", seriesId],
-    refetchOnMount: true,
   });
 
   if (isLoading) {

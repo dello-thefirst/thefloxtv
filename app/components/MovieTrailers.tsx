@@ -13,7 +13,6 @@ export default function MovieTrailers({
   const { data, isLoading } = useQuery({
     queryFn: async () => await fetchMovieTrailers(movieId),
     queryKey: ["movietrailersf", movieId],
-    refetchOnMount: true,
   });
 
   if (isLoading) {
