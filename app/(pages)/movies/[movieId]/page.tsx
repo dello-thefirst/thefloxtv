@@ -7,6 +7,7 @@ import MovieScreen from "@/app/components/MovieScreen";
 import type { Metadata } from "next";
 import { getMovieDetails } from "@/app/functions/fetch";
 import MovieTrailers from "@/app/components/MovieTrailers";
+import Link from "next/link";
 
 export async function generateMetadata({
   params,
@@ -117,10 +118,15 @@ export default async function Movie({
                   </p>
                 </div>
               ))}
-              <div className="w-[200px] h-[130px] sm:h-[100px] flex gap-2 items-center justify-center text-[var(--color-3)] text-[12px]">
-                <p>View&nbsp;All</p>
-                <i className="fa-regular fa-arrow-right"></i>
-              </div>
+              <Link
+                target="_blank"
+                href={`https://www.themoviedb.org/movie/${movieData.id}/cast`}
+              >
+                <div className="w-[200px] h-[130px] sm:h-[100px] flex gap-2 items-center justify-center text-[var(--color-3)] text-[12px]">
+                  <p>View&nbsp;All</p>
+                  <i className="fa-regular fa-arrow-right"></i>
+                </div>
+              </Link>
             </div>
           </div>
 

@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 import { getSeriesDetails } from "@/app/functions/fetch";
 import SeriesScreen from "@/app/components/SeriesScreen";
 import SeriesTrailers from "@/app/components/SeriesTrailers";
+import Link from "next/link";
 
 export async function generateMetadata({
   params,
@@ -112,10 +113,15 @@ export default async function Series({ params }: { params: { tvId: string } }) {
                   </p>
                 </div>
               ))}
-              <div className="w-[200px] h-[130px] sm:h-[100px] flex gap-2 items-center justify-center text-[var(--color-3)] text-[12px]">
-                <p>View&nbsp;All</p>
-                <i className="fa-regular fa-arrow-right"></i>
-              </div>
+              <Link
+                target="_blank"
+                href={`https://www.themoviedb.org/tv/${seriesData.id}/cast`}
+              >
+                <div className="w-[200px] h-[130px] sm:h-[100px] flex gap-2 items-center justify-center text-[var(--color-3)] text-[12px]">
+                  <p>View&nbsp;All</p>
+                  <i className="fa-regular fa-arrow-right"></i>
+                </div>
+              </Link>
             </div>
           </div>
 
