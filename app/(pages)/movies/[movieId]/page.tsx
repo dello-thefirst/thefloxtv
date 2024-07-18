@@ -6,6 +6,7 @@ import nullAvatar from "@/app/images/null-avatar.png";
 import MovieScreen from "@/app/components/MovieScreen";
 import type { Metadata } from "next";
 import { getMovieDetails } from "@/app/functions/fetch";
+import MovieTrailers from "@/app/components/MovieTrailers";
 
 export async function generateMetadata({
   params,
@@ -122,6 +123,11 @@ export default async function Movie({
               </div>
             </div>
           </div>
+
+          <MovieTrailers
+            movieId={params.movieId}
+            movieTitle={movieData.title}
+          />
         </section>
       </main>
     </>
