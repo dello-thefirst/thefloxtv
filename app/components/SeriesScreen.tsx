@@ -10,7 +10,7 @@ export default function SeriesScreen({
   const [hasStartedPlaying, setHasStartedPlaying] = useState(false);
   return (
     <div className="movie-container-screen w-full">
-      <div className="screen w-full h-[80vh] sm:h-[180px] overflow-hidden mb-3 relative">
+      <div className="screen w-full h-[80vh] sm:h-[200px] overflow-hidden mb-3 relative">
         {hasStartedPlaying ? (
           <iframe
             className="w-full h-full"
