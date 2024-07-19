@@ -125,7 +125,10 @@ export default async function Series({ params }: { params: { tvId: string } }) {
             </div>
           </div>
 
-          <SeriesTrailers seriesId={params.tvId} seriesName={seriesData.name} />
+          <SeriesTrailers
+            trailers={seriesData.videos}
+            seriesName={seriesData.name}
+          />
         </section>
       </main>
     </>

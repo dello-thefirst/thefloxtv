@@ -131,7 +131,7 @@ export default async function Movie({
           </div>
 
           <MovieTrailers
-            movieId={params.movieId}
+            trailers={movieData.videos}
             movieTitle={movieData.title}
           />
         </section>

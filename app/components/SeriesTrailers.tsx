@@ -1,23 +1,12 @@
-"use client";
-import { useQuery } from "react-query";
-import { fetchSeriesTrailers } from "../functions/fetch";
 import Link from "next/link";
 
 export default function SeriesTrailers({
-  seriesId,
+  trailers,
   seriesName,
 }: {
-  seriesId: string;
+  trailers: any;
   seriesName: string;
 }) {
-  const { data, isLoading } = useQuery({
-    queryFn: async () => await fetchSeriesTrailers(seriesId),
-    queryKey: ["seriestrailers", seriesId],
-  });
-
-  if (isLoading) {
-    return;
-  }
   return (
     <div className="cast-container w-full h-auto mt-6">
       <p className="text-[30px] font-bold sm:text-[20px] text-white mb-4">
@@ -34,7 +23,7 @@ export default function SeriesTrailers({
           overflowX: "scroll",
         }}
       >
-        {data.results.slice(0, 5).map((trailer: any) => (
+        {trailers.results.slice(0, 5).map((trailer: any) => (
           <>
             <div>
               <iframe

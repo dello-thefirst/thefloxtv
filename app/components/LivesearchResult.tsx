@@ -53,8 +53,8 @@ const LivesearchResult = (props: { query: string }) => {
                     className="w-[40px]  h-[50px] rounded-sm object-cover"
                     src={`https://themoviedb.org/t/p/w94_and_h141_bestv2${
                       result.media_type == "movie"
-                        ? result.backdrop_path
-                        : result.backdrop_path
+                        ? result.poster_path
+                        : result.poster_path
                     }`}
                     alt=""
                     width={40}
