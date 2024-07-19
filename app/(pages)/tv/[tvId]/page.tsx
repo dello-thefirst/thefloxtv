@@ -127,7 +127,7 @@ export default async function Series({ params }: { params: { tvId: string } }) {
 
           <SeriesTrailers
             trailers={seriesData.videos}
-            seriesBanner={seriesData.backdrop_path}
+            seriesBanner={seriesData.images.backdrops[0].file_path}
             seriesName={seriesData.name}
           />
         </section>

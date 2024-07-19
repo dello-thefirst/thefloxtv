@@ -23,7 +23,8 @@ export const getMovieDetails = async (movieId: any) => {
       `https://api.themoviedb.org/3/movie/${movieId}`,
       {
         params: {
-          append_to_response: "credits,videos",
+          append_to_response: "credits,videos,images",
+          include_image_language: "en",
           language: "en-US",
         },
 
@@ -46,7 +47,8 @@ export const getSeriesDetails = async (movieId: any) => {
       `https://api.themoviedb.org/3/tv/${movieId}`,
       {
         params: {
-          append_to_response: "credits,videos",
+          append_to_response: "credits,videos,images",
+          include_image_language: "en",
           language: "en-US",
         },
 
