@@ -28,10 +28,10 @@ export default function SeriesScreen({
           >
             <div className="mask absolute top-0 left-0 w-full h-[100%] bg-gradient-to-t from-[var(--background-color-1)] to-[#26262637] flex items-center justify-center">
               <div
-                className="w-[80px] h-[80px] rounded-full flex items-center justify-center cursor-pointer"
+                className="w-auo h-auto rounded-full bg-[lightgreen] flex items-center justify-center cursor-pointer"
                 onClick={() => setHasStartedPlaying(true)}
               >
-                <i className="fa-solid fa-circle-play text-[var(--color-3)] text-[60px] sm:text-[45px]"></i>
+                <i className="fa-solid fa-circle-play text-[#040812] text-[60px] sm:text-[45px]"></i>
               </div>
             </div>
           </div>
