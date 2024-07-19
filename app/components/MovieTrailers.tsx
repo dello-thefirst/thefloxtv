@@ -27,26 +27,25 @@ export default function MovieTrailers({
         }}
       >
         {trailers.results.slice(0, 1).map((trailer: any) => (
-          <>
-            <div
-              className="w-[400px] sm:w-[70vw] h-[240px] sm:h-[150px] rounded-xl sm:rounded-lg overflow-hidden relative"
-              style={{
-                backgroundImage: `url(https://image.tmdb.org/t/p/w500${movieBanner})`,
-                flex: "0 0 auto",
-              }}
-            >
-              <div className="mask absolute top-0 left-0 w-full h-[100%] bg-[#3a3a3a8d] flex items-center justify-center">
-                <div className="w-auo h-auto rounded-full bg-[#06040c] flex items-center justify-center cursor-pointer">
-                  <i className="fa-solid fa-circle-play text-[#fff] text-[60px] sm:text-[45px]"></i>
-                </div>
+          <div
+            key={trailer.id}
+            className="w-[400px] sm:w-[70vw] h-[240px] sm:h-[150px] rounded-xl sm:rounded-lg overflow-hidden relative"
+            style={{
+              backgroundImage: `url(https://image.tmdb.org/t/p/w500${movieBanner})`,
+              flex: "0 0 auto",
+            }}
+          >
+            <div className="mask absolute top-0 left-0 w-full h-[100%] bg-[#3a3a3a8d] flex items-center justify-center">
+              <div className="w-auo h-auto rounded-full bg-[#06040c] flex items-center justify-center cursor-pointer">
+                <i className="fa-solid fa-circle-play text-[#fff] text-[60px] sm:text-[45px]"></i>
               </div>
-              {/* <iframe
+            </div>
+            {/* <iframe
                 width="100%"
                 height="100%"
                 src={`https://www.youtube.com/embed/${trailer.key}?autoplay=0&mute=1`}
               ></iframe> */}
-            </div>
-          </>
+          </div>
         ))}{" "}
         <Link
           target="_blank"

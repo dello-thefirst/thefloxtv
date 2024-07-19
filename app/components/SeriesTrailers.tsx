@@ -27,6 +27,7 @@ export default function SeriesTrailers({
       >
         {trailers.results.slice(0, 1).map((trailer: any) => (
           <div
+            key={trailer.id}
             className="w-[400px] sm:w-[70vw] h-[240px] sm:h-[150px] rounded-xl sm:rounded-lg overflow-hidden relative"
             style={{
               backgroundImage: `url(https://image.tmdb.org/t/p/w500${seriesBanner})`,
