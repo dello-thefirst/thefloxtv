@@ -51,7 +51,9 @@ export default async function Series({ params }: { params: { tvId: string } }) {
               {seriesData.seasons
                 .filter((season_filter: any) => season_filter.season_number > 0)
                 .map((season: any) => (
-                  <p className="py-4">Season {season.season_number}</p>
+                  <p key={season.id} className="py-4">
+                    Season {season.season_number}
+                  </p>
                 ))}
             </div>
           </div>
