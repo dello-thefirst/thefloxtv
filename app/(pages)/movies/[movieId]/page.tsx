@@ -134,7 +134,8 @@ export default async function Movie({
             trailers={movieData.videos}
             movieTitle={movieData.title}
             movieBanner={
-              movieData.images.backdrops[0].file_path ?? movieData.backdrop_path
+              movieData.images.backdrops[0]?.file_path ??
+              movieData.backdrop_path
             }
           />
         </section>
