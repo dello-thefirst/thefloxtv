@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 export default function SeriesScreen({
   tvId,
   seriesData,
@@ -7,6 +7,7 @@ export default function SeriesScreen({
   tvId: any;
   seriesData: any;
 }) {
+  const collapseRef = useRef<any>();
   const [hasStartedPlaying, setHasStartedPlaying] = useState(false);
   const [seasonSelect, setSeasonSelect] = useState(1);
   const [episodeSelect, setEpisodeSelect] = useState(1);
@@ -14,9 +15,12 @@ export default function SeriesScreen({
     (season_filter: any) => season_filter.season_number == seasonSelect
   )[0]?.episode_count;
 
-  //Reset to episode 1 if the season is changed
+  //Reset to episode 1 if the season is changed and minimize the dropdown
   useEffect(() => {
     setEpisodeSelect(1);
+    if (collapseRef.current) {
+      collapseRef.current.click();
+    }
   }, [seasonSelect]);
 
   return (
@@ -50,7 +54,7 @@ export default function SeriesScreen({
       </div>
       <div className="w-[25vw] mt-20 sm:mt-5 sm:w-[auto] h-auto px-7 sm:px-4">
         <div className="collapse bg-transparent p-0 rounded-xl">
-          <input type="checkbox" />
+          <input type="checkbox" ref={collapseRef} />
           <div className="collapse-title text-[15px] bg-base-100 ">
             Season {seasonSelect} <i className="fa-solid fa-caret-down"></i>
           </div>
