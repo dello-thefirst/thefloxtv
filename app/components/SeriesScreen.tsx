@@ -8,6 +8,7 @@ export default function SeriesScreen({
   seriesData: any;
 }) {
   const [hasStartedPlaying, setHasStartedPlaying] = useState(false);
+  const [episodeCount, setEpisodeCoount] = useState(10);
   return (
     <div className="movie-container-screen w-full">
       <div className="screen w-full h-[80vh] sm:h-[200px] overflow-hidden mb-3 relative">
@@ -36,6 +37,44 @@ export default function SeriesScreen({
             </div>
           </div>
         )}
+      </div>
+      <div className="w-[25vw] mt-20 sm:mt-5 sm:w-[auto] h-auto px-5 sm:px-3">
+        <div className="collapse bg-transparent p-0">
+          <input type="checkbox" />
+          <div className="collapse-title bg-base-100  ">
+            Seasons <i className="fa-solid fa-caret-down"></i>
+          </div>
+          <div className="collapse-content bg-base-200">
+            {seriesData.seasons
+              .filter((season_filter: any) => season_filter.season_number > 0)
+              .map((season: any) => (
+                <p key={season.id} className="py-4">
+                  Season {season.season_number}
+                </p>
+              ))}
+          </div>
+        </div>
+      </div>
+      <div
+        className="scroll-container no-scrollbar mt-5 px-5 sm:px-3"
+        style={{
+          display: "flex",
+          flexWrap: "nowrap",
+          width: "100%",
+          height: "auto",
+          overflowX: "scroll",
+          gap: 10,
+        }}
+      >
+        {Array.from({ length: episodeCount }).map((_, index: any) => (
+          <div
+            key={index}
+            className="w-[auto] h-[auto] px-4 py-2 bg-base-100 rounded-md flex items-center justify-center text-[11px]"
+            style={{ flex: "0 0 auto" }}
+          >
+            Episode {index + 1}
+          </div>
+        ))}
       </div>
     </div>
   );
