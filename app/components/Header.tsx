@@ -107,7 +107,7 @@ function Header({ page }: { page?: string }) {
 
         <div className="right-section center-div float-right h-full flex">
           <nav className="nav w-full">
-            <ul className="w-full flex justify-between gap-[25px] tracking-wider md:hidden">
+            <ul className="w-full flex justify-between gap-[25px] tracking-wider lg:hidden">
               <li className="text-[12px] font-light text-[#d0cece]">
                 <Link href="/">Home</Link>
               </li>
@@ -123,7 +123,7 @@ function Header({ page }: { page?: string }) {
             </ul>
           </nav>
 
-          <nav className="md-nav hidden pr-[3vw] md:block">
+          <nav className="md-nav hidden pr-[3vw] lg:block">
             <ul className="w-full flex justify-between gap-[25px]">
               <i
                 className="fa-light fa-magnifying-glass nav-icon text-white text-[18px]"

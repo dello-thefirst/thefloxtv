@@ -14,7 +14,7 @@ const LivesearchResult = (props: { query: string }) => {
     refetch();
   }, [props.query]);
 
-  if (isLoading || props.query == "" || !data) {
+  if (isLoading || props.query == "" || !data || data.length == 0) {
     return (
       <div className="SearchResult">
         <div className="wrapper">
