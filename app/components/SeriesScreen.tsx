@@ -52,14 +52,14 @@ export default function SeriesScreen({
           </div>
         )}
       </div>
-      <div className="w-[25vw] mt-20 sm:mt-5 sm:w-[auto] h-auto px-7 sm:px-4">
+      <div className="w-[50vw] mt-20 sm:mt-5 sm:w-[auto] h-auto px-7 sm:px-4">
         <div className="collapse bg-transparent p-0 rounded-xl">
           <input type="checkbox" ref={collapseRef} />
-          <div className="collapse-title text-[15px] bg-base-100 ">
+          <div className="collapse-title text-[15px] text-[lightgreen] bg-base-100 ">
             Season {seasonSelect} <i className="fa-solid fa-caret-down"></i>
           </div>
           <div className="collapse-content bg-base-200 cursor-pointer">
-            <div className="w-full max-h-[200px] overflow-scroll">
+            <div className="w-full max-h-[200px] overflow-y-scroll">
               {seriesData.seasons
                 .filter((season_filter: any) => season_filter.season_number > 0)
                 .map((season: any) => (
