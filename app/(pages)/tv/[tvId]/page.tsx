@@ -40,7 +40,35 @@ export default async function Series({ params }: { params: { tvId: string } }) {
       <Header page={`watch-${params.tvId}`} />
       <main className="main-container w-full">
         <SeriesScreen seriesData={seriesData} tvId={params.tvId} />
-        <section className="w-full h-auto p-7 mt-8 sm:p-4">
+
+        <div className="w-[50vw] mt-20 sm:mt-2 sm:w-full h-auto px-5 sm:px-3">
+          <div className="collapse bg-transparent p-0">
+            <input type="checkbox" />
+            <div className="collapse-title bg-base-100  ">
+              Seasons <i className="fa-solid fa-caret-down"></i>
+            </div>
+            <div className="collapse-content bg-base-200">
+              {seriesData.seasons
+                .filter((season_filter: any) => season_filter.season_number > 0)
+                .map((season: any) => (
+                  <p className="py-4">Season {season.season_number}</p>
+                ))}
+            </div>
+          </div>
+
+          <div
+            className="scroll-container no-scrollbar"
+            style={{
+              display: "flex",
+              flexWrap: "nowrap",
+              width: "100%",
+              height: "auto",
+              overflowX: "scroll",
+            }}
+          ></div>
+        </div>
+
+        <section className="w-full h-auto px-7 mt-2 sm:px-4">
           <div className="movie-details w-full h-auto flex gap-3">
             <div className="small-image-container w-[250px] h-[270px] rounded-lg overflow-hidden sm:hidden">
               <Image
