@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import "./globals.css";
 import Script from "next/script";
@@ -67,6 +68,7 @@ export default function RootLayout({
           shadow=""
         /> */}
         <ReactQueryProvider>{children}</ReactQueryProvider>
+        <Analytics />
       </body>
     </html>
   );
