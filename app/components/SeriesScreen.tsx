@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 export default function SeriesScreen({
   tvId,
   seriesData,
@@ -13,6 +13,11 @@ export default function SeriesScreen({
   const episodeCount = seriesData.seasons.filter(
     (season_filter: any) => season_filter.season_number == seasonSelect
   )[0]?.episode_count;
+
+  //Reset to episode 1 if the season is changed
+  useEffect(() => {
+    setEpisodeSelect(1);
+  }, [seasonSelect]);
 
   return (
     <div className="movie-container-screen w-full">
@@ -43,7 +48,7 @@ export default function SeriesScreen({
           </div>
         )}
       </div>
-      <div className="w-[25vw] mt-20 sm:mt-5 sm:w-[auto] h-auto px-5 sm:px-3">
+      <div className="w-[25vw] mt-20 sm:mt-5 sm:w-[auto] h-auto px-7 sm:px-4">
         <div className="collapse bg-transparent p-0 rounded-xl">
           <input type="checkbox" />
           <div className="collapse-title text-[15px] bg-base-100 ">
@@ -67,7 +72,7 @@ export default function SeriesScreen({
         </div>
       </div>
       <div
-        className="scroll-container no-scrollbar mt-5 px-5 sm:px-3"
+        className="scroll-container no-scrollbar mt-5 px-7 sm:px-4"
         style={{
           display: "flex",
           flexWrap: "nowrap",
