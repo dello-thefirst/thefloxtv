@@ -53,9 +53,7 @@ function Popular({ type }: { type: string }) {
             <Link
               key={result.id}
               href={
-                type == "movies"
-                  ? `/movies/${result.id}`
-                  : `/movies/${result.id}`
+                type == "movies" ? `/movies/${result.id}` : `/tv/${result.id}`
               }
             >
               <div>
