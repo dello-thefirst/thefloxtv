@@ -123,7 +123,7 @@ function Header({ page }: { page?: string }) {
             </ul>
           </nav>
 
-          <nav className="md-nav hidden pr-[5%] md:block">
+          <nav className="md-nav hidden pr-[3vw] md:block">
             <ul className="w-full flex justify-between gap-[25px]">
               <i
                 className="fa-light fa-magnifying-glass nav-icon text-white text-[18px]"

@@ -17,7 +17,7 @@ export async function generateMetadata({
   const id = params.tvId;
   const seriesData = await getSeriesDetails(id);
   return {
-    title: seriesData.name,
+    title: "Watch " + seriesData.name + " Complete Series on Thefloxtv.com",
     description: seriesData.overview,
     openGraph: {
       type: "website",
@@ -52,7 +52,7 @@ export default async function Series({ params }: { params: { tvId: string } }) {
                 alt="Movie"
               />
             </div>
-            <div className="title-card text-semibold text-slate-200 w-full pr-[300px] sm:pr-5 flex flex-col gap-3">
+            <div className="title-card text-semibold text-slate-200 w-full pr-[10%] sm:pr-5 flex flex-col gap-3">
               <p className="text-[30px] font-bold sm:text-[25px]">
                 {seriesData.name}
               </p>

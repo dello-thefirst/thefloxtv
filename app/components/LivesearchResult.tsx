@@ -1,45 +1,38 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import axios from "axios";
 import { getLetterRange } from "./Functions";
+import { useQuery } from "react-query";
+import { getSearchResult } from "../functions/fetch";
 
 const LivesearchResult = (props: { query: string }) => {
   //...
-  const [searchResult, setSearchResult] = useState<any>([]);
+  const { data, isLoading, refetch } = useQuery({
+    queryFn: async () => await getSearchResult(props.query),
+  });
   useEffect(() => {
-    async function getSearchResult() {
-      try {
-        const res = await axios.get(
-          `https://api.themoviedb.org/3/search/multi?query=${props.query}&include_adult=false&language=en-US&page=1`,
-          {
-            headers: {
-              Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTliOGUyOGRjM2M5ZDkwMGNlYjQ2OTZiZjJkMjQ3YyIsInN1YiI6IjY1MDA0ZDIwNmEyMjI3MDBjM2I2MDM3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DNP1HXf6xyRe_8C7rR7fljfalpmJZgcry6JN8xLwk8E",
-            },
-          }
-        );
-
-        setSearchResult(res.data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    getSearchResult();
+    refetch();
   }, [props.query]);
-
-  if (props.query !== "" && searchResult && props.query !== " ") {
-    return (
-      <div className="SearchResult">
-        <div className="wrapper">
-          {searchResult.results
-            .filter(
-              (movie: any) =>
-                movie.popularity > 10 && // Adjust threshold as needed
-                movie.vote_average > 7 && // Minimum rating
-                movie.vote_count > 100 // Minimum number of votes
-            )
-            .map((result: any) => (
+  if (props.query !== "" && data) {
+    if (isLoading) {
+      return (
+        <div className="SearchResult">
+          <div className="wrapper">
+            <div className="item flex gap-[10px] my-[10px]">
+              <div className="w-[40px]  h-[50px] rounded-md object-cover skeleton"></div>
+              <div className="w-full flex flex-col gap-2">
+                <p className="w-[70%] h-3 rounded-sm skeleton opacity-[0.6]"></p>
+                <p className="w-[40%] h-2 rounded-sm skeleton opacity-[0.4]"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="SearchResult">
+          <div className="wrapper">
+            {data.map((result: any) => (
               <Link
                 key={result.id}
                 href={
@@ -50,8 +43,9 @@ const LivesearchResult = (props: { query: string }) => {
               >
                 <div className="item flex gap-[10px] my-[10px]">
                   <Image
+                    unoptimized
                     className="w-[40px]  h-[50px] rounded-sm object-cover"
-                    src={`https://themoviedb.org/t/p/w94_and_h141_bestv2${
+                    src={`https://image.tmdb.org/t/p/w94_and_h141_bestv2${
                       result.media_type == "movie"
                         ? result.poster_path
                         : result.poster_path
@@ -80,9 +74,10 @@ const LivesearchResult = (props: { query: string }) => {
                 </div>
               </Link>
             ))}
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 };
 

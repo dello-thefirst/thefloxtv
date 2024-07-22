@@ -62,8 +62,9 @@ function Popular({ type }: { type: string }) {
                 <div className="w-full group mb-5 overflow-hidden relative hover:outline outline-2 -outline-offset-1">
                   <div className="mask w-full h-full left-0 bottom-0 z-[2] from-[rgba(var(--background-color-1))] to-[#00000018] bg-gradient-to-t absolute center-div group-hover:opacity-0 transition duration-[0.5s]"></div>
                   <Image
+                    unoptimized
                     className="w-full h-[270px] object-cover rounded-md sm:h-[200px]"
-                    src={`https://themoviedb.org/t/p/original${result.poster_path}`}
+                    src={`https://image.tmdb.org/t/p/w220_and_h330_face${result.poster_path}`}
                     width={200}
                     height={200}
                     alt=""

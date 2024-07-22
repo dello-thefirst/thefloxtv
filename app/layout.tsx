@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import NextTopLoader from "nextjs-toploader";
 import Script from "next/script";
 import { Kanit, Work_Sans } from "next/font/google";
-import ReactQuery from "./providers/ReactQuery";
 import ReactQueryProvider from "./providers/ReactQuery";
 
 const kanit = Kanit({
@@ -19,7 +17,7 @@ const workSans = Work_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Thefloxtv",
+  title: "Thefloxtv - Watch Movies and TV Shows For Free",
   description:
     "Watch free blockbuster movies and binge-worthy series for free! Dive into a wide range of content, from timeless classics to the latest releases. Enjoy easy, hassle-free streaming anytime, anywhere. Start your cinematic adventure now, all for free!",
   keywords: ["Movies", "Series", "Tv Shows", "Watch Free Movies and Tv shows"],

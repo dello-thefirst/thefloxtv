@@ -110,6 +110,7 @@ export default function Trending({
                     <div className="mask group w-full h-full left-0 bottom-0 z-[2] from-[var(--background-color-11)] to-transparent bg-gradient-to-t absolute center-div"></div>
 
                     <Image
+                      unoptimized
                       className="object-cover rounded-md w-full h-full"
                       src={`https://themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`}
                       width={220}
