@@ -55,19 +55,22 @@ export default function SeriesScreen({
             Season {seasonSelect} <i className="fa-solid fa-caret-down"></i>
           </div>
           <div className="collapse-content bg-base-200 cursor-pointer">
-            {seriesData.seasons
-              .filter((season_filter: any) => season_filter.season_number > 0)
-              .map((season: any) => (
-                <p
-                  key={season.id}
-                  className={`py-4 ${
-                    seasonSelect == season.season_number && "text-[lightgreen]"
-                  }`}
-                  onClick={() => setSeasonSelect(season.season_number)}
-                >
-                  Season {season.season_number}
-                </p>
-              ))}
+            <div className="w-full max-h-[200px] overflow-scroll">
+              {seriesData.seasons
+                .filter((season_filter: any) => season_filter.season_number > 0)
+                .map((season: any) => (
+                  <p
+                    key={season.id}
+                    className={`py-4 ${
+                      seasonSelect == season.season_number &&
+                      "text-[lightgreen]"
+                    }`}
+                    onClick={() => setSeasonSelect(season.season_number)}
+                  >
+                    Season {season.season_number}
+                  </p>
+                ))}
+            </div>
           </div>
         </div>
       </div>
