@@ -7,11 +7,7 @@ function Search() {
   return (
     <>
       <Header page="search" />
-      <main>
-        <div>
-          <Recent type="movies" />
-        </div>
-      </main>
+      <main></main>
     </>
   );
 }
