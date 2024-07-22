@@ -8,7 +8,12 @@ export default function SeriesScreen({
   seriesData: any;
 }) {
   const [hasStartedPlaying, setHasStartedPlaying] = useState(false);
-  const [episodeCount, setEpisodeCoount] = useState(10);
+  const [seasonSelect, setSeasonSelect] = useState(1);
+  const [episodeSelect, setEpisodeSelect] = useState(1);
+  const episodeCount = seriesData.seasons.filter(
+    (season_filter: any) => season_filter.season_number == seasonSelect
+  )[0]?.episode_count;
+
   return (
     <div className="movie-container-screen w-full">
       <div className="screen w-full h-[80vh] sm:h-[200px] overflow-hidden mb-3 relative">
@@ -16,7 +21,7 @@ export default function SeriesScreen({
           <iframe
             className="w-full h-full"
             id="playit"
-            src={`https://vidsrc.to/embed/tv/${tvId}`}
+            src={`https://vidsrc.to/embed/tv/${tvId}/${seasonSelect}/${episodeSelect}`}
             allowFullScreen
           ></iframe>
         ) : (
@@ -39,16 +44,22 @@ export default function SeriesScreen({
         )}
       </div>
       <div className="w-[25vw] mt-20 sm:mt-5 sm:w-[auto] h-auto px-5 sm:px-3">
-        <div className="collapse bg-transparent p-0">
+        <div className="collapse bg-transparent p-0 rounded-xl">
           <input type="checkbox" />
-          <div className="collapse-title bg-base-100  ">
-            Seasons <i className="fa-solid fa-caret-down"></i>
+          <div className="collapse-title text-[15px] bg-base-100 ">
+            Season {seasonSelect} <i className="fa-solid fa-caret-down"></i>
           </div>
-          <div className="collapse-content bg-base-200">
+          <div className="collapse-content bg-base-200 cursor-pointer">
             {seriesData.seasons
               .filter((season_filter: any) => season_filter.season_number > 0)
               .map((season: any) => (
-                <p key={season.id} className="py-4">
+                <p
+                  key={season.id}
+                  className={`py-4 ${
+                    seasonSelect == season.season_number && "text-[lightgreen]"
+                  }`}
+                  onClick={() => setSeasonSelect(season.season_number)}
+                >
                   Season {season.season_number}
                 </p>
               ))}
@@ -66,12 +77,19 @@ export default function SeriesScreen({
           gap: 10,
         }}
       >
-        {Array.from({ length: episodeCount }).map((_, index: any) => (
+        {Array.from({
+          length: episodeCount,
+        }).map((_, index: any) => (
           <div
             key={index}
-            className="w-[auto] h-[auto] px-4 py-2 bg-base-100 rounded-md flex items-center justify-center text-[11px]"
+            className={`w-[auto] h-[auto] px-4 py-2 bg-base-100 cursor-pointer rounded-md flex items-center justify-center gap-2 text-[11px]  ${
+              episodeSelect == index + 1 &&
+              "text-[lightgreen] border border-[lightgreen]"
+            } `}
             style={{ flex: "0 0 auto" }}
+            onClick={() => setEpisodeSelect(index + 1)}
           >
+            <i className="fa-solid fa-circle-play"></i>
             Episode {index + 1}
           </div>
         ))}
