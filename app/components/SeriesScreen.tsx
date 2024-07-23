@@ -11,9 +11,7 @@ export default function SeriesScreen({
   const [hasStartedPlaying, setHasStartedPlaying] = useState(false);
   const [seasonSelect, setSeasonSelect] = useState(1);
   const [episodeSelect, setEpisodeSelect] = useState(1);
-  const episodeCount = seriesData.seasons.filter(
-    (season_filter: any) => season_filter.season_number == seasonSelect
-  )[0]?.episode_count;
+  const episodeCount = seriesData.last_episode_to_air.episode_number;
 
   //Reset to episode 1 if the season is changed and minimize the dropdown
   useEffect(() => {
