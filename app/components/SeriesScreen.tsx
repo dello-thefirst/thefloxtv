@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import { setTimeout } from "timers";
 export default function SeriesScreen({
   tvId,
   seriesData,
@@ -11,13 +12,20 @@ export default function SeriesScreen({
   const [hasStartedPlaying, setHasStartedPlaying] = useState(false);
   const [seasonSelect, setSeasonSelect] = useState(1);
   const [episodeSelect, setEpisodeSelect] = useState(1);
-  const episodeCount = seriesData.last_episode_to_air.episode_number;
+  const seasonCount = seriesData.last_episode_to_air.season_number;
+  const episodeCount =
+    seasonSelect ==
+    seriesData.seasons[seriesData.seasons.length - 1].season_number
+      ? seriesData.last_episode_to_air.episode_number
+      : seriesData.seasons.filter(
+          (season_filter: any) => season_filter.season_number == seasonSelect
+        )[0].episode_count;
 
   //Reset to episode 1 if the season is changed and minimize the dropdown
   useEffect(() => {
     setEpisodeSelect(1);
     if (collapseRef.current) {
-      collapseRef.current.click();
+      setTimeout(() => collapseRef.current.click(), 500);
     }
   }, [seasonSelect]);
 
@@ -58,20 +66,19 @@ export default function SeriesScreen({
           </div>
           <div className="collapse-content bg-base-200 cursor-pointer">
             <div className="w-full max-h-[200px] overflow-y-scroll">
-              {seriesData.seasons
-                .filter((season_filter: any) => season_filter.season_number > 0)
-                .map((season: any) => (
+              {Array.from({ length: seasonCount }).map(
+                (season: any, index: any) => (
                   <p
-                    key={season.id}
+                    key={index}
                     className={`py-4 ${
-                      seasonSelect == season.season_number &&
-                      "text-[lightgreen]"
+                      seasonSelect == index + 1 && "text-[lightgreen]"
                     }`}
-                    onClick={() => setSeasonSelect(season.season_number)}
+                    onClick={() => setSeasonSelect(index + 1)}
                   >
-                    Season {season.season_number}
+                    Season {index + 1}
                   </p>
-                ))}
+                )
+              )}
             </div>
           </div>
         </div>
