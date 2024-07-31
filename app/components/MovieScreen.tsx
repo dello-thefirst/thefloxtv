@@ -15,7 +15,7 @@ export default function MovieScreen({
           <iframe
             className="w-full h-full"
             id="playit"
-            src={`https://vidsrc.to/embed/movie/${movieId}`}
+            src={`https://vidsrc.cc/v2/embed/movie/${movieId}`}
             allowFullScreen
           ></iframe>
         ) : (
