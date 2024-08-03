@@ -1,4 +1,3 @@
-"use client";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
@@ -7,7 +6,7 @@ import Script from "next/script";
 import { Kanit, Work_Sans } from "next/font/google";
 import ReactQueryProvider from "./providers/ReactQuery";
 import NextTopLoader from "nextjs-toploader";
-import { useEffect } from "react";
+import ScriptInjector from "./ScriptInjector";
 
 const kanit = Kanit({
   weight: ["100", "200", "300", "400", "500", "600"],
@@ -39,15 +38,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.innerHTML = `(function(s,u,z,p){s.src=u,s.setAttribute('data-zone',z),p.appendChild(s);})(document.createElement('script'),'https://zovidree.com/tag.min.js',6134024,document.body||document.documentElement)`;
-    document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
-    };
-  }, []);
   return (
     <html lang="en">
       <head>
@@ -80,6 +70,7 @@ export default function RootLayout({
           speed={200}
           shadow=""
         />
+        <ScriptInjector />
         <ReactQueryProvider>{children}</ReactQueryProvider>
         <SpeedInsights />
         <Analytics />
