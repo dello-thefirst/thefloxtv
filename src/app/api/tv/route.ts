@@ -1,4 +1,4 @@
-import { getExternalIds, getSeriesData } from "@/app/functions/tmdb";
+import { getExternalIds, getSeriesData } from "@/src/app/functions/tmdb";
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 

@@ -1,11 +1,10 @@
-import { getMovieData } from "@/app/functions/tmdb";
+import { getMovieData } from "@/src/app/functions/tmdb";
 import { Movie, PrismaClient } from "@prisma/client";
 import { split } from "postcss/lib/list";
 const prisma = new PrismaClient();
 interface dataFormat {
   data: Movie[];
 }
-
 
 export async function POST(req: Request) {
   const body = await req.json();
