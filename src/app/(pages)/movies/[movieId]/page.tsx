@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "@/app/components/Header";
+import Header from "@/src/components/Header";
 import Image from "next/image";
-import { getWordRange, getLetterRange } from "@/app/components/Functions";
-import nullAvatar from "@/app/images/null-avatar.png";
-import MovieScreen from "@/app/components/MovieScreen";
+import { getWordRange, getLetterRange } from "@/src/components/Functions";
+import nullAvatar from "@/src/app/images/null-avatar.png";
+import MovieScreen from "@/src/components/MovieScreen";
 import type { Metadata } from "next";
-import { getMovieDetails } from "@/app/functions/fetch";
-import MovieTrailers from "@/app/components/MovieTrailers";
+import { getMovieDetails } from "@/src/app/functions/fetch";
+import MovieTrailers from "@/src/components/MovieTrailers";
 import Link from "next/link";
 
 export async function generateMetadata({

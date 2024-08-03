@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import LivesearchResult from "./LivesearchResult";
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "@/app/logo.svg";
+import Logo from "@/src/app/logo.svg";
 
 function Header({ page }: { page?: string }) {
   //..

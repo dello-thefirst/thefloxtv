@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { MovieDataType } from "../types/movie";
+import { MovieDataType } from "../app/types/movie";
 import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";

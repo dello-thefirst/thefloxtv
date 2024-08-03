@@ -1,9 +1,9 @@
 import React from "react";
-import Header from "@/app/components/Header";
-import Main from "@/app/components/Main";
-import Trending from "@/app/components/Trending";
-import Popular from "@/app/components/Popular";
-import DiscoverDaily from "@/app/components/DiscoverDaily";
+import Header from "@/src/components/Header";
+import Main from "@/src/components/Main";
+import Trending from "@/src/components/Trending";
+import Popular from "@/src/components/Popular";
+import DiscoverDaily from "@/src/components/DiscoverDaily";
 
 function Home() {
   return (

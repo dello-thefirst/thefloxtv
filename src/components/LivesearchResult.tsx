@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getLetterRange } from "./Functions";
 import { useQuery } from "react-query";
-import { getSearchResult } from "../functions/fetch";
+import { getSearchResult } from "@/src/app/functions/fetch";
 
 const LivesearchResult = (props: { query: string }) => {
   //...
@@ -14,7 +14,7 @@ const LivesearchResult = (props: { query: string }) => {
     refetch();
   }, [props.query]);
 
-  if (isLoading || props.query == "" || !data || data.length == 0) {
+  if (isLoading || props.query == "") {
     return (
       <div className="SearchResult">
         <div className="wrapper">
@@ -28,7 +28,13 @@ const LivesearchResult = (props: { query: string }) => {
         </div>
       </div>
     );
-  } else {
+  } else if (data.length == 0 || !data)
+    <div className="SearchResult">
+      <div className="wrapper">
+        <p>No Result Found</p>
+      </div>
+    </div>;
+  else {
     return (
       <div className="SearchResult">
         <div className="wrapper">

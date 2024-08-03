@@ -9,7 +9,7 @@ import Image from "next/image";
 import { getWordRange, getLetterRange } from "./Functions";
 import { DDLoadingUI } from "./LoadingUI/DDLoadingUI";
 import { useQuery } from "react-query";
-import { fetchTrending } from "../functions/fetch";
+import { fetchTrending } from "../app/functions/fetch";
 
 function DiscoverDaily() {
   const { data: movieData, isLoading } = useQuery({

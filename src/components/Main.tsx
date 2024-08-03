@@ -3,13 +3,13 @@ import React from "react";
 import Link from "next/link";
 import MovieLogo from "./MovieLogo";
 import Image from "next/image";
-import "@/app/MainCarousel.css";
+import "@/src/app/MainCarousel.css";
 import { getWordRange, getLetterRange } from "./Functions";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import { useQuery } from "react-query";
-import { fetchTrending } from "../functions/fetch";
+import { fetchTrending } from "@/src/app/functions/fetch";
 import { MainLoadingUI } from "./LoadingUI/MainLoadingUI";
 
 export default function Main() {

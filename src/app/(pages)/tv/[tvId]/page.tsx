@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "@/app/components/Header";
+import Header from "@/src/components/Header";
 import Image from "next/image";
-import { getWordRange, getLetterRange } from "@/app/components/Functions";
-import nullAvatar from "@/app/images/null-avatar.png";
+import { getWordRange, getLetterRange } from "@/src/components/Functions";
+import nullAvatar from "@/src/app/images/null-avatar.png";
 import type { Metadata } from "next";
-import { getSeriesDetails } from "@/app/functions/fetch";
-import SeriesScreen from "@/app/components/SeriesScreen";
-import SeriesTrailers from "@/app/components/SeriesTrailers";
+import { getSeriesDetails } from "@/src/app/functions/fetch";
+import SeriesScreen from "@/src/components/SeriesScreen";
+import SeriesTrailers from "@/src/components/SeriesTrailers";
 import Link from "next/link";
 
 export async function generateMetadata({

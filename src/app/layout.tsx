@@ -5,6 +5,7 @@ import "./globals.css";
 import Script from "next/script";
 import { Kanit, Work_Sans } from "next/font/google";
 import ReactQueryProvider from "./providers/ReactQuery";
+import NextTopLoader from "nextjs-toploader";
 
 const kanit = Kanit({
   weight: ["100", "200", "300", "400", "500", "600"],
@@ -57,7 +58,7 @@ export default function RootLayout({
             gtag('config', 'G-MGNE4PFYE5');`}
       </Script>
       <body data-theme="dark" className={workSans.className}>
-        {/* <NextTopLoader
+        <NextTopLoader
           color="var(--color-3)"
           initialPosition={0.08}
           crawlSpeed={200}
@@ -67,7 +68,7 @@ export default function RootLayout({
           easing="ease"
           speed={200}
           shadow=""
-        /> */}
+        />
         <ReactQueryProvider>{children}</ReactQueryProvider>
         <SpeedInsights />
         <Analytics />
