@@ -1,5 +1,5 @@
-import Header from "@/app/components/Header";
-import { getSearchResult } from "@/app/functions/fetch";
+import Header from "@/src/components/Header";
+import { getSearchResult } from "@/src/app/functions/fetch";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
