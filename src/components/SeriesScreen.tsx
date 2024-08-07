@@ -36,7 +36,7 @@ export default function SeriesScreen({
           <iframe
             className="w-full h-full"
             id="playit"
-            src={`https://vidsrc.cc/v2/embed/tv/${tvId}/${seasonSelect}/${episodeSelect}`}
+            src={`https://vidsrc.pro/embed/tv/${tvId}/${seasonSelect}/${episodeSelect}`}
             allowFullScreen
           ></iframe>
         ) : (
