@@ -56,7 +56,7 @@ function Header({ page }: { page?: string }) {
       <header
         className={`w-full h-[80px] sm:h-[50px] px-[3%] ${
           page == "home" && "absolute z-10"
-        } bg-gradient-to-b from-[var(--background-color-1)] to-transparent`}
+        } bg-gradient-to-br via-[#13111a54] from-[var(--background-color-1)] to-transparent`}
       >
         <div className="logo-cont w-auto h-full float-left center-div">
           <Link href="/">
@@ -108,16 +108,28 @@ function Header({ page }: { page?: string }) {
         <div className="right-section center-div float-right h-full flex">
           <nav className="nav w-full">
             <ul className="w-full flex justify-between gap-[25px] tracking-wider lg:hidden">
-              <li className="text-[12px] font-light text-[#d0cece]">
+              <li
+                className="text-[12px] font-light text-[#f3f3f3] "
+                style={{ textShadow: "1px 1px 1px black" }}
+              >
                 <Link href="/">Home</Link>
               </li>
-              <li className="text-[12px] font-light text-[#d0cece]">
+              <li
+                className="text-[12px] font-light text-[#f3f3f3]"
+                style={{ textShadow: "1px 1px 1px black" }}
+              >
                 <Link href="/tvshows">TV Shows</Link>
               </li>
-              <li className="text-[12px] font-light text-[#d0cece]">
+              <li
+                className="text-[12px] font-light text-[#f3f3f3]"
+                style={{ textShadow: "1px 1px 1px black" }}
+              >
                 <Link href="/movies">Movies</Link>
               </li>
-              <li className="text-[12px] font-light text-[#d0cece]">
+              <li
+                className="text-[12px] font-light text-[#f3f3f3]"
+                style={{ textShadow: "1px 1px 1px black" }}
+              >
                 <Link href="/movies">Trending</Link>
               </li>
             </ul>
@@ -128,10 +140,12 @@ function Header({ page }: { page?: string }) {
               <i
                 className="fa-light fa-magnifying-glass nav-icon text-white text-[18px]"
                 onClick={toggleSearchBar}
+                style={{ textShadow: "1px 1px 1px black" }}
               ></i>
               <i
                 className="fa-light fa-bars nav-icon text-white text-[18px]"
                 onClick={toggleSideNav}
+                style={{ textShadow: "1px 1px 1px black" }}
               ></i>
             </ul>
           </nav>

@@ -38,8 +38,8 @@ export default function Main() {
           >
             {movieData.slice(0, 5).map((result: any) => (
               <SwiperSlide key={result.id} className="carousel-item relative">
-                <div className="mask w-full h-[50%] absolute bg-gradient-to-t from-[var(--background-color-1)] to-black/0 left-0 bottom-0 z-[3]"></div>
-                <div className="filter w-full h-full absolute bg-gradient-to-r from-[var(--background-color-1)]  to-black/0 left-0 bottom-0 z-[3]"></div>
+                <div className="mask w-full h-[60%] absolute bg-gradient-to-t from-[var(--background-color-1)] via-transparent to-transparent left-0 bottom-0 z-[3]"></div>
+                <div className="filter w-full h-full absolute bg-gradient-to-r from-[var(--background-color-1)] via-[#0e0c1976] to-transparent left-0 bottom-0 z-[3]"></div>
                 <Image
                   unoptimized
                   src={`https://image.tmdb.org/t/p/original${result.backdrop_path}`}
@@ -48,7 +48,7 @@ export default function Main() {
                   width={900}
                   height={480}
                 />
-                <div className="text w-[60%] h-auto overflow-hidden absolute pb-[70px] pl-[3%] left-0 bottom-0 z-[5] sm:w-full sm:pb-[50px] sm:text-center">
+                <div className="text w-[60%] h-auto overflow-hidden absolute bottom-0 pb-[70px] pl-[3%] left-0 z-[5] sm:w-full sm:pb-[50px] sm:text-center">
                   <MovieLogo
                     movieId={result.id}
                     mediaType={result.media_type}

@@ -38,9 +38,10 @@
 }
 
 .carousel-item .text .desc {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 25px;
-  color: rgb(202, 202, 202);
+  color: rgb(229, 229, 229);
+  text-shadow: 1px 1px 1px black;
   margin-bottom: 40px;
 }
 
@@ -55,7 +56,7 @@
 }
 
 .carousel-item .text .view-btn {
-  width: 150px;
+  width: 170px;
   height: 45px;
   border-radius: 1.5rem;
   font-size: 13px;

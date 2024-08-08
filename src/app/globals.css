@@ -51,9 +51,11 @@ body::-webkit-scrollbar-thumb {
   > .swiper-pagination-progressbar.swiper-pagination-progressbar-opposite,
 .swiper-pagination-progressbar.swiper-pagination-vertical.swiper-pagination-progressbar-opposite {
   bottom: 0;
+  border-radius: 20px !important;
   top: unset !important;
 }
 
 .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
   background-color: var(--color-3) !important;
+  border-radius: 20px !important;
 }
