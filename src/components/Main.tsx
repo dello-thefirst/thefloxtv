@@ -25,7 +25,7 @@ export default function Main() {
       {isLoading ? (
         <MainLoadingUI />
       ) : (
-        <div className="carousel-cont w-full h-screen relative sm:h-[57vh]">
+        <div className="carousel-cont w-full h-screen relative sm:h-[50vh]">
           <Swiper
             autoplay={{
               delay: 5000,

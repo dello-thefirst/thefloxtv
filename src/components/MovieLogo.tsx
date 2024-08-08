@@ -25,7 +25,7 @@ function MovieLogo(props: Props) {
   if (movieLogoData && movieLogoData)
     return (
       <Image
-        className="movie-logo w-[200px] mb-[40px] sm:w-[140px] sm:my-0 sm:mx-auto sm:mb-[20px]"
+        className="movie-logo w-[180px] mb-[40px] sm:w-[120px] sm:my-0 sm:mx-auto sm:mb-[20px]"
         src={`https://themoviedb.org/t/p/w500/${movieLogoData}`}
         alt={""}
         width={160}
