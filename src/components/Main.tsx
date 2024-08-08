@@ -57,7 +57,7 @@ export default function Main() {
                   {/*<p className="title">
                   {result.name ? result.name : result.title}
                   </p>*/}
-                  <p className="info">
+                  <div className="info flex items-center">
                     <span>
                       {result.media_type === "movie"
                         ? getLetterRange(result.release_date, 4)
@@ -65,10 +65,10 @@ export default function Main() {
                     </span>
                     <span className="certification">HD</span>
                     <span>
-                      <i className="fa-solid fa-sharp fa-star"></i>{" "}
+                      <i className="fa-solid fa-star"></i>{" "}
                       {result.vote_average.toFixed(1)}
                     </span>
-                  </p>
+                  </div>
                   <p className="genre">History Drama </p>
                   <p className="desc">
                     {result.overview.split(/\s+/).length > 25

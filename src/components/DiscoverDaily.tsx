@@ -23,7 +23,7 @@ function DiscoverDaily() {
         <i className="fa-regular fa-fire text-[12px]"></i>
       </p>
       <Swiper
-        className="w-full h-[220px] sm:h-[185px] flex justify-between"
+        className="w-full h-[220px] sm:h-[185px]"
         autoplay={{
           delay: 3000,
           disableOnInteraction: false,
@@ -49,8 +49,11 @@ function DiscoverDaily() {
         {isLoading ? (
           <DDLoadingUI />
         ) : (
-          movieData.slice(0, 5).map((result: any) => (
-            <SwiperSlide className="relative overflow-hidden" key={result.id}>
+          movieData.slice(0, 9).map((result: any) => (
+            <SwiperSlide
+              className="p-1 relative overflow-hidden"
+              key={result.id}
+            >
               <Link
                 href={
                   result.media_type == "movie"

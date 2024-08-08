@@ -15,7 +15,7 @@ const kanit = Kanit({
 });
 
 const workSans = Work_Sans({
-  weight: ["100", "200", "300", "400", "500", "600"],
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
   subsets: ["latin"],
   display: "swap",
 });
