@@ -11,5 +11,6 @@ export default function ScriptInjector() {
       document.head.removeChild(script);
     };
   }, []);
+  
   return null;
 }

@@ -48,7 +48,7 @@ export default function Main() {
                   width={900}
                   height={480}
                 />
-                <div className="text w-[40%] h-auto overflow-hidden absolute pb-[70px] pl-[3%] left-0 bottom-0 z-[5] sm:w-full sm:pb-[50px] sm:text-center">
+                <div className="text w-[60%] h-auto overflow-hidden absolute pb-[70px] pl-[3%] left-0 bottom-0 z-[5] sm:w-full sm:pb-[50px] sm:text-center">
                   <MovieLogo
                     movieId={result.id}
                     mediaType={result.media_type}

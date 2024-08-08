@@ -2,10 +2,9 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
-import axios from "axios";
-import Image from "next/image";
+import "swiper/css/pagination";
 import { getWordRange, getLetterRange } from "./Functions";
 import { DDLoadingUI } from "./LoadingUI/DDLoadingUI";
 import { useQuery } from "react-query";
@@ -24,7 +23,7 @@ function DiscoverDaily() {
         <i className="fa-regular fa-fire text-[12px]"></i>
       </p>
       <Swiper
-        className="w-full h-[200px] sm:h-[175px] flex justify-between"
+        className="w-full h-[220px] sm:h-[185px] flex justify-between"
         autoplay={{
           delay: 3000,
           disableOnInteraction: false,
@@ -38,18 +37,20 @@ function DiscoverDaily() {
               : 3
             : 0
         }
+        pagination={{
+          el: ".swiper-progress",
+          type: "progressbar",
+        }}
         effect="autoplay"
+        spaceBetween={10}
         loop={true}
-        modules={[Autoplay]}
+        modules={[Autoplay, Pagination, Navigation]}
       >
         {isLoading ? (
           <DDLoadingUI />
         ) : (
           movieData.slice(0, 5).map((result: any) => (
-            <SwiperSlide
-              className="w-full h-full p-3 relative overflow-hidden"
-              key={result.id}
-            >
+            <SwiperSlide className="relative overflow-hidden" key={result.id}>
               <Link
                 href={
                   result.media_type == "movie"
@@ -61,7 +62,7 @@ function DiscoverDaily() {
                   Trending Today
                 </div>
                 <div
-                  className="inner w-full h-full relative overflow-hidden rounded-xl"
+                  className="inner w-full h-[90%] relative overflow-hidden rounded-xl"
                   style={{
                     backgroundImage: `url(https://image.tmdb.org/t/p/w500${result.backdrop_path})`,
                     backgroundSize: "cover",
@@ -76,7 +77,7 @@ function DiscoverDaily() {
                       &nbsp; &middot; &nbsp;
                       {result.media_type == "movie" ? `Movie` : "TV"}
                     </p>
-                    <p className="text-[20px] font-semibold text-gray-300">
+                    <p className="text-[20px] font-semibold text-gray-300 uppercase">
                       {result.media_type == "movie"
                         ? getWordRange(result.title, 3)
                         : getWordRange(result.name, 3)}
@@ -87,6 +88,7 @@ function DiscoverDaily() {
             </SwiperSlide>
           ))
         )}
+        <div className="swiper-progress"></div>
       </Swiper>
     </>
   );

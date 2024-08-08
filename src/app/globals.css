@@ -2,9 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
-  --background-color-1: #141313;
+  --background-color-1: rgb(6, 13, 23);
   --background-color-2: 18, 18, 23;
   --color-2: 209, 209, 209;
   --color-3: rgb(108, 238, 108);
@@ -44,4 +43,17 @@ body::-webkit-scrollbar-thumb {
 
 .no-scrollbar::-webkit-scrollbar {
   width: 0;
+}
+
+.swiper-horizontal > .swiper-pagination-progressbar,
+.swiper-pagination-progressbar.swiper-pagination-horizontal,
+.swiper-vertical
+  > .swiper-pagination-progressbar.swiper-pagination-progressbar-opposite,
+.swiper-pagination-progressbar.swiper-pagination-vertical.swiper-pagination-progressbar-opposite {
+  bottom: 0;
+  top: unset !important;
+}
+
+.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+  background-color: var(--color-3) !important;
 }
