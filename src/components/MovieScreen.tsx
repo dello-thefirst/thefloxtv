@@ -15,7 +15,7 @@ export default function MovieScreen({
           <iframe
             className="w-full h-full"
             id="playit"
-            src={`https://vidsrc.pro/embed/movie/${movieId}`}
+            src={`https://vidsrc.cc/v2/embed/movie/${movieId}`}
             allowFullScreen
           ></iframe>
         ) : (
@@ -28,7 +28,7 @@ export default function MovieScreen({
           >
             <div className="mask absolute top-0 left-0 w-full h-[100%] bg-gradient-to-t from-[var(--background-color-1)] to-[#26262637] flex items-center justify-center">
               <div
-                className="w-auto h-auto rounded-full bg-[lightgreen] flex items-center justify-center cursor-pointer"
+                className="w-auto h-auto rounded-full bg-[var(--color-3)] flex items-center justify-center cursor-pointer"
                 onClick={() => setHasStartedPlaying(true)}
               >
                 <i className="fa-solid fa-circle-play text-[#040812] text-[60px] sm:text-[45px]"></i>

@@ -65,7 +65,7 @@ const LivesearchResult = (props: { query: string }) => {
                     {result.media_type == "movie" ? result.title : result.name}
                   </p>
                   <p
-                    className="sub text-green-300 text-[11px] font-light"
+                    className="sub text-[var(--color-3)] text-[11px] font-light"
                     style={{ wordSpacing: "3px" }}
                   >
                     {result.media_type == "movie" ? `Movie ` : `TV `}

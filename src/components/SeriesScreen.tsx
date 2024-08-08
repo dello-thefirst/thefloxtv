@@ -39,7 +39,7 @@ export default function SeriesScreen({
           <iframe
             className="w-full h-full"
             id="playit"
-            src={`https://vidsrc.pro/embed/tv/${tvId}/${seasonSelect}/${episodeSelect}`}
+            src={`https://vidsrc.cc/v2/embed/tv/${tvId}/${seasonSelect}/${episodeSelect}`}
             allowFullScreen
           ></iframe>
         ) : (
@@ -52,7 +52,7 @@ export default function SeriesScreen({
           >
             <div className="mask absolute top-0 left-0 w-full h-[100%] bg-gradient-to-t from-[var(--background-color-1)] to-[#26262637] flex items-center justify-center">
               <div
-                className="w-auo h-auto rounded-full bg-[lightgreen] flex items-center justify-center cursor-pointer"
+                className="w-auo h-auto rounded-full bg-[var(--color-3)] flex items-center justify-center cursor-pointer"
                 onClick={() => setHasStartedPlaying(true)}
               >
                 <i className="fa-solid fa-circle-play text-[#040812] text-[60px] sm:text-[45px]"></i>
@@ -68,12 +68,12 @@ export default function SeriesScreen({
             className="season-changer w-full absolute z-[3] shadow-2xl rounded-t-md h-[50px] flex items-center bg-[#071220] justify-center gap-1 cursor-pointer"
             onClick={() => changeSeasonListVisibilty()}
           >
-            <i className="bi bi-file-play-fill"></i>{" "}
+            <i className="bi bi-file-play-fill text-[var(--color-3)]"></i>
             <span>Season {seasonSelect}</span>
             <i className="bi bi-caret-down-fill"></i>
           </div>
           <div
-            className={`season-list transition-transform z-[2] top-[40px] duration-[0.5s] max-h-[160px] overflow-y-auto ${
+            className={`season-list transition-transform z-[2] top-[40px] duration-[0.2s] max-h-[160px] overflow-y-auto ${
               isSeasonListVisible ? "translate-y-[-1000px]" : "translate-y-0"
             } w-[150px] absolute left-[75px] sm:left-[calc(50% - 75px)] rounded-b-md round shadow-2xl bg-[#03070c]`}
             onBlur={() => changeSeasonListVisibilty()}
@@ -83,7 +83,7 @@ export default function SeriesScreen({
                 <p
                   key={index}
                   className={`m-3 cursor-pointer ${
-                    seasonSelect == index + 1 && "text-[lightgreen]"
+                    seasonSelect == index + 1 && "text-[var(--color-3)]"
                   }`}
                   onClick={() => setSeasonSelect(index + 1)}
                 >
@@ -93,7 +93,7 @@ export default function SeriesScreen({
             )}
           </div>
           <div
-            className="episode-list w-full max-h-[200px] min-h-[200px] overflow-y-auto scroller shadow-2xl mt-[50px] bg-[#08182b] rounded-b-md"
+            className="episode-list w-full max-h-[250px] min-h-[250px] overflow-y-auto scroller shadow-2xl mt-[50px] bg-[#08182b] rounded-b-md"
             style={{ scrollbarColor: "white" }}
           >
             {Array.from({
@@ -102,7 +102,7 @@ export default function SeriesScreen({
               <div
                 key={index}
                 className={`w-full h-[50px] cursor-pointer flex items-center gap-2 text-[11px] px-3  ${
-                  episodeSelect == index + 1 && "text-black bg-[lightgreen]"
+                  episodeSelect == index + 1 && "text-black bg-[var(--color-3)]"
                 } `}
                 style={{ flex: "0 0 auto" }}
                 onClick={() => setEpisodeSelect(index + 1)}
