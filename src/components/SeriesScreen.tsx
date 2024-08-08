@@ -65,7 +65,7 @@ export default function SeriesScreen({
       <div className="w-full px-7 sm:px-4">
         <div className="episode-changer-cont relative w-[300px] sm:w-full h-[auto] text-[13px] overflow-hidden">
           <div
-            className="season-changer w-full absolute z-[3] rounded-t-md h-[50px] flex items-center bg-[#03070c] justify-center gap-1 cursor-pointer"
+            className="season-changer w-full absolute z-[3] shadow-2xl rounded-t-md h-[50px] flex items-center bg-[#071220] justify-center gap-1 cursor-pointer"
             onClick={() => changeSeasonListVisibilty()}
           >
             <i className="bi bi-file-play-fill"></i>{" "}
@@ -73,7 +73,7 @@ export default function SeriesScreen({
             <i className="bi bi-caret-down-fill"></i>
           </div>
           <div
-            className={`season-list transition-transform z-[2] top-[40px] duration-[0.5s] max-h-[200px] overflow-hidden ${
+            className={`season-list transition-transform z-[2] top-[40px] duration-[0.5s] max-h-[160px] overflow-y-auto ${
               isSeasonListVisible ? "translate-y-[-1000px]" : "translate-y-0"
             } w-[150px] absolute left-[75px] sm:left-[calc(50% - 75px)] rounded-b-md round shadow-2xl bg-[#03070c]`}
             onBlur={() => changeSeasonListVisibilty()}
@@ -93,7 +93,7 @@ export default function SeriesScreen({
             )}
           </div>
           <div
-            className="episode-list w-full max-h-[200px] overflow-y-auto scroller mt-[50px] bg-[#08182b] rounded-b-md"
+            className="episode-list w-full max-h-[200px] min-h-[200px] overflow-y-auto scroller shadow-2xl mt-[50px] bg-[#08182b] rounded-b-md"
             style={{ scrollbarColor: "white" }}
           >
             {Array.from({
