@@ -33,6 +33,7 @@ export default function Trending({
   type: string;
 }) {
   let listIterator = 1;
+  const [trendingPeriod, setTrendingPeriod] = useState("day");
   const [trendingData, setTrendingData] = useState<MovieDataType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -41,7 +42,7 @@ export default function Trending({
       try {
         setIsLoading(true);
         const res = await axios.get(
-          `https://api.themoviedb.org/3/trending/${type}/${period}?language=en-US`,
+          `https://api.themoviedb.org/3/trending/${type}/${trendingPeriod}?language=en-US`,
           {
             headers: {
               Authorization:
@@ -56,71 +57,103 @@ export default function Trending({
       }
     };
     request();
-  }, [type, period]);
+  }, [type, period, trendingPeriod]);
 
   return (
     <>
-      <div className="trending-cont mb-[50px] flex sm:flex-col">
-        <div
-          className="sec-label w-[250px] mb-[20px] "
-          style={{ textShadow: "0px 3px 3px rgb(0, 0, 30, 0.8)" }}
-        >
-          <p className="font text-[25px] mb-3 font-semibold text-gray-200 md:text-[17px] leading-[30px]">
-            Top 10 {type == "movie" ? "Movies" : "TV Shows"}{" "}
-            {period == "day" ? "Today" : "This Week"}{" "}
+      <div className="cont my-10">
+        <div className="mb-10 flex gap-5 sm:gap-3 items-center text-[12px]">
+          <p className="uppercase text-[25px] sm:text-[14px] font-bold text-white">
+            <i className="bi bi-file-play-fill text-[var(--color-3)]"></i>{" "}
+            Trending {type == "movie" ? "Movies" : "Tv Shows"}
           </p>
-          <p className="text-[14px] font-light text-gray-300">
-            Check out this week’s most popular{" "}
-            {type == "movie" ? "Movies" : "TV Shows"} and find choose what to
-            watch.
-          </p>
-        </div>
-        <div
-          className="scroll-container no-scrollbar"
-          style={{
-            display: "flex",
-            flexWrap: "nowrap",
-            width: "100%",
-            height: "auto",
-            overflowX: "scroll",
-          }}
-        >
-          {isLoading && <LoadingUI />}
-          {!isLoading &&
-            trendingData.map((result) => (
-              <Link
-                key={result.id}
-                href={
-                  result.media_type == "movie"
-                    ? `/movies/${result.id}`
-                    : `/tv/${result.id}`
-                }
-              >
-                <div
-                  className="item w-auto h-[280px] mr-[10px] flex relative sm:h-[210px] sm:mr-[8px]"
-                  style={{ flex: "0 0 auto" }}
-                >
-                  <p className="list-number w-auto h-full center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff1e] sm:text-[100px]">
-                    {listIterator++}
-                  </p>
-                  <div
-                    className="
-                  w-[200px] h-full overflow-hidden sm:w-[150px] relative translate-x-[-10px] cars"
-                  >
-                    <div className="mask group w-full h-full left-0 bottom-0 z-[2] from-[var(--background-color-11)] to-transparent bg-gradient-to-t absolute center-div"></div>
 
-                    <Image
-                      unoptimized
-                      className="object-cover rounded-md w-full h-full"
-                      src={`https://themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`}
-                      width={220}
-                      height={330}
-                      alt=""
-                    />
+          <div className="flex gap-3 sm:gap-1 items-center text-[grey] sm:text-[11px]">
+            <div
+              onClick={() => setTrendingPeriod("day")}
+              className={`px-3 py-1 sm:px-2 sm:py-[1px] border-[1.5px] rounded-lg cursor-pointer ${
+                trendingPeriod == "day"
+                  ? " border-[var(--color-3)] text-[var(--color-3)]"
+                  : "border-[var(--background-color-2)]"
+              }`}
+            >
+              Today
+            </div>
+            <div
+              onClick={() => setTrendingPeriod("week")}
+              className={`px-3 py-1 border-[1.5px] rounded-lg cursor-pointer ${
+                trendingPeriod == "week"
+                  ? " border-[var(--color-3)] text-[var(--color-3)]"
+                  : "border-[var(--background-color-2)]"
+              }`}
+            >
+              This Week
+            </div>
+          </div>
+        </div>
+
+        <div className="trending-cont mb-[50px] flex sm:flex-col">
+          {/* <div
+            className="sec-label w-[250px] mb-[20px] "
+            style={{ textShadow: "0px 3px 3px rgb(0, 0, 30, 0.8)" }}
+          >
+            <p className="font text-[25px] mb-3 font-semibold text-gray-200 md:text-[17px] leading-[30px]">
+              Top 10 {type == "movie" ? "Movies" : "TV Shows"}{" "}
+              {period == "day" ? "Today" : "This Week"}{" "}
+            </p>
+            <p className="text-[14px] font-light text-gray-300">
+              Check out this week’s most popular{" "}
+              {type == "movie" ? "Movies" : "TV Shows"} and find choose what to
+              watch.
+            </p>
+          </div> */}
+          <div
+            className="scroll-container no-scrollbar"
+            style={{
+              display: "flex",
+              flexWrap: "nowrap",
+              width: "100%",
+              height: "auto",
+              overflowX: "scroll",
+            }}
+          >
+            {isLoading && <LoadingUI />}
+            {!isLoading &&
+              trendingData.map((result) => (
+                <Link
+                  key={result.id}
+                  href={
+                    result.media_type == "movie"
+                      ? `/movies/${result.id}`
+                      : `/tv/${result.id}`
+                  }
+                >
+                  <div
+                    className="item w-auto h-[280px] mr-[10px] flex relative sm:h-[210px] sm:mr-[8px]"
+                    style={{ flex: "0 0 auto" }}
+                  >
+                    <p className="list-number w-auto h-full center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff1e] sm:text-[100px]">
+                      {listIterator++}
+                    </p>
+                    <div
+                      className="
+                  w-[200px] h-full overflow-hidden sm:w-[150px] relative translate-x-[-10px] cars"
+                    >
+                      <div className="mask group w-full h-full left-0 bottom-0 z-[2] from-[var(--background-color-11)] to-transparent bg-gradient-to-t absolute center-div"></div>
+
+                      <Image
+                        unoptimized
+                        className="object-cover rounded-md w-full h-full"
+                        src={`https://themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`}
+                        width={220}
+                        height={330}
+                        alt=""
+                      />
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))}
+          </div>
         </div>
       </div>
     </>

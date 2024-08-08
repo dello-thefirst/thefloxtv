@@ -18,9 +18,8 @@ function DiscoverDaily() {
 
   return (
     <>
-      <p className="text-center mb-3">
-        <i className="fa-regular fa-fire text-[12px]"></i> Trending Now{" "}
-        <i className="fa-regular fa-fire text-[12px]"></i>
+      <p className="text-center mb-3 text-[13px]">
+        <i className="bi bi-fire"></i> For You <i className="bi bi-fire"></i>
       </p>
       <div className="w-full sm:px-3">
         <Swiper
@@ -79,7 +78,7 @@ function DiscoverDaily() {
                           ? getWordRange(result.title, 3)
                           : getWordRange(result.name, 3)}
                       </p>
-                      <p className="text-[14px] font-[500] word sm:text-[12px] text-[var(--color-3)]">
+                      <p className="text-[13px] font-[500] word sm:text-[12px] text-[var(--color-3)]">
                         {result.media_type == "movie"
                           ? getLetterRange(result.release_date, 4)
                           : getLetterRange(result.first_air_date, 4)}
