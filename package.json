@@ -19,6 +19,7 @@
     "@vercel/speed-insights": "^1.0.12",
     "adblock-rust": "^9.0.0",
     "axios": "^1.6.7",
+    "bootstrap-icons": "^1.11.3",
     "clsx": "^2.1.0",
     "cors": "^2.8.5",
     "git": "^0.1.5",

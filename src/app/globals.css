@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background-color-1: rgb(6, 13, 23);
+  --background-color-1: #060d17;
   --background-color-2: 18, 18, 23;
   --color-2: 209, 209, 209;
   --color-3: rgb(108, 238, 108);
@@ -33,6 +33,10 @@ body::-webkit-scrollbar {
 body::-webkit-scrollbar-thumb {
   background-color: rgb(87, 86, 86) !important;
   border-radius: 10px;
+}
+
+.scroller::-webkit-scrollbar-thumb {
+  background-color: var(--color-3) !important;
 }
 
 .center-div {

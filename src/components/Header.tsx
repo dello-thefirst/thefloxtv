@@ -56,7 +56,7 @@ function Header({ page }: { page?: string }) {
       <header
         className={`w-full h-[80px] sm:h-[50px] px-[3%] ${
           page == "home" && "absolute z-10"
-        } bg-gradient-to-br via-[#13111a54] from-[var(--background-color-1)] to-transparent`}
+        } bg-gradient-to-b via-[#13111a3e] from-[var(--background-color-1)] to-transparent`}
       >
         <div className="logo-cont w-auto h-full float-left center-div">
           <Link href="/">

@@ -9,6 +9,7 @@ export default function SeriesScreen({
   seriesData: any;
 }) {
   const collapseRef = useRef<any>();
+  const [isSeasonListVisible, setIsSeasonListVisible] = useState(false);
   const [hasStartedPlaying, setHasStartedPlaying] = useState(false);
   const [seasonSelect, setSeasonSelect] = useState(1);
   const [episodeSelect, setEpisodeSelect] = useState(1);
@@ -24,10 +25,15 @@ export default function SeriesScreen({
   //Reset to episode 1 if the season is changed and minimize the dropdown
   useEffect(() => {
     setEpisodeSelect(1);
+    changeSeasonListVisibilty();
     if (collapseRef.current) {
       setTimeout(() => collapseRef.current.click(), 500);
     }
   }, [seasonSelect]);
+
+  function changeSeasonListVisibilty() {
+    setIsSeasonListVisible(!isSeasonListVisible);
+  }
 
   return (
     <div className="movie-container-screen w-full">
@@ -58,58 +64,58 @@ export default function SeriesScreen({
           </div>
         )}
       </div>
-      <div className="w-[50vw] mt-20 sm:mt-5 sm:w-[auto] h-auto px-7 sm:px-4">
-        <div className="collapse bg-transparent p-0 rounded-xl">
-          <input type="checkbox" ref={collapseRef} />
-          <div className="collapse-title text-[15px] text-[lightgreen] bg-base-100 ">
-            Season {seasonSelect} <i className="fa-solid fa-caret-down"></i>
+
+      <div className="w-full px-7 sm:px-4">
+        <div className="episode-changer-cont relative w-[300px] sm:w-full h-[auto] text-[12px] overflow-hidden">
+          <div
+            className="season-changer w-full absolute z-[3] rounded-t-md h-[40px] flex items-center bg-[#03070c] justify-center gap-1 cursor-pointer"
+            onClick={() => changeSeasonListVisibilty()}
+          >
+            <i className="bi bi-file-play-fill"></i>{" "}
+            <span>Season {seasonSelect}</span>
+            <i className="bi bi-caret-down-fill"></i>
           </div>
-          <div className="collapse-content bg-base-200 cursor-pointer">
-            <div className="w-full max-h-[200px] overflow-y-scroll">
-              {Array.from({ length: seasonCount }).map(
-                (season: any, index: any) => (
-                  <p
-                    key={index}
-                    className={`py-4 ${
-                      seasonSelect == index + 1 && "text-[lightgreen]"
-                    }`}
-                    onClick={() => setSeasonSelect(index + 1)}
-                  >
-                    Season {index + 1}
-                  </p>
-                )
-              )}
-            </div>
+          <div
+            className={`season-list transition-transform z-[2] top-[40px] duration-[0.5s] overflow-hidden ${
+              isSeasonListVisible ? "translate-y-0" : "translate-y-[-200px]"
+            } w-[150px] absolute left-[75px] sm:left-[calc(50% - 75px)] rounded-b-md round shadow-2xl bg-[#03070c]`}
+            onBlur={() => changeSeasonListVisibilty()}
+          >
+            {Array.from({ length: seasonCount }).map(
+              (season: any, index: any) => (
+                <p
+                  key={index}
+                  className={`m-3 cursor-pointer ${
+                    seasonSelect == index + 1 && "text-[lightgreen]"
+                  }`}
+                  onClick={() => setSeasonSelect(index + 1)}
+                >
+                  Season {index + 1}
+                </p>
+              )
+            )}
+          </div>
+          <div
+            className="episode-list w-full max-h-[200px] overflow-y-auto scroller mt-[40px] bg-[#08182b] rounded-b-md"
+            style={{ scrollbarColor: "white" }}
+          >
+            {Array.from({
+              length: episodeCount,
+            }).map((_, index: any) => (
+              <div
+                key={index}
+                className={`w-full h-[40px] cursor-pointer flex items-center gap-2 text-[11px] px-3  ${
+                  episodeSelect == index + 1 && "text-black bg-[lightgreen]"
+                } `}
+                style={{ flex: "0 0 auto" }}
+                onClick={() => setEpisodeSelect(index + 1)}
+              >
+                <i className="fa-solid fa-circle-play"></i>
+                Episode {index + 1}
+              </div>
+            ))}
           </div>
         </div>
-      </div>
-      <div
-        className="scroll-container no-scrollbar mt-5 px-7 sm:px-4"
-        style={{
-          display: "flex",
-          flexWrap: "nowrap",
-          width: "100%",
-          height: "auto",
-          overflowX: "scroll",
-          gap: 10,
-        }}
-      >
-        {Array.from({
-          length: episodeCount,
-        }).map((_, index: any) => (
-          <div
-            key={index}
-            className={`w-[auto] h-[auto] px-4 py-2 bg-base-100 cursor-pointer rounded-md flex items-center justify-center gap-2 text-[11px]  ${
-              episodeSelect == index + 1 &&
-              "text-[lightgreen] border border-[lightgreen]"
-            } `}
-            style={{ flex: "0 0 auto" }}
-            onClick={() => setEpisodeSelect(index + 1)}
-          >
-            <i className="fa-solid fa-circle-play"></i>
-            Episode {index + 1}
-          </div>
-        ))}
       </div>
     </div>
   );
