@@ -26,9 +26,6 @@ export default function SeriesScreen({
   useEffect(() => {
     setEpisodeSelect(1);
     changeSeasonListVisibilty();
-    if (collapseRef.current) {
-      setTimeout(() => collapseRef.current.click(), 500);
-    }
   }, [seasonSelect]);
 
   function changeSeasonListVisibilty() {
@@ -66,9 +63,9 @@ export default function SeriesScreen({
       </div>
 
       <div className="w-full px-7 sm:px-4">
-        <div className="episode-changer-cont relative w-[300px] sm:w-full h-[auto] text-[12px] overflow-hidden">
+        <div className="episode-changer-cont relative w-[300px] sm:w-full h-[auto] text-[13px] overflow-hidden">
           <div
-            className="season-changer w-full absolute z-[3] rounded-t-md h-[40px] flex items-center bg-[#03070c] justify-center gap-1 cursor-pointer"
+            className="season-changer w-full absolute z-[3] rounded-t-md h-[50px] flex items-center bg-[#03070c] justify-center gap-1 cursor-pointer"
             onClick={() => changeSeasonListVisibilty()}
           >
             <i className="bi bi-file-play-fill"></i>{" "}
@@ -76,8 +73,8 @@ export default function SeriesScreen({
             <i className="bi bi-caret-down-fill"></i>
           </div>
           <div
-            className={`season-list transition-transform z-[2] top-[40px] duration-[0.5s] overflow-hidden ${
-              isSeasonListVisible ? "translate-y-0" : "translate-y-[-200px]"
+            className={`season-list transition-transform z-[2] top-[40px] duration-[0.5s] max-h-[200px] overflow-hidden ${
+              isSeasonListVisible ? "translate-y-[-1000px]" : "translate-y-0"
             } w-[150px] absolute left-[75px] sm:left-[calc(50% - 75px)] rounded-b-md round shadow-2xl bg-[#03070c]`}
             onBlur={() => changeSeasonListVisibilty()}
           >
@@ -96,7 +93,7 @@ export default function SeriesScreen({
             )}
           </div>
           <div
-            className="episode-list w-full max-h-[200px] overflow-y-auto scroller mt-[40px] bg-[#08182b] rounded-b-md"
+            className="episode-list w-full max-h-[200px] overflow-y-auto scroller mt-[50px] bg-[#08182b] rounded-b-md"
             style={{ scrollbarColor: "white" }}
           >
             {Array.from({
@@ -104,7 +101,7 @@ export default function SeriesScreen({
             }).map((_, index: any) => (
               <div
                 key={index}
-                className={`w-full h-[40px] cursor-pointer flex items-center gap-2 text-[11px] px-3  ${
+                className={`w-full h-[50px] cursor-pointer flex items-center gap-2 text-[11px] px-3  ${
                   episodeSelect == index + 1 && "text-black bg-[lightgreen]"
                 } `}
                 style={{ flex: "0 0 auto" }}
