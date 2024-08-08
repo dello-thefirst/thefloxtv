@@ -65,13 +65,13 @@ function DiscoverDaily() {
                   Trending Today
                 </div>
                 <div
-                  className="inner w-full h-[95%] relative overflow-hidden rounded-xl"
+                  className="inner w-full h-[95%] relative p-0 rounded-xl"
                   style={{
                     backgroundImage: `url(https://image.tmdb.org/t/p/w500${result.backdrop_path})`,
                     backgroundSize: "cover",
                   }}
                 >
-                  <div className="mask w-[120%] h-full absolute top-0 left-0 z-20 bg-gradient-to-tr from-[var(--background-color-1)] to-[#0d0e1534]"></div>
+                  <div className="mask w-[100%] h-full absolute top-0 left-0 bottom-0 right-0 z-20 bg-gradient-to-t from-[var(--background-color-1)] via-[#1f1b2989] to-[transparent]"></div>
                   <div className="absolute bottom-4 left-4 z-30">
                     <p className="text-[14px] font-[500] word sm:text-[12px] text-[var(--color-3)]">
                       {result.media_type == "movie"
