@@ -7,7 +7,7 @@
   --background-color-2: #16202d;
   --color-2: 209, 209, 209;
   /* --color-3: rgb(108, 238, 108); */
-  --color-3: gold;
+  --color-3: rgb(255, 215, 0);
   --font-family-1: var(--font-workSans);
   background-color: var(--background-color-1) !important;
 }
