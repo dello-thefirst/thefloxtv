@@ -62,8 +62,8 @@ export default function Trending({
   return (
     <>
       <div className="cont my-10">
-        <div className="mb-5 flex gap-5 sm:gap-3 items-center text-[12px]">
-          <p className="uppercase text-[25px] sm:text-[16px] font-bold text-white">
+        <div className="mb-5 flex sm:flex-col gap-5 sm:gap-3 items-center text-[12px]">
+          <p className="uppercase text-[25px] sm:text-[17px] font-bold text-white">
             <i className="bi bi-file-play-fill text-[var(--color-3)]"></i>{" "}
             Trending {type == "movie" ? "Movies" : "Tv Shows"}
           </p>
@@ -71,7 +71,7 @@ export default function Trending({
           <div className="flex gap-3 sm:gap-1 items-center text-[grey] sm:text-[11px]">
             <div
               onClick={() => setTrendingPeriod("day")}
-              className={`px-3 py-1 sm:px-2 sm:py-[1px] border-[1.5px] rounded-md cursor-pointer ${
+              className={`px-3 py-1 border-[1.5px] rounded-md cursor-pointer ${
                 trendingPeriod == "day"
                   ? " border-[var(--color-3)] text-[var(--color-3)]"
                   : "border-[var(--background-color-2)]"
@@ -81,7 +81,7 @@ export default function Trending({
             </div>
             <div
               onClick={() => setTrendingPeriod("week")}
-              className={`px-3 py-1 sm:px-2 sm:py-[1px] border-[1.5px] rounded-md cursor-pointer ${
+              className={`px-3 py-1 border-[1.5px] rounded-md cursor-pointer ${
                 trendingPeriod == "week"
                   ? " border-[var(--color-3)] text-[var(--color-3)]"
                   : "border-[var(--background-color-2)]"
