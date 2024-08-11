@@ -52,7 +52,7 @@ export default function Trending({
             },
           }
         );
-        let newResult = [];
+        let newResult: MovieDataType[] = [];
         res.data.results.map(async (item: MovieDataProps) => {
           const detailsNew =
             type == "movie"
