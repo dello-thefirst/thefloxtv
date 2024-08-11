@@ -54,16 +54,17 @@ export default function Trending({
         );
         let newResult: MovieDataType[] = [];
         res.data.results.map((item: MovieDataProps) => {
-          async () => {
+          const gather = async () => {
             const detailsNew =
               type == "movie"
                 ? await getMovieDetails(item.id)
                 : await getSeriesDetails(item.id);
             newResult.push(detailsNew);
-            setTrendingData(newResult);
-            setIsLoading(false);
           };
+          gather();
         });
+        setTrendingData(newResult);
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
