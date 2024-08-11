@@ -53,20 +53,24 @@ export default function Trending({
           }
         );
         let newResult: MovieDataType[] = [];
-        res.data.results.map((item: MovieDataProps) => {
-          const gather = async () => {
+
+        const fetchDetails = async () => {
+          for (const item of res.data.results) {
             const detailsNew =
-              type == "movie"
+              type === "movie"
                 ? await getMovieDetails(item.id)
                 : await getSeriesDetails(item.id);
             newResult.push(detailsNew);
-          };
-          gather();
-        });
-        if (newResult.length > 0) {
-          setTrendingData(newResult);
-          setIsLoading(false);
-        }
+          }
+
+          if (newResult.length > 0) {
+            setTrendingData(newResult);
+            setIsLoading(false);
+          }
+        };
+
+        // Call the function
+        fetchDetails();
       } catch (error) {
         console.log(error);
       }
