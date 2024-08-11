@@ -20,10 +20,7 @@ function DiscoverDaily() {
 
   const [screenSize, setScreenSize] = useState([2000, 1200]);
   useEffect(() => {
-    // Manually start autoplay on mount
-    if (swiper && swiper.autoplay) {
-      swiper.autoplay.start();
-    }
+    swiper.autoplay.start();
   }, [swiper]);
   useEffect(() => {
     const size = [window.innerWidth, window.innerHeight];
