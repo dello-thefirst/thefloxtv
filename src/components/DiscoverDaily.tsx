@@ -16,14 +16,20 @@ function DiscoverDaily() {
     queryFn: async () => await fetchTrending("day"),
     queryKey: ["discoverdaily"],
   });
+  const swiper = useSwiper();
 
   const [screenSize, setScreenSize] = useState([2000, 1200]);
   useEffect(() => {
+    useEffect(() => {
+      // Manually start autoplay on mount
+      if (swiper && swiper.autoplay) {
+        swiper.autoplay.start();
+      }
+    }, [swiper]);
     const size = [window.innerWidth, window.innerHeight];
     setScreenSize(size);
   }, []);
 
-  const swiper = useSwiper();
   return (
     <>
       <p className="text-center mb-3 text-[13px]">
@@ -36,7 +42,7 @@ function DiscoverDaily() {
             delay: 3000,
             disableOnInteraction: false,
           }}
-          slidesPerView={screenSize[0] < 800 ? 1 : screenSize[1] < 1200 ? 2 : 3}
+          slidesPerView={screenSize[0] < 800 ? 1 : screenSize[0] < 1200 ? 2 : 3}
           pagination={{
             el: ".swiper-progress",
             type: "progressbar",
