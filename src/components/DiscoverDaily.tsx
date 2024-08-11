@@ -14,14 +14,10 @@ import { useSwiper } from "swiper/react";
 function DiscoverDaily() {
   const { data: movieData, isLoading } = useQuery({
     queryFn: async () => await fetchTrending("day"),
-    queryKey: ["discoverdaily"],
+    queryKey: ["discoverdailyggg"],
   });
-  const swiper = useSwiper();
-
   const [screenSize, setScreenSize] = useState([2000, 1200]);
-  useEffect(() => {
-    swiper.autoplay.start();
-  }, [swiper]);
+
   useEffect(() => {
     const size = [window.innerWidth, window.innerHeight];
     setScreenSize(size);
@@ -34,7 +30,6 @@ function DiscoverDaily() {
       </p>
       <div className="w-full sm:px-3">
         <Swiper
-          className="w-full h-[220px] sm:h-[185px]"
           autoplay={{
             delay: 3000,
             disableOnInteraction: false,
@@ -44,13 +39,10 @@ function DiscoverDaily() {
             el: ".swiper-progress",
             type: "progressbar",
           }}
-          effect="autoplay"
+          effect={"autoplay"}
           spaceBetween={10}
-          loop={true}
           modules={[Autoplay, Pagination]}
-          onSwiper={(instance) => {
-            instance.autoplay.start();
-          }}
+          className="w-full h-[220px] sm:h-[185px]"
         >
           {isLoading ? (
             <DDLoadingUI />
