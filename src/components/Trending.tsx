@@ -177,8 +177,11 @@ export default function Trending({
                         <p>
                           {type == "movie"
                             ? result.runtime + " min"
-                            : "Season " +
-                              result.last_episode_to_air.season_number}
+                            : `Season ${
+                                result.last_episode_to_air?.season_number
+                                  ? result.last_episode_to_air?.season_number
+                                  : "?"
+                              }`}
                         </p>
                       </div>
                     </div>
