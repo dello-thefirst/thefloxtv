@@ -4,7 +4,8 @@ import { MovieDataType } from "../app/types/movie";
 import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
-import { getLetterRange } from "./Functions";
+import { getLetterRange, MovieDataProps } from "./Functions";
+import { getMovieDetails, getSeriesDetails } from "../app/functions/fetch";
 
 export function LoadingUI() {
   let uiIterator = 1;
@@ -51,8 +52,16 @@ export default function Trending({
             },
           }
         );
-        setTrendingData(res.data.results);
-        setIsLoading(false);
+        let newResult = [];
+        res.data.results.map(async (item: MovieDataProps) => {
+          const detailsNew =
+            type == "movie"
+              ? await getMovieDetails(item.id)
+              : await getSeriesDetails(item.id);
+          newResult.push(detailsNew);
+          setTrendingData(newResult);
+          setIsLoading(false);
+        });
       } catch (error) {
         console.log(error);
       }
@@ -153,8 +162,15 @@ export default function Trending({
                             ? getLetterRange(result.release_date, 4)
                             : getLetterRange(result.first_air_date, 4)}
                         </p>
-                        <p>{type}</p>
-                        <p>{type == "movie" ? result.runtime : "Season"}</p>
+                        <p className="border border-[grey] rounded-lg px-[5px] py-[0.5px] ">
+                          {type}
+                        </p>
+                        <p>
+                          {type == "movie"
+                            ? result.runtime + " min"
+                            : "Season " +
+                              result.last_episode_to_air.season_number}
+                        </p>
                       </div>
                     </div>
                   </div>

@@ -11,4 +11,5 @@ export type MovieDataType = {
   runtime: number;
   season_count: number;
   vote_average: number;
+  last_episode_to_air: any;
 };
