@@ -55,12 +55,12 @@ export default function Trending({
         let newResult: MovieDataType[] = [];
 
         const fetchDetails = async () => {
-          for (const item of res.data.results) {
-            const detailsNew =
-              type === "movie"
+          for (const item of res.data.results.slice(0, 10)) {
+            const detailsNew: Promise<MovieDataType> =
+              type == "movie"
                 ? await getMovieDetails(item.id)
                 : await getSeriesDetails(item.id);
-            newResult.push(detailsNew);
+            newResult.push(await detailsNew);
           }
 
           if (newResult.length > 0) {

@@ -60,7 +60,9 @@ export const getMovieDetails = async (movieId: any) => {
         },
       }
     );
-    return request.data;
+    const res = request.data;
+    res["media_type"] = "movie";
+    return res;
   } catch (error) {
     console.log(error);
   }
