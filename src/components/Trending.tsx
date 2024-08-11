@@ -63,8 +63,10 @@ export default function Trending({
           };
           gather();
         });
-        setTrendingData(newResult);
-        setIsLoading(false);
+        if (newResult.length > 0) {
+          setTrendingData(newResult);
+          setIsLoading(false);
+        }
       } catch (error) {
         console.log(error);
       }
