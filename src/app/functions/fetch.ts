@@ -90,6 +90,29 @@ export const getSeriesDetails = async (movieId: any) => {
   }
 };
 
+export const fetchNowPlaying = async (type: any) => {
+  try {
+    const request = await axios.get(
+      `https://api.themoviedb.org/3/${type}/now_playing`,
+      {
+        params: {
+          page: "1",
+          language: "en-US",
+        },
+
+        method: "GET",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTliOGUyOGRjM2M5ZDkwMGNlYjQ2OTZiZjJkMjQ3YyIsInN1YiI6IjY1MDA0ZDIwNmEyMjI3MDBjM2I2MDM3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DNP1HXf6xyRe_8C7rR7fljfalpmJZgcry6JN8xLwk8E",
+        },
+      }
+    );
+    return request.data.results;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const fetchMovieTrailers = async (movieId: string) => {
   try {
     const request = await fetch(

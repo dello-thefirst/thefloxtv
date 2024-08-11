@@ -6,4 +6,5 @@ type MovieStore = {
 
 export const useStore = create<MovieStore>((set) => ({
   id: 0,
+  mainColor: "lightgreen",
 }));

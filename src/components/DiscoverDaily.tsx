@@ -2,13 +2,14 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { getWordRange, getLetterRange } from "./Functions";
 import { DDLoadingUI } from "./LoadingUI/DDLoadingUI";
 import { useQuery } from "react-query";
 import { fetchTrending } from "../app/functions/fetch";
+import { useSwiper } from "swiper/react";
 
 function DiscoverDaily() {
   const { data: movieData, isLoading } = useQuery({
@@ -16,6 +17,13 @@ function DiscoverDaily() {
     queryKey: ["discoverdaily"],
   });
 
+  const [screenSize, setScreenSize] = useState([2000, 1200]);
+  useEffect(() => {
+    const size = [window.innerWidth, window.innerHeight];
+    setScreenSize(size);
+  }, []);
+
+  const swiper = useSwiper();
   return (
     <>
       <p className="text-center mb-3 text-[13px]">
@@ -28,15 +36,7 @@ function DiscoverDaily() {
             delay: 3000,
             disableOnInteraction: false,
           }}
-          slidesPerView={
-            typeof window !== "undefined"
-              ? window.innerWidth < 800
-                ? 1
-                : window.innerWidth < 1200
-                ? 2
-                : 3
-              : 0
-          }
+          slidesPerView={screenSize[0] < 800 ? 1 : screenSize[1] < 1200 ? 2 : 3}
           pagination={{
             el: ".swiper-progress",
             type: "progressbar",
@@ -44,7 +44,10 @@ function DiscoverDaily() {
           effect="autoplay"
           spaceBetween={10}
           loop={true}
-          modules={[Autoplay, Pagination, Navigation]}
+          modules={[Autoplay, Pagination]}
+          onSwiper={(instance) => {
+            instance.autoplay.start();
+          }}
         >
           {isLoading ? (
             <DDLoadingUI />

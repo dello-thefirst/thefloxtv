@@ -4,6 +4,7 @@ import { MovieDataType } from "../app/types/movie";
 import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
+import { getLetterRange } from "./Functions";
 
 export function LoadingUI() {
   let uiIterator = 1;
@@ -129,26 +130,32 @@ export default function Trending({
                   }
                 >
                   <div
-                    className="item w-auto h-[280px] mr-[10px] flex relative sm:h-[210px] sm:mr-[8px]"
+                    className="item w-auto h-auto mr-[10px] flex relative sm:mr-[8px]"
                     style={{ flex: "0 0 auto" }}
                   >
-                    <p className="list-number w-auto h-full center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff1e] sm:text-[100px]">
+                    <p className="list-number w-auto h-auto center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff1e] sm:text-[100px]">
                       {listIterator++}
                     </p>
-                    <div
-                      className="
-                  w-[200px] h-full overflow-hidden sm:w-[150px] relative translate-x-[-10px] cars"
-                    >
+                    <div className="w-[180px] sm:w-[150px] relative translate-x-[-10px]">
                       <div className="mask group w-full h-full left-0 bottom-0 z-[2] from-[var(--background-color-11)] to-transparent bg-gradient-to-t absolute center-div"></div>
 
                       <Image
                         unoptimized
-                        className="object-cover rounded-md w-full h-full"
+                        className="object-cover rounded-md w-full"
                         src={`https://themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`}
                         width={220}
-                        height={330}
+                        height={300}
                         alt=""
                       />
+                      <div className="w-full flex gap-2 text-[12px]  items-center justify-between px-[1px] py-2">
+                        <p>
+                          {type == "movie"
+                            ? getLetterRange(result.release_date, 4)
+                            : getLetterRange(result.first_air_date, 4)}
+                        </p>
+                        <p>{type}</p>
+                        <p>{type == "movie" ? result.runtime : "Season"}</p>
+                      </div>
                     </div>
                   </div>
                 </Link>

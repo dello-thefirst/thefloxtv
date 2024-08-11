@@ -8,6 +8,7 @@ export type MovieDataType = {
   overview: string;
   release_date: string;
   first_air_date: string;
-  duration: number;
+  runtime: number;
+  season_count: number;
   vote_average: number;
 };
