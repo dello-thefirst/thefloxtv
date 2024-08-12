@@ -89,11 +89,9 @@ export default function RootLayout({
       </Script>
       <body
         data-theme="dark"
-        className={
-          workSans.className + " " + host == "flixstream.pro"
-            ? "flixstream"
-            : ""
-        }
+        className={`${workSans.className} ${
+          host == "flixstream.pro" ? "flixstream" : ""
+        }`}
       >
         <NextTopLoader
           color="var(--color-3)"
