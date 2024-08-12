@@ -7,6 +7,8 @@ import { Kanit, Work_Sans } from "next/font/google";
 import ReactQueryProvider from "./providers/ReactQuery";
 import NextTopLoader from "nextjs-toploader";
 import ScriptInjector from "./ScriptInjector";
+import { hostName } from "./functions/all";
+import { headers } from "next/headers";
 
 const kanit = Kanit({
   weight: ["100", "200", "300", "400", "500", "600"],
@@ -20,18 +22,28 @@ const workSans = Work_Sans({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Thefloxtv - Watch Movies and TV Shows For Free",
-  description:
-    "Watch free blockbuster movies and binge-worthy series for free! Dive into a wide range of content, from timeless classics to the latest releases. Enjoy easy, hassle-free streaming anytime, anywhere. Start your cinematic adventure now, all for free!",
-  keywords: ["Movies", "Series", "Tv Shows", "Watch Free Movies and Tv shows"],
-  openGraph: {
-    type: "website",
-    url: "https://thefloxtv.com",
-    title: "Thefloxtv",
-    siteName: "Thefloxtv",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const headerList = headers();
+  const host_name =
+    headerList.get("host") == "thefloxtv" ? "Thefloxtv" : "Movieboxx";
+  return {
+    title: `${host_name} - Watch Movies and TV Shows For Free`,
+    description:
+      "Watch free blockbuster movies and binge-worthy series for free! Dive into a wide range of content, from timeless classics to the latest releases. Enjoy easy, hassle-free streaming anytime, anywhere. Start your cinematic adventure now, all for free!",
+    keywords: [
+      "Movies",
+      "Series",
+      "Tv Shows",
+      "Watch Free Movies and Tv shows",
+    ],
+    openGraph: {
+      type: "website",
+      url: `https://${host_name}`,
+      title: host_name,
+      siteName: host_name,
+    },
+  };
+}
 
 export default function RootLayout({
   children,

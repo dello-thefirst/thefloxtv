@@ -3,10 +3,13 @@ import React, { useState } from "react";
 import LivesearchResult from "./LivesearchResult";
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "@/src/app/logo.svg";
+import Logo1 from "@/src/app/logo.svg";
+import Logo2 from "@/src/app/logo2.png";
+import { useStore } from "@/src//app/store";
 
 function Header({ page }: { page?: string }) {
   //..
+  const host = useStore((state) => state.host);
   const [searchValue, setSearchValue] = useState<string>("");
   const [isToggledNav, setIsToggledNav] = useState(false);
   const [isSearchToggled, setIsSearchToggled] = useState(false);
@@ -60,7 +63,11 @@ function Header({ page }: { page?: string }) {
       >
         <div className="logo-cont w-auto h-full float-left center-div">
           <Link href="/">
-            <Image className="logo w-[120px]" src={Logo} alt="Logo" />
+            {host == "thefloxtv.com" ? (
+              <Image className="logo w-[120px]" src={Logo1} alt="Logo" />
+            ) : (
+              <Image className="logo w-[120px]" src={Logo2} alt="Logo" />
+            )}
           </Link>
         </div>
 

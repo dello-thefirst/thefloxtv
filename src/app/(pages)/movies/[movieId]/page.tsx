@@ -8,6 +8,7 @@ import type { Metadata } from "next";
 import { getMovieDetails } from "@/src/app/functions/fetch";
 import MovieTrailers from "@/src/components/MovieTrailers";
 import Link from "next/link";
+import { headers } from "next/headers";
 
 export async function generateMetadata({
   params,
@@ -16,12 +17,15 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const id = params.movieId;
   const movieData = await getMovieDetails(id);
+  const headerList = headers();
+  const host_name =
+    headerList.get("host") == "thefloxtv" ? "Thefloxtv" : "Movieboxx";
   return {
-    title: "Watch " + movieData.title + " Full Movie on Thefloxtv.com",
+    title: `Watch " + movieData.title + " Full Movie on ${host_name}`,
     description: movieData.overview,
     openGraph: {
       type: "website",
-      url: `https://thefloxtv.com/movies/${id}`,
+      url: `https://${host_name}/movies/${id}`,
       title: movieData.title,
       description: movieData.overview,
       images: [
