@@ -21,16 +21,16 @@ const workSans = Work_Sans({
   display: "swap",
 });
 
-const header_list = headers();
-const host = header_list.get("host");
-const host_name =
-  host == "thefloxtv.com"
-    ? "Thefloxtv"
-    : host == "flixstream.pro"
-    ? "Flixstream"
-    : "Movieboxx";
-
 export async function generateMetadata(): Promise<Metadata> {
+  const header_list = headers();
+  const host = header_list.get("host");
+  const host_name =
+    host == "thefloxtv.com"
+      ? "Thefloxtv"
+      : host == "flixstream.pro"
+      ? "Flixstream"
+      : "Movieboxx";
+
   return {
     title: `${host_name} - Watch Movies and TV Shows For Free`,
     description:
@@ -55,6 +55,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const header_list = headers();
+  const host = header_list.get("host");
+  const host_name =
+    host == "thefloxtv.com"
+      ? "Thefloxtv"
+      : host == "flixstream.pro"
+      ? "Flixstream"
+      : "Movieboxx";
   return (
     <html lang="en">
       <head>
