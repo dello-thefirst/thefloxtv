@@ -75,12 +75,14 @@ function Header({ page }: { page?: string }) {
                 alt="Logo"
               />
             ) : (
-              <Image
-                unoptimized
-                className="logo w-[120px]"
-                src={Logo2}
-                alt="Logo"
-              />
+              hostName == "movieboxx.cc" && (
+                <Image
+                  unoptimized
+                  className="logo w-[120px]"
+                  src={Logo2}
+                  alt="Logo"
+                />
+              )
             )}
           </Link>
         </div>
