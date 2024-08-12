@@ -25,7 +25,7 @@ const workSans = Work_Sans({
 export async function generateMetadata(): Promise<Metadata> {
   const headerList = headers();
   const host_name =
-    headerList.get("host") == "thefloxtv" ? "Thefloxtv" : "Movieboxx";
+    headerList.get("authority") == "thefloxtv" ? "Thefloxtv" : "Movieboxx";
   return {
     title: `${host_name} - Watch Movies and TV Shows For Free`,
     description:
