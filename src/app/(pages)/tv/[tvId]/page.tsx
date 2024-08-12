@@ -19,7 +19,7 @@ export async function generateMetadata({
   const seriesData = await getSeriesDetails(id);
   const headerList = headers();
   const host_name =
-    headerList.get("authority") == "thefloxtv" ? "Thefloxtv" : "Movieboxx";
+    headerList.get("host") == "thefloxtv.com" ? "Thefloxtv" : "Movieboxx";
   return {
     title: "Watch " + seriesData.name + ` Complete Series on ${host_name}`,
     description: seriesData.overview,
