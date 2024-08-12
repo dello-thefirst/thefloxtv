@@ -132,18 +132,19 @@ export default function Trending({
                   }
                 >
                   <div
-                    className="item w-auto h-auto mr-[10px] flex relative sm:mr-[8px]"
+                    className="group item w-auto h-auto flex relative "
                     style={{ flex: "0 0 auto" }}
                   >
-                    <p className="list-number w-auto h-auto center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff1e] sm:text-[100px]">
+                    <p className="group-hover:text-[var(--color-4)] list-number w-auto h-auto center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff1e] sm:text-[100px]">
                       {listIterator++}
                     </p>
-                    <div className="w-[180px] sm:w-[150px] relative translate-x-[-10px]">
-                      <div className="mask group w-full h-full left-0 bottom-0 z-[2] from-[var(--background-color-11)] to-transparent bg-gradient-to-t absolute center-div"></div>
-
+                    <div className=" w-[180px] sm:w-[150px] relative translate-x-[-10px]">
+                      <div className="group-hover:opacity-[1] opacity-[0.1] duration-[0.7s] w-full h-[250px] sm:h-[200px] rounded-md absolute z-[2] bg-gradient-to-t from-[var(--color-3)] via-[var(--color-4)] to-[transparent] flex items-center justify-center">
+                        <i className="text-[50px] sm:text-[45px] text-black bi bi-play-circle-fill"></i>
+                      </div>
                       <Image
                         unoptimized
-                        className="object-cover rounded-md w-full"
+                        className="object-cover rounded-md w-full h-[250px] sm:h-[200px] shadow-2xl"
                         src={`https://themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`}
                         width={220}
                         height={300}

@@ -61,7 +61,10 @@ const LivesearchResult = (props: { query: string }) => {
                   height={70}
                 />
                 <div className="info text-[13px]">
-                  <p className="title">
+                  <p
+                    className="title text-[lightgrey]"
+                    style={{ textShadow: "0.5px 0.5px 0.5px black" }}
+                  >
                     {result.media_type == "movie" ? result.title : result.name}
                   </p>
                   <p
