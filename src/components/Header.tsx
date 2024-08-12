@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LivesearchResult from "./LivesearchResult";
 import Link from "next/link";
 import Image from "next/image";
@@ -9,7 +9,11 @@ import { useStore } from "@/src//app/store";
 
 function Header({ page }: { page?: string }) {
   //..
+  const [hostName, setHostName] = useState("nul");
   const host = useStore((state) => state.host);
+  useEffect(() => {
+    setHostName(host);
+  }, [host]);
   const [searchValue, setSearchValue] = useState<string>("");
   const [isToggledNav, setIsToggledNav] = useState(false);
   const [isSearchToggled, setIsSearchToggled] = useState(false);
@@ -63,7 +67,7 @@ function Header({ page }: { page?: string }) {
       >
         <div className="logo-cont w-auto h-full float-left center-div">
           <Link href="/">
-            {host == "thefloxtv.com" ? (
+            {hostName == "thefloxtv.com" ? (
               <Image
                 unoptimized
                 className="logo w-[120px]"
