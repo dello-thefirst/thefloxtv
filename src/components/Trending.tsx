@@ -139,7 +139,7 @@ export default function Trending({
                       {listIterator++}
                     </p>
                     <div className=" w-[180px] sm:w-[150px] relative translate-x-[-10px]">
-                      <div className="group-hover:opacity-[1] opacity-[0.1] duration-[0.7s] w-full h-[250px] sm:h-[200px] rounded-md absolute z-[2] bg-gradient-to-t from-[var(--color-3)] via-[var(--color-4)] to-[transparent] flex items-center justify-center">
+                      <div className="group-hover:opacity-[1] opacity-[0] duration-[0.7s] w-full h-[250px] sm:h-[200px] rounded-md absolute z-[2] bg-gradient-to-t from-[var(--color-3)] via-[var(--color-4)] to-[transparent] flex items-center justify-center">
                         <i className="text-[50px] sm:text-[45px] text-black bi bi-play-circle-fill"></i>
                       </div>
                       <Image

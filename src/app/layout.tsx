@@ -7,8 +7,9 @@ import { Kanit, Work_Sans } from "next/font/google";
 import ReactQueryProvider from "./providers/ReactQuery";
 import NextTopLoader from "nextjs-toploader";
 import ScriptInjector from "./ScriptInjector";
-import { hostName } from "./functions/all";
 import { headers } from "next/headers";
+
+headers().get("host") == "thefloxtv.com" ? "./globals.css" : "./globals.css";
 
 const kanit = Kanit({
   weight: ["100", "200", "300", "400", "500", "600"],
@@ -22,10 +23,15 @@ const workSans = Work_Sans({
   display: "swap",
 });
 
+const host = headers().get("host");
+const host_name =
+  host == "thefloxtv.com"
+    ? "Thefloxtv"
+    : host == "flixstream.pro"
+    ? "Flixstream"
+    : "Movieboxx";
+
 export async function generateMetadata(): Promise<Metadata> {
-  const headerList = headers();
-  const host_name =
-    headerList.get("host") == "thefloxtv.com" ? "Thefloxtv" : "Movieboxx";
   return {
     title: `${host_name} - Watch Movies and TV Shows For Free`,
     description:
@@ -74,7 +80,14 @@ export default function RootLayout({
 
             gtag('config', 'G-MGNE4PFYE5');`}
       </Script>
-      <body data-theme="dark" className={workSans.className}>
+      <body
+        data-theme="dark"
+        className={
+          workSans.className + " " + host_name == "flixstream.pro"
+            ? "flixstream"
+            : ""
+        }
+      >
         <NextTopLoader
           color="var(--color-3)"
           initialPosition={0.08}

@@ -8,15 +8,13 @@ body {
   --background-color-3: #010307;
   --color-2: 209, 209, 209;
   /* --color-3: rgb(108, 238, 108); */
-  --color-3: rgb(255, 215, 0);
-  --color-4: rgba(255, 217, 0, 0.249);
+  --color-3: rgb(44, 128, 212);
+  --color-4: rgba(0, 149, 255, 0.298);
   --font-family-1: var(--font-workSans);
   background-color: var(--background-color-1) !important;
 }
 
 body.flixstream {
-  --color-3: rgb(44, 128, 212);
-  --color-4: rgba(0, 149, 255, 0.298);
 }
 
 * {
