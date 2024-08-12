@@ -90,7 +90,7 @@ export default function RootLayout({
       <body
         data-theme="dark"
         className={
-          workSans.className + " " + host_name == "flixstream.pro"
+          workSans.className + " " + host == "flixstream.pro"
             ? "flixstream"
             : ""
         }
