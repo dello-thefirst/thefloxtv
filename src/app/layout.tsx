@@ -9,8 +9,6 @@ import NextTopLoader from "nextjs-toploader";
 import ScriptInjector from "./ScriptInjector";
 import { headers } from "next/headers";
 
-headers().get("host") == "thefloxtv.com" ? "./globals.css" : "./globals.css";
-
 const kanit = Kanit({
   weight: ["100", "200", "300", "400", "500", "600"],
   subsets: ["latin"],
