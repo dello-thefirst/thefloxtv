@@ -10,7 +10,6 @@ import { useStore } from "@/src//app/store";
 function Header({ page }: { page?: string }) {
   //..
   const host = useStore((state) => state.host);
-  console.log(host);
   const [searchValue, setSearchValue] = useState<string>("");
   const [isToggledNav, setIsToggledNav] = useState(false);
   const [isSearchToggled, setIsSearchToggled] = useState(false);
@@ -65,9 +64,19 @@ function Header({ page }: { page?: string }) {
         <div className="logo-cont w-auto h-full float-left center-div">
           <Link href="/">
             {host == "thefloxtv.com" ? (
-              <Image className="logo w-[120px]" src={Logo1} alt="Logo" />
+              <Image
+                unoptimized
+                className="logo w-[120px]"
+                src={Logo1}
+                alt="Logo"
+              />
             ) : (
-              <Image className="logo w-[120px]" src={Logo2} alt="Logo" />
+              <Image
+                unoptimized
+                className="logo w-[120px]"
+                src={Logo2}
+                alt="Logo"
+              />
             )}
           </Link>
         </div>
