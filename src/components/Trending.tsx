@@ -6,6 +6,7 @@ import Link from "next/link";
 import axios from "axios";
 import { getLetterRange, MovieDataProps } from "./Functions";
 import { getMovieDetails, getSeriesDetails } from "../app/functions/fetch";
+import TrendingLabel from "./TrendingLabel";
 
 export function LoadingUI() {
   let uiIterator = 1;
@@ -37,7 +38,7 @@ export default function Trending({
   let listIterator = 1;
   const [trendingPeriod, setTrendingPeriod] = useState("day");
   const [trendingData, setTrendingData] = useState<MovieDataType[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const request = async () => {
@@ -52,25 +53,8 @@ export default function Trending({
             },
           }
         );
-        let newResult: MovieDataType[] = [];
-
-        const fetchDetails = async () => {
-          for (const item of res.data.results.slice(0, 10)) {
-            const detailsNew: Promise<MovieDataType> =
-              type == "movie"
-                ? await getMovieDetails(item.id)
-                : await getSeriesDetails(item.id);
-            newResult.push(await detailsNew);
-          }
-
-          if (newResult.length > 0) {
-            setTrendingData(newResult);
-            setIsLoading(false);
-          }
-        };
-
-        // Call the function
-        fetchDetails();
+        setTrendingData(res.data.results.slice(0, 10));
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -165,25 +149,7 @@ export default function Trending({
                         height={300}
                         alt=""
                       />
-                      <div className="w-full flex gap-2 text-[12px]  items-center justify-between px-[1px] py-2">
-                        <p>
-                          {type == "movie"
-                            ? getLetterRange(result.release_date, 4)
-                            : getLetterRange(result.first_air_date, 4)}
-                        </p>
-                        <p className="border border-[grey] rounded-lg px-[5px] py-[0.5px] ">
-                          {type}
-                        </p>
-                        <p>
-                          {type == "movie"
-                            ? result.runtime + " min"
-                            : `Season ${
-                                result.last_episode_to_air?.season_number
-                                  ? result.last_episode_to_air?.season_number
-                                  : "?"
-                              }`}
-                        </p>
-                      </div>
+                      <TrendingLabel id={result.id} type={type} />
                     </div>
                   </div>
                 </Link>
