@@ -21,7 +21,8 @@ const workSans = Work_Sans({
   display: "swap",
 });
 
-const host = headers().get("host");
+const header_list = headers();
+const host = header_list.get("host");
 const host_name =
   host == "thefloxtv.com"
     ? "Thefloxtv"
