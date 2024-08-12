@@ -10,6 +10,7 @@ import { useStore } from "@/src//app/store";
 function Header({ page }: { page?: string }) {
   //..
   const host = useStore((state) => state.host);
+  console.log(host);
   const [searchValue, setSearchValue] = useState<string>("");
   const [isToggledNav, setIsToggledNav] = useState(false);
   const [isSearchToggled, setIsSearchToggled] = useState(false);
