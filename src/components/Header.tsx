@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Logo1 from "@/src/app/logo.svg";
 import Logo2 from "@/src/app/logo2.png";
+import Logo3 from "@/src/app/logo3.png";
 import { useStore } from "@/src//app/store";
 
 function Header({ page }: { page?: string }) {
@@ -83,6 +84,14 @@ function Header({ page }: { page?: string }) {
                   alt="Logo"
                 />
               )
+            )}
+            {hostName == "flixstream.pro" && (
+              <Image
+                unoptimized
+                className="logo w-[120px]"
+                src={Logo3}
+                alt="Logo"
+              />
             )}
           </Link>
         </div>
