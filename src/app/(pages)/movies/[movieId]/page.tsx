@@ -21,7 +21,7 @@ export async function generateMetadata({
   const host_name =
     headerList.get("host") == "thefloxtv.com" ? "Thefloxtv" : "Movieboxx";
   return {
-    title: `Watch " + movieData.title + " Full Movie on ${host_name}`,
+    title: `Watch ${movieData.title} Full Movie on ${host_name}`,
     description: movieData.overview,
     openGraph: {
       type: "website",
