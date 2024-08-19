@@ -35,12 +35,15 @@ export default function TrendingLabel({ id, type }: { id: any; type: string }) {
       </div>
       <div>
         <p
-          className="text-[14px] sm:text-[12px] text-[lightgrey]"
-          style={{ textShadow: "0.5px 0.5px 0.5px black" }}
+          className="text-[14px] sm:text-[12px] text-[lightgrey] w-full whitespace-nowrap overflow-ellipsis overflow-hidden"
+          style={{
+            textShadow: "0.5px 0.5px 0.5px black",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+          }}
         >
-          {type == "movie"
-            ? getWordRange(data.title, 4)
-            : getWordRange(data.name, 4)}
+          {type == "movie" ? data.title : data.name}
         </p>
       </div>
     </>
