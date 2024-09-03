@@ -24,12 +24,11 @@ const workSans = Work_Sans({
 export async function generateMetadata(): Promise<Metadata> {
   const header_list = headers();
   const host = header_list.get("host");
-  const host_name =
-    host == "thefloxtv.com"
-      ? "Thefloxtv"
-      : host == "flixstream.pro"
-      ? "Flixstream"
-      : "Movieboxx";
+  const host_name = host?.includes("thefloxtv")
+    ? "Thefloxtv"
+    : host?.includes("flixstream")
+    ? "Flixstream"
+    : "Movieboxx";
 
   return {
     title: `${host_name} - Watch Movies and TV Shows For Free`,
@@ -57,12 +56,11 @@ export default function RootLayout({
 }) {
   const header_list = headers();
   const host = header_list.get("host");
-  const host_name =
-    host == "thefloxtv.com"
-      ? "Thefloxtv"
-      : host == "flixstream.pro"
-      ? "Flixstream"
-      : "Movieboxx";
+  const host_name = host?.includes("thefloxtv")
+    ? "Thefloxtv"
+    : host?.includes("flixstream")
+    ? "Flixstream"
+    : "Movieboxx";
   return (
     <html lang="en">
       <head>
@@ -90,7 +88,7 @@ export default function RootLayout({
       <body
         data-theme="dark"
         className={`${workSans.className} ${
-          host == "flixstream.pro" ? "flixstream" : ""
+          host?.includes("flixstream") ? "flixstream" : ""
         }`}
       >
         <NextTopLoader

@@ -19,8 +19,8 @@ export async function generateMetadata({
   const id = params.movieId;
   const movieData = await getMovieDetails(id);
   const headerList = headers();
-  const host_name =
-    headerList.get("host") == "thefloxtv.com" ? "Thefloxtv" : "Movieboxx";
+  const host = headerList.get("host");
+  const host_name = host?.includes("thefloxtv") ? "Thefloxtv" : "Movieboxx";
   return {
     title: `Watch ${movieData.title} Full Movie on ${host_name}`,
     description: movieData.overview,

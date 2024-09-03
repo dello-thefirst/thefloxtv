@@ -68,24 +68,23 @@ function Header({ page }: { page?: string }) {
       >
         <div className="logo-cont w-auto h-full float-left center-div">
           <Link href="/">
-            {hostName.includes("thefloxtv") ? (
+            {hostName.includes("thefloxtv") && (
               <Image
                 unoptimized
                 className="logo w-[120px]"
                 src={Logo1}
                 alt="Logo"
               />
-            ) : (
-              hostName == "movieboxx.cc" && (
-                <Image
-                  unoptimized
-                  className="logo w-[120px]"
-                  src={Logo2}
-                  alt="Logo"
-                />
-              )
             )}
-            {hostName == "flixstream.pro" && (
+            {hostName.includes("movieboxx") && (
+              <Image
+                unoptimized
+                className="logo w-[120px]"
+                src={Logo2}
+                alt="Logo"
+              />
+            )}
+            {hostName.includes("flixstream") && (
               <Image
                 unoptimized
                 className="logo w-[120px]"
