@@ -68,7 +68,7 @@ function Header({ page }: { page?: string }) {
       >
         <div className="logo-cont w-auto h-full float-left center-div">
           <Link href="/">
-            {hostName == "thefloxtv.com" ? (
+            {hostName.includes("thefloxtv") ? (
               <Image
                 unoptimized
                 className="logo w-[120px]"
